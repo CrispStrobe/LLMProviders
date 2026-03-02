@@ -18,6 +18,7 @@
     "fetch:groq": "node scripts/providers/groq.js",
     "fetch:infomaniak": "node scripts/providers/infomaniak.js",
     "fetch:ionos": "node scripts/providers/ionos.js",
+    "fetch:bfl": "node scripts/providers/black-forest-labs.js",
     "fetch:benchmarks": "node scripts/fetch-benchmarks.js",
     "server": "node server.js",
     "dev:api": "node server.js"

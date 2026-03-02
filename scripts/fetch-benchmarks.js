@@ -22,7 +22,13 @@
  * Where both sources have data for the same benchmark (gpqa, mmlu_pro, ifeval, bbh),
  * LLMStats takes priority (it stores self-reported model-card values).
  *
- * Usage: node scripts/fetch-benchmarks.js
+ * Usage:
+ *   node scripts/fetch-benchmarks.js             # fetch all sources
+ *   node scripts/fetch-benchmarks.js livebench   # refresh LiveBench only
+ *   node scripts/fetch-benchmarks.js arena       # refresh Chatbot Arena only
+ *   node scripts/fetch-benchmarks.js aider       # refresh Aider only
+ *   node scripts/fetch-benchmarks.js hf          # refresh HF Leaderboard only
+ *   node scripts/fetch-benchmarks.js llmstats    # refresh LLMStats only
  */
 
 const fs   = require('fs');
@@ -520,9 +526,162 @@ function mergeAider(entries, aiderEntries) {
   return [...entries, ...newEntries];
 }
 
+// ─── Per-source partial refresh ──────────────────────────────────────────────
+
+// Fields owned by each source.  Stripping these fields + removing source-only
+// entries allows re-running just one source without losing other sources' data.
+const SOURCE_FIELDS = {
+  llmstats:  ['slug', 'mmlu', 'mmlu_pro', 'gpqa', 'human_eval', 'math', 'gsm8k', 'mmmu', 'hellaswag', 'ifeval', 'arc', 'drop', 'mbpp', 'mgsm', 'bbh'],
+  hf:        ['hf_id', 'params_b', 'hf_math_lvl5', 'hf_musr', 'hf_avg'],
+  livebench: ['lb_name', 'lb_global', 'lb_reasoning', 'lb_coding', 'lb_math', 'lb_language', 'lb_if', 'lb_data_analysis'],
+  arena:     ['arena_name', 'arena_org', 'arena_elo', 'arena_rank', 'arena_votes'],
+  aider:     ['aider_model', 'aider_pass_rate'],
+};
+
+// A unique field that only this source contributes (used to detect source-only entries).
+const SOURCE_ID_FIELD = {
+  llmstats:  'slug',
+  hf:        'hf_id',
+  livebench: 'lb_name',
+  arena:     'arena_elo',
+  aider:     'aider_pass_rate',
+};
+
+const ALL_ID_FIELDS = Object.values(SOURCE_ID_FIELD);
+
+function stripSourceFields(entries, source) {
+  const fields  = SOURCE_FIELDS[source];
+  const ownId   = SOURCE_ID_FIELD[source];
+  const otherId = ALL_ID_FIELDS.filter((id) => id !== ownId);
+  return entries
+    // Drop entries that only belong to this source (no other source data)
+    .filter((e) => otherId.some((id) => e[id] !== undefined))
+    .map((e) => {
+      const stripped = { ...e };
+      for (const f of fields) delete stripped[f];
+      return stripped;
+    });
+}
+
+// Merge freshly-fetched LLMStats data into an existing array of entries.
+function mergeLLMStatsInto(entries, llmstats) {
+  const LS_FIELDS = SOURCE_FIELDS.llmstats;
+  const nameMap = new Map();
+  entries.forEach((e, i) => {
+    if (e.name) nameMap.set(normName(e.name), i);
+    const slugModel = (e.slug || '').split('/').pop();
+    if (slugModel) nameMap.set(normName(slugModel), i);
+  });
+
+  let matched = 0;
+  const usedIdx = new Set();
+  const newEntries = [];
+
+  for (const ls of llmstats) {
+    const candidates = [normName(ls.name || ''), normName((ls.slug || '').split('/').pop())].filter(Boolean);
+    const idx = candidates.map((c) => nameMap.get(c)).find((n) => n !== undefined);
+    if (idx !== undefined && !usedIdx.has(idx)) {
+      const target = entries[idx];
+      for (const f of LS_FIELDS) { if (ls[f] !== undefined) target[f] = ls[f]; }
+      usedIdx.add(idx);
+      matched++;
+    } else {
+      newEntries.push({ ...ls });
+    }
+  }
+
+  console.log(`  LLMStats: ${matched} matched, ${newEntries.length} new entries`);
+  return [...entries, ...newEntries];
+}
+
+// Merge freshly-fetched HF data into an existing array of entries.
+function mergeHFInto(entries, hfEntries) {
+  const nameMap = new Map();
+  entries.forEach((e, i) => {
+    if (e.name) nameMap.set(normName(e.name), i);
+    const slugModel = (e.slug || '').split('/').pop();
+    if (slugModel) nameMap.set(normName(slugModel), i);
+  });
+
+  let matched = 0;
+  const usedIdx = new Set();
+  const newEntries = [];
+
+  for (const hf of hfEntries) {
+    const modelPart   = normName(hf.name);
+    const modelWords  = modelPart.split(' ');
+    const noPrefix    = modelWords.length > 1 ? modelWords.slice(1).join(' ') : modelPart;
+    const candidates  = [modelPart, noPrefix].filter(Boolean);
+    const idx = candidates.map((c) => nameMap.get(c)).find((n) => n !== undefined);
+
+    if (idx !== undefined && !usedIdx.has(idx)) {
+      const target = entries[idx];
+      if (!target.hf_id)    target.hf_id    = hf.hf_id;
+      if (!target.params_b) target.params_b = hf.params_b;
+      // LLMStats takes priority for shared benchmarks
+      if (!target.ifeval)   target.ifeval   = hf.ifeval;
+      if (!target.bbh)      target.bbh      = hf.bbh;
+      if (!target.gpqa)     target.gpqa     = hf.gpqa;
+      if (!target.mmlu_pro) target.mmlu_pro = hf.mmlu_pro;
+      // HF-exclusive fields always updated
+      target.hf_math_lvl5 = hf.hf_math_lvl5;
+      target.hf_musr      = hf.hf_musr;
+      target.hf_avg       = hf.hf_avg;
+      usedIdx.add(idx);
+      matched++;
+    } else {
+      newEntries.push({ ...hf });
+    }
+  }
+
+  console.log(`  HF: ${matched} matched, ${newEntries.length} new entries`);
+  return [...entries, ...newEntries];
+}
+
+async function refreshSource(source) {
+  if (!SOURCE_FIELDS[source]) {
+    console.error(`Unknown source "${source}". Valid: ${Object.keys(SOURCE_FIELDS).join(', ')}`);
+    process.exit(1);
+  }
+
+  console.log(`Refreshing benchmark source: ${source}\n`);
+  const existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+  const stripped = stripSourceFields(existing, source);
+
+  let result;
+  if (source === 'llmstats') {
+    const data = await fetchLLMStats();
+    result = mergeLLMStatsInto(stripped, data);
+  } else if (source === 'hf') {
+    const data = await fetchHFLeaderboard();
+    result = mergeHFInto(stripped, data);
+  } else if (source === 'livebench') {
+    const data = await fetchLiveBench();
+    result = mergeLiveBench(stripped, data);
+  } else if (source === 'arena') {
+    const data = await fetchChatbotArena();
+    result = mergeArena(stripped, data);
+  } else if (source === 'aider') {
+    const data = await fetchAider();
+    result = mergeAider(stripped, data);
+  }
+
+  fs.writeFileSync(OUT_FILE, JSON.stringify(result, null, 2));
+  console.log(`\nSaved ${result.length} entries to data/benchmarks.json`);
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {
+  const source = process.argv[2]?.toLowerCase();
+
+  // Per-source refresh mode
+  if (source) {
+    await refreshSource(source);
+    return;
+  }
+
+  // Full rebuild — all sources
   const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries] = await Promise.all([
     fetchLLMStats(),
     fetchHFLeaderboard(),

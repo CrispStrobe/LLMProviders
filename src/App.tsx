@@ -15,6 +15,7 @@ interface Model {
   price_per_1m_tokens_30d?: number
   currency: string
   capabilities?: string[]
+  display_name?: string
 }
 
 interface Provider {
@@ -248,7 +249,7 @@ function App() {
   }, [searchTerm, selectedType, selectedRegion, allModels])
 
   const getNormalizedPriceUSD = (model: Model) => {
-    const price = model.input_price_per_1m ?? model.price_per_image ?? model.price_per_minute ?? 0
+    const price = model.input_price_per_1m || model.price_per_image || model.price_per_minute || 0
     return model.currency === 'EUR' ? price * EXCHANGE_RATE_EUR_TO_USD : price
   }
 
@@ -464,15 +465,23 @@ function App() {
                       {model.complianceStatus}
                     </span>
                   </td>
-                  <td className="model-name">{model.name}</td>
+                  <td className="model-name">{model.display_name ?? model.name}</td>
                   <td className="caps-cell">
                     {(model.capabilities || []).map(cap => (
                       <span key={cap} className={`cap-badge cap-${cap}`} title={cap}>{CAP_ICON[cap] ?? cap}</span>
                     ))}
                   </td>
                   <td className="size-cell">{model.size_b ? `${model.size_b}B` : '-'}</td>
-                  <td>{formatPrice(model.input_price_per_1m, model.currency)}</td>
-                  <td>{formatPrice(model.output_price_per_1m, model.currency)}</td>
+                  <td>
+                    {model.price_per_image !== undefined && !model.input_price_per_1m
+                      ? `$${model.price_per_image}/MP`
+                      : formatPrice(model.input_price_per_1m, model.currency)}
+                  </td>
+                  <td>
+                    {model.price_per_image !== undefined && !model.output_price_per_1m
+                      ? '–'
+                      : formatPrice(model.output_price_per_1m, model.currency)}
+                  </td>
                   {showBenchmarks && (() => {
                     const bm = findBenchmark(model.name);
                     const fmt = (v?: number) => Number.isFinite(v) ? `${(v! * 100).toFixed(0)}%` : '–';

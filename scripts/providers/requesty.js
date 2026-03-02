@@ -1,17 +1,12 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
+const { loadEnv } = require('../load-env');
+loadEnv();
 
 const API_URL = 'https://router.requesty.ai/v1/models';
 
-// Load API key from ../AIToolkit/.env relative to the project root
 function loadApiKey() {
-  const envPath = path.join(__dirname, '..', '..', '..', 'AIToolkit', '.env');
-  if (!fs.existsSync(envPath)) return null;
-  const content = fs.readFileSync(envPath, 'utf8');
-  const match = content.match(/^REQUESTY_API_KEY=(.+)$/m);
-  return match ? match[1].trim() : null;
+  return process.env.REQUESTY_API_KEY || null;
 }
 
 const toPerMillion = (val) => (val ? Math.round(parseFloat(val) * 1_000_000 * 10000) / 10000 : 0);
@@ -74,10 +69,30 @@ async function fetchRequesty() {
     models.push(modelEntry);
   }
 
-  // Sort by input price
-  models.sort((a, b) => a.input_price_per_1m - b.input_price_per_1m);
+  // Deduplicate @region and :effort variants — keep one entry per canonical base ID.
+  // e.g. "anthropic/claude-3-7-sonnet@us-east-2" and "anthropic/claude-3-7-sonnet:high"
+  // both collapse to "anthropic/claude-3-7-sonnet".
+  const canonicalId = (id) => id.replace(/@[^/]+$/, '').replace(/:[^/]+$/, '');
+  const seen = new Map();
+  for (const model of models) {
+    const base = canonicalId(model.name);
+    if (!seen.has(base)) {
+      // Store with canonical name
+      seen.set(base, { ...model, name: base });
+    } else {
+      // Prefer lower input price if already present
+      const existing = seen.get(base);
+      if (model.input_price_per_1m < existing.input_price_per_1m) {
+        seen.set(base, { ...model, name: base });
+      }
+    }
+  }
+  const deduped = [...seen.values()];
 
-  return models;
+  // Sort by input price
+  deduped.sort((a, b) => a.input_price_per_1m - b.input_price_per_1m);
+
+  return deduped;
 }
 
 module.exports = { fetchRequesty, providerName: 'Requesty' };

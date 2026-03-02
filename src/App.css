@@ -341,6 +341,7 @@ footer {
   margin: 1.5rem 0 0.5rem;
 }
 .mgmt-provider { font-weight: 600; }
+.mgmt-source-indent { font-weight: 400; padding-left: 1.5rem; color: #64748b; }
 .mgmt-count { color: #475569; font-variant-numeric: tabular-nums; }
 .mgmt-age { color: #94a3b8; font-size: 0.8rem; }
 .btn-refresh {

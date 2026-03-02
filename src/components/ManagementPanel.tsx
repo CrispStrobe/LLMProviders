@@ -9,10 +9,24 @@ interface ProviderStatus {
   refreshing: boolean
 }
 
+interface BenchmarkSourceStatus {
+  key: string
+  refreshing: boolean
+}
+
 interface BenchmarkStatus {
   entryCount: number
   lastUpdated: string | null
   refreshing: boolean
+  sources?: BenchmarkSourceStatus[]
+}
+
+const BENCHMARK_SOURCE_NAMES: Record<string, string> = {
+  llmstats:  'LLMStats',
+  hf:        'HF Leaderboard',
+  livebench: 'LiveBench',
+  arena:     'Chatbot Arena',
+  aider:     'Aider',
 }
 
 interface FetchResult {
@@ -45,6 +59,8 @@ export function ManagementPanel({ onClose, onDataUpdated }: Props) {
   const [error, setError] = useState<string | null>(null)
   const [results, setResults] = useState<Record<string, { success: boolean; error?: string }>>({})
   const [bmResult, setBmResult] = useState<{ success: boolean; error?: string } | null>(null)
+  const [bmSourceResults, setBmSourceResults] = useState<Record<string, { success: boolean; error?: string }>>({})
+  const [refreshingBmSource, setRefreshingBmSource] = useState<Record<string, boolean>>({})
   const [refreshingAll, setRefreshingAll] = useState(false)
   const [serverAvailable, setServerAvailable] = useState(true)
 
@@ -98,6 +114,21 @@ export function ManagementPanel({ onClose, onDataUpdated }: Props) {
     } catch {
       setBmResult({ success: false, error: 'Request failed' })
     }
+    await fetchStatus()
+  }
+
+  const refreshBenchmarkSource = async (source: string) => {
+    setRefreshingBmSource((s) => ({ ...s, [source]: true }))
+    setBmSourceResults((r) => ({ ...r, [source]: { success: false } }))
+    try {
+      const res = await fetch(`/api/fetch/benchmarks/${source}`, { method: 'POST' })
+      const data = await res.json()
+      setBmSourceResults((r) => ({ ...r, [source]: { success: data.success, error: data.error } }))
+      if (data.success) onDataUpdated()
+    } catch {
+      setBmSourceResults((r) => ({ ...r, [source]: { success: false, error: 'Request failed' } }))
+    }
+    setRefreshingBmSource((s) => ({ ...s, [source]: false }))
     await fetchStatus()
   }
 
@@ -205,7 +236,7 @@ export function ManagementPanel({ onClose, onDataUpdated }: Props) {
                 <table className="management-table">
                   <thead>
                     <tr>
-                      <th>Dataset</th>
+                      <th>Source</th>
                       <th>Entries</th>
                       <th>Last updated</th>
                       <th>Status</th>
@@ -213,8 +244,9 @@ export function ManagementPanel({ onClose, onDataUpdated }: Props) {
                     </tr>
                   </thead>
                   <tbody>
+                    {/* All-sources row */}
                     <tr>
-                      <td className="mgmt-provider">Benchmarks</td>
+                      <td className="mgmt-provider">All sources</td>
                       <td className="mgmt-count">{benchmarks.entryCount.toLocaleString()}</td>
                       <td className="mgmt-age">{formatAge(benchmarks.lastUpdated)}</td>
                       <td className="mgmt-status">
@@ -238,6 +270,38 @@ export function ManagementPanel({ onClose, onDataUpdated }: Props) {
                         </button>
                       </td>
                     </tr>
+                    {/* Per-source rows */}
+                    {(benchmarks.sources ?? []).map((src) => {
+                      const result = bmSourceResults[src.key]
+                      const isRefreshing = src.refreshing || refreshingBmSource[src.key]
+                      return (
+                        <tr key={src.key}>
+                          <td className="mgmt-provider mgmt-source-indent">
+                            {BENCHMARK_SOURCE_NAMES[src.key] ?? src.key}
+                          </td>
+                          <td className="mgmt-count"></td>
+                          <td className="mgmt-age"></td>
+                          <td className="mgmt-status">
+                            {result ? (
+                              result.success ? (
+                                <span className="badge-ok">✓ updated</span>
+                              ) : (
+                                <span className="badge-err" title={result.error}>✗ failed</span>
+                              )
+                            ) : null}
+                          </td>
+                          <td>
+                            <button
+                              className="btn-refresh"
+                              onClick={() => refreshBenchmarkSource(src.key)}
+                              disabled={isRefreshing}
+                            >
+                              {isRefreshing ? '⟳' : '↻'}
+                            </button>
+                          </td>
+                        </tr>
+                      )
+                    })}
                   </tbody>
                 </table>
               </>

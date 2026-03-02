@@ -27,6 +27,7 @@ const FETCHER_MODULES = {
   groq: require('./providers/groq'),
   infomaniak: require('./providers/infomaniak'),
   ionos: require('./providers/ionos'),
+  'black-forest-labs': require('./providers/black-forest-labs'),
 };
 
 const FETCHERS = Object.entries(FETCHER_MODULES).map(([key, mod]) => {
@@ -109,9 +110,16 @@ function propagateCapabilities(data) {
   if (orIndex.length === 0) return;
 
   let propagated = 0;
+  let autoTagged = 0;
   for (const provider of data.providers) {
-    if (provider.name === 'OpenRouter') continue;
     for (const model of provider.models || []) {
+      // Auto-tag image-gen models regardless of OR match
+      if (model.type === 'image' && (!model.capabilities || !model.capabilities.length)) {
+        model.capabilities = ['image-gen'];
+        autoTagged++;
+        continue;
+      }
+      if (provider.name === 'OpenRouter') continue;
       if (model.capabilities && model.capabilities.length > 0) continue; // already set
       const match = findOrMatch(model.name, orIndex);
       if (!match) continue;
@@ -121,7 +129,8 @@ function propagateCapabilities(data) {
       propagated++;
     }
   }
-  if (propagated > 0) console.log(`\nPropagated capabilities to ${propagated} models from OpenRouter.`);
+  if (autoTagged > 0) console.log(`Auto-tagged ${autoTagged} image-gen models.`);
+  if (propagated > 0) console.log(`Propagated capabilities to ${propagated} models from OpenRouter.`);
 }
 
 async function runFetcher(fetcher, data) {

@@ -22,8 +22,11 @@ const BENCHMARKS_FILE = path.join(__dirname, 'data', 'benchmarks.json');
 const SCRIPTS_DIR = path.join(__dirname, 'scripts', 'providers');
 const BENCHMARKS_SCRIPT = path.join(__dirname, 'scripts', 'fetch-benchmarks.js');
 
-// In-memory state: which providers are currently being refreshed
+// In-memory state: which providers/benchmark sources are currently being refreshed
 const refreshing = new Set();
+
+// Valid benchmark source keys (must match fetch-benchmarks.js SOURCE_FIELDS keys)
+const BENCHMARK_SOURCES = ['llmstats', 'hf', 'livebench', 'arena', 'aider'];
 
 // Allow cross-origin requests from the Vite dev server
 app.use((req, res, next) => {
@@ -69,15 +72,20 @@ app.get('/api/status', (req, res) => {
     };
   });
 
-  // Include benchmark dataset info
+  // Include benchmark dataset info (benchmarks.json is a plain array; use file mtime for lastUpdated)
   let benchmarks = null;
   if (fs.existsSync(BENCHMARKS_FILE)) {
     try {
       const bm = JSON.parse(fs.readFileSync(BENCHMARKS_FILE, 'utf8'));
+      const mtime = fs.statSync(BENCHMARKS_FILE).mtime.toISOString();
       benchmarks = {
         entryCount: Array.isArray(bm) ? bm.length : (bm.entries?.length ?? 0),
-        lastUpdated: bm.lastUpdated ?? null,
+        lastUpdated: mtime,
         refreshing: refreshing.has('__benchmarks__'),
+        sources: BENCHMARK_SOURCES.map((key) => ({
+          key,
+          refreshing: refreshing.has(`__benchmarks__:${key}`),
+        })),
       };
     } catch { /* ignore */ }
   }
@@ -131,8 +139,31 @@ function runFetcher(providerName, scriptKey) {
 }
 
 // ------------------------------------------------------------------
-// POST /api/fetch/benchmarks   (runs scripts/fetch-benchmarks.js)
+// POST /api/fetch/benchmarks/:source  (refresh one benchmark source)
+// POST /api/fetch/benchmarks          (refresh all benchmark sources)
 // ------------------------------------------------------------------
+app.post('/api/fetch/benchmarks/:source', async (req, res) => {
+  const { source } = req.params;
+  if (!BENCHMARK_SOURCES.includes(source)) {
+    return res.json({ success: false, error: `Unknown source: ${source}` });
+  }
+  const key = `__benchmarks__:${source}`;
+  if (refreshing.has(key)) {
+    return res.json({ success: false, error: 'Already refreshing' });
+  }
+  refreshing.add(key);
+  execFile(
+    process.execPath,
+    [BENCHMARKS_SCRIPT, source],
+    { cwd: __dirname, timeout: 300000 },
+    (err, stdout, stderr) => {
+      refreshing.delete(key);
+      if (err) res.json({ success: false, error: err.message, stderr });
+      else res.json({ success: true });
+    }
+  );
+});
+
 app.post('/api/fetch/benchmarks', async (req, res) => {
   if (refreshing.has('__benchmarks__')) {
     return res.json({ success: false, error: 'Already refreshing' });
@@ -141,19 +172,10 @@ app.post('/api/fetch/benchmarks', async (req, res) => {
   execFile(
     process.execPath,
     [BENCHMARKS_SCRIPT],
-    { cwd: __dirname, timeout: 120000 },
+    { cwd: __dirname, timeout: 600000 },
     (err, stdout, stderr) => {
       refreshing.delete('__benchmarks__');
-      // Stamp lastUpdated into benchmarks.json
-      try {
-        const bm = JSON.parse(fs.readFileSync(BENCHMARKS_FILE, 'utf8'));
-        const arr = Array.isArray(bm) ? bm : (bm.entries ?? bm);
-        fs.writeFileSync(BENCHMARKS_FILE, JSON.stringify(
-          Array.isArray(bm) ? arr : Object.assign(bm, { lastUpdated: new Date().toISOString() }),
-          null, 2
-        ));
-      } catch { /* best effort */ }
-      if (err) res.json({ success: false, error: err.message });
+      if (err) res.json({ success: false, error: err.message, stderr });
       else res.json({ success: true });
     }
   );
