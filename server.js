@@ -16,7 +16,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const DATA_FILE = path.join(__dirname, 'data', 'providers.json');
 const BENCHMARKS_FILE = path.join(__dirname, 'data', 'benchmarks.json');
 const SCRIPTS_DIR = path.join(__dirname, 'scripts', 'providers');
@@ -44,6 +44,23 @@ const distDir = path.join(__dirname, 'dist');
 if (fs.existsSync(distDir)) {
   app.use(express.static(distDir));
 }
+
+// ------------------------------------------------------------------
+// GET /api/data        → serve providers.json live (for HF Space / local)
+// GET /api/benchmarks  → serve benchmarks.json live
+// ------------------------------------------------------------------
+app.get('/api/data', (req, res) => {
+  try {
+    res.json(JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')));
+  } catch { res.status(500).json({ error: 'Failed to read providers data' }); }
+});
+
+app.get('/api/benchmarks', (req, res) => {
+  try {
+    if (!fs.existsSync(BENCHMARKS_FILE)) return res.status(404).json([]);
+    res.json(JSON.parse(fs.readFileSync(BENCHMARKS_FILE, 'utf8')));
+  } catch { res.status(500).json({ error: 'Failed to read benchmarks data' }); }
+});
 
 // ------------------------------------------------------------------
 // GET /api/status
@@ -222,8 +239,17 @@ app.post('/api/fetch', async (req, res) => {
   res.json({ results });
 });
 
+// SPA catch-all: serve index.html for any non-API route
+if (fs.existsSync(distDir)) {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(distDir, 'index.html'));
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`Management API server running at http://localhost:${PORT}`);
+  console.log(`  GET  /api/data`);
+  console.log(`  GET  /api/benchmarks`);
   console.log(`  GET  /api/status`);
   console.log(`  POST /api/fetch          (all providers)`);
   console.log(`  POST /api/fetch/:key     (single provider)`);

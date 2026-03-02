@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useEffect } from 'react'
 import providersData from '../data/providers.json'
 import benchmarksData from '../data/benchmarks.json'
 import { ManagementPanel } from './components/ManagementPanel'
@@ -101,12 +101,27 @@ function App() {
   const [showManagement, setShowManagement] = useState(false);
   const [dataVersion, setDataVersion] = useState(0);
 
+  // Live data — initialized from bundled JSON, refreshed from /api/* when available
+  const [liveProviders, setLiveProviders] = useState<Provider[]>((providersData as any).providers);
+  const [liveBenchmarks, setLiveBenchmarks] = useState<BenchmarkEntry[]>(benchmarksData as BenchmarkEntry[]);
+
+  useEffect(() => {
+    fetch('/api/data')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d?.providers) setLiveProviders(d.providers); })
+      .catch(() => {});
+    fetch('/api/benchmarks')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (Array.isArray(d)) setLiveBenchmarks(d); })
+      .catch(() => {});
+  }, [dataVersion]);
+
   // Build benchmark lookup maps
   const { nameMap, hfIdMap } = useMemo(() => {
     const nameMap = new Map<string, BenchmarkEntry>();
     const hfIdMap = new Map<string, BenchmarkEntry>();
 
-    for (const b of benchmarksData as BenchmarkEntry[]) {
+    for (const b of liveBenchmarks) {
       // Name-based lookup (LLMStats names + HF model part)
       nameMap.set(normalizeName(b.name), b);
       if (b.slug) {
@@ -130,7 +145,7 @@ function App() {
       if (b.arena_name) nameMap.set(normalizeName(b.arena_name), b);
     }
     return { nameMap, hfIdMap };
-  }, []);
+  }, [liveBenchmarks]);
 
   const findBenchmark = useCallback((modelName: string): BenchmarkEntry | undefined => {
     // Strip @region (e.g. @us-east-1) and :effort (e.g. :high) suffixes before normalizing
@@ -208,7 +223,7 @@ function App() {
   const allModels = useMemo(() => {
     const rawModels: (Model & { provider: Provider; complianceStatus: string })[] = []
     
-    providersData.providers.forEach((provider: Provider) => {
+    liveProviders.forEach((provider: Provider) => {
       const status = getComplianceStatus(provider);
       provider.models.forEach((model) => {
         let cleanName = model.name;
@@ -236,7 +251,7 @@ function App() {
     });
 
     return uniqueModels;
-  }, [])
+  }, [liveProviders])
 
   const filteredModels = useMemo(() => {
     return allModels.filter((model) => {
@@ -367,7 +382,7 @@ function App() {
           </div>
           <div className="header-actions">
             {dataVersion > 0 && (
-              <span className="data-stale-hint" title="Data was refreshed — reload the page to see updated prices">
+              <span className="data-stale-hint" title="Data refreshed from server">
                 ↻ data updated
               </span>
             )}
