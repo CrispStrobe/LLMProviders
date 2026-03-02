@@ -1,0 +1,44 @@
+{
+  "name": "providers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "fetch": "node scripts/fetch-providers.js",
+    "fetch:scaleway": "node scripts/providers/scaleway.js",
+    "fetch:openrouter": "node scripts/providers/openrouter.js",
+    "fetch:requesty": "node scripts/providers/requesty.js",
+    "fetch:nebius": "node scripts/providers/nebius.js",
+    "fetch:mistral": "node scripts/providers/mistral.js",
+    "fetch:langdock": "node scripts/providers/langdock.js",
+    "fetch:groq": "node scripts/providers/groq.js",
+    "fetch:infomaniak": "node scripts/providers/infomaniak.js",
+    "fetch:ionos": "node scripts/providers/ionos.js",
+    "fetch:benchmarks": "node scripts/fetch-benchmarks.js",
+    "server": "node server.js",
+    "dev:api": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "lucide-react": "^0.575.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "cheerio": "^1.2.0",
+    "express": "^5.2.1",
+    "js-yaml": "^4.1.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  }
+}
