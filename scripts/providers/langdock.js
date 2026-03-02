@@ -19,19 +19,11 @@
  * Pricing is in EUR with a stated 10% Langdock surcharge on provider rates.
  */
 
-const fs = require('fs');
-const path = require('path');
 const cheerio = require('cheerio');
+const { loadEnv } = require('../load-env');
+loadEnv();
 
 const MODELS_URL = 'https://langdock.com/models';
-
-function loadApiKey() {
-  const envPath = path.join(__dirname, '..', '..', '..', 'AIToolkit', '.env');
-  if (!fs.existsSync(envPath)) return null;
-  const content = fs.readFileSync(envPath, 'utf8');
-  const match = content.match(/^LANGDOCK_API_KEY=(.+)$/m);
-  return match ? match[1].trim() : null;
-}
 
 const parseEur = (text) => {
   if (!text) return null;

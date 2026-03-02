@@ -79,7 +79,8 @@ function findOrMatch(modelName, orIndex) {
   // Use the model part (after last '/') for matching, strip :region/@suffix
   const raw = modelName.replace(/@[^/]+$/, '').replace(/:[^/]+$/, '');
   const modelPart = raw.includes('/') ? raw.split('/').pop() : raw;
-  const n = normName(modelPart);
+  // Strip reasoning/thinking suffixes that don't appear in OR model IDs
+  const n = normName(modelPart).replace(/ (?:reasoning|thinking|extended|nothinking)$/, '');
 
   // 1. Exact match
   for (const entry of orIndex) {
@@ -98,6 +99,32 @@ function findOrMatch(modelName, orIndex) {
   // 3. OR model part starts with provider name (e.g. "claude-haiku-4-5" → "claude-haiku-4-5-20251001")
   for (const entry of orIndex) {
     if (entry.norm.startsWith(n + ' ')) return entry;
+  }
+  // 4. OR model norm contains provider name as a contiguous word sequence.
+  // Handles short display names like "Sonnet 4.6" matching inside "claude sonnet 4 6".
+  if (n.length >= 5) {
+    let bestC = null, bestCLen = Infinity;
+    for (const entry of orIndex) {
+      const e = entry.norm;
+      if ((e === n || e.includes(' ' + n + ' ') || e.startsWith(n + ' ') || e.endsWith(' ' + n))
+          && e.length < bestCLen) {
+        bestC = entry; bestCLen = e.length;
+      }
+    }
+    if (bestC) return bestC;
+  }
+  // 5. All tokens of provider name appear in OR norm (handles word-order differences).
+  // e.g. "Sonnet 3.7" → tokens ["sonnet","3","7"] match inside "claude 3 7 sonnet 20250219".
+  const tokens = n.split(' ');
+  if (tokens.length >= 2 && n.length >= 7) {
+    let bestT = null, bestTLen = Infinity;
+    for (const entry of orIndex) {
+      const eTokens = entry.norm.split(' ');
+      if (tokens.every((t) => eTokens.includes(t)) && entry.norm.length < bestTLen) {
+        bestT = entry; bestTLen = entry.norm.length;
+      }
+    }
+    if (bestT) return bestT;
   }
   return null;
 }
@@ -170,9 +197,9 @@ async function main() {
     results.push(result);
   }
 
-  // When all providers are fetched (or OpenRouter was included), propagate capabilities.
-  const fetchedKeys = new Set(results.filter((r) => r.success).map((r) => r.key));
-  if (fetchedKeys.has('openrouter')) propagateCapabilities(data);
+  // Always propagate capabilities from OpenRouter to all providers' models.
+  // No-ops if OpenRouter has no data in providers.json yet.
+  propagateCapabilities(data);
 
   saveData(data);
 
