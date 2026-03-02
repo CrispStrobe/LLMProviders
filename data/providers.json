@@ -5812,11 +5812,7 @@
           "output_price_per_1m": 0.6,
           "currency": "USD",
           "size_b": 120,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "gpt-oss-20b (base)",
@@ -5825,11 +5821,7 @@
           "output_price_per_1m": 0.2,
           "currency": "USD",
           "size_b": 20,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Kimi-K2-Instruct (base)",
@@ -5837,10 +5829,7 @@
           "input_price_per_1m": 0.5,
           "output_price_per_1m": 2.4,
           "currency": "USD",
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-Coder-480B-A35B-Instruct (base)",
@@ -5849,10 +5838,7 @@
           "output_price_per_1m": 1.8,
           "currency": "USD",
           "size_b": 480,
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-235B-A22B-Thinking-2507 (base)",
@@ -5861,11 +5847,7 @@
           "output_price_per_1m": 0.8,
           "currency": "USD",
           "size_b": 235,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-235B-A22B-Instruct-2507 (base)",
@@ -5874,11 +5856,7 @@
           "output_price_per_1m": 0.6,
           "currency": "USD",
           "size_b": 235,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-30B-A3B-Thinking-2507 (base)",
@@ -5887,11 +5865,7 @@
           "output_price_per_1m": 0.3,
           "currency": "USD",
           "size_b": 30,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-30B-A3B-Instruct-2507 (base)",
@@ -5900,10 +5874,7 @@
           "output_price_per_1m": 0.3,
           "currency": "USD",
           "size_b": 30,
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-Coder-30B-A3B-Instruct (base)",
@@ -5912,10 +5883,7 @@
           "output_price_per_1m": 0.3,
           "currency": "USD",
           "size_b": 30,
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-30B-A3B (base)",
@@ -5924,11 +5892,7 @@
           "output_price_per_1m": 0.3,
           "currency": "USD",
           "size_b": 30,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-32B (fast)",
@@ -5937,11 +5901,7 @@
           "output_price_per_1m": 0.6,
           "currency": "USD",
           "size_b": 32,
-          "flavor": "fast",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "fast"
         },
         {
           "name": "Qwen3-32B (base)",
@@ -5950,11 +5910,7 @@
           "output_price_per_1m": 0.3,
           "currency": "USD",
           "size_b": 32,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen3-14B (base)",
@@ -5963,11 +5919,7 @@
           "output_price_per_1m": 0.24,
           "currency": "USD",
           "size_b": 14,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Qwen2.5-Coder-7B (base)",
@@ -5994,11 +5946,7 @@
           "output_price_per_1m": 1.5,
           "currency": "USD",
           "size_b": 32,
-          "flavor": "fast",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "fast"
         },
         {
           "name": "QwQ-32B (base)",
@@ -6007,11 +5955,7 @@
           "output_price_per_1m": 0.45,
           "currency": "USD",
           "size_b": 32,
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "GLM-4.5 (base)",
@@ -6019,11 +5963,7 @@
           "input_price_per_1m": 0.6,
           "output_price_per_1m": 2.2,
           "currency": "USD",
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "GLM-4.5-Air (base)",
@@ -6031,11 +5971,7 @@
           "input_price_per_1m": 0.2,
           "output_price_per_1m": 1.2,
           "currency": "USD",
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "DeepSeek-R1-0528 (fast)",
@@ -6043,11 +5979,7 @@
           "input_price_per_1m": 2,
           "output_price_per_1m": 6,
           "currency": "USD",
-          "flavor": "fast",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "fast"
         },
         {
           "name": "DeepSeek-R1-0528 (base)",
@@ -6055,11 +5987,7 @@
           "input_price_per_1m": 0.8,
           "output_price_per_1m": 2.4,
           "currency": "USD",
-          "flavor": "base",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "DeepSeek-V3-0324 (fast)",
@@ -6092,10 +6020,7 @@
           "output_price_per_1m": 0.75,
           "currency": "USD",
           "size_b": 70,
-          "flavor": "fast",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "fast"
         },
         {
           "name": "Llama-3.3-70B-Instruct (base)",
@@ -6104,10 +6029,7 @@
           "output_price_per_1m": 0.4,
           "currency": "USD",
           "size_b": 70,
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Llama-3.1-8B-Instruct (fast)",
@@ -6116,10 +6038,7 @@
           "output_price_per_1m": 0.09,
           "currency": "USD",
           "size_b": 8,
-          "flavor": "fast",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "fast"
         },
         {
           "name": "Llama-3.1-8B-Instruct (base)",
@@ -6128,10 +6047,7 @@
           "output_price_per_1m": 0.06,
           "currency": "USD",
           "size_b": 8,
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Llama-3.1-405B-Instruct (base)",
@@ -6140,10 +6056,7 @@
           "output_price_per_1m": 3,
           "currency": "USD",
           "size_b": 405,
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Llama-3_1-Nemotron-Ultra-253B-v1 (base)",
@@ -6178,10 +6091,7 @@
           "input_price_per_1m": 0.08,
           "output_price_per_1m": 0.24,
           "currency": "USD",
-          "flavor": "base",
-          "capabilities": [
-            "tools"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Hermes-4-405B (base)",
@@ -6190,10 +6100,7 @@
           "output_price_per_1m": 3,
           "currency": "USD",
           "size_b": 405,
-          "flavor": "base",
-          "capabilities": [
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Hermes-4-70B (base)",
@@ -6202,10 +6109,7 @@
           "output_price_per_1m": 0.4,
           "currency": "USD",
           "size_b": 70,
-          "flavor": "base",
-          "capabilities": [
-            "reasoning"
-          ]
+          "flavor": "base"
         },
         {
           "name": "Hermes-3-Llama-3.1-405B (base)",
@@ -6287,30 +6191,21 @@
           "type": "image",
           "input_price_per_1m": 0.0013,
           "output_price_per_1m": 0,
-          "currency": "USD",
-          "capabilities": [
-            "image-gen"
-          ]
+          "currency": "USD"
         },
         {
           "name": "flux-dev",
           "type": "image",
           "input_price_per_1m": 0.007,
           "output_price_per_1m": 0,
-          "currency": "USD",
-          "capabilities": [
-            "image-gen"
-          ]
+          "currency": "USD"
         },
         {
           "name": "sdxl",
           "type": "image",
           "input_price_per_1m": 0.003,
           "output_price_per_1m": 0,
-          "currency": "USD",
-          "capabilities": [
-            "image-gen"
-          ]
+          "currency": "USD"
         },
         {
           "name": "bge-multilingual-gemma2",
@@ -6343,7 +6238,7 @@
           "size_b": 8
         }
       ],
-      "lastUpdated": "2026-03-02T04:54:03.749Z"
+      "lastUpdated": "2026-03-02T05:29:01.094Z"
     },
     {
       "name": "Scaleway",
