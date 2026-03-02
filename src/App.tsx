@@ -371,6 +371,15 @@ function App() {
                 ↻ data updated
               </span>
             )}
+            <a
+              className="btn-github"
+              href="https://github.com/CrispStrobe/LLMProviders"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="View source on GitHub"
+            >
+              GitHub
+            </a>
             <button className="btn-manage" onClick={() => setShowManagement(true)}>
               ⚙ Manage Data
             </button>
