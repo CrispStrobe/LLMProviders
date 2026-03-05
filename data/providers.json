@@ -3692,17 +3692,6 @@
           ]
         },
         {
-          "name": "z-ai/glm-4.6",
-          "type": "chat",
-          "input_price_per_1m": 0.35,
-          "output_price_per_1m": 1.71,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
           "name": "mistralai/mistral-small-3.1-24b-instruct",
           "type": "vision",
           "input_price_per_1m": 0.35,
@@ -3726,6 +3715,17 @@
             "reasoning"
           ],
           "size_b": 397
+        },
+        {
+          "name": "z-ai/glm-4.6",
+          "type": "chat",
+          "input_price_per_1m": 0.39,
+          "output_price_per_1m": 1.9,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
         },
         {
           "name": "mistralai/devstral-2512",
@@ -3996,17 +3996,6 @@
           "size_b": 7
         },
         {
-          "name": "z-ai/glm-4.5",
-          "type": "chat",
-          "input_price_per_1m": 0.55,
-          "output_price_per_1m": 2,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
           "name": "moonshotai/kimi-k2",
           "type": "chat",
           "input_price_per_1m": 0.55,
@@ -4060,6 +4049,17 @@
           "currency": "USD",
           "capabilities": [
             "vision",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "z-ai/glm-4.5",
+          "type": "chat",
+          "input_price_per_1m": 0.6,
+          "output_price_per_1m": 2.2,
+          "currency": "USD",
+          "capabilities": [
             "tools",
             "reasoning"
           ]
