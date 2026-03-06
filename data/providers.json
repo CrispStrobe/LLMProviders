@@ -3336,6 +3336,17 @@
           ]
         },
         {
+          "name": "inception/mercury-2",
+          "type": "chat",
+          "input_price_per_1m": 0.25,
+          "output_price_per_1m": 0.75,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "google/gemini-3.1-flash-lite-preview",
           "type": "vision",
           "input_price_per_1m": 0.25,
@@ -4842,6 +4853,19 @@
           ]
         },
         {
+          "name": "openai/gpt-5.4",
+          "type": "vision",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 15,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "openai/gpt-audio",
           "type": "audio",
           "input_price_per_1m": 2.5,
@@ -5339,6 +5363,19 @@
           "type": "vision",
           "input_price_per_1m": 21,
           "output_price_per_1m": 168,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "openai/gpt-5.4-pro",
+          "type": "vision",
+          "input_price_per_1m": 30,
+          "output_price_per_1m": 180,
           "currency": "USD",
           "capabilities": [
             "vision",
