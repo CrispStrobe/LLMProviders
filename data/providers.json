@@ -2758,6 +2758,18 @@
           "size_b": 32
         },
         {
+          "name": "qwen/qwen3-235b-a22b-thinking-2507",
+          "type": "chat",
+          "input_price_per_1m": 0.11,
+          "output_price_per_1m": 0.6,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 235
+        },
+        {
           "name": "mistralai/mistral-7b-instruct-v0.1",
           "type": "chat",
           "input_price_per_1m": 0.11,
@@ -3581,17 +3593,6 @@
           "currency": "USD"
         },
         {
-          "name": "z-ai/glm-4.7",
-          "type": "chat",
-          "input_price_per_1m": 0.3,
-          "output_price_per_1m": 1.4,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
           "name": "z-ai/glm-4.6v",
           "type": "vision",
           "input_price_per_1m": 0.3,
@@ -3712,6 +3713,17 @@
             "vision"
           ],
           "size_b": 24
+        },
+        {
+          "name": "z-ai/glm-4.7",
+          "type": "chat",
+          "input_price_per_1m": 0.38,
+          "output_price_per_1m": 1.98,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
         },
         {
           "name": "qwen/qwen3.5-397b-a17b",
