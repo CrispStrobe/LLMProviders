@@ -2148,18 +2148,6 @@
           "size_b": 120
         },
         {
-          "name": "openai/gpt-oss-120b:exacto",
-          "type": "chat",
-          "input_price_per_1m": 0.039,
-          "output_price_per_1m": 0.19,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 120
-        },
-        {
           "name": "nvidia/nemotron-nano-9b-v2",
           "type": "chat",
           "input_price_per_1m": 0.04,
@@ -2548,12 +2536,18 @@
           "size_b": 30
         },
         {
-          "name": "neversleep/llama-3.1-lumimaid-8b",
-          "type": "chat",
-          "input_price_per_1m": 0.09,
-          "output_price_per_1m": 0.6,
+          "name": "qwen/qwen3.5-9b",
+          "type": "vision",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.15,
           "currency": "USD",
-          "size_b": 8
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 9
         },
         {
           "name": "bytedance-seed/seed-2.0-mini",
@@ -3288,14 +3282,6 @@
           "size_b": 7
         },
         {
-          "name": "meta-llama/llama-guard-2-8b",
-          "type": "chat",
-          "input_price_per_1m": 0.2,
-          "output_price_per_1m": 0.2,
-          "currency": "USD",
-          "size_b": 8
-        },
-        {
           "name": "kwaipilot/kat-coder-pro",
           "type": "chat",
           "input_price_per_1m": 0.207,
@@ -3303,17 +3289,6 @@
           "currency": "USD",
           "capabilities": [
             "tools"
-          ]
-        },
-        {
-          "name": "deepseek/deepseek-v3.1-terminus:exacto",
-          "type": "chat",
-          "input_price_per_1m": 0.21,
-          "output_price_per_1m": 0.79,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
           ]
         },
         {
@@ -3338,13 +3313,16 @@
           ]
         },
         {
-          "name": "qwen/qwen3-coder:exacto",
-          "type": "chat",
-          "input_price_per_1m": 0.22,
-          "output_price_per_1m": 1.8,
+          "name": "bytedance-seed/seed-2.0-lite",
+          "type": "vision",
+          "input_price_per_1m": 0.25,
+          "output_price_per_1m": 2,
           "currency": "USD",
           "capabilities": [
-            "tools"
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
           ]
         },
         {
@@ -3524,6 +3502,17 @@
           ]
         },
         {
+          "name": "minimax/minimax-m2.5",
+          "type": "chat",
+          "input_price_per_1m": 0.27,
+          "output_price_per_1m": 0.95,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "minimax/minimax-m2.1",
           "type": "chat",
           "input_price_per_1m": 0.27,
@@ -3573,17 +3562,6 @@
             "reasoning"
           ],
           "size_b": 32
-        },
-        {
-          "name": "minimax/minimax-m2.5",
-          "type": "chat",
-          "input_price_per_1m": 0.295,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
         },
         {
           "name": "minimax/minimax-m2-her",
@@ -3880,17 +3858,6 @@
           "size_b": 424
         },
         {
-          "name": "z-ai/glm-4.6:exacto",
-          "type": "chat",
-          "input_price_per_1m": 0.44,
-          "output_price_per_1m": 1.76,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
           "name": "moonshotai/kimi-k2.5",
           "type": "vision",
           "input_price_per_1m": 0.45,
@@ -4055,16 +4022,6 @@
           ]
         },
         {
-          "name": "moonshotai/kimi-k2-0905:exacto",
-          "type": "chat",
-          "input_price_per_1m": 0.6,
-          "output_price_per_1m": 2.5,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ]
-        },
-        {
           "name": "z-ai/glm-4.5v",
           "type": "vision",
           "input_price_per_1m": 0.6,
@@ -4114,17 +4071,6 @@
           "size_b": 70
         },
         {
-          "name": "sao10k/l3.1-euryale-70b",
-          "type": "chat",
-          "input_price_per_1m": 0.65,
-          "output_price_per_1m": 0.75,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 70
-        },
-        {
           "name": "google/gemma-2-27b-it",
           "type": "chat",
           "input_price_per_1m": 0.65,
@@ -4158,6 +4104,17 @@
           "type": "chat",
           "input_price_per_1m": 0.7,
           "output_price_per_1m": 2.5,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "z-ai/glm-5",
+          "type": "chat",
+          "input_price_per_1m": 0.72,
+          "output_price_per_1m": 2.3,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -4199,17 +4156,6 @@
           "output_price_per_1m": 1.6,
           "currency": "USD",
           "capabilities": [
-            "reasoning"
-          ]
-        },
-        {
-          "name": "z-ai/glm-5",
-          "type": "chat",
-          "input_price_per_1m": 0.8,
-          "output_price_per_1m": 2.56,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
             "reasoning"
           ]
         },
@@ -4306,6 +4252,17 @@
           ]
         },
         {
+          "name": "sao10k/l3.1-euryale-70b",
+          "type": "chat",
+          "input_price_per_1m": 0.85,
+          "output_price_per_1m": 0.85,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 70
+        },
+        {
           "name": "morph/morph-v3-large",
           "type": "chat",
           "input_price_per_1m": 0.9,
@@ -4379,14 +4336,6 @@
           "capabilities": [
             "tools"
           ]
-        },
-        {
-          "name": "neversleep/noromaid-20b",
-          "type": "chat",
-          "input_price_per_1m": 1,
-          "output_price_per_1m": 1.75,
-          "currency": "USD",
-          "size_b": 20
         },
         {
           "name": "qwen/qwen-max",
@@ -5178,14 +5127,6 @@
             "tools"
           ],
           "size_b": 405
-        },
-        {
-          "name": "raifle/sorcererlm-8x22b",
-          "type": "chat",
-          "input_price_per_1m": 4.5,
-          "output_price_per_1m": 4.5,
-          "currency": "USD",
-          "size_b": 22
         },
         {
           "name": "anthropic/claude-opus-4.6",
