@@ -2536,6 +2536,18 @@
           "size_b": 30
         },
         {
+          "name": "qwen/qwen3-next-80b-a3b-thinking",
+          "type": "chat",
+          "input_price_per_1m": 0.0975,
+          "output_price_per_1m": 0.78,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 80
+        },
+        {
           "name": "qwen/qwen3.5-9b",
           "type": "vision",
           "input_price_per_1m": 0.1,
@@ -2817,6 +2829,19 @@
           "size_b": 72
         },
         {
+          "name": "qwen/qwen3-vl-30b-a3b-thinking",
+          "type": "vision",
+          "input_price_per_1m": 0.13,
+          "output_price_per_1m": 1.56,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 30
+        },
+        {
           "name": "qwen/qwen3-vl-30b-a3b-instruct",
           "type": "vision",
           "input_price_per_1m": 0.13,
@@ -2946,18 +2971,6 @@
             "reasoning"
           ],
           "size_b": 32
-        },
-        {
-          "name": "qwen/qwen3-next-80b-a3b-thinking",
-          "type": "chat",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 80
         },
         {
           "name": "deepseek/deepseek-chat-v3.1",
@@ -3365,17 +3378,6 @@
           ]
         },
         {
-          "name": "deepseek/deepseek-v3.2",
-          "type": "chat",
-          "input_price_per_1m": 0.25,
-          "output_price_per_1m": 0.4,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
           "name": "openai/gpt-5.1-codex-mini",
           "type": "vision",
           "input_price_per_1m": 0.25,
@@ -3479,6 +3481,30 @@
             "tools",
             "reasoning"
           ]
+        },
+        {
+          "name": "deepseek/deepseek-v3.2",
+          "type": "chat",
+          "input_price_per_1m": 0.26,
+          "output_price_per_1m": 0.38,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "qwen/qwen3-vl-235b-a22b-thinking",
+          "type": "vision",
+          "input_price_per_1m": 0.26,
+          "output_price_per_1m": 2.6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 235
         },
         {
           "name": "qwen/qwen-plus-2025-07-28:thinking",
@@ -4901,14 +4927,14 @@
           ]
         },
         {
-          "name": "inflection/inflection-3-pi",
+          "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
           "output_price_per_1m": 10,
           "currency": "USD"
         },
         {
-          "name": "inflection/inflection-3-productivity",
+          "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
           "output_price_per_1m": 10,
@@ -5368,6 +5394,18 @@
             "files",
             "reasoning"
           ]
+        },
+        {
+          "name": "nvidia/nemotron-3-super-120b-a12b:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 120
         },
         {
           "name": "stepfun/step-3.5-flash:free",
