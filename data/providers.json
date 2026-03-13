@@ -4662,6 +4662,29 @@
           ]
         },
         {
+          "name": "x-ai/grok-4.20-multi-agent-beta",
+          "type": "vision",
+          "input_price_per_1m": 2,
+          "output_price_per_1m": 6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "x-ai/grok-4.20-beta",
+          "type": "vision",
+          "input_price_per_1m": 2,
+          "output_price_per_1m": 6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "google/gemini-3.1-pro-preview-customtools",
           "type": "vision",
           "input_price_per_1m": 2,
@@ -4927,14 +4950,14 @@
           ]
         },
         {
-          "name": "inflection/inflection-3-productivity",
+          "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
           "output_price_per_1m": 10,
           "currency": "USD"
         },
         {
-          "name": "inflection/inflection-3-pi",
+          "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
           "output_price_per_1m": 10,
