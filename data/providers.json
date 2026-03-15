@@ -3359,6 +3359,17 @@
           ]
         },
         {
+          "name": "minimax/minimax-m2.5",
+          "type": "chat",
+          "input_price_per_1m": 0.25,
+          "output_price_per_1m": 1.2,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "bytedance-seed/seed-1.6",
           "type": "vision",
           "input_price_per_1m": 0.25,
@@ -3519,17 +3530,6 @@
           "currency": "USD",
           "capabilities": [
             "tools"
-          ]
-        },
-        {
-          "name": "minimax/minimax-m2.5",
-          "type": "chat",
-          "input_price_per_1m": 0.27,
-          "output_price_per_1m": 0.95,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
           ]
         },
         {
@@ -4944,14 +4944,14 @@
           ]
         },
         {
-          "name": "inflection/inflection-3-productivity",
+          "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
           "output_price_per_1m": 10,
           "currency": "USD"
         },
         {
-          "name": "inflection/inflection-3-pi",
+          "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
           "output_price_per_1m": 10,
