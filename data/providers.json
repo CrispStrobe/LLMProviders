@@ -4297,6 +4297,17 @@
           "currency": "USD"
         },
         {
+          "name": "z-ai/glm-5-turbo",
+          "type": "chat",
+          "input_price_per_1m": 0.96,
+          "output_price_per_1m": 3.2,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "relace/relace-search",
           "type": "chat",
           "input_price_per_1m": 1,
@@ -5420,6 +5431,17 @@
             "reasoning"
           ],
           "size_b": 120
+        },
+        {
+          "name": "minimax/minimax-m2.5:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
         },
         {
           "name": "stepfun/step-3.5-flash:free",
