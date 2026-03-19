@@ -284,6 +284,61 @@
       "eu_endpoints": true,
       "models": [
         {
+          "name": "Gemini 3.1 Pro Preview",
+          "type": "vision",
+          "input_price_per_1m": 2.38,
+          "output_price_per_1m": 14.31,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "Mistral Large 3",
+          "type": "chat",
+          "input_price_per_1m": 0.48,
+          "output_price_per_1m": 1.43,
+          "currency": "EUR",
+          "provider_upstream": "Mistral",
+          "capabilities": [
+            "tools"
+          ]
+        },
+        {
+          "name": "GPT-5.4 Thinking",
+          "type": "vision",
+          "input_price_per_1m": 2.62,
+          "output_price_per_1m": 15.74,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "GPT-5.4",
+          "type": "vision",
+          "input_price_per_1m": 2.62,
+          "output_price_per_1m": 15.74,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "Sonnet 4.6",
           "type": "vision",
           "input_price_per_1m": 2.8,
@@ -534,26 +589,6 @@
           ]
         },
         {
-          "name": "Opus 3",
-          "type": "chat",
-          "input_price_per_1m": 13.98,
-          "output_price_per_1m": 69.88,
-          "currency": "EUR",
-          "provider_upstream": "Anthropic"
-        },
-        {
-          "name": "Haiku 3.5",
-          "type": "vision",
-          "input_price_per_1m": 0.75,
-          "output_price_per_1m": 3.73,
-          "currency": "EUR",
-          "provider_upstream": "Anthropic",
-          "capabilities": [
-            "vision",
-            "tools"
-          ]
-        },
-        {
           "name": "Haiku 4.5",
           "type": "vision",
           "input_price_per_1m": 0.93,
@@ -612,33 +647,6 @@
           "type": "vision",
           "input_price_per_1m": 1.86,
           "output_price_per_1m": 7.45,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
-          "name": "o3 Mini",
-          "type": "chat",
-          "input_price_per_1m": 1.13,
-          "output_price_per_1m": 4.51,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "capabilities": [
-            "files",
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
-          "name": "o1",
-          "type": "vision",
-          "input_price_per_1m": 15.37,
-          "output_price_per_1m": 61.49,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "capabilities": [
@@ -789,18 +797,6 @@
           ]
         },
         {
-          "name": "GPT-5 Chat",
-          "type": "vision",
-          "input_price_per_1m": 1.16,
-          "output_price_per_1m": 9.32,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "capabilities": [
-            "vision",
-            "files"
-          ]
-        },
-        {
           "name": "GPT-5",
           "type": "vision",
           "input_price_per_1m": 1.16,
@@ -877,22 +873,6 @@
             "vision",
             "files",
             "tools"
-          ]
-        },
-        {
-          "name": "Gemini 3 Pro Preview",
-          "type": "vision",
-          "input_price_per_1m": 2.33,
-          "output_price_per_1m": 13.98,
-          "currency": "EUR",
-          "provider_upstream": "Google",
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "files",
-            "tools",
-            "reasoning"
           ]
         },
         {
@@ -1668,8 +1648,7 @@
           "currency": "EUR",
           "size_b": 27,
           "capabilities": [
-            "vision",
-            "tools"
+            "vision"
           ]
         },
         {
@@ -2096,18 +2075,6 @@
           "size_b": 7
         },
         {
-          "name": "google/gemma-3-27b-it",
-          "type": "vision",
-          "input_price_per_1m": 0.03,
-          "output_price_per_1m": 0.11,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "tools"
-          ],
-          "size_b": 27
-        },
-        {
           "name": "google/gemma-2-9b-it",
           "type": "chat",
           "input_price_per_1m": 0.03,
@@ -2312,18 +2279,6 @@
           "size_b": 24
         },
         {
-          "name": "qwen/qwen3-30b-a3b-thinking-2507",
-          "type": "chat",
-          "input_price_per_1m": 0.051,
-          "output_price_per_1m": 0.34,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 30
-        },
-        {
           "name": "meta-llama/llama-3.2-3b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.051,
@@ -2341,18 +2296,6 @@
             "tools",
             "reasoning"
           ]
-        },
-        {
-          "name": "mistralai/mistral-small-3.2-24b-instruct",
-          "type": "vision",
-          "input_price_per_1m": 0.06,
-          "output_price_per_1m": 0.18,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "tools"
-          ],
-          "size_b": 24
         },
         {
           "name": "qwen/qwen3-14b",
@@ -2476,6 +2419,18 @@
           "size_b": 20
         },
         {
+          "name": "mistralai/mistral-small-3.2-24b-instruct",
+          "type": "vision",
+          "input_price_per_1m": 0.075,
+          "output_price_per_1m": 0.2,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools"
+          ],
+          "size_b": 24
+        },
+        {
           "name": "google/gemini-2.0-flash-lite-001",
           "type": "vision",
           "input_price_per_1m": 0.075,
@@ -2500,6 +2455,18 @@
             "tools"
           ],
           "size_b": 8
+        },
+        {
+          "name": "qwen/qwen3-30b-a3b-thinking-2507",
+          "type": "chat",
+          "input_price_per_1m": 0.08,
+          "output_price_per_1m": 0.4,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 30
         },
         {
           "name": "qwen/qwen3-30b-a3b",
@@ -2535,6 +2502,17 @@
             "vision",
             "tools"
           ]
+        },
+        {
+          "name": "google/gemma-3-27b-it",
+          "type": "vision",
+          "input_price_per_1m": 0.08,
+          "output_price_per_1m": 0.16,
+          "currency": "USD",
+          "capabilities": [
+            "vision"
+          ],
+          "size_b": 27
         },
         {
           "name": "xiaomi/mimo-v2-flash",
@@ -2592,6 +2570,18 @@
             "reasoning"
           ],
           "size_b": 80
+        },
+        {
+          "name": "nvidia/nemotron-3-super-120b-a12b",
+          "type": "chat",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.5,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 120
         },
         {
           "name": "bytedance-seed/seed-2.0-mini",
@@ -2783,18 +2773,6 @@
           "size_b": 32
         },
         {
-          "name": "qwen/qwen3-235b-a22b-thinking-2507",
-          "type": "chat",
-          "input_price_per_1m": 0.11,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 235
-        },
-        {
           "name": "mistralai/mistral-7b-instruct-v0.1",
           "type": "chat",
           "input_price_per_1m": 0.11,
@@ -2937,6 +2915,18 @@
           "size_b": 8
         },
         {
+          "name": "qwen/qwen3-235b-a22b-thinking-2507",
+          "type": "chat",
+          "input_price_per_1m": 0.1495,
+          "output_price_per_1m": 1.495,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 235
+        },
+        {
           "name": "mistralai/mistral-small-2603",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -3036,7 +3026,7 @@
           "name": "qwen/qwq-32b",
           "type": "chat",
           "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.4,
+          "output_price_per_1m": 0.58,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -3492,17 +3482,6 @@
           ]
         },
         {
-          "name": "deepseek/deepseek-v3.2",
-          "type": "chat",
-          "input_price_per_1m": 0.255,
-          "output_price_per_1m": 0.4,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
           "name": "minimax/minimax-m2",
           "type": "chat",
           "input_price_per_1m": 0.255,
@@ -3536,6 +3515,17 @@
           "capabilities": [
             "vision",
             "video",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "deepseek/deepseek-v3.2",
+          "type": "chat",
+          "input_price_per_1m": 0.26,
+          "output_price_per_1m": 0.38,
+          "currency": "USD",
+          "capabilities": [
             "tools",
             "reasoning"
           ]
@@ -3634,6 +3624,17 @@
             "reasoning"
           ],
           "size_b": 32
+        },
+        {
+          "name": "minimax/minimax-m2.7",
+          "type": "chat",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 1.2,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
         },
         {
           "name": "minimax/minimax-m2-her",
@@ -3765,17 +3766,6 @@
           "size_b": 24
         },
         {
-          "name": "z-ai/glm-4.7",
-          "type": "chat",
-          "input_price_per_1m": 0.38,
-          "output_price_per_1m": 1.98,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
           "name": "qwen/qwen3.5-397b-a17b",
           "type": "vision",
           "input_price_per_1m": 0.39,
@@ -3794,6 +3784,31 @@
           "type": "chat",
           "input_price_per_1m": 0.39,
           "output_price_per_1m": 1.9,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "xiaomi/mimo-v2-omni",
+          "type": "vision",
+          "input_price_per_1m": 0.4,
+          "output_price_per_1m": 2,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "z-ai/glm-4.7",
+          "type": "chat",
+          "input_price_per_1m": 0.4,
+          "output_price_per_1m": 1.75,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -4374,6 +4389,17 @@
           "type": "chat",
           "input_price_per_1m": 0.96,
           "output_price_per_1m": 3.2,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "xiaomi/mimo-v2-pro",
+          "type": "chat",
+          "input_price_per_1m": 1,
+          "output_price_per_1m": 3,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -5722,8 +5748,7 @@
           "output_price_per_1m": 0,
           "currency": "USD",
           "capabilities": [
-            "vision",
-            "tools"
+            "vision"
           ],
           "size_b": 27
         },
