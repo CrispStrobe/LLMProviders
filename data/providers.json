@@ -3345,7 +3345,7 @@
           "name": "deepseek/deepseek-v3.1-terminus",
           "type": "chat",
           "input_price_per_1m": 0.21,
-          "output_price_per_1m": 0.79,
+          "output_price_per_1m": 0.78,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -3780,6 +3780,17 @@
           "size_b": 397
         },
         {
+          "name": "z-ai/glm-4.7",
+          "type": "chat",
+          "input_price_per_1m": 0.39,
+          "output_price_per_1m": 1.75,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "z-ai/glm-4.6",
           "type": "chat",
           "input_price_per_1m": 0.39,
@@ -3800,17 +3811,6 @@
             "vision",
             "video",
             "audio",
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
-          "name": "z-ai/glm-4.7",
-          "type": "chat",
-          "input_price_per_1m": 0.4,
-          "output_price_per_1m": 1.75,
-          "currency": "USD",
-          "capabilities": [
             "tools",
             "reasoning"
           ]
