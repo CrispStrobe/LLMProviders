@@ -2075,6 +2075,17 @@
           "size_b": 7
         },
         {
+          "name": "mistralai/mistral-small-3.1-24b-instruct",
+          "type": "vision",
+          "input_price_per_1m": 0.03,
+          "output_price_per_1m": 0.11,
+          "currency": "USD",
+          "capabilities": [
+            "vision"
+          ],
+          "size_b": 24
+        },
+        {
           "name": "google/gemma-2-9b-it",
           "type": "chat",
           "input_price_per_1m": 0.03,
@@ -3155,7 +3166,7 @@
           "name": "minimax/minimax-m2.5",
           "type": "chat",
           "input_price_per_1m": 0.2,
-          "output_price_per_1m": 1.2,
+          "output_price_per_1m": 1.17,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -3753,17 +3764,6 @@
           "capabilities": [
             "tools"
           ]
-        },
-        {
-          "name": "mistralai/mistral-small-3.1-24b-instruct",
-          "type": "vision",
-          "input_price_per_1m": 0.35,
-          "output_price_per_1m": 0.56,
-          "currency": "USD",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 24
         },
         {
           "name": "qwen/qwen3.5-397b-a17b",
@@ -5840,18 +5840,6 @@
           "type": "vision",
           "input_price_per_1m": 0.11,
           "output_price_per_1m": 0.34,
-          "currency": "USD",
-          "size_b": 17,
-          "capabilities": [
-            "vision",
-            "tools"
-          ]
-        },
-        {
-          "name": "Llama 4 Maverick (17Bx128E) 128k",
-          "type": "vision",
-          "input_price_per_1m": 0.2,
-          "output_price_per_1m": 0.6,
           "currency": "USD",
           "size_b": 17,
           "capabilities": [
