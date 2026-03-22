@@ -248,6 +248,8 @@ const MANUAL_HF_ID_MAP = {
   'magistral small': 'mistralai/Magistral-Small-2506',
   'pixtral large': 'mistralai/Pixtral-Large-Instruct-2411',
   'hermes 3 llama 3.1 405b': 'NousResearch/Hermes-3-Llama-3.1-405B',
+  'hermes 3 llama 3.1 405b base': 'NousResearch/Hermes-3-Llama-3.1-405B',
+  'devstral 2 123b instruct 2512': 'mistralai/Devstral-2-123B-Instruct-2512',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {
