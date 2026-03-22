@@ -22,41 +22,60 @@ async function checkHfId(hfId) {
 }
 
 async function main() {
-  console.log('Starting Hugging Face Repository Validation...\n');
+  const force = process.argv.includes('--force');
+  console.log('Starting Hugging Face Repository Validation...');
+  if (force) console.log('  [!] Force mode enabled: checking all IDs regardless of cache.\n');
+  else console.log('  [i] Using cache: only checking IDs not validated in the last 30 days.\n');
   
   const data = JSON.parse(fs.readFileSync(PROVIDERS_FILE, 'utf8'));
   const hfIdToModels = new Map();
+  const hfIdMeta = new Map(); // Store metadata (validated_at, status)
   
   data.providers.forEach(p => {
     p.models.forEach(m => {
       if (m.hf_id) {
         if (!hfIdToModels.has(m.hf_id)) hfIdToModels.set(m.hf_id, []);
         hfIdToModels.get(m.hf_id).push(`${p.name}: ${m.name}`);
+        
+        // Cache metadata if present
+        if (m.hf_validated_at && m.hf_status === 200) {
+          const existing = hfIdMeta.get(m.hf_id);
+          if (!existing || new Date(m.hf_validated_at) > new Date(existing.at)) {
+            hfIdMeta.set(m.hf_id, { at: m.hf_validated_at, status: m.hf_status });
+          }
+        }
       }
     });
   });
 
   const ids = Array.from(hfIdToModels.keys());
-  console.log(`Found ${ids.length} unique HF IDs to validate across all providers.\n`);
+  console.log(`Found ${ids.length} unique HF IDs to validate.\n`);
   
   const invalidIds = new Set();
-  const results = {
-    valid: 0,
-    invalid: 0,
-    errors: 0
-  };
+  const now = new Date();
+  const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+  
+  const validationResults = new Map(); // id -> { status, at }
 
   for (let i = 0; i < ids.length; i++) {
     const id = ids[i];
     const progress = `[${i + 1}/${ids.length}]`.padEnd(10);
     
-    const check = await checkHfId(id);
+    const cached = hfIdMeta.get(id);
+    const isRecent = cached && (now - new Date(cached.at) < THIRTY_DAYS_MS);
     
+    if (isRecent && !force) {
+      console.log(`${progress} ≈ CACHED  (${cached.status}) ${id} (last checked ${new Date(cached.at).toLocaleDateString()})`);
+      validationResults.set(id, { status: cached.status, at: cached.at });
+      continue;
+    }
+
+    const check = await checkHfId(id);
+    validationResults.set(id, { status: typeof check.status === 'number' ? check.status : 200, at: now.toISOString() });
+
     if (check.valid) {
-      results.valid++;
       console.log(`${progress} ✓ VALID   (${check.status}) ${id}`);
     } else {
-      results.invalid++;
       console.log(`${progress} ✗ INVALID (${check.status}) ${id}`);
       console.log(`          Used by: ${hfIdToModels.get(id).join(', ')}`);
       invalidIds.add(id);
@@ -66,30 +85,30 @@ async function main() {
     await new Promise(r => setTimeout(r, 50));
   }
 
-  console.log('\n' + '='.repeat(50));
-  console.log('VALIDATION SUMMARY');
-  console.log('='.repeat(50));
-  console.log(`Total Unique IDs:  ${ids.length}`);
-  console.log(`Valid IDs:         ${results.valid}`);
-  console.log(`Invalid (404s):    ${results.invalid}`);
-  console.log('='.repeat(50));
-
-  if (invalidIds.size > 0) {
-    console.log(`\nAction: Removing ${invalidIds.size} invalid HF IDs from providers.json...`);
-    let removalCount = 0;
-    data.providers.forEach(p => {
-      p.models.forEach(m => {
-        if (m.hf_id && invalidIds.has(m.hf_id)) {
+  console.log('\nUpdating providers.json with validation results...');
+  let updatedCount = 0;
+  let removalCount = 0;
+  
+  data.providers.forEach(p => {
+    p.models.forEach(m => {
+      if (m.hf_id) {
+        const res = validationResults.get(m.hf_id);
+        if (invalidIds.has(m.hf_id)) {
           delete m.hf_id;
+          delete m.hf_validated_at;
+          delete m.hf_status;
           removalCount++;
+        } else if (res) {
+          m.hf_validated_at = res.at;
+          m.hf_status = res.status;
+          updatedCount++;
         }
-      });
+      }
     });
-    fs.writeFileSync(PROVIDERS_FILE, JSON.stringify(data, null, 2));
-    console.log(`Successfully removed ${removalCount} occurrences.`);
-  } else {
-    console.log('\nSuccess: All checked HF IDs exist on Hugging Face.');
-  }
+  });
+
+  fs.writeFileSync(PROVIDERS_FILE, JSON.stringify(data, null, 2));
+  console.log(`Done. Updated ${updatedCount} models, removed ${removalCount} invalid IDs.`);
 }
 
 main().catch(err => {

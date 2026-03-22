@@ -372,8 +372,7 @@ function App() {
         case 'aa_intelligence':
         case 'aa_tokens_per_s':
         case 'mteb_avg':
-        case 'mteb_retrieval':
-        case 'ocr_avg': {
+        case 'mteb_retrieval': {
           try {
             const bA = findBenchmark(a.name);
             const bB = findBenchmark(b.name);
@@ -530,7 +529,6 @@ function App() {
                 <th onClick={() => requestSort('aa_tokens_per_s')} className="sortable" title="Artificial Analysis Median Speed (Tokens per Second)">AA Speed {getSortIcon('aa_tokens_per_s')}</th>
                 <th onClick={() => requestSort('mteb_avg')} className="sortable" title="MTEB (Massive Text Embedding Benchmark) Average">MTEB {getSortIcon('mteb_avg')}</th>
                 <th onClick={() => requestSort('mteb_retrieval')} className="sortable" title="MTEB Retrieval Average">MTEB-Ret {getSortIcon('mteb_retrieval')}</th>
-                <th onClick={() => requestSort('ocr_avg')} className="sortable" title="OCR (Optical Character Recognition) Benchmark">OCR {getSortIcon('ocr_avg')}</th>
                 <th onClick={() => requestSort('lb_global')} className="sortable" title="LiveBench overall average (contamination-free)">LB {getSortIcon('lb_global')}</th>
                 <th onClick={() => requestSort('lb_math')} className="sortable" title="LiveBench Mathematics">LB-Math {getSortIcon('lb_math')}</th>
                 <th onClick={() => requestSort('lb_coding')} className="sortable" title="LiveBench Coding + Agentic Coding">LB-Code {getSortIcon('lb_coding')}</th>
@@ -554,6 +552,7 @@ function App() {
                 (prev.hf_id?.toLowerCase() !== model.hf_id?.toLowerCase()) ||
                 (!model.hf_id && prev.name.toLowerCase() !== model.name.toLowerCase())
               );
+              const bm = findBenchmark(model.name);
               return (
                 <tr key={`${model.provider.name}-${model.name}-${idx}`} className={isGroupStart ? 'group-divider' : ''}>
                   <td className="provider-cell">{model.provider.name}</td>
@@ -592,6 +591,9 @@ function App() {
                           {model.capabilities && model.capabilities.length > 0 && (
                             <div className="tooltip-row"><strong>Caps:</strong> {model.capabilities.join(', ')}</div>
                           )}
+                          {bm?.ocr_avg !== undefined && (
+                            <div className="tooltip-row"><strong>OCR:</strong> {bm.ocr_avg.toFixed(1)} (Benchmark)</div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -626,34 +628,28 @@ function App() {
                       ? '–'
                       : formatPrice(model.output_price_per_1m, model.currency)}
                   </td>
-                  {showBenchmarks && (() => {
-                    try {
-                      const bm = findBenchmark(model.name);
-                      return <>
-                        <td className="benchmark-cell">{fmtNum(bm?.arena_elo)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.aider_pass_rate)}</td>
-                        <td className="benchmark-cell">{fmtNum(bm?.aa_intelligence)}</td>
-                        <td className="benchmark-cell">{fmtNum(bm?.aa_tokens_per_s)}</td>
-                        <td className="benchmark-cell">{fmtNum(bm?.mteb_avg, 1)}</td>
-                        <td className="benchmark-cell">{fmtNum(bm?.mteb_retrieval, 1)}</td>
-                        <td className="benchmark-cell">{fmtNum(bm?.ocr_avg, 1)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.lb_global)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.lb_math)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.lb_coding)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.lb_reasoning)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.gpqa)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.mmlu_pro)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.ifeval)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.bbh)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.hf_math_lvl5)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.hf_musr)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.mmlu)}</td>
-                        <td className="benchmark-cell">{fmtPct(bm?.human_eval)}</td>
-                      </>;
-                    } catch (e) {
-                      return Array(19).fill(null).map((_, i) => <td key={i} className="benchmark-cell">–</td>);
-                    }
-                  })()}
+                  {showBenchmarks && (
+                    <>
+                      <td className="benchmark-cell">{fmtNum(bm?.arena_elo)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.aider_pass_rate)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.aa_intelligence)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.aa_tokens_per_s)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.mteb_avg, 1)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.mteb_retrieval, 1)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.lb_global)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.lb_math)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.lb_coding)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.lb_reasoning)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.gpqa)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.mmlu_pro)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.ifeval)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.bbh)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.hf_math_lvl5)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.hf_musr)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.mmlu)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.human_eval)}</td>
+                    </>
+                  )}
                 </tr>
               )
             })}

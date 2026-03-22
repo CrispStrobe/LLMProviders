@@ -57,6 +57,8 @@ function updateProviderModels(providers, providerName, models) {
       ollama_id: newModel.ollama_id || existing.ollama_id,
       hf_private: newModel.hf_private ?? existing.hf_private,
       audio_price_per_1m: newModel.audio_price_per_1m || existing.audio_price_per_1m,
+      hf_validated_at: existing.hf_validated_at,
+      hf_status: existing.hf_status,
       capabilities: (newModel.capabilities && newModel.capabilities.length > 0) 
         ? newModel.capabilities 
         : existing.capabilities,
