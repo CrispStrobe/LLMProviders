@@ -19,6 +19,7 @@ interface Model {
   hf_id?: string
   ollama_id?: string
   hf_private?: boolean
+  size_source?: 'hf-total' | 'hf-config-estimate' | 'hf-card' | 'ollama' | 'manual' | 'benchmark' | 'openrouter';
 }
 
 interface Provider {
