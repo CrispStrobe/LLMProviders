@@ -223,15 +223,18 @@ const MANUAL_HF_ID_MAP = {
 
 const MANUAL_SIZE_MAP = {
   'BAAI/bge-m3': 0.57,
+  // FLUX.1 family (Original 12B architecture)
   'black-forest-labs/FLUX.1-schnell': 12,
   'black-forest-labs/FLUX.1-dev': 12,
   'black-forest-labs/FLUX.1-pro': 12,
-  'black-forest-labs/FLUX.2-klein-4B': 4,
-  'black-forest-labs/FLUX.2-klein-9B': 9,
+  // FLUX.2 family (32B flagship architecture with Mistral-3 24B backbone)
   'black-forest-labs/FLUX.2-dev': 32,
   'black-forest-labs/FLUX.2-pro': 32,
   'black-forest-labs/FLUX.2-flex': 32,
   'black-forest-labs/FLUX.2-max': 32,
+  // FLUX.2 Klein (Optimized smaller versions)
+  'black-forest-labs/FLUX.2-klein-4B': 4,
+  'black-forest-labs/FLUX.2-klein-9B': 9,
 };
 
 // Propagate capabilities and size from benchmarks, OpenRouter, or HF Hub to all other providers' models.
