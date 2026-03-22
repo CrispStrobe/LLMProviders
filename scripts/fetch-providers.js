@@ -142,7 +142,9 @@ function estimateParams(config) {
   const l = config.num_hidden_layers || config.n_layer;
   const v = config.vocab_size;
   const i = config.intermediate_size || config.d_ff;
-  const numExperts = config.num_local_experts || config.n_experts || 1;
+  
+  // MoE support
+  const numExperts = config.num_local_experts || config.n_experts || config.num_experts || 1;
   const modelType = (config.model_type || '').toLowerCase();
   
   if (h && l && v) {
@@ -157,9 +159,8 @@ function estimateParams(config) {
     // Layer parameters (Attention + MLP)
     const attentionParams = 4 * (h * h);
     
-    // Modern architectures (Llama, Mistral, Qwen, Phi-3, Gemma) use Gated Linear Units (GLU)
-    // which have 3 projection matrices in the MLP instead of 2.
-    const hasGlu = ['llama', 'mistral', 'phi3', 'qwen2', 'gemma', 'gemma2'].includes(modelType);
+    // Modern architectures (Llama, Mistral, Qwen, Phi-3, Gemma, MiniMax) use Gated Linear Units (GLU)
+    const hasGlu = ['llama', 'mistral', 'phi3', 'qwen2', 'gemma', 'gemma2', 'minimax'].includes(modelType);
     const mlpParams = (hasGlu ? 3 : 2) * h * intermediate * numExperts;
     
     const params = embedParams + l * (attentionParams + mlpParams);
@@ -173,33 +174,47 @@ async function fetchHFSize(hfId) {
   if (!hfId || hfId.includes(' ') || !hfId.includes('/')) return { error: 'Invalid ID' };
   const token = process.env.HF_TOKEN;
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
+  let isPrivate = false;
+
   try {
-    // 1. Get top-level metadata
-    const data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers, retries: 1 });
-    
-    let params = data.safetensors?.total || data.config?.total_parameters || data.config?.model_type_params;
+    let params = null;
     let source = 'hf-total';
-    if (!params && data.cardData?.model_details?.parameters) {
-      const match = data.cardData.model_details.parameters.match(/([\d.]+)\s*[Bb]/);
-      if (match) { params = parseFloat(match[1]) * 1_000_000_000; source = 'hf-card'; }
+    let data = {};
+    
+    // 1. Get top-level metadata
+    try {
+      data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers, retries: 1 });
+      params = data.safetensors?.total || data.config?.total_parameters || data.config?.model_type_params;
+      
+      // Fallback: cardData
+      if (!params && data.cardData?.model_details?.parameters) {
+        const match = data.cardData.model_details.parameters.match(/([\d.]+)\s*[Bb]/);
+        if (match) { params = parseFloat(match[1]) * 1_000_000_000; source = 'hf-card'; }
+      }
+    } catch (e) {
+      if (e.message.includes('401') || e.message.includes('404')) isPrivate = true;
     }
     
     // 2. Fallback: Fetch the raw config.json file for estimation
-    let config = data.config;
-    if (!params && (!config || !config.hidden_size)) {
-      try { config = await getJson(`https://huggingface.co/${hfId}/raw/main/config.json`, { headers, retries: 1 }); } catch (e) {}
+    if (!params && !isPrivate) {
+      try { 
+        const config = await getJson(`https://huggingface.co/${hfId}/raw/main/config.json`, { headers, retries: 1 }); 
+        params = config.total_parameters || estimateParams(config); 
+        source = config.total_parameters ? 'hf-total' : 'hf-config-estimate'; 
+      } catch (e) { 
+        if (e.message.includes('401') || e.message.includes('404')) isPrivate = true;
+      }
     }
-    if (!params && config) { params = estimateParams(config); source = 'hf-config-estimate'; }
     
-    if (!params) return { error: 'No parameter data' };
+    if (isPrivate) return { error: 'Private or Missing', private: true };
+    if (!params) return { error: 'No parameter data found' };
     
     const b = params / 1_000_000_000;
     // Keep 2 decimals for small models (<1B), 1 decimal for others
     const size = b < 1 ? Math.round(b * 100) / 100 : Math.round(b * 10) / 10;
     return { size, source };
   } catch (e) {
-    const isPrivate = e.message.includes('401') || e.message.includes('404');
-    return { error: e.message, private: isPrivate };
+    return { error: e.message };
   }
 }
 
@@ -222,6 +237,7 @@ async function fetchOllamaMetadata(ollamaId) {
 
 const EMBEDDER_KEYWORDS = ['embed', 'bge', 'gte', 'e5', 'stella', 'minilm', 'multilingual-mpnet'];
 
+// Manual mappings for models with non-standard naming.
 const MANUAL_HF_ID_MAP = {
   'all minilm l12 v2': 'sentence-transformers/all-MiniLM-L12-v2',
   'whisper v3': 'openai/whisper-large-v3',
@@ -231,13 +247,13 @@ const MANUAL_HF_ID_MAP = {
   'step 3 5 flash': 'stepfun-ai/Step-3.5-Flash',
   'bge m3': 'BAAI/bge-m3',
   'bge en icl': 'BAAI/bge-en-icl',
-  'bge large en v1 5': 'BAAI/bge-large-en-v1.5',
-  'bge multilingual gemma2': 'BAAI/bge-multilingual-gemma2',
   'lightonocr 2': 'lightonai/LightOnOCR-2-1B',
   'sdxl': 'stabilityai/stable-diffusion-xl-base-1.0',
   'flux 1 schnell': 'black-forest-labs/FLUX.1-schnell',
   'flux schnell': 'black-forest-labs/FLUX.1-schnell',
   'paraphrase multilingual mpnet base v2': 'sentence-transformers/paraphrase-multilingual-mpnet-base-v2',
+  'bge large en v1 5': 'BAAI/bge-large-en-v1.5',
+  'bge multilingual gemma2': 'BAAI/bge-multilingual-gemma2',
   'photomaker v2': 'TencentARC/PhotoMaker-V2',
   'canopy labs orpheus english': 'canopy-labs/orpheus-medium',
   'canopy labs orpheus arabic saudi': 'canopy-labs/orpheus-medium',
@@ -281,8 +297,10 @@ const MANUAL_HF_ID_MAP = {
   'grok 2 1212': 'xai-org/grok-2',
   'glm 4 6v': 'THUDM/glm-4v-9b',
   'glm 5 turbo': 'THUDM/glm-5-turbo',
-  'minimax m2 7': 'MiniMax/MiniMax-M2.7',
-  'minimax 01': 'MiniMax/MiniMax-Text-01',
+  'minimax m2 7': 'MiniMaxAI/MiniMax-M2.7',
+  'minimax m2 7 highspeed': 'MiniMaxAI/MiniMax-M2.7',
+  'minimax 01': 'MiniMaxAI/MiniMax-Text-01',
+  'minimax m2 her': 'MiniMaxAI/MiniMax-M2.7',
   'phi 4': 'microsoft/phi-4',
   'flux 1 dev': 'black-forest-labs/FLUX.1-dev',
   'flux dev': 'black-forest-labs/FLUX.1-dev',
@@ -331,36 +349,6 @@ const MANUAL_OLLAMA_ID_MAP = {
   'mixtral 8x22b': 'mixtral-8x22b',
 };
 
-const MANUAL_SIZE_MAP = {
-  'BAAI/bge-m3': 0.57,
-  'black-forest-labs/FLUX.1-schnell': 12,
-  'black-forest-labs/FLUX.1-dev': 12,
-  'black-forest-labs/FLUX.1-pro': 12,
-  'black-forest-labs/FLUX.2-dev': 32,
-  'black-forest-labs/FLUX.2-pro': 32,
-  'black-forest-labs/FLUX.2-flex': 32,
-  'black-forest-labs/FLUX.2-max': 32,
-  'black-forest-labs/FLUX.2-klein-4B': 4,
-  'black-forest-labs/FLUX.2-klein-9B': 9,
-  'mistralai/Mistral-Large-Instruct-2407': 123,
-  'mistralai/Mistral-Large-Instruct-2411': 675,
-  'Alibaba/Qwen-Turbo': 14,
-  'Qwen/Qwen2.5-Coder-7B-Instruct': 7,
-  'Qwen/Qwen2.5-Coder-32B-Instruct': 32,
-  'Qwen/Qwen2.5-7B-Instruct': 7,
-  'Qwen/Qwen2-VL-7B-Instruct': 7,
-  'Qwen/Qwen2-VL-72B-Instruct': 72,
-  'deepseek-ai/DeepSeek-V3': 671,
-  'deepseek-ai/DeepSeek-R1': 671,
-  'microsoft/phi-4': 14,
-  'MiniMax/MiniMax-M2.7': 230,
-  // Final public models
-  'TencentARC/PhotoMaker-V2': 3.1,
-  'stabilityai/stable-diffusion-xl-base-1.0': 2.6,
-  'zai-org/GLM-4.6V': 9,
-  'ai21labs/AI21-Jamba-Large-1.7': 52,
-};
-
 const PROPRIETARY_KEYWORDS = [
   'gpt-4', 'gpt-5', 'sonnet', 'opus', 'haiku', 'gemini', 'o1-', 'o3-', 'o4-', 'claude',
   'magistral', 'voxtral', 'moderation', 'embed'
@@ -391,11 +379,8 @@ async function propagateExtraData(data) {
         if (n === key || n.endsWith(' ' + key) || n.endsWith('/' + key)) { model.ollama_id = val; break; }
       }
     }
-    // High-confidence size from manual map
-    if (model.hf_id && MANUAL_SIZE_MAP[model.hf_id]) {
-      model.size_b = MANUAL_SIZE_MAP[model.hf_id];
-      model.size_source = 'manual';
-    } else if (model.hf_id && !model.size_b) {
+    
+    if (model.hf_id && !model.size_b) {
       const size = hfIdToSize.get(model.hf_id.toLowerCase());
       if (size) { model.size_b = size; model.size_source = 'benchmark'; }
     }
