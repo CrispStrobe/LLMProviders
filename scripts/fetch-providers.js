@@ -200,13 +200,14 @@ const MANUAL_HF_ID_MAP = {
   'photomaker v2': 'TencentARC/PhotoMaker-V2',
   'flux schnell': 'black-forest-labs/FLUX.1-schnell',
   // Qwen mappings
-  'qwen3 coder flash': 'Qwen/Qwen2.5-Coder-7B-Instruct', // Counterpart mapping
+  'qwen3 coder flash': 'Qwen/Qwen2.5-Coder-7B-Instruct',
   'qwen3 coder plus': 'Qwen/Qwen2.5-Coder-32B-Instruct',
   'qwen 3 5 flash': 'Qwen/Qwen2.5-7B-Instruct',
   'qwen vl plus': 'Qwen/Qwen2-VL-7B-Instruct',
   'qwen vl max': 'Qwen/Qwen2-VL-72B-Instruct',
   // FLUX detailed mappings
   'flux 1 dev': 'black-forest-labs/FLUX.1-dev',
+  'flux 2 dev': 'black-forest-labs/FLUX.2-dev',
   'flux 2 klein 4b': 'black-forest-labs/FLUX.2-klein-4B',
   'flux 2 klein 9b': 'black-forest-labs/FLUX.2-klein-9B',
   'flux 2 pro': 'black-forest-labs/FLUX.2-pro',
@@ -224,12 +225,13 @@ const MANUAL_SIZE_MAP = {
   'BAAI/bge-m3': 0.57,
   'black-forest-labs/FLUX.1-schnell': 12,
   'black-forest-labs/FLUX.1-dev': 12,
+  'black-forest-labs/FLUX.1-pro': 12,
   'black-forest-labs/FLUX.2-klein-4B': 4,
   'black-forest-labs/FLUX.2-klein-9B': 9,
-  'black-forest-labs/FLUX.2-pro': 12,
-  'black-forest-labs/FLUX.1-pro': 12,
-  'black-forest-labs/FLUX.2-flex': 12,
-  'black-forest-labs/FLUX.2-max': 12,
+  'black-forest-labs/FLUX.2-dev': 32,
+  'black-forest-labs/FLUX.2-pro': 32,
+  'black-forest-labs/FLUX.2-flex': 32,
+  'black-forest-labs/FLUX.2-max': 32,
 };
 
 // Propagate capabilities and size from benchmarks, OpenRouter, or HF Hub to all other providers' models.
