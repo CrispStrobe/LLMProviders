@@ -101,8 +101,8 @@ interface BenchmarkEntry {
   mteb_retrieval?: number;
 }
 
-const normalizeName = (s: string) =>
-  s.toLowerCase().replace(/[-_.]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
+const normalizeName = (s?: string) =>
+  (s || '').toLowerCase().replace(/[-_.]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
 
 const EXCHANGE_RATE_EUR_TO_USD = 1.05
 
@@ -398,7 +398,7 @@ function App() {
     const groups: Record<string, typeof sortedModels> = {};
     sortedModels.forEach(m => {
       // Prioritize hf_id for grouping key
-      const key = m.hf_id ? m.hf_id.toLowerCase() : m.name.toLowerCase();
+      const key = (m.hf_id || m.name || '').toLowerCase();
       if (!groups[key]) groups[key] = [];
       groups[key].push(m);
     });
