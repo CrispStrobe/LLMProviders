@@ -46,9 +46,13 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add hf https://huggingface.co/spaces/cstr/LLMProviders || true
+          if [ -z "$HF_TOKEN" ]; then
+            echo "HF_TOKEN is not set, skipping sync."
+            exit 0
+          fi
+          git remote add hf https://cstr:$HF_TOKEN@huggingface.co/spaces/cstr/LLMProviders || true
           # Prepend metadata only for the HF version of README
           cat .huggingface/space.yml README.md > HF_README.md
           mv HF_README.md README.md
           git commit -am "chore: sync to Hugging Face with metadata" || true
-          git push https://cstr:$HF_TOKEN@huggingface.co/spaces/cstr/LLMProviders main --force
+          git push hf main --force
