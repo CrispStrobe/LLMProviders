@@ -9,6 +9,7 @@
 
 const { loadEnv } = require('../load-env');
 loadEnv();
+const { getJson } = require('../fetch-utils');
 
 const API_URL = 'https://openrouter.ai/api/v1/models';
 
@@ -61,13 +62,7 @@ async function fetchOpenRouter() {
   };
   if (apiKey) headers['Authorization'] = `Bearer ${apiKey}`;
 
-  const response = await fetch(API_URL, { headers });
-
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} from OpenRouter API`);
-  }
-
-  const data = await response.json();
+  const data = await getJson(API_URL, { headers });
   const models = [];
 
   for (const model of data.data || []) {

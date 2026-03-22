@@ -1,6 +1,7 @@
 'use strict';
 
 const cheerio = require('cheerio');
+const { getText } = require('../fetch-utils');
 
 const URL = 'https://www.scaleway.com/en/pricing/model-as-a-service/';
 
@@ -28,7 +29,7 @@ const getSizeB = (name) => {
 };
 
 async function fetchScaleway() {
-  const response = await fetch(URL, {
+  const html = await getText(URL, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -36,12 +37,6 @@ async function fetchScaleway() {
       'Cache-Control': 'no-cache',
     },
   });
-
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} fetching ${URL}`);
-  }
-
-  const html = await response.text();
 
   // Quick sanity check for Cloudflare block
   if (html.includes('cf-browser-verification') || html.includes('Just a moment')) {

@@ -2,6 +2,7 @@
 
 const { loadEnv } = require('../load-env');
 loadEnv();
+const { getJson } = require('../fetch-utils');
 
 const API_URL = 'https://router.requesty.ai/v1/models';
 
@@ -23,18 +24,13 @@ async function fetchRequesty() {
     return [];
   }
 
-  const response = await fetch(API_URL, {
+  const data = await getJson(API_URL, {
     headers: {
       Authorization: `Bearer ${apiKey}`,
       Accept: 'application/json',
     },
   });
 
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} from Requesty API`);
-  }
-
-  const data = await response.json();
   const models = [];
 
   for (const model of data.data || []) {

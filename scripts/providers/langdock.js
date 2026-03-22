@@ -21,6 +21,7 @@
 
 const cheerio = require('cheerio');
 const { loadEnv } = require('../load-env');
+const { getText } = require('../fetch-utils');
 loadEnv();
 
 const MODELS_URL = 'https://langdock.com/models';
@@ -39,16 +40,13 @@ const getSizeB = (name) => {
 };
 
 async function fetchLangdock() {
-  const response = await fetch(MODELS_URL, {
+  const html = await getText(MODELS_URL, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       'Accept-Language': 'en-US,en;q=0.9',
     },
   });
-
-  if (!response.ok) throw new Error(`HTTP ${response.status} from ${MODELS_URL}`);
-  const html = await response.text();
   const $ = cheerio.load(html);
 
   const models = [];

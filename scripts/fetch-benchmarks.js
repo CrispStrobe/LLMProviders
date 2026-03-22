@@ -34,18 +34,11 @@
 const fs   = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { getJson, getText } = require('./fetch-utils');
 
 const OUT_FILE = path.join(__dirname, '..', 'data', 'benchmarks.json');
 
 // ─── helpers ────────────────────────────────────────────────────────────────
-
-async function getJson(url) {
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'providers-benchmark-fetcher', Accept: 'application/json' },
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status} from ${url}`);
-  return res.json();
-}
 
 const normName = (s) =>
   (s || '').toLowerCase().replace(/[-_.]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
@@ -241,9 +234,7 @@ async function fetchLiveBench() {
   console.log(`${dates.length} releases (${dates[0]} → ${dates[dates.length - 1]})`);
 
   // Use task→group mapping from the latest categories JSON (stable across releases)
-  const cats = await fetch(`${LB_BASE_URL}/categories_${dates[dates.length - 1]}.json`, {
-    headers: { 'User-Agent': 'providers-benchmark-fetcher' },
-  }).then((r) => r.json());
+  const cats = await getJson(`${LB_BASE_URL}/categories_${dates[dates.length - 1]}.json`);
 
   const taskToGroup = {};
   for (const [cat, tasks] of Object.entries(cats)) {
@@ -263,9 +254,7 @@ async function fetchLiveBench() {
   for (const date of dates) {
     let csv;
     try {
-      csv = await fetch(`${LB_BASE_URL}/table_${date}.csv`, {
-        headers: { 'User-Agent': 'providers-benchmark-fetcher' },
-      }).then((r) => { if (!r.ok) throw new Error(`${r.status}`); return r.text(); });
+      csv = await getText(`${LB_BASE_URL}/table_${date}.csv`);
     } catch (e) {
       console.warn(`\n  ⚠ LiveBench ${date}: ${e.message}`);
       continue;
@@ -393,15 +382,12 @@ async function fetchChatbotArena() {
   // Requesting with "RSC: 1" returns a streaming text/x-component payload that
   // embeds the full leaderboard entries (rank, ELO rating, votes) in the server
   // response — no authentication required.
-  const text = await fetch('https://lmarena.ai/en/leaderboard/text', {
+  const text = await getText('https://lmarena.ai/en/leaderboard/text', {
     headers: {
       'User-Agent': 'Mozilla/5.0',
       'RSC': '1',
       'Accept': 'text/x-component',
     },
-  }).then((r) => {
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return r.text();
   });
 
   // Each RSC line has the format: <hex_id>:<json_value>
@@ -468,10 +454,7 @@ const AIDER_RAW = 'https://raw.githubusercontent.com/Aider-AI/aider/main/aider/w
 
 async function fetchAider() {
   process.stdout.write('Aider: fetching edit leaderboard... ');
-  const text = await fetch(AIDER_RAW, { headers: { 'User-Agent': 'providers-benchmark-fetcher' } }).then((r) => {
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return r.text();
-  });
+  const text = await getText(AIDER_RAW);
 
   const rows = yaml.load(text);
 

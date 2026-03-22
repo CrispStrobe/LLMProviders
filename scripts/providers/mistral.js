@@ -10,6 +10,7 @@
  */
 
 const URL = 'https://mistral.ai/pricing';
+const { getText } = require('../fetch-utils');
 
 const stripHtml = (html) => (html || '').replace(/<[^>]+>/g, '').trim();
 
@@ -63,16 +64,13 @@ function extractApisArray(payload) {
 }
 
 async function fetchMistral() {
-  const response = await fetch(URL, {
+  const html = await getText(URL, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       'Accept-Language': 'en-US,en;q=0.9',
     },
   });
-
-  if (!response.ok) throw new Error(`HTTP ${response.status} from ${URL}`);
-  const html = await response.text();
 
   // The page uses Next.js App Router RSC streaming. Pricing data is in a
   // self.__next_f.push([1, "ENCODED_STRING"]) script tag. Inside the raw HTML,

@@ -13,6 +13,8 @@
  *   ['Model','Input']                    – image gen / embeddings; single rows
  */
 
+const { getText } = require('../fetch-utils');
+
 const URL = 'https://nebius.com/token-factory/prices';
 
 const parseUsd = (text) => {
@@ -122,7 +124,7 @@ function modelsFromTable({ rows }) {
 }
 
 async function fetchNebius() {
-  const response = await fetch(URL, {
+  const html = await getText(URL, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -130,8 +132,6 @@ async function fetchNebius() {
     },
   });
 
-  if (!response.ok) throw new Error(`HTTP ${response.status} from ${URL}`);
-  const html = await response.text();
   if (html.includes('cf-browser-verification') || html.includes('Just a moment')) {
     throw new Error('Blocked by Cloudflare');
   }
