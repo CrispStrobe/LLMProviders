@@ -142,6 +142,10 @@ function App() {
   const [liveProviders, setLiveProviders] = useState<Provider[]>((providersData as any).providers);
   const [liveBenchmarks, setLiveBenchmarks] = useState<BenchmarkEntry[]>(benchmarksData as BenchmarkEntry[]);
 
+  const getGroupKey = useCallback((m: Model) => {
+    return (m.hf_id || m.canonical_id || m.name || '').toLowerCase();
+  }, []);
+
   useEffect(() => {
     fetch('/api/data')
       .then(r => r.ok ? r.json() : null)
@@ -399,19 +403,23 @@ function App() {
     if (!groupByModel) return sortedModels;
 
     const groups: Record<string, typeof sortedModels> = {};
+    const groupOrder: string[] = [];
+
     sortedModels.forEach(m => {
-      // Grouping priority: HF ID > Canonical ID > Name
-      const key = (m.hf_id || m.canonical_id || m.name || '').toLowerCase();
-      if (!groups[key]) groups[key] = [];
+      const key = getGroupKey(m);
+      if (!groups[key]) {
+        groups[key] = [];
+        groupOrder.push(key);
+      }
       groups[key].push(m);
     });
 
     const result: typeof sortedModels = [];
-    Object.values(groups).forEach(group => {
-      result.push(...group);
+    groupOrder.forEach(key => {
+      result.push(...groups[key]);
     });
     return result;
-  }, [sortedModels, groupByModel]);
+  }, [sortedModels, groupByModel, getGroupKey]);
 
   const requestSort = (key: string) => {
     let direction: 'asc' | 'desc' = 'asc';
@@ -549,9 +557,7 @@ function App() {
             {displayModels.map((model, idx) => {
               const prev = displayModels[idx - 1];
               const isGroupStart = groupByModel && (
-                idx === 0 || 
-                (prev.hf_id?.toLowerCase() !== model.hf_id?.toLowerCase()) ||
-                (!model.hf_id && prev.name.toLowerCase() !== model.name.toLowerCase())
+                idx === 0 || getGroupKey(prev) !== getGroupKey(model)
               );
               const bm = findBenchmark(model.name);
               return (
