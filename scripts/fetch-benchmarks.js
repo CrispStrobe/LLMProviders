@@ -35,6 +35,9 @@ const fs   = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const { getJson, getText } = require('./fetch-utils');
+const { loadEnv } = require('./load-env');
+
+loadEnv();
 
 const OUT_FILE = path.join(__dirname, '..', 'data', 'benchmarks.json');
 
@@ -93,7 +96,10 @@ async function fetchLLMStats() {
       try {
         const data = await getJson(LLMSTATS_RAW + f.path);
         const slug = f.path.replace(/^models\//, '').replace(/\/model\.json$/, '');
-        return { slug, name: data.name, ...extractLLMStatsMetrics(data.qualitative_metrics) };
+        const metrics = extractLLMStatsMetrics(data.qualitative_metrics);
+        const entry = { slug, name: data.name, ...metrics, sources: {} };
+        Object.keys(metrics).forEach(k => entry.sources[k] = 'llmstats');
+        return entry;
       } catch (e) {
         console.warn(`\n  ⚠ LLMStats ${f.path}: ${e.message}`);
         return null;
@@ -149,15 +155,16 @@ async function fetchHFLeaderboard() {
       const entry = {
         hf_id: r.fullname,
         name: r.fullname.split('/').pop(),
+        sources: {},
       };
-      if (r['#Params (B)'])     entry.params_b      = r['#Params (B)'];
-      if (r['IFEval Raw'])      entry.ifeval        = r['IFEval Raw'];
-      if (r['BBH Raw'])         entry.bbh           = r['BBH Raw'];
-      if (r['GPQA Raw'])        entry.gpqa          = r['GPQA Raw'];
-      if (r['MMLU-PRO Raw'])    entry.mmlu_pro      = r['MMLU-PRO Raw'];
-      if (r['MATH Lvl 5 Raw'])  entry.hf_math_lvl5  = r['MATH Lvl 5 Raw'];
-      if (r['MUSR Raw'])        entry.hf_musr       = r['MUSR Raw'];
-      if (AVG_KEY && r[AVG_KEY]) entry.hf_avg       = r[AVG_KEY];
+      if (r['#Params (B)'])     { entry.params_b      = r['#Params (B)']; entry.sources.params_b = 'hf'; }
+      if (r['IFEval Raw'])      { entry.ifeval        = r['IFEval Raw']; entry.sources.ifeval = 'hf'; }
+      if (r['BBH Raw'])         { entry.bbh           = r['BBH Raw']; entry.sources.bbh = 'hf'; }
+      if (r['GPQA Raw'])        { entry.gpqa          = r['GPQA Raw']; entry.sources.gpqa = 'hf'; }
+      if (r['MMLU-PRO Raw'])    { entry.mmlu_pro      = r['MMLU-PRO Raw']; entry.sources.mmlu_pro = 'hf'; }
+      if (r['MATH Lvl 5 Raw'])  { entry.hf_math_lvl5  = r['MATH Lvl 5 Raw']; entry.sources.hf_math_lvl5 = 'hf'; }
+      if (r['MUSR Raw'])        { entry.hf_musr       = r['MUSR Raw']; entry.sources.hf_musr = 'hf'; }
+      if (AVG_KEY && r[AVG_KEY]) { entry.hf_avg       = r[AVG_KEY]; entry.sources.hf_avg = 'hf'; }
       return entry;
     });
 
@@ -207,7 +214,7 @@ function parseLiveBenchCsv(csvText, taskToGroup) {
       }
     }
     const allScores = Object.values(taskScores);
-    entries.push({
+    const entry = {
       lb_name:          modelName,
       lb_global:        allScores.length ? avg(allScores) : undefined,
       lb_reasoning:     groupBuckets.lb_reasoning    ? avg(groupBuckets.lb_reasoning)    : undefined,
@@ -216,7 +223,12 @@ function parseLiveBenchCsv(csvText, taskToGroup) {
       lb_language:      groupBuckets.lb_language      ? avg(groupBuckets.lb_language)      : undefined,
       lb_if:            groupBuckets.lb_if            ? avg(groupBuckets.lb_if)            : undefined,
       lb_data_analysis: groupBuckets.lb_data_analysis ? avg(groupBuckets.lb_data_analysis) : undefined,
+      sources: {},
+    };
+    Object.keys(entry).forEach(k => {
+      if (k.startsWith('lb_') && entry[k] !== undefined) entry.sources[k] = 'livebench';
     });
+    entries.push(entry);
   }
   return entries;
 }
@@ -273,7 +285,12 @@ function mergeLiveBench(entries, lbEntries) {
     const candidates = [normName(e.name || ''), normName((e.slug || '').split('/').pop() || ''), normName((e.hf_id || '').split('/').pop() || '')].filter(Boolean);
     let lb = null;
     for (const c of candidates) { lb = exactMap.get(c) || baseMap.get(c); if (lb) break; }
-    if (lb) { Object.assign(e, lb); usedLbNames.add(lb.lb_name); matched++; }
+    if (lb) { 
+      Object.assign(e, lb); 
+      e.sources = { ...(e.sources || {}), ...(lb.sources || {}) };
+      usedLbNames.add(lb.lb_name); 
+      matched++; 
+    }
   }
   const usedBases = new Set([...usedLbNames].map((n) => normName(lbBaseName(n))));
   const newEntries = [];
@@ -311,13 +328,20 @@ async function fetchChatbotArena() {
   }
   if (!entries) throw new Error('Could not find entries in RSC payload');
   console.log(`${entries.length} models`);
-  return entries.map((e) => ({
-    arena_name:  e.modelDisplayName,
-    arena_org:   e.modelOrganization,
-    arena_elo:   e.rating,
-    arena_rank:  e.rank,
-    arena_votes: e.votes,
-  }));
+  return entries.map((e) => {
+    const entry = {
+      arena_name:  e.modelDisplayName,
+      arena_org:   e.modelOrganization,
+      arena_elo:   e.rating,
+      arena_rank:  e.rank,
+      arena_votes: e.votes,
+      sources: {},
+    };
+    Object.keys(entry).forEach(k => {
+      if (k.startsWith('arena_') && entry[k] !== undefined) entry.sources[k] = 'arena';
+    });
+    return entry;
+  });
 }
 
 function mergeArena(entries, arenaEntries) {
@@ -329,6 +353,7 @@ function mergeArena(entries, arenaEntries) {
     const a = candidates.map((c) => arenaMap.get(c)).find(Boolean);
     if (a) {
       e.arena_elo = a.arena_elo; e.arena_rank = a.arena_rank; e.arena_votes = a.arena_votes;
+      e.sources = { ...(e.sources || {}), ...(a.sources || {}) };
       arenaMap.delete(normName(a.arena_name)); matched++;
     }
   }
@@ -355,7 +380,9 @@ async function fetchAider() {
   }
   const entries = [];
   for (const row of best.values()) {
-    entries.push({ aider_model: row.model, aider_pass_rate: row.pass_rate_1 / 100 });
+    const entry = { aider_model: row.model, aider_pass_rate: row.pass_rate_1 / 100, sources: {} };
+    entry.sources.aider_pass_rate = 'aider';
+    entries.push(entry);
   }
   console.log(`${entries.length} models (best run each)`);
   return entries;
@@ -368,10 +395,15 @@ function mergeAider(entries, aiderEntries) {
   for (const e of entries) {
     const candidates = [normName(e.name || ''), normName(e.lb_name || ''), normName((e.slug || '').split('/').pop() || ''), normName((e.hf_id || '').split('/').pop() || ''), normName(e.arena_name || '')];
     const a = candidates.map((c) => aiderMap.get(c)).find(Boolean);
-    if (a) { e.aider_pass_rate = a.aider_pass_rate; aiderMap.delete(normName(a.aider_model)); matched++; }
+    if (a) { 
+      e.aider_pass_rate = a.aider_pass_rate; 
+      e.sources = { ...(e.sources || {}), ...(a.sources || {}) };
+      aiderMap.delete(normName(a.aider_model)); 
+      matched++; 
+    }
   }
   const newEntries = [];
-  for (const a of aiderMap.values()) newEntries.push({ name: a.aider_model, aider_pass_rate: a.aider_pass_rate });
+  for (const a of aiderMap.values()) newEntries.push({ name: a.aider_model, ...a });
   console.log(`  Aider: ${matched} matched, ${newEntries.length} new entries`);
   return [...entries, ...newEntries];
 }
@@ -395,7 +427,7 @@ async function fetchArtificialAnalysis() {
 
   return res.data.map((m) => {
     const ev = m.evaluations || {};
-    return {
+    const entry = {
       aa_id: m.id,
       aa_name: m.name,
       aa_slug: m.slug,
@@ -411,7 +443,12 @@ async function fetchArtificialAnalysis() {
       aa_aime: ev.aime,
       aa_tokens_per_s: m.median_output_tokens_per_second,
       aa_latency_s: m.median_time_to_first_token_seconds,
+      sources: {},
     };
+    Object.keys(entry).forEach(k => {
+      if (k.startsWith('aa_') && entry[k] !== undefined) entry.sources[k] = 'aa';
+    });
+    return entry;
   });
 }
 
@@ -432,6 +469,7 @@ function mergeArtificialAnalysis(entries, aaEntries) {
     const aa = candidates.map((c) => aaMap.get(c)).find(Boolean);
     if (aa) {
       Object.assign(e, aa);
+      e.sources = { ...(e.sources || {}), ...(aa.sources || {}) };
       aaMap.delete(normName(aa.aa_name));
       matched++;
     }
@@ -455,7 +493,7 @@ function mergeEntries(llmstats, hfEntries) {
     const slugModel = e.slug?.split('/').pop() || '';
     if (slugModel) lsIdx.set(normName(slugModel), i);
   });
-  const merged = llmstats.map((e) => ({ ...e }));
+  const merged = llmstats.map((e) => ({ ...e, sources: { ...(e.sources || {}) } }));
   const hfOnly = [];
   for (const hf of hfEntries) {
     const modelPart = normName(hf.name);
@@ -473,6 +511,7 @@ function mergeEntries(llmstats, hfEntries) {
       target.hf_math_lvl5 = hf.hf_math_lvl5;
       target.hf_musr = hf.hf_musr;
       target.hf_avg = hf.hf_avg;
+      target.sources = { ...(target.sources || {}), ...(hf.sources || {}) };
     } else hfOnly.push(hf);
   }
   return [...merged, ...hfOnly];
