@@ -604,6 +604,69 @@ function mergeMTEB(entries, mtebEntries) {
   return [...entries, ...newEntries];
 }
 
+// ─── OCR Benchmarks ────────────────────────────────────────────────────────
+
+function mergeOCR(entries) {
+  const ocrData = [
+    { name: 'datalab-to/chandra-ocr-2', score: 85.9 },
+    { name: 'rednote-hilab/dots.mocr', score: 83.9 },
+    { name: 'lightonai/LightOnOCR-2-1B', score: 83.2 },
+    { name: 'datalab-to/chandra', score: 83.1 },
+    { name: 'infly/Infinity-Parser-7B', score: 82.5 },
+    { name: 'allenai/olmOCR-2-7B-1025-FP8', score: 82.4 },
+    { name: 'PaddlePaddle/PaddleOCR-VL', score: 80.0 },
+    { name: 'baidu/Qianfan-OCR', score: 79.8 },
+    { name: 'rednote-hilab/dots.ocr', score: 79.1 },
+    { name: 'deepseek-ai/DeepSeek-OCR-2', score: 76.3 },
+    { name: 'lightonai/LightOnOCR-1B-1025', score: 76.1 },
+    { name: 'deepseek-ai/DeepSeek-OCR', score: 75.7 },
+    { name: 'opendatalab/MinerU2.5-2509-1.2B', score: 75.2 },
+    { name: 'zai-org/GLM-OCR', score: 75.2 },
+    { name: 'FireRedTeam/FireRed-OCR', score: 70.2 },
+    { name: 'nanonets/Nanonets-OCR2-3B', score: 69.5 },
+  ];
+
+  const ocrMap = new Map();
+  ocrData.forEach(d => {
+    ocrMap.set(normName(d.name), d);
+    const modelPart = d.name.split('/').pop();
+    if (modelPart) ocrMap.set(normName(modelPart), d);
+  });
+
+  let matched = 0;
+  const usedOcr = new Set();
+  for (const e of entries) {
+    const candidates = [
+      normName(e.name || ''),
+      normName((e.hf_id || '').split('/').pop() || ''),
+      normName(e.hf_id || '')
+    ].filter(Boolean);
+
+    const ocr = candidates.map(c => ocrMap.get(c)).find(Boolean);
+    if (ocr) {
+      e.ocr_avg = ocr.score;
+      e.sources = { ...(e.sources || {}), ocr_avg: 'manual' };
+      matched++;
+      usedOcr.add(ocr.name);
+    }
+  }
+
+  const newEntries = [];
+  ocrData.forEach(d => {
+    if (!usedOcr.has(d.name)) {
+      newEntries.push({
+        hf_id: d.name,
+        name: d.name.split('/').pop(),
+        ocr_avg: d.score,
+        sources: { ocr_avg: 'manual' }
+      });
+    }
+  });
+  
+  console.log(`  OCR: ${matched} matched, ${newEntries.length} new entries`);
+  return [...entries, ...newEntries];
+}
+
 // ─── Merge ───────────────────────────────────────────────────────────────────
 
 function mergeEntries(llmstats, hfEntries) {
@@ -647,10 +710,11 @@ const SOURCE_FIELDS = {
   aider:     ['aider_model', 'aider_pass_rate'],
   aa:        ['aa_id', 'aa_intelligence', 'aa_coding', 'aa_math', 'aa_mmlu_pro', 'aa_gpqa', 'aa_livecodebench', 'aa_hle', 'aa_scicode', 'aa_math_500', 'aa_aime', 'aa_tokens_per_s', 'aa_latency_s'],
   mteb:      ['mteb_avg', 'mteb_retrieval'],
+  ocr:       ['ocr_avg'],
 };
 
 const SOURCE_ID_FIELD = {
-  llmstats: 'slug', hf: 'hf_id', livebench: 'lb_name', arena: 'arena_elo', aider: 'aider_pass_rate', aa: 'aa_intelligence', mteb: 'mteb_avg',
+  llmstats: 'slug', hf: 'hf_id', livebench: 'lb_name', arena: 'arena_elo', aider: 'aider_pass_rate', aa: 'aa_intelligence', mteb: 'mteb_avg', ocr: 'ocr_avg',
 };
 
 async function refreshSource(source) {
@@ -672,6 +736,7 @@ async function refreshSource(source) {
   else if (source === 'aider') result = mergeAider(stripped, await fetchAider());
   else if (source === 'aa') result = mergeArtificialAnalysis(stripped, await fetchArtificialAnalysis());
   else if (source === 'mteb') result = mergeMTEB(stripped, await fetchMTEB());
+  else if (source === 'ocr') result = mergeOCR(stripped);
   fs.writeFileSync(OUT_FILE, JSON.stringify(result, null, 2));
 }
 
@@ -774,10 +839,11 @@ async function main() {
   const withAi  = mergeAider(withAr, aiderEntries);
   const withAA  = mergeArtificialAnalysis(withAi, aaEntries);
   const withMTEB = mergeMTEB(withAA, mtebEntries);
-  const all     = mergeMTEB(withMTEB, readmeEntries);
+  const withReadme = mergeMTEB(withMTEB, readmeEntries);
+  const all     = mergeOCR(withReadme);
 
   console.log(`\nTotal entries: ${all.length}`);
-  console.log(`  With LiveBench: ${all.filter(e => e.lb_name).length} | Arena: ${all.filter(e => e.arena_elo).length} | Aider: ${all.filter(e => e.aider_pass_rate !== undefined).length} | AA: ${all.filter(e => e.aa_intelligence !== undefined).length} | MTEB: ${all.filter(e => e.mteb_avg !== undefined).length}`);
+  console.log(`  With LiveBench: ${all.filter(e => e.lb_name).length} | Arena: ${all.filter(e => e.arena_elo).length} | Aider: ${all.filter(e => e.aider_pass_rate !== undefined).length} | AA: ${all.filter(e => e.aa_intelligence !== undefined).length} | MTEB: ${all.filter(e => e.mteb_avg !== undefined).length} | OCR: ${all.filter(e => e.ocr_avg !== undefined).length}`);
 
   fs.writeFileSync(OUT_FILE, JSON.stringify(all, null, 2));
   console.log(`Saved to data/benchmarks.json (${(fs.statSync(OUT_FILE).size / 1024).toFixed(0)} KB)`);

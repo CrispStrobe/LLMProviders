@@ -99,6 +99,8 @@ interface BenchmarkEntry {
   // MTEB (Massive Text Embedding Benchmark)
   mteb_avg?: number;
   mteb_retrieval?: number;
+  // OCR Benchmark
+  ocr_avg?: number;
 }
 
 const normalizeName = (s?: string) =>
@@ -370,7 +372,8 @@ function App() {
         case 'aa_intelligence':
         case 'aa_tokens_per_s':
         case 'mteb_avg':
-        case 'mteb_retrieval': {
+        case 'mteb_retrieval':
+        case 'ocr_avg': {
           try {
             const bA = findBenchmark(a.name);
             const bB = findBenchmark(b.name);
@@ -527,6 +530,7 @@ function App() {
                 <th onClick={() => requestSort('aa_tokens_per_s')} className="sortable" title="Artificial Analysis Median Speed (Tokens per Second)">AA Speed {getSortIcon('aa_tokens_per_s')}</th>
                 <th onClick={() => requestSort('mteb_avg')} className="sortable" title="MTEB (Massive Text Embedding Benchmark) Average">MTEB {getSortIcon('mteb_avg')}</th>
                 <th onClick={() => requestSort('mteb_retrieval')} className="sortable" title="MTEB Retrieval Average">MTEB-Ret {getSortIcon('mteb_retrieval')}</th>
+                <th onClick={() => requestSort('ocr_avg')} className="sortable" title="OCR (Optical Character Recognition) Benchmark">OCR {getSortIcon('ocr_avg')}</th>
                 <th onClick={() => requestSort('lb_global')} className="sortable" title="LiveBench overall average (contamination-free)">LB {getSortIcon('lb_global')}</th>
                 <th onClick={() => requestSort('lb_math')} className="sortable" title="LiveBench Mathematics">LB-Math {getSortIcon('lb_math')}</th>
                 <th onClick={() => requestSort('lb_coding')} className="sortable" title="LiveBench Coding + Agentic Coding">LB-Code {getSortIcon('lb_coding')}</th>
@@ -632,6 +636,7 @@ function App() {
                         <td className="benchmark-cell">{fmtNum(bm?.aa_tokens_per_s)}</td>
                         <td className="benchmark-cell">{fmtNum(bm?.mteb_avg, 1)}</td>
                         <td className="benchmark-cell">{fmtNum(bm?.mteb_retrieval, 1)}</td>
+                        <td className="benchmark-cell">{fmtNum(bm?.ocr_avg, 1)}</td>
                         <td className="benchmark-cell">{fmtPct(bm?.lb_global)}</td>
                         <td className="benchmark-cell">{fmtPct(bm?.lb_math)}</td>
                         <td className="benchmark-cell">{fmtPct(bm?.lb_coding)}</td>
@@ -646,7 +651,7 @@ function App() {
                         <td className="benchmark-cell">{fmtPct(bm?.human_eval)}</td>
                       </>;
                     } catch (e) {
-                      return Array(18).fill(null).map((_, i) => <td key={i} className="benchmark-cell">–</td>);
+                      return Array(19).fill(null).map((_, i) => <td key={i} className="benchmark-cell">–</td>);
                     }
                   })()}
                 </tr>

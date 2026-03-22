@@ -73036,5 +73036,133 @@
       "mteb_retrieval": "manual",
       "lb_coding": "manual"
     }
+  },
+  {
+    "hf_id": "datalab-to/chandra-ocr-2",
+    "name": "chandra-ocr-2",
+    "ocr_avg": 85.9,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "rednote-hilab/dots.mocr",
+    "name": "dots.mocr",
+    "ocr_avg": 83.9,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "lightonai/LightOnOCR-2-1B",
+    "name": "LightOnOCR-2-1B",
+    "ocr_avg": 83.2,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "datalab-to/chandra",
+    "name": "chandra",
+    "ocr_avg": 83.1,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "infly/Infinity-Parser-7B",
+    "name": "Infinity-Parser-7B",
+    "ocr_avg": 82.5,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "allenai/olmOCR-2-7B-1025-FP8",
+    "name": "olmOCR-2-7B-1025-FP8",
+    "ocr_avg": 82.4,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "PaddlePaddle/PaddleOCR-VL",
+    "name": "PaddleOCR-VL",
+    "ocr_avg": 80,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "baidu/Qianfan-OCR",
+    "name": "Qianfan-OCR",
+    "ocr_avg": 79.8,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "rednote-hilab/dots.ocr",
+    "name": "dots.ocr",
+    "ocr_avg": 79.1,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "deepseek-ai/DeepSeek-OCR-2",
+    "name": "DeepSeek-OCR-2",
+    "ocr_avg": 76.3,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "lightonai/LightOnOCR-1B-1025",
+    "name": "LightOnOCR-1B-1025",
+    "ocr_avg": 76.1,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "deepseek-ai/DeepSeek-OCR",
+    "name": "DeepSeek-OCR",
+    "ocr_avg": 75.7,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "opendatalab/MinerU2.5-2509-1.2B",
+    "name": "MinerU2.5-2509-1.2B",
+    "ocr_avg": 75.2,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "zai-org/GLM-OCR",
+    "name": "GLM-OCR",
+    "ocr_avg": 75.2,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "FireRedTeam/FireRed-OCR",
+    "name": "FireRed-OCR",
+    "ocr_avg": 70.2,
+    "sources": {
+      "ocr_avg": "manual"
+    }
+  },
+  {
+    "hf_id": "nanonets/Nanonets-OCR2-3B",
+    "name": "Nanonets-OCR2-3B",
+    "ocr_avg": 69.5,
+    "sources": {
+      "ocr_avg": "manual"
+    }
   }
 ]

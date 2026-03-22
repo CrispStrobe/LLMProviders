@@ -221,6 +221,8 @@ const MANUAL_HF_ID_MAP = {
   'bge-multilingual-gemma2': 'BAAI/bge-multilingual-gemma2',
   'bge-en-icl': 'BAAI/bge-en-icl',
   'wizardlm 2 8x22b': 'alpindale/WizardLM-2-8x22B',
+  'parasail-kimi-k2-instruct': 'moonshotai/Kimi-K2-Instruct',
+  'grok-2-1212': 'xai-org/grok-2',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {
