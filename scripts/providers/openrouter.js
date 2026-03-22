@@ -12,6 +12,7 @@ loadEnv();
 const { getJson } = require('../fetch-utils');
 
 const API_URL = 'https://openrouter.ai/api/v1/models';
+const EU_API_URL = 'https://eu.openrouter.ai/api/v1/models';
 
 // OpenRouter stores per-token prices; multiply by 1e6 to get per-1M price.
 const toPerMillion = (val) => (val ? parseFloat(val) * 1_000_000 : 0);
@@ -65,10 +66,30 @@ async function fetchOpenRouter() {
   };
   if (apiKey) headers['Authorization'] = `Bearer ${apiKey}`;
 
-  const data = await getJson(API_URL, { headers });
+  // If we have an API key, use the /user endpoint to get EU-filtered models correctly.
+  // Standard /models endpoint doesn't filter by subdomain.
+  const globalUrl = apiKey ? `${API_URL}/user` : API_URL;
+  const euUrl = apiKey ? `${EU_API_URL}/user` : EU_API_URL;
+
+  process.stdout.write('OpenRouter: fetching Global... ');
+  const globalData = await getJson(globalUrl, { headers });
+  
+  let euModelIds = new Set();
+  if (apiKey) {
+    process.stdout.write('EU... ');
+    try {
+      const euData = await getJson(euUrl, { headers });
+      if (euData?.data) {
+        euModelIds = new Set(euData.data.map(m => m.id));
+      }
+    } catch (e) {
+      console.warn(`\n  ⚠ Failed to fetch EU models: ${e.message}`);
+    }
+  }
+
   const models = [];
 
-  for (const model of data.data || []) {
+  for (const model of globalData.data || []) {
     const pricing = model.pricing || {};
     const inputPrice = toPerMillion(pricing.prompt);
     const outputPrice = toPerMillion(pricing.completion);
@@ -86,6 +107,11 @@ async function fetchOpenRouter() {
 
     const type = getModelType(model.architecture);
     const capabilities = getCapabilities(model.architecture, model.supported_parameters);
+    
+    // Tag with eu-endpoint if model is available via EU subdomain
+    if (euModelIds.has(model.id)) {
+      capabilities.push('eu-endpoint');
+    }
 
     const modelEntry = {
       name: model.id,
@@ -145,15 +171,12 @@ if (require.main === module) {
       const free = models.filter(m => m.input_price_per_1m === 0 && !m.price_per_image);
       const vision = models.filter(m => m.type === 'vision');
       const imageGen = models.filter(m => m.type === 'image');
+      const eu = models.filter(m => m.capabilities?.includes('eu-endpoint'));
       console.log(`Fetched ${models.length} models from OpenRouter API ${apiKey ? '(authenticated)' : '(public – set OPENROUTER_API_KEY for more models)'}`);
-      console.log(`  Free: ${free.length}, Vision: ${vision.length}, Image-gen: ${imageGen.length}`);
-      console.log('\nFirst 5 paid:');
-      models.filter(m => m.input_price_per_1m > 0).slice(0, 5).forEach((m) =>
-        console.log(`  ${m.name.padEnd(55)} $${m.input_price_per_1m} / $${m.output_price_per_1m} [${m.type}] ${(m.capabilities||[]).join(',')}`)
-      );
-      console.log('\nFirst 5 free:');
-      free.slice(0, 5).forEach((m) =>
-        console.log(`  ${m.name.padEnd(55)} [${m.type}] ${(m.capabilities||[]).join(',')}`)
+      console.log(`  Free: ${free.length}, Vision: ${vision.length}, Image-gen: ${imageGen.length}, EU-Endpoint: ${eu.length}`);
+      console.log('\nFirst 5 EU-available:');
+      eu.slice(0, 5).forEach((m) =>
+        console.log(`  ${m.name.padEnd(55)} $${m.input_price_per_1m} / $${m.output_price_per_1m} [${m.type}]`)
       );
     })
     .catch((err) => {
