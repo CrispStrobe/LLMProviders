@@ -399,10 +399,16 @@ async function fetchArtificialAnalysis() {
       aa_id: m.id,
       aa_name: m.name,
       aa_slug: m.slug,
-      aa_intelligence: ev.artificial_analysis_intelligence_index, // typically 0-100
+      aa_intelligence: ev.artificial_analysis_intelligence_index, // 0-100
+      aa_coding: ev.artificial_analysis_coding_index, // 0-100
+      aa_math: ev.artificial_analysis_math_index, // 0-100
       aa_mmlu_pro: ev.mmlu_pro, // 0-1
       aa_gpqa: ev.gpqa, // 0-1
       aa_livecodebench: ev.livecodebench, // 0-1
+      aa_hle: ev.hle,
+      aa_scicode: ev.scicode,
+      aa_math_500: ev.math_500,
+      aa_aime: ev.aime,
       aa_tokens_per_s: m.median_output_tokens_per_second,
       aa_latency_s: m.median_time_to_first_token_seconds,
     };
@@ -480,7 +486,7 @@ const SOURCE_FIELDS = {
   livebench: ['lb_name', 'lb_global', 'lb_reasoning', 'lb_coding', 'lb_math', 'lb_language', 'lb_if', 'lb_data_analysis'],
   arena:     ['arena_name', 'arena_org', 'arena_elo', 'arena_rank', 'arena_votes'],
   aider:     ['aider_model', 'aider_pass_rate'],
-  aa:        ['aa_id', 'aa_intelligence', 'aa_mmlu_pro', 'aa_gpqa', 'aa_livecodebench', 'aa_tokens_per_s', 'aa_latency_s'],
+  aa:        ['aa_id', 'aa_intelligence', 'aa_coding', 'aa_math', 'aa_mmlu_pro', 'aa_gpqa', 'aa_livecodebench', 'aa_hle', 'aa_scicode', 'aa_math_500', 'aa_aime', 'aa_tokens_per_s', 'aa_latency_s'],
 };
 
 const SOURCE_ID_FIELD = {
