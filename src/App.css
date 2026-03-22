@@ -146,6 +146,19 @@ tr.group-divider {
   color: var(--primary-color);
 }
 
+.price-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.price-subtext {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 .model-name {
   font-weight: 600;
   font-family: 'JetBrains Mono', monospace;

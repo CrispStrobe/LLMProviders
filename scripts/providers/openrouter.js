@@ -93,6 +93,7 @@ async function fetchOpenRouter() {
     const pricing = model.pricing || {};
     const inputPrice = toPerMillion(pricing.prompt);
     const outputPrice = toPerMillion(pricing.completion);
+    const audioPrice = toPerMillion(pricing.audio);
     // pricing.image: per-image cost for image-gen models (e.g. FLUX) — in USD per image
     // (NOT the same as per-pixel input cost on vision models like Gemini, which also have prompt price set)
     const imagePrice = parseFloat(pricing.image || '0');
@@ -103,7 +104,7 @@ async function fetchOpenRouter() {
     if (model.id === 'openrouter/free') continue;
     // Skip models with genuinely zero pricing across all fields (unpriced/placeholder entries).
     // Exception: models with a :free suffix are real free models and should be kept.
-    if (inputPrice === 0 && outputPrice === 0 && imagePrice === 0 && !model.id.endsWith(':free')) continue;
+    if (inputPrice === 0 && outputPrice === 0 && imagePrice === 0 && audioPrice === 0 && !model.id.endsWith(':free')) continue;
 
     const type = getModelType(model.architecture);
     const capabilities = getCapabilities(model.architecture, model.supported_parameters);
@@ -122,6 +123,10 @@ async function fetchOpenRouter() {
     };
 
     if (model.hugging_face_id) modelEntry.hf_id = model.hugging_face_id;
+
+    if (audioPrice > 0) {
+      modelEntry.audio_price_per_1m = Math.round(audioPrice * 10000) / 10000;
+    }
 
     // For pure image-gen models (no per-token pricing), store the per-image price
     if (imagePrice > 0 && inputPrice === 0 && outputPrice === 0) {
@@ -176,6 +181,15 @@ if (require.main === module) {
       const eu = models.filter(m => m.capabilities?.includes('eu-endpoint'));
       console.log(`Fetched ${models.length} models from OpenRouter API ${apiKey ? '(authenticated)' : '(public – set OPENROUTER_API_KEY for more models)'}`);
       console.log(`  Free: ${free.length}, Vision: ${vision.length}, Image-gen: ${imageGen.length}, EU-Endpoint: ${eu.length}`);
+      
+      const audioModels = models.filter(m => m.audio_price_per_1m > 0);
+      console.log(`  Audio-priced models: ${audioModels.length}`);
+
+      console.log('\nSample Audio-priced models:');
+      audioModels.slice(0, 5).forEach((m) =>
+        console.log(`  ${m.name.padEnd(55)} Audio: $${m.audio_price_per_1m}/M [${m.type}]`)
+      );
+
       console.log('\nFirst 5 EU-available:');
       eu.slice(0, 5).forEach((m) =>
         console.log(`  ${m.name.padEnd(55)} $${m.input_price_per_1m} / $${m.output_price_per_1m} [${m.type}]`)

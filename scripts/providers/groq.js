@@ -118,10 +118,23 @@ async function fetchGroq() {
       const model = {
         name,
         type: tableType,
-        input_price_per_1m: inputPrice,
-        output_price_per_1m: outputPrice ?? 0,
         currency: 'USD',
       };
+
+      if (tableType === 'audio') {
+        const headerText = headers[priceCol] || '';
+        if (headerText.includes('hour')) {
+          model.price_per_minute = inputPrice / 60;
+        } else {
+          // TTS: per M characters
+          model.input_price_per_1m = inputPrice;
+          model.output_price_per_1m = 0;
+        }
+      } else {
+        model.input_price_per_1m = inputPrice;
+        model.output_price_per_1m = outputPrice ?? 0;
+      }
+
       if (size_b) model.size_b = size_b;
 
       models.push(model);

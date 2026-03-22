@@ -48,7 +48,7 @@ function updateProviderModels(providers, providerName, models) {
     const existing = existingMap.get(newModel.name);
     if (!existing) return newModel;
 
-    return {
+    const merged = {
       ...existing, 
       ...newModel,
       size_b: newModel.size_b || existing.size_b,
@@ -56,10 +56,27 @@ function updateProviderModels(providers, providerName, models) {
       hf_id: newModel.hf_id || existing.hf_id,
       ollama_id: newModel.ollama_id || existing.ollama_id,
       hf_private: newModel.hf_private ?? existing.hf_private,
+      audio_price_per_1m: newModel.audio_price_per_1m || existing.audio_price_per_1m,
       capabilities: (newModel.capabilities && newModel.capabilities.length > 0) 
         ? newModel.capabilities 
         : existing.capabilities,
     };
+
+    // If new model uses a different pricing unit, clear the old ones
+    if (newModel.price_per_minute !== undefined) {
+      delete merged.input_price_per_1m;
+      delete merged.output_price_per_1m;
+      delete merged.price_per_image;
+    } else if (newModel.price_per_image !== undefined) {
+      delete merged.input_price_per_1m;
+      delete merged.output_price_per_1m;
+      delete merged.price_per_minute;
+    } else if (newModel.input_price_per_1m !== undefined) {
+      delete merged.price_per_image;
+      delete merged.price_per_minute;
+    }
+
+    return merged;
   });
 
   return true;
@@ -72,16 +89,22 @@ const normName = (s) =>
 function estimateParams(config, hfId) {
   if (!config) return null;
   const h = config.hidden_size || config.d_model || config.n_embd;
-  const l = config.num_hidden_layers || config.n_layer;
+  let l = config.num_hidden_layers || config.n_layer;
   const v = config.vocab_size;
-  const i = config.intermediate_size || config.d_ff;
+  const i = config.intermediate_size || config.d_ff || config.encoder_ffn_dim || config.decoder_ffn_dim;
   const numExperts = config.num_local_experts || config.n_experts || config.num_experts || 1;
   const modelType = (config.model_type || '').toLowerCase();
+  const isEncoderDecoder = config.is_encoder_decoder || !!(config.encoder_layers && config.decoder_layers);
+
+  if (isEncoderDecoder) {
+    // For encoder-decoder like Whisper/T5, we sum encoder and decoder layers
+    l = (config.encoder_layers || l) + (config.decoder_layers || 0);
+  }
   
   if (h && l && v) {
     const intermediate = i || (4 * h);
     const vocabParams = v * h;
-    const posParams = (config.max_position_embeddings || 512) * h;
+    const posParams = (config.max_position_embeddings || config.max_source_positions || 512) * h;
     const typeParams = (config.type_vocab_size || 0) * h;
     const embedParams = vocabParams + posParams + typeParams;
     const attentionParams = 4 * (h * h);
@@ -174,6 +197,16 @@ const MANUAL_HF_ID_MAP = {
   'mistral small 2501': 'mistralai/Mistral-Small-24B-Instruct-2501',
   'mistral small 2409': 'mistralai/Mistral-Small-Instruct-2409',
   'mistral small 24b': 'mistralai/Mistral-Small-24B-Instruct-2501',
+  'whisper large v3': 'openai/whisper-large-v3',
+  'whisper large v3 turbo': 'openai/whisper-large-v3-turbo',
+  'whisper large v2': 'openai/whisper-large-v2',
+  'whisper medium': 'openai/whisper-medium',
+  'whisper small': 'openai/whisper-small',
+  'whisper base': 'openai/whisper-base',
+  'whisper tiny': 'openai/whisper-tiny',
+  'gemini 3.1 pro': 'google/gemini-3.1-pro-preview',
+  'gemini 3.1 flash lite': 'google/gemini-3.1-flash-lite-preview',
+  'gemini 3 flash': 'google/gemini-3-flash-preview',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {
@@ -194,6 +227,17 @@ const MANUAL_SIZE_MAP = {
   'black-forest-labs/FLUX.2-max': 32,
   'black-forest-labs/FLUX.2-klein-4B': 4,
   'black-forest-labs/FLUX.2-klein-9B': 9,
+  'openai/whisper-large-v3': 1.55,
+  'openai/whisper-large-v3-turbo': 0.81,
+  'openai/whisper-large-v2': 1.55,
+  'openai/whisper-medium': 0.77,
+  'openai/whisper-small': 0.24,
+  'openai/whisper-base': 0.07,
+  'openai/whisper-tiny': 0.04,
+  'google/gemini-3.1-pro-preview': 292,
+  'google/gemini-3.1-flash-lite-preview': 371,
+  'google/gemini-3-flash-preview': 1000,
+  'xiaomi/mimo-v2-omni': 186,
 };
 
 const PROPRIETARY_KEYWORDS = [

@@ -35,6 +35,13 @@ const MODEL_TYPE_MAP = {
   'other models': 'chat',
 };
 
+const getModelType = (name, rawType) => {
+  const n = (name || '').toLowerCase();
+  if (n.includes('voxtral')) return 'audio';
+  if (n.includes('embed')) return 'embedding';
+  return MODEL_TYPE_MAP[rawType] || 'chat';
+};
+
 function extractApisArray(payload) {
   // Find the "apis":[...] block in the RSC payload string
   const start = payload.indexOf('"apis":[{');
@@ -117,31 +124,53 @@ async function fetchMistral() {
     // Find input and output prices from the price array
     let inputPrice = null;
     let outputPrice = null;
+    let audioPrice = null;
+    let audioPriceMin = null;
 
     for (const p of api.price) {
       const label = (p.value || '').toLowerCase();
       const priceHtml = p.price_dollar || p.price_euro || '';
       const val = parseUsd(priceHtml);
-      if (label.includes('input') || label.includes('in ')) {
-        if (inputPrice === null) inputPrice = val;
+      if (val === null) continue;
+
+      if (label.includes('audio input') || label.includes('audio entrant')) {
+        // Check if it's per minute or per token
+        if (label.includes('min')) audioPriceMin = val;
+        else audioPrice = val;
+      } else if (label.includes('transcribe') || label.includes('reconnaissance')) {
+        audioPriceMin = val;
+      } else if (label.includes('input') || label.includes('in ')) {
+        inputPrice = val;
       } else if (label.includes('output') || label.includes('out ')) {
-        if (outputPrice === null) outputPrice = val;
+        outputPrice = val;
       }
     }
 
     // Skip if we couldn't get any price
-    if (inputPrice === null && outputPrice === null) continue;
+    if (inputPrice === null && outputPrice === null && audioPriceMin === null) continue;
 
-    const type = MODEL_TYPE_MAP[rawType] || 'chat';
+    const type = getModelType(name, rawType);
     const size_b = getSizeB(name);
 
     const model = {
       name,
       type,
-      input_price_per_1m: inputPrice ?? 0,
-      output_price_per_1m: outputPrice ?? 0,
       currency: 'USD',
     };
+
+    if (audioPriceMin !== null) {
+      model.price_per_minute = audioPriceMin;
+    }
+    if (audioPrice !== null) {
+      model.audio_price_per_1m = audioPrice;
+    }
+    if (inputPrice !== null) {
+      model.input_price_per_1m = inputPrice;
+    }
+    if (outputPrice !== null) {
+      model.output_price_per_1m = outputPrice ?? 0;
+    }
+
     if (size_b) model.size_b = size_b;
     if (endpoint) model.api_endpoint = endpoint;
 
@@ -162,9 +191,15 @@ if (require.main === module) {
       models.forEach((m) => { (byType[m.type] = byType[m.type] || []).push(m); });
       for (const [type, ms] of Object.entries(byType)) {
         console.log(`  [${type}]`);
-        ms.forEach((m) =>
-          console.log(`    ${m.name.padEnd(40)} $${m.input_price_per_1m} / $${m.output_price_per_1m}`)
-        );
+        ms.forEach((m) => {
+          let priceStr = '';
+          if (m.price_per_minute !== undefined) priceStr += `$${m.price_per_minute}/min `;
+          if (m.audio_price_per_1m !== undefined) priceStr += `(Audio: $${m.audio_price_per_1m}/M) `;
+          if (m.input_price_per_1m !== undefined || m.output_price_per_1m !== undefined) {
+            priceStr += `$${m.input_price_per_1m ?? 0} / $${m.output_price_per_1m ?? 0}`;
+          }
+          console.log(`    ${m.name.padEnd(40)} ${priceStr.trim()}`);
+        });
       }
     })
     .catch((err) => {

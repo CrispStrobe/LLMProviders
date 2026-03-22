@@ -97,10 +97,16 @@ async function fetchScaleway() {
       const model = {
         name,
         type,
-        input_price_per_1m: inputPrice,
-        output_price_per_1m: outputPrice ?? 0,
         currency: 'EUR',
       };
+
+      if (type === 'audio') {
+        model.price_per_minute = inputPrice;
+      } else {
+        model.input_price_per_1m = inputPrice;
+        model.output_price_per_1m = outputPrice ?? 0;
+      }
+
       if (size_b) model.size_b = size_b;
 
       models.push(model);

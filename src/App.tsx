@@ -12,6 +12,7 @@ interface Model {
   output_price_per_1m?: number
   price_per_image?: number
   price_per_minute?: number
+  audio_price_per_1m?: number
   price_per_1m_tokens_30d?: number
   currency: string
   capabilities?: string[]
@@ -577,12 +578,23 @@ function App() {
                   </td>
                   <td className="size-cell">{model.size_b ? `${model.size_b}B` : '-'}</td>
                   <td>
-                    {model.price_per_image !== undefined && !model.input_price_per_1m
-                      ? `$${model.price_per_image}/MP`
-                      : formatPrice(model.input_price_per_1m, model.currency)}
+                    <div className="price-stack">
+                      {model.price_per_image !== undefined && !model.input_price_per_1m
+                        ? `$${model.price_per_image}/MP`
+                        : model.price_per_minute !== undefined
+                        ? `${formatPrice(model.price_per_minute, model.currency)}/min`
+                        : formatPrice(model.input_price_per_1m, model.currency)}
+                      {model.audio_price_per_1m !== undefined && (
+                        <div className="price-subtext" title="Audio token price">
+                          {CAP_ICON.audio} {formatPrice(model.audio_price_per_1m, model.currency)}/M
+                        </div>
+                      )}
+                    </div>
                   </td>
                   <td>
                     {model.price_per_image !== undefined && !model.output_price_per_1m
+                      ? '–'
+                      : model.price_per_minute !== undefined
                       ? '–'
                       : formatPrice(model.output_price_per_1m, model.currency)}
                   </td>
