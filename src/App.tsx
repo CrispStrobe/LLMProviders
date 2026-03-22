@@ -17,6 +17,7 @@ interface Model {
   capabilities?: string[]
   display_name?: string
   hf_id?: string
+  ollama_id?: string
 }
 
 interface Provider {
@@ -76,10 +77,18 @@ interface BenchmarkEntry {
   aider_pass_rate?: number; // 0-1, first-pass success on 133 coding tasks
   // Artificial Analysis (artificialanalysis.ai)
   aa_id?: string;
+  aa_name?: string;
+  aa_slug?: string;
   aa_intelligence?: number; // 0-100 intelligence index
+  aa_coding?: number;       // 0-100 coding index
+  aa_math?: number;         // 0-100 math index
   aa_mmlu_pro?: number;
   aa_gpqa?: number;
   aa_livecodebench?: number;
+  aa_hle?: number;
+  aa_scicode?: number;
+  aa_math_500?: number;
+  aa_aime?: number;
   aa_tokens_per_s?: number;
   aa_latency_s?: number;
 }
@@ -154,6 +163,9 @@ function App() {
       if (b.lb_name) nameMap.set(normalizeName(b.lb_name), b);
       // Chatbot Arena display name
       if (b.arena_name) nameMap.set(normalizeName(b.arena_name), b);
+      // Artificial Analysis name and slug
+      if (b.aa_name) nameMap.set(normalizeName(b.aa_name), b);
+      if (b.aa_slug) nameMap.set(normalizeName(b.aa_slug), b);
     }
     return { nameMap, hfIdMap };
   }, [liveBenchmarks]);
@@ -532,6 +544,14 @@ function App() {
                               <strong>HF:</strong> 
                               <a href={`https://huggingface.co/${model.hf_id}`} target="_blank" rel="noopener noreferrer" className="hf-link">
                                 {model.hf_id} ↗
+                              </a>
+                            </div>
+                          )}
+                          {model.ollama_id && (
+                            <div className="tooltip-row">
+                              <strong>Ollama:</strong> 
+                              <a href={`https://ollama.com/library/${model.ollama_id}`} target="_blank" rel="noopener noreferrer" className="hf-link">
+                                {model.ollama_id} ↗
                               </a>
                             </div>
                           )}

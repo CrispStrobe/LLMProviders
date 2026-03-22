@@ -86,12 +86,12 @@ header p {
   background-color: var(--white);
   cursor: pointer;
 }
-
 .table-container {
   background-color: var(--white);
   border-radius: 0.75rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
+  overflow-x: auto;
+  margin-bottom: 2rem;
   border: 1px solid var(--border-color);
 }
 
@@ -99,7 +99,9 @@ table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  min-width: 800px; /* Ensure table doesn't squash too much */
 }
+
 
 th {
   background-color: #f1f5f9;
