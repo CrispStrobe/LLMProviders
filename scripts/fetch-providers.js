@@ -181,8 +181,13 @@ async function propagateExtraData(data) {
       if (provider.name !== 'OpenRouter') {
         const match = findOrMatch(model.name, orIndex);
         if (match) {
-          if (!model.capabilities || model.capabilities.length === 0) { model.capabilities = match.capabilities; propagatedCaps++; }
+          if (!model.capabilities || model.capabilities.length === 0) {
+            // Propagate model capabilities (tools, vision, etc.) but NOT provider-specific ones like eu-endpoint
+            model.capabilities = (match.capabilities || []).filter(c => c !== 'eu-endpoint');
+            propagatedCaps++;
+          }
           if (model.type === 'chat' && match.type !== 'chat') model.type = match.type;
+
           if (!model.size_b && match.size_b) { model.size_b = match.size_b; propagatedSize++; }
           // Crucial: inherit hf_id to enable Hub API fallback below
           if (!model.hf_id && match.hf_id) model.hf_id = match.hf_id;

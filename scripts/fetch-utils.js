@@ -40,7 +40,9 @@ async function fetchRobust(url, options = {}) {
       clearTimeout(timer);
       lastError = err;
       const isTimeout = err.name === 'AbortError';
-      if (i < retries - 1) {
+      const isAuthOrNotFound = err.message.includes('401') || err.message.includes('404');
+      
+      if (i < retries - 1 && !isAuthOrNotFound) {
         const delay = backoff * Math.pow(2, i) + Math.random() * 1000;
         const msg = isTimeout ? `Timeout after ${timeout}ms` : err.message;
         process.stdout.write(`\n  ⚠ Fetch error from ${url}: ${msg}. Retrying in ${Math.round(delay)}ms... (${i + 1}/${retries})\n`);
