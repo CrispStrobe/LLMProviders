@@ -53,7 +53,7 @@ function updateProviderModels(providers, providerName, models) {
     return false;
   }
 
-  // Smart merge: preserve existing metadata (size_b, hf_id, capabilities) if missing in new data
+  // Smart merge: preserve existing metadata (size_b, hf_id, capabilities, hf_private) if missing in new data
   const existingMap = new Map((provider.models || []).map(m => [m.name, m]));
   
   provider.models = models.map(newModel => {
@@ -66,6 +66,7 @@ function updateProviderModels(providers, providerName, models) {
       // But preserve these if newModel doesn't have them
       size_b: newModel.size_b || existing.size_b,
       hf_id: newModel.hf_id || existing.hf_id,
+      hf_private: newModel.hf_private ?? existing.hf_private,
       capabilities: (newModel.capabilities && newModel.capabilities.length > 0) 
         ? newModel.capabilities 
         : existing.capabilities,
@@ -112,7 +113,7 @@ function findOrMatch(modelName, orIndex) {
   for (const entry of orIndex) {
     if (entry.norm === n) return entry;
   }
-  // 2. Provider model name starts with OR model part (e.g. "claude-3-5-sonnet-20241022" starts with "claude-3-5-sonnet")
+  // 2. Provider model name starts with OR model part
   let best = null;
   let bestLen = 0;
   for (const entry of orIndex) {
@@ -122,12 +123,11 @@ function findOrMatch(modelName, orIndex) {
     }
   }
   if (best) return best;
-  // 3. OR model part starts with provider name (e.g. "claude-haiku-4-5" → "claude-haiku-4-5-20251001")
+  // 3. OR model part starts with provider name
   for (const entry of orIndex) {
     if (entry.norm.startsWith(n + ' ')) return entry;
   }
   // 4. OR model norm contains provider name as a contiguous word sequence.
-  // Handles short display names like "Sonnet 4.6" matching inside "claude sonnet 4 6".
   if (n.length >= 5) {
     let bestC = null, bestCLen = Infinity;
     for (const entry of orIndex) {
@@ -139,8 +139,7 @@ function findOrMatch(modelName, orIndex) {
     }
     if (bestC) return bestC;
   }
-  // 5. All tokens of provider name appear in OR norm (handles word-order differences).
-  // e.g. "Sonnet 3.7" → tokens ["sonnet","3","7"] match inside "claude 3 7 sonnet 20250219".
+  // 5. All tokens of provider name appear in OR norm.
   const tokens = n.split(' ');
   if (tokens.length >= 2 && n.length >= 7) {
     let bestT = null, bestTLen = Infinity;
@@ -157,23 +156,30 @@ function findOrMatch(modelName, orIndex) {
 
 // Fetch total_parameters from Hugging Face Hub API (Metadata)
 async function fetchHFSize(hfId) {
-  if (!hfId || hfId.includes(' ') || !hfId.includes('/')) return null;
+  if (!hfId || hfId.includes(' ') || !hfId.includes('/')) return { error: 'Invalid ID' };
   const token = process.env.HF_TOKEN;
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
   try {
+    // Limit to 1 retry for technical metadata lookups
     const data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers, retries: 1 });
+    
     // Check various common metadata locations for total parameters
     let params = data.safetensors?.total || data.config?.total_parameters || data.config?.model_type_params;
     if (!params && data.cardData?.model_details?.parameters) {
       const match = data.cardData.model_details.parameters.match(/([\d.]+)\s*[Bb]/);
       if (match) params = parseFloat(match[1]) * 1_000_000_000;
     }
-    if (!params) return null;
+    
+    if (!params) return { error: 'No parameter data in Hub metadata' };
+    
     const b = params / 1_000_000_000;
     // Keep 2 decimals for small models (<1B), 1 decimal for others
-    return b < 1 ? Math.round(b * 100) / 100 : Math.round(b * 10) / 10;
+    const size = b < 1 ? Math.round(b * 100) / 100 : Math.round(b * 10) / 10;
+    return { size };
   } catch (e) {
-    return null; // Silently skip failures for individual models
+    // Flag as private if we get 401 (unauthorized) or 404 (not found - often private/aliased)
+    const isPrivate = e.message.includes('401') || e.message.includes('404');
+    return { error: e.message, private: isPrivate };
   }
 }
 
@@ -186,6 +192,19 @@ const MANUAL_HF_ID_MAP = {
   'whisper large v3': 'openai/whisper-large-v3',
   'step 3 5 flash': 'stepfun-ai/Step-3.5-Flash',
   'bge m3': 'BAAI/bge-m3',
+  'lightonocr 2': 'lightonai/LightOnOCR-2-1B',
+  'flux 1 schnell': 'black-forest-labs/FLUX.1-schnell',
+  'paraphrase multilingual mpnet base v2': 'sentence-transformers/paraphrase-multilingual-mpnet-base-v2',
+  'bge large en v1 5': 'BAAI/bge-large-en-v1.5',
+  'bge multilingual gemma2': 'BAAI/bge-multilingual-gemma2',
+  'photomaker v2': 'TencentARC/PhotoMaker-V2',
+  'flux schnell': 'black-forest-labs/FLUX.1-schnell',
+  // Qwen mappings
+  'qwen3 coder flash': 'Qwen/Qwen2.5-Coder-7B-Instruct', // Counterpart mapping
+  'qwen3 coder plus': 'Qwen/Qwen2.5-Coder-32B-Instruct',
+  'qwen 3 5 flash': 'Qwen/Qwen2.5-7B-Instruct',
+  'qwen vl plus': 'Qwen/Qwen2-VL-7B-Instruct',
+  'qwen vl max': 'Qwen/Qwen2-VL-72B-Instruct',
 };
 
 const MANUAL_SIZE_MAP = {
@@ -282,6 +301,7 @@ async function propagateExtraData(data) {
           }
           // Crucial: inherit hf_id to enable Hub API fallback below
           if (!model.hf_id && match.hf_id) model.hf_id = match.hf_id;
+          if (model.hf_private === undefined && match.hf_private !== undefined) model.hf_private = match.hf_private;
         }
       }
 
@@ -293,7 +313,8 @@ async function propagateExtraData(data) {
       }
 
       // 6. QUEUE: Still missing size? Try Hub API metadata lookup
-      if (!model.size_b && (model.name.includes('/') || model.hf_id)) {
+      // Skip models that we've previously marked as private/unauthorized
+      if (!model.size_b && !model.hf_private && (model.name.includes('/') || model.hf_id)) {
         hfLookupQueue.push(model);
       }
     }
@@ -303,18 +324,26 @@ async function propagateExtraData(data) {
   const uniqueIds = [...new Set(hfLookupQueue.map(m => m.hf_id || m.name).filter(id => id.includes('/')))].slice(0, 200);
   if (uniqueIds.length > 0) {
     console.log(`\n  HF Hub: technical metadata inspection for ${uniqueIds.length} models...`);
-    const idToSize = new Map();
+    const idToResult = new Map();
     
     // Process sequentially with small delay to avoid 429 rate limits
     for (let i = 0; i < uniqueIds.length; i++) {
       const id = uniqueIds[i];
       process.stdout.write(`    [${i + 1}/${uniqueIds.length}] ${id.padEnd(50)} `);
-      const size = await fetchHFSize(id);
-      if (size) {
-        idToSize.set(id, size);
-        process.stdout.write(`✓ ${size}B\n`);
+      const result = await fetchHFSize(id);
+      
+      if (result.size) {
+        idToResult.set(id, result);
+        process.stdout.write(`✓ ${result.size}B\n`);
       } else {
-        process.stdout.write(`✗\n`);
+        idToResult.set(id, result);
+        process.stdout.write(`✗ ${result.error || 'Unknown Error'}\n`);
+        
+        // CIRCUIT BREAKER: Stop if we hit a rate limit (429)
+        if (result.error && result.error.includes('429')) {
+          console.warn('\n  ⚠ HIT RATE LIMIT (429) - Stopping further HF lookups for this run.');
+          break;
+        }
       }
       await new Promise(r => setTimeout(r, 50)); // Tiny delay
     }
@@ -322,16 +351,20 @@ async function propagateExtraData(data) {
     for (const model of hfLookupQueue) {
       if (!model.size_b) {
         const id = model.hf_id || model.name;
-        const size = idToSize.get(id);
-        if (size) {
-          model.size_b = size;
-          hfSizeFetched++;
+        const result = idToResult.get(id);
+        if (result) {
+          if (result.size) {
+            model.size_b = result.size;
+            hfSizeFetched++;
+          }
+          if (result.private) {
+            model.hf_private = true;
+          }
         }
       }
     }
     console.log(`  ✓ Total ${hfSizeFetched} new sizes from HF metadata`);
   }
-
 
   if (autoTagged > 0) console.log(`Auto-tagged ${autoTagged} image-gen/embedding models.`);
   if (propagatedCaps > 0) console.log(`Propagated capabilities to ${propagatedCaps} models.`);
