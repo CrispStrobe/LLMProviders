@@ -151,6 +151,84 @@ tr.group-divider {
   color: #1e293b;
 }
 
+.model-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.model-info-container {
+  position: relative;
+  display: inline-flex;
+  cursor: help;
+}
+
+.info-icon {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.model-info-container:hover .info-icon {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+.model-tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  pointer-events: none;
+}
+
+.model-info-container:hover .model-tooltip {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.model-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1e293b transparent transparent transparent;
+}
+
+.tooltip-row {
+  margin-bottom: 0.25rem;
+}
+.tooltip-row:last-child {
+  margin-bottom: 0;
+}
+.tooltip-row strong {
+  color: #94a3b8;
+  margin-right: 0.25rem;
+}
+
+.hf-link {
+  color: #60a5fa;
+  text-decoration: none;
+}
+.hf-link:hover {
+  text-decoration: underline;
+}
+
 .size-cell {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;

@@ -500,7 +500,29 @@ function App() {
                       {model.complianceStatus}
                     </span>
                   </td>
-                  <td className="model-name">{model.display_name ?? model.name}</td>
+                  <td className="model-name">
+                    <div className="model-name-wrapper">
+                      {model.display_name ?? model.name}
+                      <div className="model-info-container">
+                        <span className="info-icon">ⓘ</span>
+                        <div className="model-tooltip">
+                          <div className="tooltip-row"><strong>Type:</strong> {model.type}</div>
+                          {model.size_b && <div className="tooltip-row"><strong>Size:</strong> {model.size_b}B</div>}
+                          {model.hf_id && (
+                            <div className="tooltip-row">
+                              <strong>HF:</strong> 
+                              <a href={`https://huggingface.co/${model.hf_id}`} target="_blank" rel="noopener noreferrer" className="hf-link">
+                                {model.hf_id} ↗
+                              </a>
+                            </div>
+                          )}
+                          {model.capabilities && model.capabilities.length > 0 && (
+                            <div className="tooltip-row"><strong>Caps:</strong> {model.capabilities.join(', ')}</div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
                   <td className="caps-cell">
                     {model.type === 'embedding' && (
                       <span className="cap-badge cap-embedding" title="embedding">{CAP_ICON.embedding}</span>

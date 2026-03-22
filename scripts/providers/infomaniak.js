@@ -24,9 +24,9 @@ const { getText } = require('../fetch-utils');
 
 const URL = 'https://www.infomaniak.com/en/hosting/ai-services/prices';
 
-const parseChf = (text) => {
+const parsePrice = (text) => {
   if (!text) return null;
-  if (text.trim().toLowerCase() === 'free') return 0;
+  if (text.trim().toLowerCase() === 'free' || text.trim().toLowerCase() === 'gratuit') return 0;
   const m = text.trim().match(/([\d]+\.[\d]*|[\d]+)/);
   return m ? parseFloat(m[1]) : null;
 };
@@ -50,6 +50,7 @@ async function fetchInfomaniak() {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       'Accept-Language': 'en-US,en;q=0.9',
+      'Cookie': 'STATIC_CURRENCY=EUR; locale=en_US',
     },
   });
   const $ = cheerio.load(html);
@@ -83,12 +84,12 @@ async function fetchInfomaniak() {
       if (currText && /^[A-Z]{3}$/.test(currText)) currency = currText;
 
       const valSpan = $(priceRow).find('[class*="IkTypography-module--h3"]').first();
-      const val = parseChf(valSpan.text());
+      const val = parsePrice(valSpan.text());
       if (val === null) return;
 
-      if (label.includes('incoming') || label.includes('input')) {
+      if (label.includes('entrant') || label.includes('incoming') || label.includes('input')) {
         inputPrice = val;
-      } else if (label.includes('outgoing') || label.includes('output')) {
+      } else if (label.includes('sortant') || label.includes('outgoing') || label.includes('output')) {
         outputPrice = val;
       } else if (label.includes('image') || label.includes('per image')) {
         inputPrice = val; // image models: price per image stored as input
