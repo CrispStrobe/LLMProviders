@@ -219,6 +219,9 @@ const MANUAL_HF_ID_MAP = {
   'mistral embed': 'mistralai/mistral-embed',
   'codestral embed': 'mistralai/mistral-embed',
   'e5 mistral 7b instruct': 'intfloat/e5-mistral-7b-instruct',
+  'qwen3-embedding-8b': 'Qwen/Qwen3-Embedding-8B',
+  'bge-multilingual-gemma2': 'BAAI/bge-multilingual-gemma2',
+  'bge-en-icl': 'BAAI/bge-en-icl',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {

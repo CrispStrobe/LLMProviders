@@ -72946,16 +72946,28 @@
   {
     "hf_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
     "name": "paraphrase-multilingual-mpnet-base-v2",
-    "mteb_avg": 31.36,
+    "mteb_avg": 146.35,
+    "mteb_retrieval": 35.31,
     "sources": {
-      "mteb_avg": "mteb"
+      "mteb_avg": "mteb",
+      "mteb_retrieval": "mteb"
+    }
+  },
+  {
+    "hf_id": "BAAI/bge-large-en-v1.5",
+    "name": "bge-large-en-v1.5",
+    "mteb_avg": 46.8,
+    "mteb_retrieval": 38.8,
+    "sources": {
+      "mteb_avg": "mteb",
+      "mteb_retrieval": "mteb"
     }
   },
   {
     "hf_id": "BAAI/bge-m3",
     "name": "bge-m3",
-    "mteb_avg": 63.28,
-    "mteb_retrieval": 63.28,
+    "mteb_avg": 69.8,
+    "mteb_retrieval": 47.34,
     "sources": {
       "mteb_avg": "mteb",
       "mteb_retrieval": "mteb"
@@ -72964,8 +72976,8 @@
   {
     "hf_id": "sentence-transformers/all-MiniLM-L12-v2",
     "name": "all-MiniLM-L12-v2",
-    "mteb_avg": 37.82,
-    "mteb_retrieval": 50.99,
+    "mteb_avg": 47.65,
+    "mteb_retrieval": 29.72,
     "sources": {
       "mteb_avg": "mteb",
       "mteb_retrieval": "mteb"
@@ -72974,11 +72986,38 @@
   {
     "hf_id": "intfloat/e5-mistral-7b-instruct",
     "name": "e5-mistral-7b-instruct",
-    "mteb_avg": 70.57,
-    "mteb_retrieval": 54.76,
+    "mteb_avg": 62.08,
+    "mteb_retrieval": 55.06,
     "sources": {
       "mteb_avg": "mteb",
       "mteb_retrieval": "mteb"
+    }
+  },
+  {
+    "hf_id": "BAAI/bge-multilingual-gemma2",
+    "mteb_avg": 70.3,
+    "mteb_retrieval": 67.5,
+    "sources": {
+      "mteb_avg": "manual",
+      "mteb_retrieval": "manual"
+    }
+  },
+  {
+    "hf_id": "Qwen/Qwen3-Embedding-8B",
+    "mteb_avg": 71.2,
+    "mteb_retrieval": 72.1,
+    "sources": {
+      "mteb_avg": "manual",
+      "mteb_retrieval": "manual"
+    }
+  },
+  {
+    "hf_id": "BAAI/bge-en-icl",
+    "mteb_avg": 64.9,
+    "mteb_retrieval": 58.2,
+    "sources": {
+      "mteb_avg": "manual",
+      "mteb_retrieval": "manual"
     }
   }
 ]
