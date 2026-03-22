@@ -350,9 +350,10 @@ function App() {
 
     const groups: Record<string, typeof sortedModels> = {};
     sortedModels.forEach(m => {
-      const name = m.name.toLowerCase();
-      if (!groups[name]) groups[name] = [];
-      groups[name].push(m);
+      // Prioritize hf_id for grouping key
+      const key = m.hf_id ? m.hf_id.toLowerCase() : m.name.toLowerCase();
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(m);
     });
 
     const result: typeof sortedModels = [];
@@ -492,7 +493,12 @@ function App() {
           </thead>
           <tbody>
             {displayModels.map((model, idx) => {
-              const isGroupStart = groupByModel && (idx === 0 || displayModels[idx-1].name.toLowerCase() !== model.name.toLowerCase());
+              const prev = displayModels[idx - 1];
+              const isGroupStart = groupByModel && (
+                idx === 0 || 
+                (prev.hf_id?.toLowerCase() !== model.hf_id?.toLowerCase()) ||
+                (!model.hf_id && prev.name.toLowerCase() !== model.name.toLowerCase())
+              );
               return (
                 <tr key={`${model.provider.name}-${model.name}-${idx}`} className={isGroupStart ? 'group-divider' : ''}>
                   <td className="provider-cell">{model.provider.name}</td>

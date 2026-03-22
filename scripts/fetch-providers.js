@@ -205,10 +205,31 @@ const MANUAL_HF_ID_MAP = {
   'qwen 3 5 flash': 'Qwen/Qwen2.5-7B-Instruct',
   'qwen vl plus': 'Qwen/Qwen2-VL-7B-Instruct',
   'qwen vl max': 'Qwen/Qwen2-VL-72B-Instruct',
+  // FLUX detailed mappings
+  'flux 1 dev': 'black-forest-labs/FLUX.1-dev',
+  'flux 2 klein 4b': 'black-forest-labs/FLUX.2-klein-4B',
+  'flux 2 klein 9b': 'black-forest-labs/FLUX.2-klein-9B',
+  'flux 2 pro': 'black-forest-labs/FLUX.2-pro',
+  'flux 1 pro': 'black-forest-labs/FLUX.1-pro',
+  'flux 2 flex': 'black-forest-labs/FLUX.2-flex',
+  'flux 2 max': 'black-forest-labs/FLUX.2-max',
+  'flux 1 kontext pro': 'black-forest-labs/FLUX.1-pro',
+  'flux 1 1 pro': 'black-forest-labs/FLUX.1-pro',
+  'flux 1 1 pro ultra': 'black-forest-labs/FLUX.1-pro',
+  'flux 1 fill pro': 'black-forest-labs/FLUX.1-pro',
+  'flux 1 kontext max': 'black-forest-labs/FLUX.1-pro',
 };
 
 const MANUAL_SIZE_MAP = {
   'BAAI/bge-m3': 0.57,
+  'black-forest-labs/FLUX.1-schnell': 12,
+  'black-forest-labs/FLUX.1-dev': 12,
+  'black-forest-labs/FLUX.2-klein-4B': 4,
+  'black-forest-labs/FLUX.2-klein-9B': 9,
+  'black-forest-labs/FLUX.2-pro': 12,
+  'black-forest-labs/FLUX.1-pro': 12,
+  'black-forest-labs/FLUX.2-flex': 12,
+  'black-forest-labs/FLUX.2-max': 12,
 };
 
 // Propagate capabilities and size from benchmarks, OpenRouter, or HF Hub to all other providers' models.
