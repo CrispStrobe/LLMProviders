@@ -52,7 +52,26 @@ function updateProviderModels(providers, providerName, models) {
     console.warn(`  ⚠  Provider "${providerName}" not found in providers.json – skipping.`);
     return false;
   }
-  provider.models = models;
+
+  // Smart merge: preserve existing metadata (size_b, hf_id, capabilities) if missing in new data
+  const existingMap = new Map((provider.models || []).map(m => [m.name, m]));
+  
+  provider.models = models.map(newModel => {
+    const existing = existingMap.get(newModel.name);
+    if (!existing) return newModel;
+
+    return {
+      ...existing, // Start with existing metadata
+      ...newModel, // Overwrite with new prices/type
+      // But preserve these if newModel doesn't have them
+      size_b: newModel.size_b || existing.size_b,
+      hf_id: newModel.hf_id || existing.hf_id,
+      capabilities: (newModel.capabilities && newModel.capabilities.length > 0) 
+        ? newModel.capabilities 
+        : existing.capabilities,
+    };
+  });
+
   return true;
 }
 
@@ -142,7 +161,7 @@ async function fetchHFSize(hfId) {
   const token = process.env.HF_TOKEN;
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
   try {
-    const data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers });
+    const data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers, retries: 1 });
     // Check various common metadata locations for total parameters
     let params = data.safetensors?.total || data.config?.total_parameters || data.config?.model_type_params;
     if (!params && data.cardData?.model_details?.parameters) {
@@ -164,7 +183,13 @@ const EMBEDDER_KEYWORDS = ['embed', 'bge', 'gte', 'e5', 'stella', 'minilm', 'mul
 const MANUAL_HF_ID_MAP = {
   'all minilm l12 v2': 'sentence-transformers/all-MiniLM-L12-v2',
   'whisper v3': 'openai/whisper-large-v3',
-  'whisper-large-v3': 'openai/whisper-large-v3',
+  'whisper large v3': 'openai/whisper-large-v3',
+  'step 3 5 flash': 'stepfun-ai/Step-3.5-Flash',
+  'bge m3': 'BAAI/bge-m3',
+};
+
+const MANUAL_SIZE_MAP = {
+  'BAAI/bge-m3': 0.57,
 };
 
 // Propagate capabilities and size from benchmarks, OpenRouter, or HF Hub to all other providers' models.
@@ -210,12 +235,15 @@ async function propagateExtraData(data) {
 
       // 1. STRUCTURED LOOKUP: Match size by hf_id if available (Benchmark gold-standard)
       if (!model.size_b && model.hf_id) {
-        const size = hfIdToSize.get(model.hf_id.toLowerCase());
-        if (size) {
-          model.size_b = size;
+        if (MANUAL_SIZE_MAP[model.hf_id]) {
+          model.size_b = MANUAL_SIZE_MAP[model.hf_id];
           propagatedSize++;
+        } else {
+          const size = hfIdToSize.get(model.hf_id.toLowerCase());
+          if (size) { model.size_b = size; propagatedSize++; }
         }
       }
+
 
       // 2. AUTO-TAG image-gen and embedding models
       if (model.type === 'image' && (!model.capabilities || !model.capabilities.length)) {
@@ -271,26 +299,39 @@ async function propagateExtraData(data) {
     }
   }
 
-  // 7. HUB API: Inspect technical metadata (Limit 30 unique IDs to avoid long startup)
-  const uniqueIds = [...new Set(hfLookupQueue.map(m => m.hf_id || m.name).filter(id => id.includes('/')))].slice(0, 30);
+  // 7. HUB API: Inspect technical metadata (Limit 200 unique IDs to ensure better coverage)
+  const uniqueIds = [...new Set(hfLookupQueue.map(m => m.hf_id || m.name).filter(id => id.includes('/')))].slice(0, 200);
   if (uniqueIds.length > 0) {
-    process.stdout.write(`  HF Hub: technical metadata inspection for ${uniqueIds.length} models... `);
+    console.log(`\n  HF Hub: technical metadata inspection for ${uniqueIds.length} models...`);
     const idToSize = new Map();
-    await Promise.all(uniqueIds.map(async (id) => {
+    
+    // Process sequentially with small delay to avoid 429 rate limits
+    for (let i = 0; i < uniqueIds.length; i++) {
+      const id = uniqueIds[i];
+      process.stdout.write(`    [${i + 1}/${uniqueIds.length}] ${id.padEnd(50)} `);
       const size = await fetchHFSize(id);
-      if (size) idToSize.set(id, size);
-    }));
+      if (size) {
+        idToSize.set(id, size);
+        process.stdout.write(`✓ ${size}B\n`);
+      } else {
+        process.stdout.write(`✗\n`);
+      }
+      await new Promise(r => setTimeout(r, 50)); // Tiny delay
+    }
+
     for (const model of hfLookupQueue) {
       if (!model.size_b) {
-        const size = idToSize.get(model.hf_id || model.name);
+        const id = model.hf_id || model.name;
+        const size = idToSize.get(id);
         if (size) {
           model.size_b = size;
           hfSizeFetched++;
         }
       }
     }
-    console.log(`✓ ${hfSizeFetched} sizes found`);
+    console.log(`  ✓ Total ${hfSizeFetched} new sizes from HF metadata`);
   }
+
 
   if (autoTagged > 0) console.log(`Auto-tagged ${autoTagged} image-gen/embedding models.`);
   if (propagatedCaps > 0) console.log(`Propagated capabilities to ${propagatedCaps} models.`);
