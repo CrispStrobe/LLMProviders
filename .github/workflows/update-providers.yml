@@ -36,5 +36,6 @@ jobs:
           git add data/providers.json
           git diff --staged --quiet && echo "No changes." || (
             git commit -m "chore: update provider data [skip ci]" &&
+            git pull --rebase origin main &&
             git push
           )

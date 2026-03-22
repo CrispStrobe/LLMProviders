@@ -33,5 +33,6 @@ jobs:
           git add data/benchmarks.json
           git diff --staged --quiet && echo "No changes." || (
             git commit -m "chore: update benchmark data [skip ci]" &&
+            git pull --rebase origin main &&
             git push
           )
