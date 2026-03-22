@@ -245,6 +245,9 @@ const MANUAL_HF_ID_MAP = {
   'kimi-k2-thinking': 'moonshotai/Kimi-K2-Thinking',
   'llama 4 scout': 'meta-llama/Llama-4-Scout-17B-16E-Instruct',
   'llama 4 maverick': 'meta-llama/Llama-4-Maverick-17B-128E-Instruct',
+  'magistral small': 'mistralai/Magistral-Small-2506',
+  'pixtral large': 'mistralai/Pixtral-Large-Instruct-2411',
+  'hermes 3 llama 3.1 405b': 'NousResearch/Hermes-3-Llama-3.1-405B',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {
