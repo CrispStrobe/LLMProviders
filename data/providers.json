@@ -1316,7 +1316,10 @@
           "output_price_per_1m": 1.8,
           "currency": "USD",
           "size_b": 253,
-          "flavor": "base"
+          "flavor": "base",
+          "capabilities": [
+            "reasoning"
+          ]
         },
         {
           "name": "Gemma-2-2b-it (base)",
@@ -1622,11 +1625,14 @@
         },
         {
           "name": "pixtral-12b-2409",
-          "type": "chat",
+          "type": "vision",
           "input_price_per_1m": 0.2,
           "output_price_per_1m": 0.2,
           "currency": "EUR",
-          "size_b": 12
+          "size_b": 12,
+          "capabilities": [
+            "vision"
+          ]
         },
         {
           "name": "voxtral-small-24b-2507",
@@ -1917,12 +1923,15 @@
         },
         {
           "name": "Pixtral 12B",
-          "type": "chat",
+          "type": "vision",
           "input_price_per_1m": 0.15,
           "output_price_per_1m": 0.15,
           "currency": "USD",
           "size_b": 12,
-          "api_endpoint": "pixtral-12b"
+          "api_endpoint": "pixtral-12b",
+          "capabilities": [
+            "vision"
+          ]
         },
         {
           "name": "Mistral NeMo",
@@ -2058,7 +2067,7 @@
           "name": "openai/gpt-oss-20b",
           "type": "chat",
           "input_price_per_1m": 0.03,
-          "output_price_per_1m": 0.14,
+          "output_price_per_1m": 0.11,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -2770,6 +2779,17 @@
             "tools"
           ],
           "size_b": 70
+        },
+        {
+          "name": "mistralai/pixtral-12b",
+          "type": "vision",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.1,
+          "currency": "USD",
+          "capabilities": [
+            "vision"
+          ],
+          "size_b": 12
         },
         {
           "name": "qwen/qwen3-vl-32b-instruct",
@@ -4131,6 +4151,17 @@
             "tools",
             "reasoning"
           ]
+        },
+        {
+          "name": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+          "type": "chat",
+          "input_price_per_1m": 0.6,
+          "output_price_per_1m": 1.8,
+          "currency": "USD",
+          "capabilities": [
+            "reasoning"
+          ],
+          "size_b": 253
         },
         {
           "name": "microsoft/wizardlm-2-8x22b",
