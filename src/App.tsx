@@ -592,7 +592,7 @@ function App() {
                             <div className="tooltip-row"><strong>Caps:</strong> {model.capabilities.join(', ')}</div>
                           )}
                           {bm?.ocr_avg !== undefined && (
-                            <div className="tooltip-row"><strong>OCR:</strong> {bm.ocr_avg.toFixed(1)} (Benchmark)</div>
+                            <div className="tooltip-row"><strong>OCR:</strong> {bm.ocr_avg.toFixed(1)} (olmOCR-bench)</div>
                           )}
                         </div>
                       </div>

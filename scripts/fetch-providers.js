@@ -225,6 +225,23 @@ const MANUAL_HF_ID_MAP = {
   'wizardlm 2 8x22b': 'alpindale/WizardLM-2-8x22B',
   'parasail-kimi-k2-instruct': 'moonshotai/Kimi-K2-Instruct',
   'grok-2-1212': 'xai-org/grok-2',
+  'llama 3.1 8b instruct': 'meta-llama/Llama-3.1-8B-Instruct',
+  'llama 3.3 70b instruct': 'meta-llama/Llama-3.3-70B-Instruct',
+  'llama 3.1 405b instruct': 'meta-llama/Llama-3.1-405B-Instruct',
+  'llama 3.2 1b instruct': 'meta-llama/Llama-3.2-1B-Instruct',
+  'llama 3.2 3b instruct': 'meta-llama/Llama-3.2-3B-Instruct',
+  'code llama 13b instruct hf': 'codellama/CodeLlama-13b-Instruct-hf',
+  'qwen-plus': 'Qwen/Qwen3-Coder-30B-A3B-Instruct',
+  'qwen-max': 'Qwen/Qwen3-Coder-480B-A35B-Instruct',
+  'flux.1 [schnell]': 'black-forest-labs/FLUX.1-schnell',
+  'flux schnell': 'black-forest-labs/FLUX.1-schnell',
+  'flux-schnell': 'black-forest-labs/FLUX.1-schnell',
+  'flux-dev': 'black-forest-labs/FLUX.1-dev',
+  'granite-3.1-8b': 'ibm-granite/granite-3.1-8b-instruct',
+  'apertus-70b-instruct-2509': 'HuggingFaceFW/abliterated-llama-3-70b-instruct',
+  'teuken-7b instruct': 'Teuken/Teuken-7B-Instruct',
+  'llama 4 scout': 'meta-llama/Llama-4-Scout-17B-16E-Instruct',
+  'llama 4 maverick': 'meta-llama/Llama-4-Maverick-17B-128E-Instruct',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {
@@ -268,7 +285,8 @@ const MANUAL_SIZE_MAP = {
 
 const PROPRIETARY_KEYWORDS = [
   'gpt-4', 'gpt-5', 'sonnet', 'opus', 'haiku', 'gemini', 'o1-', 'o3-', 'o4-', 'claude',
-  'magistral', 'voxtral', 'moderation', 'embed', 'mistral embed', 'codestral embed'
+  'magistral', 'voxtral', 'moderation', 'embed', 'mistral embed', 'codestral embed',
+  'grok', 'sonar', 'perplexity', 'amazon', 'nova', 'inflection', 'kimi'
 ];
 
 async function propagateExtraData(data) {
