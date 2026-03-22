@@ -16,6 +16,8 @@ const { getJson, getText, fetchRobust } = require('./fetch-utils');
 const DATA_FILE = path.join(__dirname, '..', 'data', 'providers.json');
 
 // Registry of all available fetchers.
+// Each module must export { providerName, fetch<Name> }.
+// Add new providers here as scripts/providers/<name>.js modules.
 const FETCHER_MODULES = {
   scaleway: require('./providers/scaleway'),
   openrouter: require('./providers/openrouter'),
@@ -30,6 +32,7 @@ const FETCHER_MODULES = {
 };
 
 const FETCHERS = Object.entries(FETCHER_MODULES).map(([key, mod]) => {
+  // Find the exported async function (the one that isn't providerName)
   const fn = Object.values(mod).find((v) => typeof v === 'function');
   if (!fn) throw new Error(`Module for ${key} exports no function`);
   return { key, providerName: mod.providerName, fn };
@@ -53,14 +56,18 @@ function updateProviderModels(providers, providerName, models) {
   return true;
 }
 
+// Normalize a model name/ID for fuzzy matching (same as App.tsx normalizeName).
 const normName = (s) =>
   s.toLowerCase().replace(/[-_.:]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
 
+// Build an index of normalized OpenRouter model-part → { capabilities, type, size_b, hf_id }
+// Only includes entries that carry non-trivial capability data.
 function buildOrIndex(orProvider) {
   if (!orProvider) return [];
   const index = [];
   for (const m of orProvider.models || []) {
     if (!m.capabilities || m.capabilities.length === 0) continue;
+    // Strip :free suffix and take the model part after '/'
     const modelPart = m.name.replace(/:free$/, '').split('/').pop();
     index.push({
       norm: normName(modelPart),
@@ -73,30 +80,48 @@ function buildOrIndex(orProvider) {
   return index;
 }
 
+// For a given model name, find the best matching OpenRouter index entry.
+// Returns { capabilities, type, size_b, hf_id } or null.
 function findOrMatch(modelName, orIndex) {
+  // Use the model part (after last '/') for matching, strip :region/@suffix
   const raw = modelName.replace(/@[^/]+$/, '').replace(/:[^/]+$/, '');
   const modelPart = raw.includes('/') ? raw.split('/').pop() : raw;
+  // Strip reasoning/thinking suffixes that don't appear in OR model IDs
   const n = normName(modelPart).replace(/ (?:reasoning|thinking|extended|nothinking)$/, '');
 
-  for (const entry of orIndex) if (entry.norm === n) return entry;
-  let best = null, bestLen = 0;
+  // 1. Exact match
+  for (const entry of orIndex) {
+    if (entry.norm === n) return entry;
+  }
+  // 2. Provider model name starts with OR model part (e.g. "claude-3-5-sonnet-20241022" starts with "claude-3-5-sonnet")
+  let best = null;
+  let bestLen = 0;
   for (const entry of orIndex) {
     if (n.startsWith(entry.norm) && entry.norm.length > bestLen) {
-      best = entry; bestLen = entry.norm.length;
+      best = entry;
+      bestLen = entry.norm.length;
     }
   }
   if (best) return best;
-  for (const entry of orIndex) if (entry.norm.startsWith(n + ' ')) return entry;
+  // 3. OR model part starts with provider name (e.g. "claude-haiku-4-5" → "claude-haiku-4-5-20251001")
+  for (const entry of orIndex) {
+    if (entry.norm.startsWith(n + ' ')) return entry;
+  }
+  // 4. OR model norm contains provider name as a contiguous word sequence.
+  // Handles short display names like "Sonnet 4.6" matching inside "claude sonnet 4 6".
   if (n.length >= 5) {
     let bestC = null, bestCLen = Infinity;
     for (const entry of orIndex) {
       const e = entry.norm;
-      if ((e === n || e.includes(' ' + n + ' ') || e.startsWith(n + ' ') || e.endsWith(' ' + n)) && e.length < bestCLen) {
+      if ((e === n || e.includes(' ' + n + ' ') || e.startsWith(n + ' ') || e.endsWith(' ' + n))
+          && e.length < bestCLen) {
         bestC = entry; bestCLen = e.length;
       }
     }
     if (bestC) return bestC;
   }
+  // 5. All tokens of provider name appear in OR norm (handles word-order differences).
+  // e.g. "Sonnet 3.7" → tokens ["sonnet","3","7"] match inside "claude 3 7 sonnet 20250219".
   const tokens = n.split(' ');
   if (tokens.length >= 2 && n.length >= 7) {
     let bestT = null, bestTLen = Infinity;
@@ -118,26 +143,42 @@ async function fetchHFSize(hfId) {
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
   try {
     const data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers });
+    // Check various common metadata locations for total parameters
     let params = data.safetensors?.total || data.config?.total_parameters || data.config?.model_type_params;
     if (!params && data.cardData?.model_details?.parameters) {
       const match = data.cardData.model_details.parameters.match(/([\d.]+)\s*[Bb]/);
       if (match) params = parseFloat(match[1]) * 1_000_000_000;
     }
-    return params ? Math.round(params / 1_000_000_000 * 10) / 10 : null;
-  } catch (e) { return null; }
+    if (!params) return null;
+    const b = params / 1_000_000_000;
+    // Keep 2 decimals for small models (<1B), 1 decimal for others
+    return b < 1 ? Math.round(b * 100) / 100 : Math.round(b * 10) / 10;
+  } catch (e) {
+    return null; // Silently skip failures for individual models
+  }
 }
 
 const EMBEDDER_KEYWORDS = ['embed', 'bge', 'gte', 'e5', 'stella', 'minilm', 'multilingual-mpnet'];
 
+// Link common models to their HF IDs when naming is non-standard
+const MANUAL_HF_ID_MAP = {
+  'all minilm l12 v2': 'sentence-transformers/all-MiniLM-L12-v2',
+  'whisper v3': 'openai/whisper-large-v3',
+  'whisper-large-v3': 'openai/whisper-large-v3',
+};
+
+// Propagate capabilities and size from benchmarks, OpenRouter, or HF Hub to all other providers' models.
+// Only fills in fields when the model doesn't already have them.
 async function propagateExtraData(data) {
   const orProvider = data.providers.find((p) => p.name === 'OpenRouter');
   const orIndex = buildOrIndex(orProvider);
 
+  // Load benchmarks for size lookup
   let benchmarks = [];
   try {
     const bmFile = path.join(__dirname, '..', 'data', 'benchmarks.json');
     if (fs.existsSync(bmFile)) benchmarks = JSON.parse(fs.readFileSync(bmFile, 'utf8'));
-  } catch (e) {}
+  } catch (e) { /* ignore */ }
 
   // Multi-level Benchmark Size Maps
   const bmSizeMap = new Map();
@@ -150,31 +191,50 @@ async function propagateExtraData(data) {
     }
   });
 
-  let propagatedCaps = 0, propagatedSize = 0, autoTagged = 0, hfSizeFetched = 0;
+  let propagatedCaps = 0;
+  let propagatedSize = 0;
+  let autoTagged = 0;
+  let hfSizeFetched = 0;
+
+  // We'll collect models missing size that have a clear HF-id-like name
   const hfLookupQueue = [];
 
   for (const provider of data.providers) {
     for (const model of provider.models || []) {
       const n = normName(model.name);
 
+      // 0. MANUAL OVERRIDE: Link common models to their HF IDs
+      if (!model.hf_id && MANUAL_HF_ID_MAP[n]) {
+        model.hf_id = MANUAL_HF_ID_MAP[n];
+      }
+
       // 1. STRUCTURED LOOKUP: Match size by hf_id if available (Benchmark gold-standard)
       if (!model.size_b && model.hf_id) {
         const size = hfIdToSize.get(model.hf_id.toLowerCase());
-        if (size) { model.size_b = size; propagatedSize++; }
+        if (size) {
+          model.size_b = size;
+          propagatedSize++;
+        }
       }
 
-      // 2. AUTO-TAG type
+      // 2. AUTO-TAG image-gen and embedding models
       if (model.type === 'image' && (!model.capabilities || !model.capabilities.length)) {
-        model.capabilities = ['image-gen']; autoTagged++;
+        model.capabilities = ['image-gen'];
+        autoTagged++;
       }
       if (model.type === 'chat' && EMBEDDER_KEYWORDS.some(k => n.includes(k))) {
-        model.type = 'embedding'; autoTagged++;
+        model.type = 'embedding';
+        autoTagged++;
       }
 
       // 3. FALLBACK: Match size by name against benchmarks
       if (!model.size_b) {
+        // Try exact name match or base name match
         const size = bmSizeMap.get(n) || bmSizeMap.get(n.split(' ').pop());
-        if (size) { model.size_b = size; propagatedSize++; }
+        if (size) {
+          model.size_b = size;
+          propagatedSize++;
+        }
       }
 
       // 4. INHERIT: Structured data inheritance from OpenRouter
@@ -188,7 +248,10 @@ async function propagateExtraData(data) {
           }
           if (model.type === 'chat' && match.type !== 'chat') model.type = match.type;
 
-          if (!model.size_b && match.size_b) { model.size_b = match.size_b; propagatedSize++; }
+          if (!model.size_b && match.size_b) {
+            model.size_b = match.size_b;
+            propagatedSize++;
+          }
           // Crucial: inherit hf_id to enable Hub API fallback below
           if (!model.hf_id && match.hf_id) model.hf_id = match.hf_id;
         }
@@ -202,11 +265,13 @@ async function propagateExtraData(data) {
       }
 
       // 6. QUEUE: Still missing size? Try Hub API metadata lookup
-      if (!model.size_b && (model.name.includes('/') || model.hf_id)) hfLookupQueue.push(model);
+      if (!model.size_b && (model.name.includes('/') || model.hf_id)) {
+        hfLookupQueue.push(model);
+      }
     }
   }
 
-  // 7. HUB API: Inspect technical metadata (Limit 30 to prevent timeouts)
+  // 7. HUB API: Inspect technical metadata (Limit 30 unique IDs to avoid long startup)
   const uniqueIds = [...new Set(hfLookupQueue.map(m => m.hf_id || m.name).filter(id => id.includes('/')))].slice(0, 30);
   if (uniqueIds.length > 0) {
     process.stdout.write(`  HF Hub: technical metadata inspection for ${uniqueIds.length} models... `);
@@ -218,7 +283,10 @@ async function propagateExtraData(data) {
     for (const model of hfLookupQueue) {
       if (!model.size_b) {
         const size = idToSize.get(model.hf_id || model.name);
-        if (size) { model.size_b = size; hfSizeFetched++; }
+        if (size) {
+          model.size_b = size;
+          hfSizeFetched++;
+        }
       }
     }
     console.log(`✓ ${hfSizeFetched} sizes found`);
@@ -231,6 +299,7 @@ async function propagateExtraData(data) {
 
 async function runFetcher(fetcher, data) {
   const { key, providerName, fn } = fetcher;
+
   try {
     process.stdout.write(`Fetching ${providerName}... `);
     const models = await fn();
@@ -244,25 +313,46 @@ async function runFetcher(fetcher, data) {
 }
 
 async function main() {
+  // Determine which fetchers to run
   const args = process.argv.slice(2).map((a) => a.toLowerCase());
-  const fetchers = args.length > 0 ? FETCHERS.filter((f) => args.includes(f.key)) : FETCHERS;
+  const fetchers =
+    args.length > 0
+      ? FETCHERS.filter((f) => args.includes(f.key))
+      : FETCHERS;
+
   if (fetchers.length === 0) {
     console.error('No matching fetchers found. Available:', FETCHERS.map((f) => f.key).join(', '));
     process.exit(1);
   }
+
   const data = loadData();
   console.log(`Running ${fetchers.length} fetcher(s)...\n`);
+
   const results = [];
-  for (const fetcher of fetchers) results.push(await runFetcher(fetcher, data));
+  for (const fetcher of fetchers) {
+    const result = await runFetcher(fetcher, data);
+    results.push(result);
+  }
+
+  // Always propagate extra data from OpenRouter and Benchmarks to all providers' models.
   await propagateExtraData(data);
+
   saveData(data);
+
   console.log('\nSummary:');
   let anyFailed = false;
   results.forEach((r) => {
     if (r.success) console.log(`  ✓ ${r.providerName}: ${r.count} models`);
-    else { console.log(`  ✗ ${r.providerName}: ${r.error}`); anyFailed = true; }
+    else {
+      console.log(`  ✗ ${r.providerName}: ${r.error}`);
+      anyFailed = true;
+    }
   });
+
   if (anyFailed) process.exit(1);
 }
 
-main().catch((err) => { console.error('Fatal:', err); process.exit(1); });
+main().catch((err) => {
+  console.error('Fatal:', err);
+  process.exit(1);
+});
