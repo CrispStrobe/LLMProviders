@@ -1,12 +1,3 @@
----
-title: LLM Providers
-emoji: 🌍
-colorFrom: blue
-colorTo: indigo
-short_description: Compare pricing, capabilities, benchmark scores, EU focus.
-sdk: docker
-pinned: false
----
 # LLM Providers
 
 **Live: [llmproviders.vercel.app](https://llmproviders.vercel.app) or [Hugging Face Space](https://huggingface.co/spaces/cstr/LLMProviders)**

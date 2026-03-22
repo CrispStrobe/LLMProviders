@@ -20,6 +20,7 @@
     "fetch:ionos": "node scripts/providers/ionos.js",
     "fetch:bfl": "node scripts/providers/black-forest-labs.js",
     "fetch:benchmarks": "node scripts/fetch-benchmarks.js",
+    "push:hf": "node scripts/sync-hf.js",
     "server": "node server.js",
     "dev:api": "node server.js"
   },
