@@ -16,6 +16,7 @@ interface Model {
   currency: string
   capabilities?: string[]
   display_name?: string
+  hf_id?: string
 }
 
 interface Provider {
