@@ -9,7 +9,7 @@ pinned: false
 
 # LLM Providers
 
-**Live: [llmproviders.vercel.app](https://llmproviders.vercel.app)**
+**Live: [llmproviders.vercel.app](https://llmproviders.vercel.app) or [Hugging Face Space](https://huggingface.co/spaces/cstr/LLMProviders)**
 
 Compare pricing, capabilities, and benchmark scores across LLM providers — with a focus on European data-sovereignty options.
 
