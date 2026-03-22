@@ -16,9 +16,10 @@ interface Model {
   price_per_1m_tokens_30d?: number
   currency: string
   capabilities?: string[]
-  display_name?: string
-  hf_id?: string
-  ollama_id?: string
+  display_name?: string;
+  hf_id?: string;
+  canonical_id?: string;
+  ollama_id?: string;
   hf_private?: boolean;
   size_source?: 'hf-total' | 'hf-config-estimate' | 'hf-card' | 'ollama' | 'manual' | 'benchmark' | 'openrouter';
   provider?: Provider;
@@ -399,8 +400,8 @@ function App() {
 
     const groups: Record<string, typeof sortedModels> = {};
     sortedModels.forEach(m => {
-      // Prioritize hf_id for grouping key
-      const key = (m.hf_id || m.name || '').toLowerCase();
+      // Grouping priority: HF ID > Canonical ID > Name
+      const key = (m.hf_id || m.canonical_id || m.name || '').toLowerCase();
       if (!groups[key]) groups[key] = [];
       groups[key].push(m);
     });

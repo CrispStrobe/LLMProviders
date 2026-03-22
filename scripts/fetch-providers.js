@@ -87,6 +87,22 @@ function updateProviderModels(providers, providerName, models) {
 const normName = (s) =>
   s.toLowerCase().replace(/[-_.:]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
 
+// Generates a stable ID for grouping models that lack an HF ID.
+// Strips dates (2507, 2411), provider prefixes, and common suffixes.
+function getCanonicalId(name) {
+  let id = name.toLowerCase()
+    .split('/').pop() // Strip provider prefixes (e.g. "openai/")
+    .replace(/[:@].*$/, '') // Strip tags/versions (e.g. ":free", "@latest")
+    .replace(/[-_.]/g, ' ') // Standardize separators
+    .replace(/\b(instruct|it|chat|thinking|latest|preview|vision|experimental|exp|v\d+(\.\d+)*)\b/g, '') // Strip common suffixes
+    .replace(/\b\d{4}\b/g, '') // Strip 4-digit dates (e.g. 2507, 2411)
+    .replace(/\s+/g, '-') // Collapse to kebab-case
+    .trim()
+    .replace(/^-+|-+$/g, ''); // Trim leading/trailing dashes
+  
+  return id || name.toLowerCase();
+}
+
 // Estimate parameters from config.json (vLLM style fallback)
 function estimateParams(config, hfId) {
   if (!config) return null;
@@ -305,6 +321,7 @@ async function propagateExtraData(data) {
 
   // 1. Initial manual and fuzzy mapping
   data.providers.forEach(p => p.models.forEach(model => {
+    model.canonical_id = getCanonicalId(model.name);
     const n = normName(model.name);
     for (const [key, val] of Object.entries(MANUAL_HF_ID_MAP)) {
       const nk = normName(key);
@@ -367,9 +384,11 @@ async function propagateExtraData(data) {
         hf_id: m.hf_id, 
         ollama_id: m.ollama_id, 
         hf_private: m.hf_private,
-        capabilities: m.capabilities
+        capabilities: m.capabilities,
+        canonical_id: m.canonical_id
       };
       if (m.hf_id) technicalPool.set('id:' + m.hf_id.toLowerCase(), meta);
+      if (m.canonical_id) technicalPool.set('canon:' + m.canonical_id.toLowerCase(), meta);
       technicalPool.set('name:' + baseName, meta);
     }
   }));
@@ -378,12 +397,14 @@ async function propagateExtraData(data) {
     const baseName = m.name.split('/').pop().replace(/:free$/, '').toLowerCase();
     const metaByName = technicalPool.get('name:' + baseName);
     const metaById = m.hf_id ? technicalPool.get('id:' + m.hf_id.toLowerCase()) : null;
-    const best = metaById || metaByName;
+    const metaByCanon = m.canonical_id ? technicalPool.get('canon:' + m.canonical_id.toLowerCase()) : null;
+    const best = metaById || metaByCanon || metaByName;
     if (best) {
       m.size_b = m.size_b || best.size_b;
       m.size_source = m.size_source || best.size_source;
       m.hf_id = m.hf_id || best.hf_id;
       m.ollama_id = m.ollama_id || best.ollama_id;
+      m.canonical_id = m.canonical_id || best.canonical_id;
       if (best.capabilities && (!m.capabilities || m.capabilities.length === 0)) {
         m.capabilities = best.capabilities;
       }
