@@ -14,6 +14,7 @@ COPY . .
 RUN npm run build
 
 # HF Spaces require port 7860
+ENV PORT=7860
 EXPOSE 7860
 
 # On startup:
