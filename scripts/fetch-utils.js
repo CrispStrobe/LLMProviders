@@ -4,7 +4,7 @@
  * Robust fetch helper with retries, exponential backoff, and timeout.
  */
 async function fetchRobust(url, options = {}) {
-  const { retries = 5, backoff = 1000, timeout = 60000, ...fetchOptions } = options;
+  const { retries = 5, backoff = 1000, timeout = 120000, ...fetchOptions } = options;
   let lastError;
 
   for (let i = 0; i < retries; i++) {
@@ -23,8 +23,8 @@ async function fetchRobust(url, options = {}) {
 
       if (res.ok) return res;
 
-      // Retry on transient status codes: 429 (Rate Limit) and 5xx (Server Errors)
-      if (res.status === 429 || (res.status >= 500 && res.status < 600)) {
+      // Retry on transient status codes: 429 (Rate Limit), 408 (Timeout), and 5xx (Server Errors)
+      if (res.status === 429 || res.status === 408 || (res.status >= 500 && res.status < 600)) {
         lastError = new Error(`HTTP ${res.status} from ${url}`);
         if (i < retries - 1) {
           const delay = backoff * Math.pow(2, i) + Math.random() * 1000;
