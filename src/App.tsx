@@ -18,6 +18,7 @@ interface Model {
   display_name?: string
   hf_id?: string
   ollama_id?: string
+  hf_private?: boolean
 }
 
 interface Provider {
@@ -546,6 +547,9 @@ function App() {
                                 {model.hf_id} ↗
                               </a>
                             </div>
+                          )}
+                          {!model.hf_id && model.hf_private && (
+                            <div className="tooltip-row"><strong>HF:</strong> Proprietary API</div>
                           )}
                           {model.ollama_id && (
                             <div className="tooltip-row">

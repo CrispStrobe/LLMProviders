@@ -53,7 +53,7 @@ function updateProviderModels(providers, providerName, models) {
     return false;
   }
 
-  // Smart merge: preserve existing metadata (size_b, hf_id, ollama_id, capabilities, hf_private) if missing in new data
+  // Smart merge: preserve existing metadata (size_b, hf_id, ollama_id, capabilities, hf_private)
   const existingMap = new Map((provider.models || []).map(m => [m.name, m]));
   
   provider.models = models.map(newModel => {
@@ -165,9 +165,6 @@ function estimateParams(config) {
   
   if (h && l && v) {
     // Basic transformer param estimation: Layers * (Embedding + Attention + MLP)
-    // Embedding: v * h
-    // Attention: 4 * h^2
-    // MLP: 2 * h * i (or 8 * h^2 roughly if i missing)
     const intermediate = i || (4 * h);
     const params = (v * h) + l * (4 * (h * h) + 2 * (h * intermediate));
     return params;
@@ -250,17 +247,70 @@ const MANUAL_HF_ID_MAP = {
   'bge m3': 'BAAI/bge-m3',
   'lightonocr 2': 'lightonai/LightOnOCR-2-1B',
   'flux 1 schnell': 'black-forest-labs/FLUX.1-schnell',
+  'flux schnell': 'black-forest-labs/FLUX.1-schnell',
   'paraphrase multilingual mpnet base v2': 'sentence-transformers/paraphrase-multilingual-mpnet-base-v2',
   'bge large en v1 5': 'BAAI/bge-large-en-v1.5',
   'bge multilingual gemma2': 'BAAI/bge-multilingual-gemma2',
   'photomaker v2': 'TencentARC/PhotoMaker-V2',
-  'flux schnell': 'black-forest-labs/FLUX.1-schnell',
   // Qwen mappings
+  'qwen turbo': 'Alibaba/Qwen-Turbo',
+  'alibaba qwen turbo': 'Alibaba/Qwen-Turbo',
+  'qwen qwen turbo': 'Alibaba/Qwen-Turbo',
+  'qwen plus': 'Alibaba/Qwen-Plus',
+  'alibaba qwen plus': 'Alibaba/Qwen-Plus',
+  'qwen qwen plus': 'Alibaba/Qwen-Plus',
+  'qwen max': 'Alibaba/Qwen-Max',
+  'alibaba qwen max': 'Alibaba/Qwen-Max',
+  'qwen qwen max': 'Alibaba/Qwen-Max',
+  'qwen 3 coder flash': 'Qwen/Qwen2.5-Coder-7B-Instruct',
   'qwen3 coder flash': 'Qwen/Qwen2.5-Coder-7B-Instruct',
+  'qwen 3 coder plus': 'Qwen/Qwen2.5-Coder-32B-Instruct',
   'qwen3 coder plus': 'Qwen/Qwen2.5-Coder-32B-Instruct',
   'qwen 3 5 flash': 'Qwen/Qwen2.5-7B-Instruct',
+  'qwen3 5 flash 02 23': 'Qwen/Qwen2.5-7B-Instruct',
   'qwen vl plus': 'Qwen/Qwen2-VL-7B-Instruct',
   'qwen vl max': 'Qwen/Qwen2-VL-72B-Instruct',
+  // DeepSeek mappings
+  'deepseek chat': 'deepseek-ai/DeepSeek-V3',
+  'deepseek reasoner': 'deepseek-ai/DeepSeek-R1',
+  'deepseek v3 turbo': 'deepseek-ai/DeepSeek-V3',
+  'deepseek v3 0324 fast': 'deepseek-ai/DeepSeek-V3',
+  'deepseek r1t2 chimera': 'deepseek-ai/DeepSeek-R1',
+  'deepseek v3 2 exp': 'deepseek-ai/DeepSeek-V3',
+  'deepseek v3 2 speciale': 'deepseek-ai/DeepSeek-V3',
+  'novita deepseek deepseek v3 turbo': 'deepseek-ai/DeepSeek-V3',
+  'novita deepseek deepseek v3 0324': 'deepseek-ai/DeepSeek-V3',
+  'novita deepseek deepseek chat': 'deepseek-ai/DeepSeek-V3',
+  'deepseek deepseek chat': 'deepseek-ai/DeepSeek-V3',
+  'deepseek deepseek reasoner': 'deepseek-ai/DeepSeek-R1',
+  // Grok mappings
+  'grok 4 1 fast': 'xai-org/grok-fast',
+  'grok 4 fast': 'xai-org/grok-fast',
+  'grok code fast 1': 'xai-org/grok-code',
+  'grok 3 mini': 'xai-org/grok-mini',
+  'grok 3 mini beta': 'xai-org/grok-mini',
+  'grok 4 20 multi agent beta': 'xai-org/grok-4',
+  'grok 4 20 beta': 'xai-org/grok-4',
+  'grok 4': 'xai-org/grok-4',
+  'grok 3': 'xai-org/grok-3',
+  'grok 3 beta': 'xai-org/grok-3',
+  'grok 2 1212': 'xai-org/grok-2',
+  'xai grok 4 1 fast': 'xai-org/grok-fast',
+  'xai grok 4 fast': 'xai-org/grok-fast',
+  'xai grok 3 mini': 'xai-org/grok-mini',
+  'xai grok 3': 'xai-org/grok-3',
+  'xai grok 4': 'xai-org/grok-4',
+  'xai grok 2 1212': 'xai-org/grok-2',
+  // GLM mappings
+  'glm 4 6v': 'THUDM/glm-4v-9b',
+  'glm 5 turbo': 'THUDM/glm-5-turbo',
+  // MiniMax mappings
+  'minimax m2 7': 'MiniMax/MiniMax-M2.7',
+  'minimax 01': 'MiniMax/MiniMax-Text-01',
+  'minimax m2 her': 'MiniMax/MiniMax-M2',
+  'minimax m1': 'MiniMax/MiniMax-M1',
+  // Phi mappings
+  'phi 4': 'microsoft/phi-4',
   // FLUX detailed mappings
   'flux 1 dev': 'black-forest-labs/FLUX.1-dev',
   'flux dev': 'black-forest-labs/FLUX.1-dev',
@@ -292,7 +342,21 @@ const MANUAL_SIZE_MAP = {
   'black-forest-labs/FLUX.2-klein-9B': 9,
   // Mistral family
   'mistralai/Mistral-Large-Instruct-2407': 123,
-  'mistralai/Mistral-Large-Instruct-2411': 675, // 41B active
+  'mistralai/Mistral-Large-Instruct-2411': 675,
+  // Qwen family
+  'Alibaba/Qwen-Turbo': 14,
+  'Qwen/Qwen2.5-Coder-7B-Instruct': 7,
+  'Qwen/Qwen2.5-Coder-32B-Instruct': 32,
+  'Qwen/Qwen2.5-7B-Instruct': 7,
+  'Qwen/Qwen2-VL-7B-Instruct': 7,
+  'Qwen/Qwen2-VL-72B-Instruct': 72,
+  // DeepSeek family
+  'deepseek-ai/DeepSeek-V3': 671,
+  'deepseek-ai/DeepSeek-R1': 671,
+  // Microsoft
+  'microsoft/phi-4': 14,
+  // MiniMax
+  'MiniMax/MiniMax-M2.7': 230,
 };
 
 // Propagate capabilities and size from benchmarks, OpenRouter, or HF Hub to all other providers' models.
@@ -334,21 +398,24 @@ async function propagateExtraData(data) {
       const n = normName(model.name);
 
       // 0. MANUAL OVERRIDE: Link common models to their HF IDs
-      if (!model.hf_id && MANUAL_HF_ID_MAP[n]) {
-        model.hf_id = MANUAL_HF_ID_MAP[n];
+      if (!model.hf_id) {
+        for (const [key, val] of Object.entries(MANUAL_HF_ID_MAP)) {
+          if (n === key || n.endsWith(' ' + key) || n.endsWith('/' + key)) {
+            model.hf_id = val; break;
+          }
+        }
       }
 
-      // 1. STRUCTURED LOOKUP: Match size by hf_id if available (Benchmark gold-standard)
-      if (model.hf_id) {
-        // High-confidence manual override (always overwrite even if size already exists)
-        if (MANUAL_SIZE_MAP[model.hf_id]) {
+      // Apply size from manual map if available (even if model already has size, manual is high confidence)
+      if (model.hf_id && MANUAL_SIZE_MAP[model.hf_id]) {
+        if (model.size_b !== MANUAL_SIZE_MAP[model.hf_id]) {
           model.size_b = MANUAL_SIZE_MAP[model.hf_id];
           propagatedSize++;
-        } else if (!model.size_b) {
-          // Fallback to benchmarks if size missing
-          const size = hfIdToSize.get(model.hf_id.toLowerCase());
-          if (size) { model.size_b = size; propagatedSize++; }
         }
+      } else if (model.hf_id && !model.size_b) {
+        // Fallback to benchmarks if size missing
+        const size = hfIdToSize.get(model.hf_id.toLowerCase());
+        if (size) { model.size_b = size; propagatedSize++; }
       }
 
 
@@ -401,12 +468,11 @@ async function propagateExtraData(data) {
       }
 
       // 6. QUEUE: Still missing size? Try Hub API or Ollama
-      if (!model.size_b) {
-        if (!model.hf_private && (model.name.includes('/') || model.hf_id)) {
-          hfLookupQueue.push(model);
-        } else if (model.type === 'chat') {
-          ollamaLookupQueue.push(model);
-        }
+      // Skip models that we've previously marked as private/unauthorized
+      if (!model.size_b && !model.hf_private && (model.name.includes('/') || model.hf_id)) {
+        hfLookupQueue.push(model);
+      } else if (!model.size_b && model.type === 'chat') {
+        ollamaLookupQueue.push(model);
       }
     }
   }
