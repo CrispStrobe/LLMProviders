@@ -19,8 +19,10 @@ interface Model {
   display_name?: string
   hf_id?: string
   ollama_id?: string
-  hf_private?: boolean
+  hf_private?: boolean;
   size_source?: 'hf-total' | 'hf-config-estimate' | 'hf-card' | 'ollama' | 'manual' | 'benchmark' | 'openrouter';
+  provider?: Provider;
+  complianceStatus?: string;
 }
 
 interface Provider {
@@ -148,34 +150,30 @@ function App() {
       .catch(() => {});
   }, [dataVersion]);
 
+  const fmtNum = (v?: number, decimals = 0) => (v !== undefined && Number.isFinite(v)) ? v.toFixed(decimals) : '–';
+  const fmtPct = (v?: number) => (v !== undefined && Number.isFinite(v)) ? `${(v * 100).toFixed(0)}%` : '–';
+
   // Build benchmark lookup maps
   const { nameMap, hfIdMap } = useMemo(() => {
     const nameMap = new Map<string, BenchmarkEntry>();
     const hfIdMap = new Map<string, BenchmarkEntry>();
 
     for (const b of liveBenchmarks) {
-      // Name-based lookup (LLMStats names + HF model part)
       nameMap.set(normalizeName(b.name), b);
       if (b.slug) {
         const slugModel = b.slug.split('/').pop() || '';
         if (slugModel) nameMap.set(normalizeName(slugModel), b);
       }
       if (b.hf_id) {
-        // Full HF ID lookup (for direct matches from OpenRouter/Requesty)
         hfIdMap.set(normalizeName(b.hf_id), b);
-        // Model part only (after "/")
         const modelPart = b.hf_id.split('/').pop() || '';
         const normModel = normalizeName(modelPart);
         nameMap.set(normModel, b);
-        // Strip leading word from model part (removes embedded org prefix like "Meta-Llama-...")
         const words = normModel.split(' ');
         if (words.length > 1) nameMap.set(words.slice(1).join(' '), b);
       }
-      // LiveBench model name (e.g. "claude-3-5-sonnet-20241022")
       if (b.lb_name) nameMap.set(normalizeName(b.lb_name), b);
-      // Chatbot Arena display name
       if (b.arena_name) nameMap.set(normalizeName(b.arena_name), b);
-      // Artificial Analysis name and slug
       if (b.aa_name) nameMap.set(normalizeName(b.aa_name), b);
       if (b.aa_slug) nameMap.set(normalizeName(b.aa_slug), b);
     }
@@ -259,7 +257,7 @@ function App() {
   };
 
   const allModels = useMemo(() => {
-    const rawModels: (Model & { provider: Provider; complianceStatus: string })[] = []
+    const rawModels: any[] = []
     
     liveProviders.forEach((provider: Provider) => {
       provider.models.forEach((model) => {
@@ -282,7 +280,7 @@ function App() {
     // De-duplicate: filter out models with same name, provider, and price
     const seen = new Set<string>();
     const uniqueModels = rawModels.filter(m => {
-      const key = `${m.provider.name}|${m.name}|${m.input_price_per_1m}|${m.output_price_per_1m}`;
+      const key = `${m.provider?.name}|${m.name}|${m.input_price_per_1m}|${m.output_price_per_1m}`;
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
@@ -293,8 +291,9 @@ function App() {
 
   const filteredModels = useMemo(() => {
     return allModels.filter((model) => {
+      const providerName = model.provider?.name || '';
       const matchesSearch = model.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                           model.provider.name.toLowerCase().includes(searchTerm.toLowerCase())
+                           providerName.toLowerCase().includes(searchTerm.toLowerCase())
       
       const caps = model.capabilities || [];
       const matchesType = selectedType === 'all' || 
@@ -303,9 +302,10 @@ function App() {
                          (selectedType === 'vision' && (caps.includes('vision') || caps.includes('video'))) ||
                          (selectedType === 'chat' && model.type === 'chat');
       
-      let matchesRegion = selectedRegion === 'all' || model.complianceStatus === selectedRegion;
+      const status = model.complianceStatus || 'Other';
+      let matchesRegion = selectedRegion === 'all' || status === selectedRegion;
       // US filter includes US/EU
-      if (selectedRegion === 'US' && model.complianceStatus === 'US/EU') matchesRegion = true;
+      if (selectedRegion === 'US' && status === 'US/EU') matchesRegion = true;
       
       return matchesSearch && matchesType && matchesRegion
     })
@@ -371,10 +371,15 @@ function App() {
         case 'aa_tokens_per_s':
         case 'mteb_avg':
         case 'mteb_retrieval': {
-          const bA = findBenchmark(a.name);
-          const bB = findBenchmark(b.name);
-          aValue = bA?.[sortConfig.key as keyof BenchmarkEntry] as number ?? -1;
-          bValue = bB?.[sortConfig.key as keyof BenchmarkEntry] as number ?? -1;
+          try {
+            const bA = findBenchmark(a.name);
+            const bB = findBenchmark(b.name);
+            aValue = bA?.[sortConfig.key as keyof BenchmarkEntry] as number ?? -1;
+            bValue = bB?.[sortConfig.key as keyof BenchmarkEntry] as number ?? -1;
+          } catch (e) {
+            aValue = -1;
+            bValue = -1;
+          }
           break;
         }
         default:
@@ -618,28 +623,31 @@ function App() {
                       : formatPrice(model.output_price_per_1m, model.currency)}
                   </td>
                   {showBenchmarks && (() => {
-                    const bm = findBenchmark(model.name);
-                    const fmt = (v?: number) => Number.isFinite(v) ? `${(v! * 100).toFixed(0)}%` : '–';
-                    return <>
-                      <td className="benchmark-cell">{bm?.arena_elo !== undefined ? Math.round(bm.arena_elo) : '–'}</td>
-                      <td className="benchmark-cell">{fmt(bm?.aider_pass_rate)}</td>
-                      <td className="benchmark-cell">{bm?.aa_intelligence !== undefined ? Math.round(bm.aa_intelligence) : '–'}</td>
-                      <td className="benchmark-cell">{bm?.aa_tokens_per_s !== undefined ? Math.round(bm.aa_tokens_per_s) : '–'}</td>
-                      <td className="benchmark-cell">{bm?.mteb_avg !== undefined ? bm.mteb_avg.toFixed(1) : '–'}</td>
-                      <td className="benchmark-cell">{bm?.mteb_retrieval !== undefined ? bm.mteb_retrieval.toFixed(1) : '–'}</td>
-                      <td className="benchmark-cell">{fmt(bm?.lb_global)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.lb_math)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.lb_coding)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.lb_reasoning)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.gpqa)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.mmlu_pro)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.ifeval)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.bbh)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.hf_math_lvl5)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.hf_musr)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.mmlu)}</td>
-                      <td className="benchmark-cell">{fmt(bm?.human_eval)}</td>
-                    </>;
+                    try {
+                      const bm = findBenchmark(model.name);
+                      return <>
+                        <td className="benchmark-cell">{fmtNum(bm?.arena_elo)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.aider_pass_rate)}</td>
+                        <td className="benchmark-cell">{fmtNum(bm?.aa_intelligence)}</td>
+                        <td className="benchmark-cell">{fmtNum(bm?.aa_tokens_per_s)}</td>
+                        <td className="benchmark-cell">{fmtNum(bm?.mteb_avg, 1)}</td>
+                        <td className="benchmark-cell">{fmtNum(bm?.mteb_retrieval, 1)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.lb_global)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.lb_math)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.lb_coding)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.lb_reasoning)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.gpqa)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.mmlu_pro)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.ifeval)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.bbh)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.hf_math_lvl5)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.hf_musr)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.mmlu)}</td>
+                        <td className="benchmark-cell">{fmtPct(bm?.human_eval)}</td>
+                      </>;
+                    } catch (e) {
+                      return Array(18).fill(null).map((_, i) => <td key={i} className="benchmark-cell">–</td>);
+                    }
                   })()}
                 </tr>
               )
@@ -650,7 +658,7 @@ function App() {
       
       <footer>
         <p>* All prices normalized to USD for comparison using 1 EUR = {EXCHANGE_RATE_EUR_TO_USD} USD.</p>
-        <p>Benchmark data from LLMStats, HF Leaderboard, LiveBench, Chatbot Arena, Aider, and <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>.</p>
+        <p>Benchmark data from LLMStats, HF Leaderboard, LiveBench, Chatbot Arena, Aider, MTEB, and <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>.</p>
         <p>Sorted by input price by default.</p>
       </footer>
     </div>

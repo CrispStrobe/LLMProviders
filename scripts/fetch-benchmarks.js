@@ -524,12 +524,13 @@ async function fetchMTEB() {
     });
     
     const latestPaths = [...taskPaths.values()];
-    process.stdout.write(`  MTEB: ${hfId} (${latestPaths.length} tasks)\r`);
+    const fetchPaths = latestPaths.slice(0, 50); // Limit to 50 tasks to prevent hangs
+    process.stdout.write(`  MTEB: ${hfId} (fetching ${fetchPaths.length}/${latestPaths.length} tasks)\r`);
     
     let total = 0, count = 0, retTotal = 0, retCount = 0;
     const BATCH = 20;
-    for (let i = 0; i < latestPaths.length; i += BATCH) {
-      const batch = await Promise.all(latestPaths.slice(i, i + BATCH).map(p => getJson(MTEB_RAW_BASE_URL + p).catch(() => null)));
+    for (let i = 0; i < fetchPaths.length; i += BATCH) {
+      const batch = await Promise.all(fetchPaths.slice(i, i + BATCH).map(p => getJson(MTEB_RAW_BASE_URL + p).catch(() => null)));
       batch.forEach(res => {
         if (!res) return;
         const scores = res.scores || res;
@@ -546,7 +547,8 @@ async function fetchMTEB() {
         if (targetRes) {
           const s = targetRes.main_score || targetRes.ndcg_at_10 || targetRes.accuracy;
           if (typeof s === 'number' && s > 0) {
-            const norm = s <= 1.0 ? s * 100 : s;
+            let norm = s <= 1.0 ? s * 100 : s;
+            if (norm > 100) norm = 100; // Cap at 100
             total += norm; count++;
             const task = res.mteb_dataset_name || res.task_name || '';
             if (task.includes('Retrieval') || task.includes('Search')) { retTotal += norm; retCount++; }
@@ -576,9 +578,10 @@ function mergeMTEB(entries, mtebEntries) {
     { hf_id: 'BAAI/bge-multilingual-gemma2', mteb_avg: 70.3, mteb_retrieval: 67.5, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual' } },
     { hf_id: 'Qwen/Qwen3-Embedding-8B', mteb_avg: 71.2, mteb_retrieval: 72.1, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual' } },
     { hf_id: 'BAAI/bge-en-icl', mteb_avg: 64.9, mteb_retrieval: 58.2, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual' } },
+    { hf_id: 'sentence-transformers/paraphrase-multilingual-mpnet-base-v2', mteb_avg: 51.98, mteb_retrieval: 39.76, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual' } },
   ];
   overrides.forEach(o => {
-    if (!map.has(o.hf_id.toLowerCase())) map.set(o.hf_id.toLowerCase(), o);
+    map.set(o.hf_id.toLowerCase(), o); // Force override
   });
 
   let matched = 0;
@@ -709,7 +712,8 @@ async function fetchHFReadmeBenchmarks() {
             const mainMetric = (res.metrics || []).find(m => m.type === 'main_score' || m.type === 'ndcg_at_10' || m.type === 'accuracy');
             if (mainMetric && typeof mainMetric.value === 'number') {
               const val = mainMetric.value;
-              const norm = val <= 1.0 ? val * 100 : val;
+              let norm = val <= 1.0 ? val * 100 : val;
+              if (norm > 100) norm = 100; // Cap at 100
               total += norm; count++;
               
               const taskType = (res.task?.type || '').toLowerCase();
