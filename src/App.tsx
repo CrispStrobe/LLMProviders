@@ -74,6 +74,14 @@ interface BenchmarkEntry {
   arena_votes?: number;
   // Aider code editing benchmark (aider.chat)
   aider_pass_rate?: number; // 0-1, first-pass success on 133 coding tasks
+  // Artificial Analysis (artificialanalysis.ai)
+  aa_id?: string;
+  aa_intelligence?: number; // 0-100 intelligence index
+  aa_mmlu_pro?: number;
+  aa_gpqa?: number;
+  aa_livecodebench?: number;
+  aa_tokens_per_s?: number;
+  aa_latency_s?: number;
 }
 
 const normalizeName = (s: string) =>
@@ -328,7 +336,9 @@ function App() {
         case 'lb_if':
         case 'lb_data_analysis':
         case 'arena_elo':
-        case 'aider_pass_rate': {
+        case 'aider_pass_rate':
+        case 'aa_intelligence':
+        case 'aa_tokens_per_s': {
           const bA = findBenchmark(a.name);
           const bB = findBenchmark(b.name);
           aValue = bA?.[sortConfig.key as keyof BenchmarkEntry] as number ?? -1;
@@ -476,6 +486,8 @@ function App() {
               {showBenchmarks && <>
                 <th onClick={() => requestSort('arena_elo')} className="sortable" title="Chatbot Arena ELO (human preference votes)">Arena ELO {getSortIcon('arena_elo')}</th>
                 <th onClick={() => requestSort('aider_pass_rate')} className="sortable" title="Aider code editing benchmark (pass rate, 133 tasks)">Aider {getSortIcon('aider_pass_rate')}</th>
+                <th onClick={() => requestSort('aa_intelligence')} className="sortable" title="Artificial Analysis Intelligence Index (0-100)">AA Intel {getSortIcon('aa_intelligence')}</th>
+                <th onClick={() => requestSort('aa_tokens_per_s')} className="sortable" title="Artificial Analysis Median Speed (Tokens per Second)">AA Speed {getSortIcon('aa_tokens_per_s')}</th>
                 <th onClick={() => requestSort('lb_global')} className="sortable" title="LiveBench overall average (contamination-free)">LB {getSortIcon('lb_global')}</th>
                 <th onClick={() => requestSort('lb_math')} className="sortable" title="LiveBench Mathematics">LB-Math {getSortIcon('lb_math')}</th>
                 <th onClick={() => requestSort('lb_coding')} className="sortable" title="LiveBench Coding + Agentic Coding">LB-Code {getSortIcon('lb_coding')}</th>
@@ -555,6 +567,8 @@ function App() {
                     return <>
                       <td className="benchmark-cell">{bm?.arena_elo !== undefined ? Math.round(bm.arena_elo) : '–'}</td>
                       <td className="benchmark-cell">{fmt(bm?.aider_pass_rate)}</td>
+                      <td className="benchmark-cell">{bm?.aa_intelligence !== undefined ? Math.round(bm.aa_intelligence) : '–'}</td>
+                      <td className="benchmark-cell">{bm?.aa_tokens_per_s !== undefined ? Math.round(bm.aa_tokens_per_s) : '–'}</td>
                       <td className="benchmark-cell">{fmt(bm?.lb_global)}</td>
                       <td className="benchmark-cell">{fmt(bm?.lb_math)}</td>
                       <td className="benchmark-cell">{fmt(bm?.lb_coding)}</td>
@@ -578,6 +592,7 @@ function App() {
       
       <footer>
         <p>* All prices normalized to USD for comparison using 1 EUR = {EXCHANGE_RATE_EUR_TO_USD} USD.</p>
+        <p>Benchmark data from LLMStats, HF Leaderboard, LiveBench, Chatbot Arena, Aider, and <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>.</p>
         <p>Sorted by input price by default.</p>
       </footer>
     </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Fetch benchmark data from five sources and merge into data/benchmarks.json.
+ * Fetch benchmark data from six sources and merge into data/benchmarks.json.
  *
  * Sources:
  *   1. AchilleasDrakou/LLMStats on GitHub (71 curated models, self-reported benchmarks)
@@ -9,6 +9,7 @@
  *   3. LiveBench (livebench.ai) — contamination-free, monthly, 70+ frontier models
  *   4. Chatbot Arena (lmarena.ai) — 316 models with real ELO ratings from human votes
  *   5. Aider (aider.chat) — code editing benchmark, 133 tasks per model
+ *   6. Artificial Analysis (artificialanalysis.ai) — independent evaluations and speed benchmarks
  *
  * Unified field names (0-1 scale unless noted):
  *   mmlu, mmlu_pro, gpqa, human_eval, math, gsm8k, mmmu,
@@ -18,17 +19,16 @@
  *   lb_math, lb_language, lb_if, lb_data_analysis
  *   arena_elo, arena_rank, arena_votes               (Chatbot Arena; elo is raw ELO ~800-1500)
  *   aider_pass_rate                                  (Aider edit bench, 0-1)
+ *   aa_id, aa_intelligence, aa_mmlu_pro, aa_gpqa,    (Artificial Analysis)
+ *   aa_livecodebench, aa_tokens_per_s, aa_latency_s
  *
- * Where both sources have data for the same benchmark (gpqa, mmlu_pro, ifeval, bbh),
+ * Where multiple sources have data for the same benchmark,
  * LLMStats takes priority (it stores self-reported model-card values).
  *
  * Usage:
  *   node scripts/fetch-benchmarks.js             # fetch all sources
+ *   node scripts/fetch-benchmarks.js aa          # refresh Artificial Analysis only
  *   node scripts/fetch-benchmarks.js livebench   # refresh LiveBench only
- *   node scripts/fetch-benchmarks.js arena       # refresh Chatbot Arena only
- *   node scripts/fetch-benchmarks.js aider       # refresh Aider only
- *   node scripts/fetch-benchmarks.js hf          # refresh HF Leaderboard only
- *   node scripts/fetch-benchmarks.js llmstats    # refresh LLMStats only
  */
 
 const fs   = require('fs');
@@ -170,18 +170,15 @@ async function fetchHFLeaderboard() {
 const LB_GITHUB_TREE = 'https://api.github.com/repos/LiveBench/livebench.github.io/git/trees/main?recursive=1';
 const LB_BASE_URL    = 'https://livebench.ai';
 
-// Suffixes LiveBench appends to model names that providers don't use.
-// We strip these to produce a "base" name for matching.
 const LB_SUFFIX_RE = new RegExp(
   '(-thinking-(?:auto-)?(?:\\d+k-)?(?:(?:high|medium|low)-effort)?|' +
   '-thinking(?:-(?:64k|32k|auto|minimal))?|' +
   '-(?:high|medium|low)-effort|' +
   '-base|-non-?reasoning|-(?:high|low|min)thinking|-nothinking)' +
-  '(?:-(?:high|medium|low)-effort)?$'  // handle double-suffix like -thinking-64k-high-effort
+  '(?:-(?:high|medium|low)-effort)?$'
 );
 
 function lbBaseName(name) {
-  // Repeatedly strip known suffixes until stable
   let prev;
   let cur = name;
   do { prev = cur; cur = cur.replace(LB_SUFFIX_RE, ''); } while (cur !== prev);
@@ -230,12 +227,10 @@ async function fetchLiveBench() {
   const dates = tree.tree
     .filter((f) => f.path.startsWith('public/table_') && f.path.endsWith('.csv'))
     .map((f) => f.path.replace('public/table_', '').replace('.csv', ''))
-    .sort(); // oldest first
+    .sort();
   console.log(`${dates.length} releases (${dates[0]} → ${dates[dates.length - 1]})`);
 
-  // Use task→group mapping from the latest categories JSON (stable across releases)
   const cats = await getJson(`${LB_BASE_URL}/categories_${dates[dates.length - 1]}.json`);
-
   const taskToGroup = {};
   for (const [cat, tasks] of Object.entries(cats)) {
     const group =
@@ -248,35 +243,22 @@ async function fetchLiveBench() {
     if (group) for (const t of tasks) taskToGroup[t] = group;
   }
 
-  // Fetch all releases (oldest→newest), so newer results overwrite older ones per model
-  // Map: lb_name → entry (most recent release wins)
   const byName = new Map();
   for (const date of dates) {
     let csv;
-    try {
-      csv = await getText(`${LB_BASE_URL}/table_${date}.csv`);
-    } catch (e) {
-      console.warn(`\n  ⚠ LiveBench ${date}: ${e.message}`);
-      continue;
-    }
-    for (const entry of parseLiveBenchCsv(csv, taskToGroup)) {
-      byName.set(entry.lb_name, entry); // newer release overwrites
-    }
+    try { csv = await getText(`${LB_BASE_URL}/table_${date}.csv`); } 
+    catch (e) { console.warn(`\n  ⚠ LiveBench ${date}: ${e.message}`); continue; }
+    for (const entry of parseLiveBenchCsv(csv, taskToGroup)) byName.set(entry.lb_name, entry);
     process.stdout.write(`  LiveBench: ${date}\r`);
   }
-
   const entries = [...byName.values()];
   console.log(`  LiveBench: ${entries.length} unique models across all releases`);
   return entries;
 }
 
 function mergeLiveBench(entries, lbEntries) {
-  // Build two lookups:
-  //   exact: normalized lb_name → entry
-  //   base:  normalized base-name (suffixes stripped) → best-scoring entry among variants
   const exactMap = new Map();
-  const baseMap  = new Map(); // base → best lb entry by lb_global
-
+  const baseMap  = new Map();
   for (const lb of lbEntries) {
     exactMap.set(normName(lb.lb_name), lb);
     const base = normName(lbBaseName(lb.lb_name));
@@ -285,113 +267,36 @@ function mergeLiveBench(entries, lbEntries) {
       if (!prev || (lb.lb_global || 0) > (prev.lb_global || 0)) baseMap.set(base, lb);
     }
   }
-
-  // Track which lb entries have been used (to avoid adding them as standalone new entries)
   const usedLbNames = new Set();
-
   let matched = 0;
   for (const e of entries) {
-    const candidates = [
-      normName(e.name || ''),
-      normName((e.slug || '').split('/').pop() || ''),
-      normName((e.hf_id || '').split('/').pop() || ''),
-    ].filter(Boolean);
-
+    const candidates = [normName(e.name || ''), normName((e.slug || '').split('/').pop() || ''), normName((e.hf_id || '').split('/').pop() || '')].filter(Boolean);
     let lb = null;
-    for (const c of candidates) {
-      lb = exactMap.get(c) || baseMap.get(c);
-      if (lb) break;
-    }
-    if (lb) {
-      Object.assign(e, lb);
-      usedLbNames.add(lb.lb_name);
-      matched++;
-    }
+    for (const c of candidates) { lb = exactMap.get(c) || baseMap.get(c); if (lb) break; }
+    if (lb) { Object.assign(e, lb); usedLbNames.add(lb.lb_name); matched++; }
   }
-
-  // Add standalone entries for lbEntries not matched above.
-  // Skip variants whose base was already matched (avoid duplicating e.g. all -effort variants).
-  // Use the base model name (without -high-effort etc.) as the entry name so that
-  // provider model names (which have no effort suffixes) can find this entry.
   const usedBases = new Set([...usedLbNames].map((n) => normName(lbBaseName(n))));
   const newEntries = [];
   for (const lb of lbEntries) {
     if (usedLbNames.has(lb.lb_name)) continue;
     const base = normName(lbBaseName(lb.lb_name));
-    if (usedBases.has(base)) continue; // a variant of a matched model — skip
-    // Only add the best-scoring variant of each base group
+    if (usedBases.has(base)) continue;
     if (baseMap.get(base) === lb || exactMap.get(normName(lb.lb_name)) === lb) {
-      const baseName = lbBaseName(lb.lb_name); // e.g. "claude-opus-4-5-20251101"
-      newEntries.push({ name: baseName, ...lb }); // name uses base; lb_name keeps variant
+      newEntries.push({ name: lbBaseName(lb.lb_name), ...lb });
       usedBases.add(base);
     }
   }
-
   console.log(`  LiveBench: ${matched} matched, ${newEntries.length} new entries`);
   return [...entries, ...newEntries];
-}
-
-// ─── Merge ───────────────────────────────────────────────────────────────────
-
-function mergeEntries(llmstats, hfEntries) {
-  // Build lookup: normalized LLMStats name/slug → entry index
-  const lsIdx = new Map();
-  llmstats.forEach((e, i) => {
-    lsIdx.set(normName(e.name), i);
-    const slugModel = e.slug?.split('/').pop() || '';
-    if (slugModel) lsIdx.set(normName(slugModel), i);
-  });
-
-  const merged = llmstats.map((e) => ({ ...e }));
-  const hfOnly = [];
-
-  for (const hf of hfEntries) {
-    // Try matching by the model name part of the HF ID
-    const modelPart = normName(hf.name);
-    // Also try stripping a leading word (org prefix embedded in model name like "Meta-Llama-...")
-    const modelWords = modelPart.split(' ');
-    const modelNoPrefix = modelWords.length > 1 ? modelWords.slice(1).join(' ') : modelPart;
-
-    const idx = lsIdx.get(modelPart) ?? lsIdx.get(modelNoPrefix);
-    if (idx !== undefined) {
-      // Merge HF fields into LLMStats entry (LLMStats wins for shared benchmarks)
-      const target = merged[idx];
-      if (!target.hf_id)         target.hf_id        = hf.hf_id;
-      if (!target.params_b)      target.params_b      = hf.params_b;
-      if (!target.ifeval)        target.ifeval        = hf.ifeval;
-      if (!target.bbh)           target.bbh           = hf.bbh;
-      if (!target.gpqa)          target.gpqa          = hf.gpqa;
-      if (!target.mmlu_pro)      target.mmlu_pro      = hf.mmlu_pro;
-      target.hf_math_lvl5 = hf.hf_math_lvl5;
-      target.hf_musr      = hf.hf_musr;
-      target.hf_avg       = hf.hf_avg;
-    } else {
-      hfOnly.push(hf);
-    }
-  }
-
-  return [...merged, ...hfOnly];
 }
 
 // ─── Chatbot Arena ───────────────────────────────────────────────────────────
 
 async function fetchChatbotArena() {
   process.stdout.write('Chatbot Arena: fetching RSC leaderboard... ');
-
-  // The lmarena.ai leaderboard page renders via React Server Components.
-  // Requesting with "RSC: 1" returns a streaming text/x-component payload that
-  // embeds the full leaderboard entries (rank, ELO rating, votes) in the server
-  // response — no authentication required.
   const text = await getText('https://lmarena.ai/en/leaderboard/text', {
-    headers: {
-      'User-Agent': 'Mozilla/5.0',
-      'RSC': '1',
-      'Accept': 'text/x-component',
-    },
+    headers: { 'User-Agent': 'Mozilla/5.0', 'RSC': '1', 'Accept': 'text/x-component' },
   });
-
-  // Each RSC line has the format: <hex_id>:<json_value>
-  // Find the line containing "entries":[...] with ELO ratings
   let entries = null;
   for (const line of text.split('\n')) {
     if (!line.includes('"entries":[') || !line.includes('"rating":')) continue;
@@ -404,10 +309,8 @@ async function fetchChatbotArena() {
     entries = JSON.parse(line.substring(start, end));
     break;
   }
-
   if (!entries) throw new Error('Could not find entries in RSC payload');
   console.log(`${entries.length} models`);
-
   return entries.map((e) => ({
     arena_name:  e.modelDisplayName,
     arena_org:   e.modelOrganization,
@@ -420,30 +323,17 @@ async function fetchChatbotArena() {
 function mergeArena(entries, arenaEntries) {
   const arenaMap = new Map();
   for (const a of arenaEntries) arenaMap.set(normName(a.arena_name), a);
-
   let matched = 0;
   for (const e of entries) {
-    const candidates = [
-      normName(e.name || ''),
-      normName((e.lb_name) || ''),
-      normName((e.slug || '').split('/').pop() || ''),
-      normName((e.hf_id || '').split('/').pop() || ''),
-    ];
+    const candidates = [normName(e.name || ''), normName(e.lb_name || ''), normName((e.slug || '').split('/').pop() || ''), normName((e.hf_id || '').split('/').pop() || '')];
     const a = candidates.map((c) => arenaMap.get(c)).find(Boolean);
     if (a) {
-      e.arena_elo   = a.arena_elo;
-      e.arena_rank  = a.arena_rank;
-      e.arena_votes = a.arena_votes;
-      arenaMap.delete(normName(a.arena_name));
-      matched++;
+      e.arena_elo = a.arena_elo; e.arena_rank = a.arena_rank; e.arena_votes = a.arena_votes;
+      arenaMap.delete(normName(a.arena_name)); matched++;
     }
   }
-
   const newEntries = [];
-  for (const a of arenaMap.values()) {
-    newEntries.push({ name: a.arena_name, ...a });
-  }
-
+  for (const a of arenaMap.values()) newEntries.push({ name: a.arena_name, ...a });
   console.log(`  Arena: ${matched} matched, ${newEntries.length} new entries`);
   return [...entries, ...newEntries];
 }
@@ -455,10 +345,7 @@ const AIDER_RAW = 'https://raw.githubusercontent.com/Aider-AI/aider/main/aider/w
 async function fetchAider() {
   process.stdout.write('Aider: fetching edit leaderboard... ');
   const text = await getText(AIDER_RAW);
-
   const rows = yaml.load(text);
-
-  // Multiple runs per model — keep the one with the best pass_rate_1
   const best = new Map();
   for (const row of rows) {
     if (!row.model || row.pass_rate_1 === undefined) continue;
@@ -466,15 +353,10 @@ async function fetchAider() {
     const existing = best.get(key);
     if (!existing || row.pass_rate_1 > existing.pass_rate_1) best.set(key, row);
   }
-
   const entries = [];
   for (const row of best.values()) {
-    entries.push({
-      aider_model: row.model,
-      aider_pass_rate: row.pass_rate_1 / 100, // normalize 0-100 → 0-1
-    });
+    entries.push({ aider_model: row.model, aider_pass_rate: row.pass_rate_1 / 100 });
   }
-
   console.log(`${entries.length} models (best run each)`);
   return entries;
 }
@@ -482,217 +364,176 @@ async function fetchAider() {
 function mergeAider(entries, aiderEntries) {
   const aiderMap = new Map();
   for (const a of aiderEntries) aiderMap.set(normName(a.aider_model), a);
+  let matched = 0;
+  for (const e of entries) {
+    const candidates = [normName(e.name || ''), normName(e.lb_name || ''), normName((e.slug || '').split('/').pop() || ''), normName((e.hf_id || '').split('/').pop() || ''), normName(e.arena_name || '')];
+    const a = candidates.map((c) => aiderMap.get(c)).find(Boolean);
+    if (a) { e.aider_pass_rate = a.aider_pass_rate; aiderMap.delete(normName(a.aider_model)); matched++; }
+  }
+  const newEntries = [];
+  for (const a of aiderMap.values()) newEntries.push({ name: a.aider_model, aider_pass_rate: a.aider_pass_rate });
+  console.log(`  Aider: ${matched} matched, ${newEntries.length} new entries`);
+  return [...entries, ...newEntries];
+}
+
+// ─── Artificial Analysis ───────────────────────────────────────────────────
+
+async function fetchArtificialAnalysis() {
+  const apiKey = process.env.ARTIFICIAL_ANALYSIS_API_KEY;
+  if (!apiKey) {
+    console.log('Artificial Analysis: skipping (no API key found)');
+    return [];
+  }
+
+  process.stdout.write('Artificial Analysis: fetching benchmarks... ');
+  const res = await getJson('https://artificialanalysis.ai/api/v2/data/llms/models', {
+    headers: { 'x-api-key': apiKey },
+  });
+
+  if (!res.data) throw new Error('Invalid response from Artificial Analysis API');
+  console.log(`${res.data.length} models`);
+
+  return res.data.map((m) => {
+    const ev = m.evaluations || {};
+    return {
+      aa_id: m.id,
+      aa_name: m.name,
+      aa_slug: m.slug,
+      aa_intelligence: ev.artificial_analysis_intelligence_index, // typically 0-100
+      aa_mmlu_pro: ev.mmlu_pro, // 0-1
+      aa_gpqa: ev.gpqa, // 0-1
+      aa_livecodebench: ev.livecodebench, // 0-1
+      aa_tokens_per_s: m.median_output_tokens_per_second,
+      aa_latency_s: m.median_time_to_first_token_seconds,
+    };
+  });
+}
+
+function mergeArtificialAnalysis(entries, aaEntries) {
+  const aaMap = new Map();
+  for (const a of aaEntries) aaMap.set(normName(a.aa_name), a);
 
   let matched = 0;
   for (const e of entries) {
     const candidates = [
       normName(e.name || ''),
-      normName((e.lb_name) || ''),
+      normName(e.lb_name || ''),
       normName((e.slug || '').split('/').pop() || ''),
       normName((e.hf_id || '').split('/').pop() || ''),
-      normName((e.arena_name) || ''),
-    ];
-    const a = candidates.map((c) => aiderMap.get(c)).find(Boolean);
-    if (a) {
-      e.aider_pass_rate = a.aider_pass_rate;
-      aiderMap.delete(normName(a.aider_model));
+      normName(e.arena_name || ''),
+    ].filter(Boolean);
+
+    const aa = candidates.map((c) => aaMap.get(c)).find(Boolean);
+    if (aa) {
+      Object.assign(e, aa);
+      aaMap.delete(normName(aa.aa_name));
       matched++;
     }
   }
 
   const newEntries = [];
-  for (const a of aiderMap.values()) {
-    newEntries.push({ name: a.aider_model, aider_pass_rate: a.aider_pass_rate });
+  for (const a of aaMap.values()) {
+    newEntries.push({ name: a.aa_name, ...a });
   }
 
-  console.log(`  Aider: ${matched} matched, ${newEntries.length} new entries`);
+  console.log(`  AA: ${matched} matched, ${newEntries.length} new entries`);
   return [...entries, ...newEntries];
 }
 
-// ─── Per-source partial refresh ──────────────────────────────────────────────
+// ─── Merge ───────────────────────────────────────────────────────────────────
 
-// Fields owned by each source.  Stripping these fields + removing source-only
-// entries allows re-running just one source without losing other sources' data.
+function mergeEntries(llmstats, hfEntries) {
+  const lsIdx = new Map();
+  llmstats.forEach((e, i) => {
+    lsIdx.set(normName(e.name), i);
+    const slugModel = e.slug?.split('/').pop() || '';
+    if (slugModel) lsIdx.set(normName(slugModel), i);
+  });
+  const merged = llmstats.map((e) => ({ ...e }));
+  const hfOnly = [];
+  for (const hf of hfEntries) {
+    const modelPart = normName(hf.name);
+    const modelWords = modelPart.split(' ');
+    const modelNoPrefix = modelWords.length > 1 ? modelWords.slice(1).join(' ') : modelPart;
+    const idx = lsIdx.get(modelPart) ?? lsIdx.get(modelNoPrefix);
+    if (idx !== undefined) {
+      const target = merged[idx];
+      if (!target.hf_id) target.hf_id = hf.hf_id;
+      if (!target.params_b) target.params_b = hf.params_b;
+      if (!target.ifeval) target.ifeval = hf.ifeval;
+      if (!target.bbh) target.bbh = hf.bbh;
+      if (!target.gpqa) target.gpqa = hf.gpqa;
+      if (!target.mmlu_pro) target.mmlu_pro = hf.mmlu_pro;
+      target.hf_math_lvl5 = hf.hf_math_lvl5;
+      target.hf_musr = hf.hf_musr;
+      target.hf_avg = hf.hf_avg;
+    } else hfOnly.push(hf);
+  }
+  return [...merged, ...hfOnly];
+}
+
+// ─── Refresh ─────────────────────────────────────────────────────────────────
+
 const SOURCE_FIELDS = {
   llmstats:  ['slug', 'mmlu', 'mmlu_pro', 'gpqa', 'human_eval', 'math', 'gsm8k', 'mmmu', 'hellaswag', 'ifeval', 'arc', 'drop', 'mbpp', 'mgsm', 'bbh'],
   hf:        ['hf_id', 'params_b', 'hf_math_lvl5', 'hf_musr', 'hf_avg'],
   livebench: ['lb_name', 'lb_global', 'lb_reasoning', 'lb_coding', 'lb_math', 'lb_language', 'lb_if', 'lb_data_analysis'],
   arena:     ['arena_name', 'arena_org', 'arena_elo', 'arena_rank', 'arena_votes'],
   aider:     ['aider_model', 'aider_pass_rate'],
+  aa:        ['aa_id', 'aa_intelligence', 'aa_mmlu_pro', 'aa_gpqa', 'aa_livecodebench', 'aa_tokens_per_s', 'aa_latency_s'],
 };
 
-// A unique field that only this source contributes (used to detect source-only entries).
 const SOURCE_ID_FIELD = {
-  llmstats:  'slug',
-  hf:        'hf_id',
-  livebench: 'lb_name',
-  arena:     'arena_elo',
-  aider:     'aider_pass_rate',
+  llmstats: 'slug', hf: 'hf_id', livebench: 'lb_name', arena: 'arena_elo', aider: 'aider_pass_rate', aa: 'aa_intelligence',
 };
-
-const ALL_ID_FIELDS = Object.values(SOURCE_ID_FIELD);
-
-function stripSourceFields(entries, source) {
-  const fields  = SOURCE_FIELDS[source];
-  const ownId   = SOURCE_ID_FIELD[source];
-  const otherId = ALL_ID_FIELDS.filter((id) => id !== ownId);
-  return entries
-    // Drop entries that only belong to this source (no other source data)
-    .filter((e) => otherId.some((id) => e[id] !== undefined))
-    .map((e) => {
-      const stripped = { ...e };
-      for (const f of fields) delete stripped[f];
-      return stripped;
-    });
-}
-
-// Merge freshly-fetched LLMStats data into an existing array of entries.
-function mergeLLMStatsInto(entries, llmstats) {
-  const LS_FIELDS = SOURCE_FIELDS.llmstats;
-  const nameMap = new Map();
-  entries.forEach((e, i) => {
-    if (e.name) nameMap.set(normName(e.name), i);
-    const slugModel = (e.slug || '').split('/').pop();
-    if (slugModel) nameMap.set(normName(slugModel), i);
-  });
-
-  let matched = 0;
-  const usedIdx = new Set();
-  const newEntries = [];
-
-  for (const ls of llmstats) {
-    const candidates = [normName(ls.name || ''), normName((ls.slug || '').split('/').pop())].filter(Boolean);
-    const idx = candidates.map((c) => nameMap.get(c)).find((n) => n !== undefined);
-    if (idx !== undefined && !usedIdx.has(idx)) {
-      const target = entries[idx];
-      for (const f of LS_FIELDS) { if (ls[f] !== undefined) target[f] = ls[f]; }
-      usedIdx.add(idx);
-      matched++;
-    } else {
-      newEntries.push({ ...ls });
-    }
-  }
-
-  console.log(`  LLMStats: ${matched} matched, ${newEntries.length} new entries`);
-  return [...entries, ...newEntries];
-}
-
-// Merge freshly-fetched HF data into an existing array of entries.
-function mergeHFInto(entries, hfEntries) {
-  const nameMap = new Map();
-  entries.forEach((e, i) => {
-    if (e.name) nameMap.set(normName(e.name), i);
-    const slugModel = (e.slug || '').split('/').pop();
-    if (slugModel) nameMap.set(normName(slugModel), i);
-  });
-
-  let matched = 0;
-  const usedIdx = new Set();
-  const newEntries = [];
-
-  for (const hf of hfEntries) {
-    const modelPart   = normName(hf.name);
-    const modelWords  = modelPart.split(' ');
-    const noPrefix    = modelWords.length > 1 ? modelWords.slice(1).join(' ') : modelPart;
-    const candidates  = [modelPart, noPrefix].filter(Boolean);
-    const idx = candidates.map((c) => nameMap.get(c)).find((n) => n !== undefined);
-
-    if (idx !== undefined && !usedIdx.has(idx)) {
-      const target = entries[idx];
-      if (!target.hf_id)    target.hf_id    = hf.hf_id;
-      if (!target.params_b) target.params_b = hf.params_b;
-      // LLMStats takes priority for shared benchmarks
-      if (!target.ifeval)   target.ifeval   = hf.ifeval;
-      if (!target.bbh)      target.bbh      = hf.bbh;
-      if (!target.gpqa)     target.gpqa     = hf.gpqa;
-      if (!target.mmlu_pro) target.mmlu_pro = hf.mmlu_pro;
-      // HF-exclusive fields always updated
-      target.hf_math_lvl5 = hf.hf_math_lvl5;
-      target.hf_musr      = hf.hf_musr;
-      target.hf_avg       = hf.hf_avg;
-      usedIdx.add(idx);
-      matched++;
-    } else {
-      newEntries.push({ ...hf });
-    }
-  }
-
-  console.log(`  HF: ${matched} matched, ${newEntries.length} new entries`);
-  return [...entries, ...newEntries];
-}
 
 async function refreshSource(source) {
   if (!SOURCE_FIELDS[source]) {
     console.error(`Unknown source "${source}". Valid: ${Object.keys(SOURCE_FIELDS).join(', ')}`);
     process.exit(1);
   }
-
   console.log(`Refreshing benchmark source: ${source}\n`);
   const existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
-  const stripped = stripSourceFields(existing, source);
-
+  const otherIdFields = Object.values(SOURCE_ID_FIELD).filter(f => f !== SOURCE_ID_FIELD[source]);
+  const stripped = existing.filter(e => otherIdFields.some(f => e[f] !== undefined)).map(e => {
+    const s = { ...e }; for (const f of SOURCE_FIELDS[source]) delete s[f]; return s;
+  });
   let result;
-  if (source === 'llmstats') {
-    const data = await fetchLLMStats();
-    result = mergeLLMStatsInto(stripped, data);
-  } else if (source === 'hf') {
-    const data = await fetchHFLeaderboard();
-    result = mergeHFInto(stripped, data);
-  } else if (source === 'livebench') {
-    const data = await fetchLiveBench();
-    result = mergeLiveBench(stripped, data);
-  } else if (source === 'arena') {
-    const data = await fetchChatbotArena();
-    result = mergeArena(stripped, data);
-  } else if (source === 'aider') {
-    const data = await fetchAider();
-    result = mergeAider(stripped, data);
-  }
-
+  if (source === 'llmstats') result = mergeLLMStatsInto(stripped, await fetchLLMStats());
+  else if (source === 'hf') result = mergeHFInto(stripped, await fetchHFLeaderboard());
+  else if (source === 'livebench') result = mergeLiveBench(stripped, await fetchLiveBench());
+  else if (source === 'arena') result = mergeArena(stripped, await fetchChatbotArena());
+  else if (source === 'aider') result = mergeAider(stripped, await fetchAider());
+  else if (source === 'aa') result = mergeArtificialAnalysis(stripped, await fetchArtificialAnalysis());
   fs.writeFileSync(OUT_FILE, JSON.stringify(result, null, 2));
-  console.log(`\nSaved ${result.length} entries to data/benchmarks.json`);
 }
 
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {
   const source = process.argv[2]?.toLowerCase();
+  if (source) { await refreshSource(source); return; }
 
-  // Per-source refresh mode
-  if (source) {
-    await refreshSource(source);
-    return;
-  }
-
-  // Full rebuild — all sources
-  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries] = await Promise.all([
+  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries] = await Promise.all([
     fetchLLMStats(),
     fetchHFLeaderboard(),
     fetchLiveBench(),
     fetchChatbotArena(),
     fetchAider(),
+    fetchArtificialAnalysis(),
   ]);
 
   const merged  = mergeEntries(llmstats, hfEntries);
   const withLB  = mergeLiveBench(merged, lbEntries);
   const withAr  = mergeArena(withLB, arenaEntries);
-  const all     = mergeAider(withAr, aiderEntries);
+  const withAi  = mergeAider(withAr, aiderEntries);
+  const all     = mergeArtificialAnalysis(withAi, aaEntries);
 
-  const hfOnlyCount = all.filter((e) => e.hf_id && !e.slug).length;
-  const lsOnlyCount = all.filter((e) => e.slug && !e.hf_id).length;
-  const bothCount   = all.filter((e) => e.slug && e.hf_id).length;
-  const lbCount     = all.filter((e) => e.lb_name).length;
-  const arenaCount  = all.filter((e) => e.arena_elo).length;
-  const aiderCount  = all.filter((e) => e.aider_pass_rate !== undefined).length;
   console.log(`\nTotal entries: ${all.length}`);
-  console.log(`  LLMStats only: ${lsOnlyCount} | HF only: ${hfOnlyCount} | Both: ${bothCount}`);
-  console.log(`  With LiveBench: ${lbCount} | With Arena ELO: ${arenaCount} | With Aider: ${aiderCount}`);
+  console.log(`  With LiveBench: ${all.filter(e => e.lb_name).length} | Arena: ${all.filter(e => e.arena_elo).length} | Aider: ${all.filter(e => e.aider_pass_rate !== undefined).length} | AA: ${all.filter(e => e.aa_intelligence !== undefined).length}`);
 
   fs.writeFileSync(OUT_FILE, JSON.stringify(all, null, 2));
   console.log(`Saved to data/benchmarks.json (${(fs.statSync(OUT_FILE).size / 1024).toFixed(0)} KB)`);
 }
 
-main().catch((err) => {
-  console.error('Fatal:', err);
-  process.exit(1);
-});
+main().catch((err) => { console.error('Fatal:', err); process.exit(1); });
