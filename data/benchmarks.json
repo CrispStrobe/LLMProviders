@@ -72956,11 +72956,11 @@
   {
     "hf_id": "BAAI/bge-large-en-v1.5",
     "name": "bge-large-en-v1.5",
-    "mteb_avg": 46.8,
-    "mteb_retrieval": 38.8,
+    "mteb_avg": 57.25,
+    "mteb_retrieval": 48.93,
     "sources": {
-      "mteb_avg": "mteb",
-      "mteb_retrieval": "mteb"
+      "mteb_avg": "hf-readme",
+      "mteb_retrieval": "hf-readme"
     }
   },
   {
@@ -72986,20 +72986,20 @@
   {
     "hf_id": "intfloat/e5-mistral-7b-instruct",
     "name": "e5-mistral-7b-instruct",
-    "mteb_avg": 62.08,
-    "mteb_retrieval": 55.06,
+    "mteb_avg": 70.58,
+    "mteb_retrieval": 58.58,
     "sources": {
-      "mteb_avg": "mteb",
-      "mteb_retrieval": "mteb"
+      "mteb_avg": "hf-readme",
+      "mteb_retrieval": "hf-readme"
     }
   },
   {
     "hf_id": "BAAI/bge-multilingual-gemma2",
-    "mteb_avg": 70.3,
-    "mteb_retrieval": 67.5,
+    "mteb_avg": 69.07,
+    "mteb_retrieval": 63.75,
     "sources": {
-      "mteb_avg": "manual",
-      "mteb_retrieval": "manual"
+      "mteb_avg": "hf-readme",
+      "mteb_retrieval": "hf-readme"
     }
   },
   {
@@ -73013,11 +73013,11 @@
   },
   {
     "hf_id": "BAAI/bge-en-icl",
-    "mteb_avg": 64.9,
-    "mteb_retrieval": 58.2,
+    "mteb_avg": 71.68,
+    "mteb_retrieval": 62.16,
     "sources": {
-      "mteb_avg": "manual",
-      "mteb_retrieval": "manual"
+      "mteb_avg": "hf-readme",
+      "mteb_retrieval": "hf-readme"
     }
   }
 ]

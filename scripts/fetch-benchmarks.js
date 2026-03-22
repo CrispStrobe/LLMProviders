@@ -667,13 +667,88 @@ async function refreshSource(source) {
   fs.writeFileSync(OUT_FILE, JSON.stringify(result, null, 2));
 }
 
+// ─── HF README Evaluation ──────────────────────────────────────────────────
+
+async function fetchHFReadmeBenchmarks() {
+  const providersPath = path.join(__dirname, '..', 'data', 'providers.json');
+  if (!fs.existsSync(providersPath)) return [];
+  
+  const providers = JSON.parse(fs.readFileSync(providersPath, 'utf8')).providers;
+  const hfIds = new Set();
+  providers.forEach(p => p.models.forEach(m => { if (m.hf_id) hfIds.add(m.hf_id); }));
+  
+  process.stdout.write(`HF README: checking ${hfIds.size} models... `);
+  const results = [];
+  
+  const BATCH = 10;
+  const ids = Array.from(hfIds);
+  for (let i = 0; i < ids.length; i += BATCH) {
+    const batch = ids.slice(i, i + BATCH);
+    const rows = await Promise.all(batch.map(async (hfId) => {
+      try {
+        const url = `https://huggingface.co/${hfId}/raw/main/README.md`;
+        const text = await getText(url, { retries: 1 });
+        if (!text.startsWith('---')) return null;
+        
+        const endYaml = text.indexOf('---', 3);
+        if (endYaml === -1) return null;
+        
+        const yamlText = text.substring(3, endYaml);
+        const meta = yaml.load(yamlText);
+        if (!meta || !meta['model-index']) return null;
+        
+        let total = 0, count = 0, retTotal = 0, retCount = 0;
+        const modelIndex = Array.isArray(meta['model-index']) ? meta['model-index'] : [meta['model-index']];
+        modelIndex.forEach(mi => {
+          (mi.results || []).forEach(res => {
+            const isMTEB = (res.dataset?.type || '').toLowerCase().includes('mteb') || 
+                          (res.dataset?.name || '').toLowerCase().includes('mteb') ||
+                          (res.task?.type || '').toLowerCase().includes('retrieval');
+            if (!isMTEB) return;
+            
+            const mainMetric = (res.metrics || []).find(m => m.type === 'main_score' || m.type === 'ndcg_at_10' || m.type === 'accuracy');
+            if (mainMetric && typeof mainMetric.value === 'number') {
+              const val = mainMetric.value;
+              const norm = val <= 1.0 ? val * 100 : val;
+              total += norm; count++;
+              
+              const taskType = (res.task?.type || '').toLowerCase();
+              if (taskType.includes('retrieval') || taskType.includes('search')) {
+                retTotal += norm; retCount++;
+              }
+            }
+          });
+        });
+        
+        if (count > 0) {
+          return {
+            hf_id: hfId,
+            name: hfId.split('/').pop(),
+            mteb_avg: Math.round(total / count * 100) / 100,
+            mteb_retrieval: retCount > 0 ? Math.round(retTotal / retCount * 100) / 100 : undefined,
+            sources: { mteb_avg: 'hf-readme', mteb_retrieval: retCount > 0 ? 'hf-readme' : undefined }
+          };
+        }
+      } catch (e) {
+        return null;
+      }
+      return null;
+    }));
+    rows.forEach(r => { if (r) results.push(r); });
+    process.stdout.write(`  HF README: ${Math.min(i + BATCH, ids.length)}/${ids.length}\r`);
+  }
+  
+  console.log(`\n  HF README: ${results.length} models enriched from metadata`);
+  return results;
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {
   const source = process.argv[2]?.toLowerCase();
   if (source) { await refreshSource(source); return; }
 
-  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, mtebEntries] = await Promise.all([
+  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, mtebEntries, readmeEntries] = await Promise.all([
     fetchLLMStats(),
     fetchHFLeaderboard(),
     fetchLiveBench(),
@@ -681,6 +756,7 @@ async function main() {
     fetchAider(),
     fetchArtificialAnalysis(),
     fetchMTEB(),
+    fetchHFReadmeBenchmarks(),
   ]);
 
   const merged  = mergeEntries(llmstats, hfEntries);
@@ -688,7 +764,8 @@ async function main() {
   const withAr  = mergeArena(withLB, arenaEntries);
   const withAi  = mergeAider(withAr, aiderEntries);
   const withAA  = mergeArtificialAnalysis(withAi, aaEntries);
-  const all     = mergeMTEB(withAA, mtebEntries);
+  const withMTEB = mergeMTEB(withAA, mtebEntries);
+  const all     = mergeMTEB(withMTEB, readmeEntries);
 
   console.log(`\nTotal entries: ${all.length}`);
   console.log(`  With LiveBench: ${all.filter(e => e.lb_name).length} | Arena: ${all.filter(e => e.arena_elo).length} | Aider: ${all.filter(e => e.aider_pass_rate !== undefined).length} | AA: ${all.filter(e => e.aa_intelligence !== undefined).length} | MTEB: ${all.filter(e => e.mteb_avg !== undefined).length}`);
