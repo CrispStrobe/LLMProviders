@@ -286,7 +286,13 @@ function App() {
     return allModels.filter((model) => {
       const matchesSearch = model.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                            model.provider.name.toLowerCase().includes(searchTerm.toLowerCase())
-      const matchesType = selectedType === 'all' || model.type === selectedType
+      
+      const caps = model.capabilities || [];
+      const matchesType = selectedType === 'all' || 
+                         model.type === selectedType ||
+                         (selectedType === 'audio' && (caps.includes('audio') || caps.includes('audio-out'))) ||
+                         (selectedType === 'vision' && (caps.includes('vision') || caps.includes('video'))) ||
+                         (selectedType === 'chat' && model.type === 'chat');
       
       let matchesRegion = selectedRegion === 'all' || model.complianceStatus === selectedRegion;
       // US filter includes US/EU
