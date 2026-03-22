@@ -241,7 +241,7 @@ app.post('/api/fetch', async (req, res) => {
 
 // SPA catch-all: serve index.html for any non-API route
 if (fs.existsSync(distDir)) {
-  app.get('*', (req, res) => {
+  app.get('(.*)', (req, res) => {
     res.sendFile(path.join(distDir, 'index.html'));
   });
 }
