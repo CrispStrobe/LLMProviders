@@ -596,7 +596,7 @@ function App() {
                     {model.type === 'embedding' && (
                       <span className="cap-badge cap-embedding" title="embedding">{CAP_ICON.embedding}</span>
                     )}
-                    {(model.capabilities || []).map(cap => (
+                    {(model.capabilities || []).map((cap: string) => (
                       <span key={cap} className={`cap-badge cap-${cap}`} title={cap}>{CAP_ICON[cap] ?? cap}</span>
                     ))}
                   </td>
