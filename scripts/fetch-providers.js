@@ -302,13 +302,15 @@ async function propagateExtraData(data) {
   data.providers.forEach(p => p.models.forEach(model => {
     const n = normName(model.name);
     for (const [key, val] of Object.entries(MANUAL_HF_ID_MAP)) {
-      if (n === key || n.endsWith(' ' + key) || n.endsWith('/' + key)) { 
+      const nk = normName(key);
+      if (n === nk || n.endsWith(' ' + nk) || n.endsWith('/' + nk)) { 
         model.hf_id = val; model.hf_private = false; break; 
       }
     }
     if (PROPRIETARY_KEYWORDS.some(k => n.includes(k)) && !model.hf_id) model.hf_private = true;
     for (const [key, val] of Object.entries(MANUAL_OLLAMA_ID_MAP)) {
-      if (n === key || n.endsWith(' ' + key) || n.endsWith('/' + key)) model.ollama_id = val;
+      const nk = normName(key);
+      if (n === nk || n.endsWith(' ' + nk) || n.endsWith('/' + nk)) model.ollama_id = val;
     }
     if (model.hf_id && MANUAL_SIZE_MAP[model.hf_id]) {
       model.size_b = MANUAL_SIZE_MAP[model.hf_id]; model.size_source = 'manual';
