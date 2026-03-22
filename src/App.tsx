@@ -90,6 +90,7 @@ const CAP_ICON: Record<string, string> = {
   tools: '🔧',
   reasoning: '💡',
   embedding: '🧩',
+  'eu-endpoint': '🇪🇺',
 }
 
 function App() {
@@ -208,25 +209,28 @@ function App() {
     setDataVersion((v) => v + 1);
   }, []);
 
-  const getComplianceStatus = (provider: Provider) => {
+  const getComplianceStatus = (provider: Provider, model?: Model) => {
     const hq = provider.headquarters.toLowerCase();
     const isEU = provider.region === 'EU' || hq === 'germany' || hq === 'france' || hq === 'netherlands';
-    const isUS = hq === 'usa';
+    const isUS = hq === 'usa' || provider.region === 'US';
     const isEEA = provider.region === 'EEA Equivalent' || hq === 'switzerland';
 
-    if (isEU) return 'EU (Sovereign)';
-    if (isEEA) return 'Non-EU (EEA/Swiss)';
-    if (isUS && provider.eu_endpoints) return 'US (EU Endpoint / Cloud Act)';
-    if (isUS) return 'US (Global / Cloud Act)';
-    return 'Other Non-EU';
+    // Model-level override for OpenRouter or similar aggregators
+    const hasEuEndpoint = model?.capabilities?.includes('eu-endpoint') || provider.eu_endpoints;
+
+    if (isEU) return 'EU';
+    if (isEEA) return 'EEA';
+    if (isUS && hasEuEndpoint) return 'US/EU';
+    if (isUS) return 'US';
+    return 'Other';
   };
 
   const allModels = useMemo(() => {
     const rawModels: (Model & { provider: Provider; complianceStatus: string })[] = []
     
     liveProviders.forEach((provider: Provider) => {
-      const status = getComplianceStatus(provider);
       provider.models.forEach((model) => {
+        const status = getComplianceStatus(provider, model);
         let cleanName = model.name;
         // Strip provider/ prefix for all models
         if (cleanName.includes('/')) {
@@ -259,7 +263,11 @@ function App() {
       const matchesSearch = model.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                            model.provider.name.toLowerCase().includes(searchTerm.toLowerCase())
       const matchesType = selectedType === 'all' || model.type === selectedType
-      const matchesRegion = selectedRegion === 'all' || model.complianceStatus.includes(selectedRegion)
+      
+      let matchesRegion = selectedRegion === 'all' || model.complianceStatus === selectedRegion;
+      // US filter includes US/EU
+      if (selectedRegion === 'US' && model.complianceStatus === 'US/EU') matchesRegion = true;
+      
       return matchesSearch && matchesType && matchesRegion
     })
   }, [searchTerm, selectedType, selectedRegion, allModels])
@@ -429,8 +437,10 @@ function App() {
         <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)} className="type-select">
           <option value="all">All Jurisdictions</option>
           <option value="EU">EU (Sovereign)</option>
-          <option value="Non-EU">Non-EU (Swiss/EEA)</option>
+          <option value="EEA">EEA (Swiss/EEA)</option>
+          <option value="US/EU">US/EU (EU Endpoint)</option>
           <option value="US">US (Cloud Act)</option>
+          <option value="Other">Other</option>
         </select>
         <label className="checkbox-label">
           <input
