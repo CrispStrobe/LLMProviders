@@ -238,8 +238,11 @@ const MANUAL_HF_ID_MAP = {
   'flux-schnell': 'black-forest-labs/FLUX.1-schnell',
   'flux-dev': 'black-forest-labs/FLUX.1-dev',
   'granite-3.1-8b': 'ibm-granite/granite-3.1-8b-instruct',
-  'apertus-70b-instruct-2509': 'HuggingFaceFW/abliterated-llama-3-70b-instruct',
-  'teuken-7b instruct': 'Teuken/Teuken-7B-Instruct',
+  'apertus-70b-instruct-2509': 'swiss-ai/Apertus-70B-Instruct-2509',
+  'teuken-7b instruct': 'openGPT-X/Teuken-7B-instruct-v0.6',
+  'kimi-k2.5': 'moonshotai/Kimi-K2.5',
+  'kimi-k2-instruct': 'moonshotai/Kimi-K2-Instruct',
+  'kimi-k2-thinking': 'moonshotai/Kimi-K2-Thinking',
   'llama 4 scout': 'meta-llama/Llama-4-Scout-17B-16E-Instruct',
   'llama 4 maverick': 'meta-llama/Llama-4-Maverick-17B-128E-Instruct',
 };
@@ -286,7 +289,7 @@ const MANUAL_SIZE_MAP = {
 const PROPRIETARY_KEYWORDS = [
   'gpt-4', 'gpt-5', 'sonnet', 'opus', 'haiku', 'gemini', 'o1-', 'o3-', 'o4-', 'claude',
   'magistral', 'voxtral', 'moderation', 'embed', 'mistral embed', 'codestral embed',
-  'grok', 'sonar', 'perplexity', 'amazon', 'nova', 'inflection', 'kimi'
+  'grok', 'sonar', 'perplexity', 'amazon', 'nova', 'inflection'
 ];
 
 async function propagateExtraData(data) {
