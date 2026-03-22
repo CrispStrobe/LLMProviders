@@ -81,7 +81,7 @@ function updateProviderModels(providers, providerName, models) {
 const normName = (s) =>
   s.toLowerCase().replace(/[-_.:]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
 
-// Build an index of normalized OpenRouter model-part → { capabilities, type, size_b, hf_id, hf_private }
+// Build an index of normalized OpenRouter model-part → { capabilities, type, size_b, hf_id, ollama_id, hf_private }
 // Only includes entries that carry non-trivial capability data.
 function buildOrIndex(orProvider) {
   if (!orProvider) return [];
@@ -96,6 +96,7 @@ function buildOrIndex(orProvider) {
       type: m.type,
       size_b: m.size_b,
       hf_id: m.hf_id,
+      ollama_id: m.ollama_id,
       hf_private: m.hf_private,
     });
   }
@@ -103,7 +104,7 @@ function buildOrIndex(orProvider) {
 }
 
 // For a given model name, find the best matching OpenRouter index entry.
-// Returns { capabilities, type, size_b, hf_id, hf_private } or null.
+// Returns metadata object or null.
 function findOrMatch(modelName, orIndex) {
   // Use the model part (after last '/') for matching, strip :region/@suffix
   const raw = modelName.replace(/@[^/]+$/, '').replace(/:[^/]+$/, '');
@@ -163,11 +164,20 @@ function estimateParams(config) {
   const l = config.num_hidden_layers || config.n_layer;
   const v = config.vocab_size;
   const i = config.intermediate_size || config.d_ff;
+  const numExperts = config.num_local_experts || config.n_experts || 1;
   
   if (h && l && v) {
-    // Basic transformer param estimation: Layers * (Embedding + Attention + MLP)
     const intermediate = i || (4 * h);
-    const params = (v * h) + l * (4 * (h * h) + 2 * (h * intermediate));
+    // Embedding parameters
+    const vocabParams = v * h;
+    const posParams = (config.max_position_embeddings || 512) * h;
+    const typeParams = (config.type_vocab_size || 0) * h;
+    const embedParams = vocabParams + posParams + typeParams;
+
+    // Layer parameters (Attention + MLP)
+    const mlpParams = 2 * h * intermediate * numExperts;
+    const attentionParams = 4 * (h * h);
+    const params = embedParams + l * (attentionParams + mlpParams);
     return params;
   }
   return null;
@@ -179,24 +189,31 @@ async function fetchHFSize(hfId) {
   const token = process.env.HF_TOKEN;
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
   try {
-    // Limit to 1 retry for technical metadata lookups
+    // 1. Get top-level metadata
     const data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers, retries: 1 });
     
-    // Check various common metadata locations for total parameters
     let params = data.safetensors?.total || data.config?.total_parameters || data.config?.model_type_params;
     
-    // Fallback: cardData
+    // 2. Fallback: cardData
     if (!params && data.cardData?.model_details?.parameters) {
       const match = data.cardData.model_details.parameters.match(/([\d.]+)\s*[Bb]/);
       if (match) params = parseFloat(match[1]) * 1_000_000_000;
     }
     
-    // Fallback: vLLM-style estimation from config
-    if (!params && data.config) {
-      params = estimateParams(data.config);
+    // 3. Fallback: vLLM-style estimation from config
+    // If the API config is "minified", fetch the raw config.json file
+    let config = data.config;
+    if (!params && (!config || !config.hidden_size)) {
+      try {
+        config = await getJson(`https://huggingface.co/${hfId}/raw/main/config.json`, { headers, retries: 1 });
+      } catch (e) { /* ignore raw config fetch failure */ }
     }
     
-    if (!params) return { error: 'No parameter data in Hub metadata' };
+    if (!params && config) {
+      params = estimateParams(config);
+    }
+    
+    if (!params) return { error: 'No parameter data' };
     
     const b = params / 1_000_000_000;
     // Keep 2 decimals for small models (<1B), 1 decimal for others
@@ -242,13 +259,16 @@ const EMBEDDER_KEYWORDS = ['embed', 'bge', 'gte', 'e5', 'stella', 'minilm', 'mul
 const MANUAL_HF_ID_MAP = {
   'all minilm l12 v2': 'sentence-transformers/all-MiniLM-L12-v2',
   'whisper v3': 'openai/whisper-large-v3',
-  'whisper v3 large': 'openai/whisper-large-v3',
   'whisper large v3': 'openai/whisper-large-v3',
+  'whisper v3 large': 'openai/whisper-large-v3',
   'whisper large v3 turbo': 'openai/whisper-large-v3-turbo',
   'step 3 5 flash': 'stepfun-ai/Step-3.5-Flash',
   'bge m3': 'BAAI/bge-m3',
   'bge en icl': 'BAAI/bge-en-icl',
+  'bge large en v1 5': 'BAAI/bge-large-en-v1.5',
+  'bge multilingual gemma2': 'BAAI/bge-multilingual-gemma2',
   'lightonocr 2': 'lightonai/LightOnOCR-2-1B',
+
   'sdxl': 'stabilityai/stable-diffusion-xl-base-1.0',
   'flux 1 schnell': 'black-forest-labs/FLUX.1-schnell',
   'flux schnell': 'black-forest-labs/FLUX.1-schnell',
@@ -261,10 +281,13 @@ const MANUAL_HF_ID_MAP = {
   // Qwen
   'qwen turbo': 'Alibaba/Qwen-Turbo',
   'alibaba qwen turbo': 'Alibaba/Qwen-Turbo',
+  'qwen qwen turbo': 'Alibaba/Qwen-Turbo',
   'qwen plus': 'Alibaba/Qwen-Plus',
   'alibaba qwen plus': 'Alibaba/Qwen-Plus',
+  'qwen qwen plus': 'Alibaba/Qwen-Plus',
   'qwen max': 'Alibaba/Qwen-Max',
   'alibaba qwen max': 'Alibaba/Qwen-Max',
+  'qwen qwen max': 'Alibaba/Qwen-Max',
   'qwen 3 coder flash': 'Qwen/Qwen2.5-Coder-7B-Instruct',
   'qwen3 coder flash': 'Qwen/Qwen2.5-Coder-7B-Instruct',
   'qwen 3 coder plus': 'Qwen/Qwen2.5-Coder-32B-Instruct',
@@ -341,6 +364,15 @@ const MANUAL_OLLAMA_ID_MAP = {
   'gemma 2 27b': 'gemma2:27b',
   'qwen 2 5 coder 7b': 'qwen2.5-coder:7b',
   'qwen 2 5 coder 32b': 'qwen2.5-coder:32b',
+  'mistral large 2411': 'mistral-large',
+  'mistral large 3': 'mistral-large',
+  'phi 3 5 mini': 'phi3.5',
+  'phi 3 5 vision': 'phi3.5-vision',
+  'qwen 2 5 7b': 'qwen2.5:7b',
+  'qwen 2 5 72b': 'qwen2.5:72b',
+  'mistral nemo': 'mistral-nemo',
+  'mixtral 8x7b': 'mixtral',
+  'mixtral 8x22b': 'mixtral-8x22b',
 };
 
 const PROPRIETARY_KEYWORDS = [
