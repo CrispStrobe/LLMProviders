@@ -72955,11 +72955,11 @@
   {
     "hf_id": "BAAI/bge-large-en-v1.5",
     "name": "bge-large-en-v1.5",
-    "mteb_avg": 44.38,
-    "mteb_retrieval": 92.31,
+    "mteb_avg": 57.25,
+    "mteb_retrieval": 48.93,
     "sources": {
-      "mteb_avg": "mteb",
-      "mteb_retrieval": "mteb"
+      "mteb_avg": "hf-readme",
+      "mteb_retrieval": "hf-readme"
     }
   },
   {
@@ -73017,6 +73017,24 @@
     "sources": {
       "mteb_avg": "manual",
       "mteb_retrieval": "manual"
+    }
+  },
+  {
+    "name": "Mistral Embed",
+    "mteb_avg": 55.26,
+    "sources": {
+      "mteb_avg": "manual"
+    }
+  },
+  {
+    "name": "Codestral Embed",
+    "mteb_avg": 84.7,
+    "mteb_retrieval": 81,
+    "lb_coding": 0.81,
+    "sources": {
+      "mteb_avg": "manual",
+      "mteb_retrieval": "manual",
+      "lb_coding": "manual"
     }
   }
 ]

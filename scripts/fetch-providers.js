@@ -216,12 +216,11 @@ const MANUAL_HF_ID_MAP = {
   'ministral 3 - 3b': 'mistralai/Ministral-3b-instruct-2410',
   'ministral 3 - 8b': 'mistralai/Ministral-8b-instruct-2410',
   'devstral 2': 'mistralai/Devstral-2-123B-Instruct-2512',
-  'mistral embed': 'mistralai/mistral-embed',
-  'codestral embed': 'mistralai/mistral-embed',
   'e5 mistral 7b instruct': 'intfloat/e5-mistral-7b-instruct',
   'qwen3-embedding-8b': 'Qwen/Qwen3-Embedding-8B',
   'bge-multilingual-gemma2': 'BAAI/bge-multilingual-gemma2',
   'bge-en-icl': 'BAAI/bge-en-icl',
+  'wizardlm 2 8x22b': 'alpindale/WizardLM-2-8x22B',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {
@@ -265,7 +264,7 @@ const MANUAL_SIZE_MAP = {
 
 const PROPRIETARY_KEYWORDS = [
   'gpt-4', 'gpt-5', 'sonnet', 'opus', 'haiku', 'gemini', 'o1-', 'o3-', 'o4-', 'claude',
-  'magistral', 'voxtral', 'moderation', 'embed'
+  'magistral', 'voxtral', 'moderation', 'embed', 'mistral embed', 'codestral embed'
 ];
 
 async function propagateExtraData(data) {

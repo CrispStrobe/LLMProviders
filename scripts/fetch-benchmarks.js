@@ -579,19 +579,24 @@ function mergeMTEB(entries, mtebEntries) {
     { hf_id: 'Qwen/Qwen3-Embedding-8B', mteb_avg: 71.2, mteb_retrieval: 72.1, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual' } },
     { hf_id: 'BAAI/bge-en-icl', mteb_avg: 64.9, mteb_retrieval: 58.2, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual' } },
     { hf_id: 'sentence-transformers/paraphrase-multilingual-mpnet-base-v2', mteb_avg: 51.98, mteb_retrieval: 39.76, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual' } },
+    { name: 'Mistral Embed', mteb_avg: 55.26, sources: { mteb_avg: 'manual' } },
+    { name: 'Codestral Embed', mteb_avg: 84.7, mteb_retrieval: 81.0, lb_coding: 0.81, sources: { mteb_avg: 'manual', mteb_retrieval: 'manual', lb_coding: 'manual' } },
   ];
   overrides.forEach(o => {
-    map.set(o.hf_id.toLowerCase(), o); // Force override
+    const key = (o.hf_id || o.name).toLowerCase();
+    map.set(key, o); // Force override
   });
 
   let matched = 0;
   for (const e of entries) {
-    const m = e.hf_id ? map.get(e.hf_id.toLowerCase()) : null;
+    const m = (e.hf_id ? map.get(e.hf_id.toLowerCase()) : null) || (e.name ? map.get(e.name.toLowerCase()) : null);
     if (m) {
-      e.mteb_avg = m.mteb_avg;
+      if (m.mteb_avg) e.mteb_avg = m.mteb_avg;
       if (m.mteb_retrieval) e.mteb_retrieval = m.mteb_retrieval;
+      if (m.lb_coding) e.lb_coding = m.lb_coding;
       e.sources = { ...(e.sources || {}), ...m.sources };
-      map.delete(m.hf_id.toLowerCase()); matched++;
+      const key = (m.hf_id || m.name).toLowerCase();
+      map.delete(key); matched++;
     }
   }
   const newEntries = [...map.values()];
