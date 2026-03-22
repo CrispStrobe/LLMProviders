@@ -22,8 +22,8 @@ function loadApiKey() {
 }
 
 const getSizeB = (id) => {
-  // Match patterns like 1.2b, 70b, 8b. Support decimals and trailing colon (e.g. 1.2b:free)
-  const match = (id || '').match(/(?:\b|-)([\d.]+)[Bb](?:\b|:|$)/);
+  // Relaxed regex: match any digits followed by 'b', even if part of a word like 'e2b' or '30b-a3b'
+  const match = (id || '').match(/([\d.]+)[Bb](?:\b|:|$)/);
   if (!match) return undefined;
   const num = parseFloat(match[1]);
   return (num > 0 && num < 2000) ? num : undefined;
@@ -140,7 +140,9 @@ async function fetchOpenRouter() {
     let sizeB = apiSize;
     if (!sizeB && model.hugging_face_id) sizeB = getSizeB(model.hugging_face_id);
     if (!sizeB && model.description) {
-      const descMatch = model.description.match(/([\d.]+)[Bb]-parameter/);
+      // Improved description regex: catch "size of 2B", "effective 2B", "196B parameters", etc.
+      const descMatch = model.description.match(/([\d.]+)[Bb](?:[ -]parameter| size| effective)/i) || 
+                        model.description.match(/effective parameter size of ([\d.]+)[Bb]/i);
       if (descMatch) sizeB = parseFloat(descMatch[1]);
     }
     if (!sizeB) sizeB = getSizeB(model.id);
