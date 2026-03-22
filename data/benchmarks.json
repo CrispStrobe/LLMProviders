@@ -72942,5 +72942,43 @@
     "sources": {
       "aider_pass_rate": "aider"
     }
+  },
+  {
+    "hf_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+    "name": "paraphrase-multilingual-mpnet-base-v2",
+    "mteb_avg": 31.36,
+    "sources": {
+      "mteb_avg": "mteb"
+    }
+  },
+  {
+    "hf_id": "BAAI/bge-m3",
+    "name": "bge-m3",
+    "mteb_avg": 63.28,
+    "mteb_retrieval": 63.28,
+    "sources": {
+      "mteb_avg": "mteb",
+      "mteb_retrieval": "mteb"
+    }
+  },
+  {
+    "hf_id": "sentence-transformers/all-MiniLM-L12-v2",
+    "name": "all-MiniLM-L12-v2",
+    "mteb_avg": 37.82,
+    "mteb_retrieval": 50.99,
+    "sources": {
+      "mteb_avg": "mteb",
+      "mteb_retrieval": "mteb"
+    }
+  },
+  {
+    "hf_id": "intfloat/e5-mistral-7b-instruct",
+    "name": "e5-mistral-7b-instruct",
+    "mteb_avg": 70.57,
+    "mteb_retrieval": 54.76,
+    "sources": {
+      "mteb_avg": "mteb",
+      "mteb_retrieval": "mteb"
+    }
   }
 ]

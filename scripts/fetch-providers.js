@@ -216,6 +216,9 @@ const MANUAL_HF_ID_MAP = {
   'ministral 3 - 3b': 'mistralai/Ministral-3b-instruct-2410',
   'ministral 3 - 8b': 'mistralai/Ministral-8b-instruct-2410',
   'devstral 2': 'mistralai/Devstral-2-123B-Instruct-2512',
+  'mistral embed': 'mistralai/mistral-embed',
+  'codestral embed': 'mistralai/mistral-embed',
+  'e5 mistral 7b instruct': 'intfloat/e5-mistral-7b-instruct',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {

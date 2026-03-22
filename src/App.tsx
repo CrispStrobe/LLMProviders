@@ -94,6 +94,9 @@ interface BenchmarkEntry {
   aa_aime?: number;
   aa_tokens_per_s?: number;
   aa_latency_s?: number;
+  // MTEB (Massive Text Embedding Benchmark)
+  mteb_avg?: number;
+  mteb_retrieval?: number;
 }
 
 const normalizeName = (s: string) =>
@@ -365,7 +368,9 @@ function App() {
         case 'arena_elo':
         case 'aider_pass_rate':
         case 'aa_intelligence':
-        case 'aa_tokens_per_s': {
+        case 'aa_tokens_per_s':
+        case 'mteb_avg':
+        case 'mteb_retrieval': {
           const bA = findBenchmark(a.name);
           const bB = findBenchmark(b.name);
           aValue = bA?.[sortConfig.key as keyof BenchmarkEntry] as number ?? -1;
@@ -515,6 +520,8 @@ function App() {
                 <th onClick={() => requestSort('aider_pass_rate')} className="sortable" title="Aider code editing benchmark (pass rate, 133 tasks)">Aider {getSortIcon('aider_pass_rate')}</th>
                 <th onClick={() => requestSort('aa_intelligence')} className="sortable" title="Artificial Analysis Intelligence Index (0-100)">AA Intel {getSortIcon('aa_intelligence')}</th>
                 <th onClick={() => requestSort('aa_tokens_per_s')} className="sortable" title="Artificial Analysis Median Speed (Tokens per Second)">AA Speed {getSortIcon('aa_tokens_per_s')}</th>
+                <th onClick={() => requestSort('mteb_avg')} className="sortable" title="MTEB (Massive Text Embedding Benchmark) Average">MTEB {getSortIcon('mteb_avg')}</th>
+                <th onClick={() => requestSort('mteb_retrieval')} className="sortable" title="MTEB Retrieval Average">MTEB-Ret {getSortIcon('mteb_retrieval')}</th>
                 <th onClick={() => requestSort('lb_global')} className="sortable" title="LiveBench overall average (contamination-free)">LB {getSortIcon('lb_global')}</th>
                 <th onClick={() => requestSort('lb_math')} className="sortable" title="LiveBench Mathematics">LB-Math {getSortIcon('lb_math')}</th>
                 <th onClick={() => requestSort('lb_coding')} className="sortable" title="LiveBench Coding + Agentic Coding">LB-Code {getSortIcon('lb_coding')}</th>
@@ -618,6 +625,8 @@ function App() {
                       <td className="benchmark-cell">{fmt(bm?.aider_pass_rate)}</td>
                       <td className="benchmark-cell">{bm?.aa_intelligence !== undefined ? Math.round(bm.aa_intelligence) : '–'}</td>
                       <td className="benchmark-cell">{bm?.aa_tokens_per_s !== undefined ? Math.round(bm.aa_tokens_per_s) : '–'}</td>
+                      <td className="benchmark-cell">{bm?.mteb_avg !== undefined ? bm.mteb_avg.toFixed(1) : '–'}</td>
+                      <td className="benchmark-cell">{bm?.mteb_retrieval !== undefined ? bm.mteb_retrieval.toFixed(1) : '–'}</td>
                       <td className="benchmark-cell">{fmt(bm?.lb_global)}</td>
                       <td className="benchmark-cell">{fmt(bm?.lb_math)}</td>
                       <td className="benchmark-cell">{fmt(bm?.lb_coding)}</td>

@@ -484,6 +484,91 @@ function mergeArtificialAnalysis(entries, aaEntries) {
   return [...entries, ...newEntries];
 }
 
+// ─── MTEB ──────────────────────────────────────────────────────────────────
+
+const MTEB_PATHS_URL = 'https://raw.githubusercontent.com/embeddings-benchmark/results/main/paths.json';
+const MTEB_RAW_BASE_URL = 'https://raw.githubusercontent.com/embeddings-benchmark/results/main/';
+
+async function fetchMTEB() {
+  const providersPath = path.join(__dirname, '..', 'data', 'providers.json');
+  if (!fs.existsSync(providersPath)) return [];
+  
+  process.stdout.write('MTEB: fetching results index... ');
+  const paths = await getJson(MTEB_PATHS_URL);
+  const providers = JSON.parse(fs.readFileSync(providersPath, 'utf8')).providers;
+  const hfIds = new Set();
+  providers.forEach(p => p.models.forEach(m => { if (m.type === 'embedding' && m.hf_id) hfIds.add(m.hf_id); }));
+  console.log(`${hfIds.size} embedders`);
+
+  const results = [];
+  for (const hfId of hfIds) {
+    const key = hfId.replace(/\//g, '__');
+    // Try original key, then find matching key in paths (case-insensitive)
+    let resultPaths = paths[key];
+    if (!resultPaths) {
+      const match = Object.keys(paths).find(k => k.toLowerCase() === key.toLowerCase());
+      if (match) resultPaths = paths[match];
+    }
+    if (!resultPaths) continue;
+
+    const revisions = [...new Set(resultPaths.map(p => p.split('/')[2]))];
+    const latestPaths = resultPaths.filter(p => p.includes(`/${revisions[revisions.length - 1]}/`));
+    
+    process.stdout.write(`  MTEB: ${hfId} (${latestPaths.length} tasks)\r`);
+    
+    let total = 0, count = 0, retTotal = 0, retCount = 0;
+    const BATCH = 20;
+    for (let i = 0; i < latestPaths.length; i += BATCH) {
+      const batch = await Promise.all(latestPaths.slice(i, i + BATCH).map(p => getJson(MTEB_RAW_BASE_URL + p).catch(() => null)));
+      batch.forEach(res => {
+        if (!res) return;
+        const scores = res.scores || res;
+        const data = scores.test || scores.dev || scores.validation;
+        if (!data) return;
+        const arr = Array.isArray(data) ? data : [data];
+        arr.forEach(r => {
+          if (r.languages && !r.languages.some(l => l.startsWith('eng') || l === 'en') && arr.length > 1) return;
+          const s = r.main_score || r.ndcg_at_10 || r.accuracy;
+          if (typeof s === 'number' && s > 0) {
+            const norm = s <= 1.0 ? s * 100 : s;
+            total += norm; count++;
+            const task = res.mteb_dataset_name || res.task_name || '';
+            if (task.includes('Retrieval') || task.includes('Search')) { retTotal += norm; retCount++; }
+          }
+        });
+      });
+    }
+    if (count > 0) {
+      results.push({
+        hf_id: hfId,
+        name: hfId.split('/').pop(),
+        mteb_avg: Math.round(total / count * 100) / 100,
+        mteb_retrieval: retCount > 0 ? Math.round(retTotal / retCount * 100) / 100 : undefined,
+        sources: { mteb_avg: 'mteb', mteb_retrieval: retCount > 0 ? 'mteb' : undefined }
+      });
+    }
+  }
+  console.log(`\n  MTEB: ${results.length} models enriched            `);
+  return results;
+}
+
+function mergeMTEB(entries, mtebEntries) {
+  const map = new Map(mtebEntries.map(m => [m.hf_id.toLowerCase(), m]));
+  let matched = 0;
+  for (const e of entries) {
+    const m = e.hf_id ? map.get(e.hf_id.toLowerCase()) : null;
+    if (m) {
+      e.mteb_avg = m.mteb_avg;
+      if (m.mteb_retrieval) e.mteb_retrieval = m.mteb_retrieval;
+      e.sources = { ...(e.sources || {}), ...m.sources };
+      map.delete(m.hf_id.toLowerCase()); matched++;
+    }
+  }
+  const newEntries = [...map.values()];
+  console.log(`  MTEB: ${matched} matched, ${newEntries.length} new entries`);
+  return [...entries, ...newEntries];
+}
+
 // ─── Merge ───────────────────────────────────────────────────────────────────
 
 function mergeEntries(llmstats, hfEntries) {
@@ -526,10 +611,11 @@ const SOURCE_FIELDS = {
   arena:     ['arena_name', 'arena_org', 'arena_elo', 'arena_rank', 'arena_votes'],
   aider:     ['aider_model', 'aider_pass_rate'],
   aa:        ['aa_id', 'aa_intelligence', 'aa_coding', 'aa_math', 'aa_mmlu_pro', 'aa_gpqa', 'aa_livecodebench', 'aa_hle', 'aa_scicode', 'aa_math_500', 'aa_aime', 'aa_tokens_per_s', 'aa_latency_s'],
+  mteb:      ['mteb_avg', 'mteb_retrieval'],
 };
 
 const SOURCE_ID_FIELD = {
-  llmstats: 'slug', hf: 'hf_id', livebench: 'lb_name', arena: 'arena_elo', aider: 'aider_pass_rate', aa: 'aa_intelligence',
+  llmstats: 'slug', hf: 'hf_id', livebench: 'lb_name', arena: 'arena_elo', aider: 'aider_pass_rate', aa: 'aa_intelligence', mteb: 'mteb_avg',
 };
 
 async function refreshSource(source) {
@@ -550,6 +636,7 @@ async function refreshSource(source) {
   else if (source === 'arena') result = mergeArena(stripped, await fetchChatbotArena());
   else if (source === 'aider') result = mergeAider(stripped, await fetchAider());
   else if (source === 'aa') result = mergeArtificialAnalysis(stripped, await fetchArtificialAnalysis());
+  else if (source === 'mteb') result = mergeMTEB(stripped, await fetchMTEB());
   fs.writeFileSync(OUT_FILE, JSON.stringify(result, null, 2));
 }
 
@@ -559,23 +646,25 @@ async function main() {
   const source = process.argv[2]?.toLowerCase();
   if (source) { await refreshSource(source); return; }
 
-  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries] = await Promise.all([
+  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, mtebEntries] = await Promise.all([
     fetchLLMStats(),
     fetchHFLeaderboard(),
     fetchLiveBench(),
     fetchChatbotArena(),
     fetchAider(),
     fetchArtificialAnalysis(),
+    fetchMTEB(),
   ]);
 
   const merged  = mergeEntries(llmstats, hfEntries);
   const withLB  = mergeLiveBench(merged, lbEntries);
   const withAr  = mergeArena(withLB, arenaEntries);
   const withAi  = mergeAider(withAr, aiderEntries);
-  const all     = mergeArtificialAnalysis(withAi, aaEntries);
+  const withAA  = mergeArtificialAnalysis(withAi, aaEntries);
+  const all     = mergeMTEB(withAA, mtebEntries);
 
   console.log(`\nTotal entries: ${all.length}`);
-  console.log(`  With LiveBench: ${all.filter(e => e.lb_name).length} | Arena: ${all.filter(e => e.arena_elo).length} | Aider: ${all.filter(e => e.aider_pass_rate !== undefined).length} | AA: ${all.filter(e => e.aa_intelligence !== undefined).length}`);
+  console.log(`  With LiveBench: ${all.filter(e => e.lb_name).length} | Arena: ${all.filter(e => e.arena_elo).length} | Aider: ${all.filter(e => e.aider_pass_rate !== undefined).length} | AA: ${all.filter(e => e.aa_intelligence !== undefined).length} | MTEB: ${all.filter(e => e.mteb_avg !== undefined).length}`);
 
   fs.writeFileSync(OUT_FILE, JSON.stringify(all, null, 2));
   console.log(`Saved to data/benchmarks.json (${(fs.statSync(OUT_FILE).size / 1024).toFixed(0)} KB)`);
