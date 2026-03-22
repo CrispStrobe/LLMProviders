@@ -89,6 +89,7 @@ const CAP_ICON: Record<string, string> = {
   'image-gen': '🎨',
   tools: '🔧',
   reasoning: '💡',
+  embedding: '🧩',
 }
 
 function App() {
@@ -491,6 +492,9 @@ function App() {
                   </td>
                   <td className="model-name">{model.display_name ?? model.name}</td>
                   <td className="caps-cell">
+                    {model.type === 'embedding' && (
+                      <span className="cap-badge cap-embedding" title="embedding">{CAP_ICON.embedding}</span>
+                    )}
                     {(model.capabilities || []).map(cap => (
                       <span key={cap} className={`cap-badge cap-${cap}`} title={cap}>{CAP_ICON[cap] ?? cap}</span>
                     ))}

@@ -95,6 +95,8 @@ async function fetchOpenRouter() {
       currency: 'USD',
     };
 
+    if (model.hugging_face_id) modelEntry.hf_id = model.hugging_face_id;
+
     // For pure image-gen models (no per-token pricing), store the per-image price
     if (imagePrice > 0 && inputPrice === 0 && outputPrice === 0) {
       modelEntry.price_per_image = Math.round(imagePrice * 100000) / 100000;
