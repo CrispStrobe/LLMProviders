@@ -207,6 +207,15 @@ const MANUAL_HF_ID_MAP = {
   'gemini 3.1 pro': 'google/gemini-3.1-pro-preview',
   'gemini 3.1 flash lite': 'google/gemini-3.1-flash-lite-preview',
   'gemini 3 flash': 'google/gemini-3-flash-preview',
+  'voxtral mini': 'mistralai/Voxtral-Mini-3B-2507',
+  'voxtral realtime': 'mistralai/Voxtral-Mini-4B-Realtime-2602',
+  'voxtral mini transcribe 2': 'mistralai/Voxtral-Mini-3B-2507',
+  'voxtral small': 'mistralai/Voxtral-Small-24B-2507',
+  'mistral large 3': 'mistralai/Mistral-Large-Instruct-2407',
+  'mistral small 3': 'mistralai/Mistral-Small-Instruct-2409',
+  'ministral 3 - 3b': 'mistralai/Ministral-3b-instruct-2410',
+  'ministral 3 - 8b': 'mistralai/Ministral-8b-instruct-2410',
+  'devstral 2': 'mistralai/Devstral-2-123B-Instruct-2512',
 };
 
 const MANUAL_OLLAMA_ID_MAP = {
@@ -238,6 +247,14 @@ const MANUAL_SIZE_MAP = {
   'google/gemini-3.1-flash-lite-preview': 371,
   'google/gemini-3-flash-preview': 1000,
   'xiaomi/mimo-v2-omni': 186,
+  'mistralai/Voxtral-Mini-3B-2507': 3,
+  'mistralai/Voxtral-Mini-4B-Realtime-2602': 4,
+  'mistralai/Voxtral-Small-24B-2507': 24,
+  'mistralai/Mistral-Large-Instruct-2407': 123,
+  'mistralai/Mistral-Small-Instruct-2409': 22,
+  'mistralai/Ministral-3b-instruct-2410': 3,
+  'mistralai/Ministral-8b-instruct-2410': 8,
+  'mistralai/Devstral-2-123B-Instruct-2512': 123,
 };
 
 const PROPRIETARY_KEYWORDS = [
