@@ -306,8 +306,15 @@ async function propagateExtraData(data) {
   const technicalPool = new Map(); 
   data.providers.forEach(p => p.models.forEach(m => {
     const baseName = m.name.split('/').pop().replace(/:free$/, '').toLowerCase();
-    if (m.size_b || m.hf_id) {
-      const meta = { size_b: m.size_b, size_source: m.size_source, hf_id: m.hf_id, ollama_id: m.ollama_id, hf_private: m.hf_private };
+    if (m.size_b || m.hf_id || (m.capabilities && m.capabilities.length > 0)) {
+      const meta = { 
+        size_b: m.size_b, 
+        size_source: m.size_source, 
+        hf_id: m.hf_id, 
+        ollama_id: m.ollama_id, 
+        hf_private: m.hf_private,
+        capabilities: m.capabilities
+      };
       if (m.hf_id) technicalPool.set('id:' + m.hf_id.toLowerCase(), meta);
       technicalPool.set('name:' + baseName, meta);
     }
@@ -323,6 +330,9 @@ async function propagateExtraData(data) {
       m.size_source = m.size_source || best.size_source;
       m.hf_id = m.hf_id || best.hf_id;
       m.ollama_id = m.ollama_id || best.ollama_id;
+      if (best.capabilities && (!m.capabilities || m.capabilities.length === 0)) {
+        m.capabilities = best.capabilities;
+      }
       if (m.size_b || m.hf_id) m.hf_private = false;
     }
   }));

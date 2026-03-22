@@ -93,12 +93,17 @@ async function fetchScaleway() {
 
       const type = getModelType(tasks || name);
       const size_b = getSizeB(name);
+      const caps = [];
+      if (type === 'audio') caps.push('audio');
+      if (name.toLowerCase().includes('voxtral')) caps.push('tools');
 
       const model = {
         name,
         type,
         currency: 'EUR',
       };
+
+      if (caps.length) model.capabilities = caps;
 
       if (type === 'audio') {
         model.price_per_minute = inputPrice;

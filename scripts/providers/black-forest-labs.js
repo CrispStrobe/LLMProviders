@@ -88,7 +88,7 @@ async function fetchBfl() {
       name: endpoint || name,
       display_name: name,
       type: 'image',
-      capabilities: ['image-gen'],
+      capabilities: ['image-out'],
       // priceUnit = USD per first generated megapixel (1024×1024)
       price_per_image: priceUnit,
       input_price_per_1m: 0,

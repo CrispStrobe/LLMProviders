@@ -47,12 +47,18 @@ function getCapabilities(architecture, supportedParams) {
   const inMods = (architecture?.input_modalities || []);
   const outMods = (architecture?.output_modalities || []);
   const params = supportedParams || [];
+  
+  // Inputs
   if (inMods.includes('image')) caps.push('vision');
   if (inMods.includes('video')) caps.push('video');
   if (inMods.includes('audio')) caps.push('audio');
   if (inMods.includes('file')) caps.push('files');
-  if (outMods.includes('image')) caps.push('image-gen');
+  
+  // Outputs
+  if (outMods.includes('image')) caps.push('image-out');
+  if (outMods.includes('video')) caps.push('video-out');
   if (outMods.includes('audio')) caps.push('audio-out');
+  
   if (params.includes('tools')) caps.push('tools');
   if (params.includes('reasoning')) caps.push('reasoning');
   return caps;

@@ -151,12 +151,17 @@ async function fetchMistral() {
 
     const type = getModelType(name, rawType);
     const size_b = getSizeB(name);
+    const caps = [];
+    if (type === 'audio') caps.push('audio');
+    if (name.toLowerCase().includes('voxtral')) caps.push('tools');
 
     const model = {
       name,
       type,
       currency: 'USD',
     };
+
+    if (caps.length) model.capabilities = caps;
 
     if (audioPriceMin !== null) {
       model.price_per_minute = audioPriceMin;

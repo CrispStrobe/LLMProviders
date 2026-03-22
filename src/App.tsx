@@ -102,12 +102,18 @@ const normalizeName = (s: string) =>
 const EXCHANGE_RATE_EUR_TO_USD = 1.05
 
 const CAP_ICON: Record<string, string> = {
-  vision: '👁',
-  video: '🎬',
-  audio: '🎤',
-  'audio-out': '🔊',
-  files: '📄',
-  'image-gen': '🎨',
+  // Input Modalities
+  vision: '👁',      // Image Input
+  video: '🎬',       // Video Input
+  audio: '🎤',       // Audio Input (ASR)
+  files: '📄',       // File/PDF Input
+  
+  // Output Modalities
+  'image-out': '🎨', // Image Generation
+  'video-out': '🎥', // Video Generation
+  'audio-out': '🔊', // Audio Generation (TTS)
+  
+  // Functional Capabilities
   tools: '🔧',
   reasoning: '💡',
   embedding: '🧩',

@@ -115,11 +115,17 @@ async function fetchGroq() {
       if (inputPrice === null) return;
 
       const size_b = getSizeB(name);
+      const caps = [];
+      if (tableType === 'audio') caps.push('audio');
+      if (name.toLowerCase().includes('voxtral')) caps.push('tools');
+
       const model = {
         name,
         type: tableType,
         currency: 'USD',
       };
+
+      if (caps.length) model.capabilities = caps;
 
       if (tableType === 'audio') {
         const headerText = headers[priceCol] || '';
