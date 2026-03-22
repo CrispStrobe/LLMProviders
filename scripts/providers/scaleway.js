@@ -23,9 +23,11 @@ const getModelType = (tasks) => {
 };
 
 const getSizeB = (name) => {
-  // Match patterns like 235b, 70b, 8b but NOT "3.2" in a version number
-  const match = name.match(/[^.\d](\d+)b/i) || name.match(/^(\d+)b/i);
-  return match ? parseInt(match[1]) : undefined;
+  // Match patterns like 1.2b, 70b, 8b. Support decimals.
+  const match = (name || '').match(/(?:\b|-)([\d.]+)[Bb](?:\b|:|$)/);
+  if (!match) return undefined;
+  const num = parseFloat(match[1]);
+  return (num > 0 && num < 2000) ? num : undefined;
 };
 
 async function fetchScaleway() {

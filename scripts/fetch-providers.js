@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { getJson, getText, fetchRobust } = require('./fetch-utils');
 
 const DATA_FILE = path.join(__dirname, '..', 'data', 'providers.json');
 
@@ -59,7 +60,7 @@ function updateProviderModels(providers, providerName, models) {
 const normName = (s) =>
   s.toLowerCase().replace(/[-_.:]/g, ' ').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
 
-// Build an index of normalized OpenRouter model-part → { capabilities, type }
+// Build an index of normalized OpenRouter model-part → { capabilities, type, size_b }
 // Only includes entries that carry non-trivial capability data.
 function buildOrIndex(orProvider) {
   if (!orProvider) return [];
@@ -68,13 +69,13 @@ function buildOrIndex(orProvider) {
     if (!m.capabilities || m.capabilities.length === 0) continue;
     // Strip :free suffix and take the model part after '/'
     const modelPart = m.name.replace(/:free$/, '').split('/').pop();
-    index.push({ norm: normName(modelPart), capabilities: m.capabilities, type: m.type });
+    index.push({ norm: normName(modelPart), capabilities: m.capabilities, type: m.type, size_b: m.size_b });
   }
   return index;
 }
 
 // For a given model name, find the best matching OpenRouter index entry.
-// Returns { capabilities, type } or null.
+// Returns { capabilities, type, size_b } or null.
 function findOrMatch(modelName, orIndex) {
   // Use the model part (after last '/') for matching, strip :region/@suffix
   const raw = modelName.replace(/@[^/]+$/, '').replace(/:[^/]+$/, '');
@@ -129,35 +130,137 @@ function findOrMatch(modelName, orIndex) {
   return null;
 }
 
-// Propagate capabilities from OpenRouter to all other providers' models.
-// Only fills in capabilities/type when the model doesn't already have them.
-function propagateCapabilities(data) {
+// Fetch total_parameters from Hugging Face Hub API (Metadata)
+async function fetchHFSize(hfId) {
+  if (!hfId || hfId.includes(' ') || !hfId.includes('/')) return null;
+  const token = process.env.HF_TOKEN;
+  const headers = token ? { Authorization: `Bearer ${token}` } : {};
+  try {
+    const data = await getJson(`https://huggingface.co/api/models/${hfId}`, { headers });
+    // Check various common metadata locations for total parameters
+    let params = data.safetensors?.total || data.config?.total_parameters || data.config?.model_type_params;
+    if (!params && data.cardData?.model_details?.parameters) {
+      const match = data.cardData.model_details.parameters.match(/([\d.]+)\s*[Bb]/);
+      if (match) params = parseFloat(match[1]) * 1_000_000_000;
+    }
+    return params ? Math.round(params / 1_000_000_000 * 10) / 10 : null;
+  } catch (e) {
+    return null; // Silently skip failures for individual models
+  }
+}
+
+const EMBEDDER_KEYWORDS = ['embed', 'bge', 'gte', 'e5', 'stella', 'minilm', 'multilingual-mpnet'];
+
+// Propagate capabilities and size from benchmarks, OpenRouter, or HF Hub to all other providers' models.
+// Only fills in fields when the model doesn't already have them.
+async function propagateExtraData(data) {
   const orProvider = data.providers.find((p) => p.name === 'OpenRouter');
   const orIndex = buildOrIndex(orProvider);
-  if (orIndex.length === 0) return;
 
-  let propagated = 0;
+  // Load benchmarks for size lookup
+  let benchmarks = [];
+  try {
+    const bmFile = path.join(__dirname, '..', 'data', 'benchmarks.json');
+    if (fs.existsSync(bmFile)) benchmarks = JSON.parse(fs.readFileSync(bmFile, 'utf8'));
+  } catch (e) { /* ignore */ }
+
+  const bmSizeMap = new Map();
+  benchmarks.forEach((b) => {
+    if (b.params_b) {
+      if (b.name) bmSizeMap.set(normName(b.name), b.params_b);
+      if (b.hf_id) bmSizeMap.set(normName(b.hf_id.split('/').pop()), b.params_b);
+      if (b.lb_name) bmSizeMap.set(normName(b.lb_name), b.params_b);
+    }
+  });
+
+  let propagatedCaps = 0;
+  let propagatedSize = 0;
   let autoTagged = 0;
+  let hfSizeFetched = 0;
+
+  // We'll collect models missing size that have a clear HF-id-like name
+  const hfLookupQueue = [];
+
   for (const provider of data.providers) {
     for (const model of provider.models || []) {
-      // Auto-tag image-gen models regardless of OR match
+      const n = normName(model.name);
+
+      // 1. Auto-tag image-gen and embedding models
       if (model.type === 'image' && (!model.capabilities || !model.capabilities.length)) {
         model.capabilities = ['image-gen'];
         autoTagged++;
-        continue;
       }
-      if (provider.name === 'OpenRouter') continue;
-      if (model.capabilities && model.capabilities.length > 0) continue; // already set
-      const match = findOrMatch(model.name, orIndex);
-      if (!match) continue;
-      model.capabilities = match.capabilities;
-      // Update type only if currently 'chat' (don't demote image/embedding/audio)
-      if (model.type === 'chat' && match.type !== 'chat') model.type = match.type;
-      propagated++;
+      if (model.type === 'chat' && EMBEDDER_KEYWORDS.some(k => n.includes(k))) {
+        model.type = 'embedding';
+        autoTagged++;
+      }
+
+      // 2. Propagate size from benchmarks (if missing)
+      if (!model.size_b) {
+        // Try exact name match or base name match
+        const size = bmSizeMap.get(n) || bmSizeMap.get(n.split(' ').pop());
+        if (size) {
+          model.size_b = size;
+          propagatedSize++;
+        }
+      }
+
+      // 3. Propagate capabilities/type/size from OpenRouter
+      if (provider.name !== 'OpenRouter') {
+        const match = findOrMatch(model.name, orIndex);
+        if (match) {
+          if (!model.capabilities || model.capabilities.length === 0) {
+            model.capabilities = match.capabilities;
+            propagatedCaps++;
+          }
+          if (model.type === 'chat' && match.type !== 'chat') model.type = match.type;
+          if (!model.size_b && match.size_b) {
+            model.size_b = match.size_b;
+            propagatedSize++;
+          }
+        }
+      }
+
+      // Special case: gemma2 based models often 9b or 27b
+      if (!model.size_b) {
+        if (n.includes('gemma 2 9b') || n.includes('gemma2 9b')) { model.size_b = 9; propagatedSize++; }
+        else if (n.includes('gemma 2 27b') || n.includes('gemma2 27b')) { model.size_b = 27; propagatedSize++; }
+        else if (n.includes('gemma 2 2b') || n.includes('gemma2 2b')) { model.size_b = 2; propagatedSize++; }
+      }
+
+      // 4. Queue for HF Hub metadata if still missing and looks like an ID
+      if (!model.size_b && (model.name.includes('/') || model.hf_id)) {
+        hfLookupQueue.push(model);
+      }
     }
   }
-  if (autoTagged > 0) console.log(`Auto-tagged ${autoTagged} image-gen models.`);
-  if (propagated > 0) console.log(`Propagated capabilities to ${propagated} models from OpenRouter.`);
+
+  // 5. Final fallback: Technical metadata inspection from HF Hub API (Option 2)
+  // Only for models that still have no size after all other sources.
+  // Limit to a small batch of unique IDs to avoid long startup.
+  const uniqueIds = [...new Set(hfLookupQueue.map(m => m.hf_id || m.name).filter(id => id.includes('/')))].slice(0, 30);
+  if (uniqueIds.length > 0) {
+    process.stdout.write(`  HF Hub: inspecting ${uniqueIds.length} models for metadata... `);
+    const idToSize = new Map();
+    await Promise.all(uniqueIds.map(async (id) => {
+      const size = await fetchHFSize(id);
+      if (size) idToSize.set(id, size);
+    }));
+    for (const model of hfLookupQueue) {
+      if (!model.size_b) {
+        const size = idToSize.get(model.hf_id || model.name);
+        if (size) {
+          model.size_b = size;
+          hfSizeFetched++;
+        }
+      }
+    }
+    console.log(`✓ ${hfSizeFetched} sizes found`);
+  }
+
+  if (autoTagged > 0) console.log(`Auto-tagged ${autoTagged} image-gen/embedding models.`);
+  if (propagatedCaps > 0) console.log(`Propagated capabilities to ${propagatedCaps} models.`);
+  if (propagatedSize + hfSizeFetched > 0) console.log(`Enriched size data for ${propagatedSize + hfSizeFetched} models.`);
 }
 
 async function runFetcher(fetcher, data) {
@@ -197,9 +300,8 @@ async function main() {
     results.push(result);
   }
 
-  // Always propagate capabilities from OpenRouter to all providers' models.
-  // No-ops if OpenRouter has no data in providers.json yet.
-  propagateCapabilities(data);
+  // Always propagate extra data from OpenRouter and Benchmarks to all providers' models.
+  await propagateExtraData(data);
 
   saveData(data);
 

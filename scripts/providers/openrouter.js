@@ -21,8 +21,11 @@ function loadApiKey() {
 }
 
 const getSizeB = (id) => {
-  const match = (id || '').match(/[^.\d](\d+)b/i) || (id || '').match(/^(\d+)b/i);
-  return match ? parseInt(match[1]) : undefined;
+  // Match patterns like 1.2b, 70b, 8b. Support decimals and trailing colon (e.g. 1.2b:free)
+  const match = (id || '').match(/(?:\b|-)([\d.]+)[Bb](?:\b|:|$)/);
+  if (!match) return undefined;
+  const num = parseFloat(match[1]);
+  return (num > 0 && num < 2000) ? num : undefined;
 };
 
 // Derive model type from architecture modalities.
@@ -98,8 +101,23 @@ async function fetchOpenRouter() {
     }
 
     if (capabilities.length) modelEntry.capabilities = capabilities;
-    const size_b = getSizeB(model.id);
-    if (size_b) modelEntry.size_b = size_b;
+    const apiParams = model.architecture?.parameters;
+    const apiSize = (apiParams && apiParams > 0) ? Math.round(apiParams / 1_000_000_000 * 10) / 10 : null;
+    
+    // Attempt detection in priority order:
+    // 1. Explicit architecture parameters from API
+    // 2. Regex on canonical HF ID if provided by OpenRouter
+    // 3. Regex on the model description (common for new models missing architecture metadata)
+    // 4. Regex on the OpenRouter ID itself
+    let sizeB = apiSize;
+    if (!sizeB && model.hugging_face_id) sizeB = getSizeB(model.hugging_face_id);
+    if (!sizeB && model.description) {
+      const descMatch = model.description.match(/([\d.]+)[Bb]-parameter/);
+      if (descMatch) sizeB = parseFloat(descMatch[1]);
+    }
+    if (!sizeB) sizeB = getSizeB(model.id);
+
+    if (sizeB) modelEntry.size_b = sizeB;
 
     models.push(modelEntry);
   }
