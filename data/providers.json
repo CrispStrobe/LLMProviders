@@ -439,10 +439,387 @@
       "eu_endpoints": true,
       "models": [
         {
+          "name": "o4 Mini",
+          "type": "chat",
+          "input_price_per_1m": 1.04,
+          "output_price_per_1m": 4.17,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "o4-mini",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "GPT-5 Nano",
+          "type": "chat",
+          "input_price_per_1m": 0.05,
+          "output_price_per_1m": 0.38,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-nano",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Sonnet 4",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-4",
+          "hf_private": true
+        },
+        {
+          "name": "Sonnet 4 Reasoning",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-4-reasoning",
+          "hf_private": true
+        },
+        {
+          "name": "Sonnet 4.6",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-4-6",
+          "hf_private": true
+        },
+        {
+          "name": "Sonnet 4.5",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-4-5",
+          "hf_private": true
+        },
+        {
+          "name": "Opus 4.6 Reasoning",
+          "type": "chat",
+          "input_price_per_1m": 4.74,
+          "output_price_per_1m": 23.71,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "opus-4-6-reasoning",
+          "hf_private": true
+        },
+        {
+          "name": "Opus 4.6",
+          "type": "chat",
+          "input_price_per_1m": 4.74,
+          "output_price_per_1m": 23.71,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "opus-4-6",
+          "hf_private": true
+        },
+        {
+          "name": "Opus 4.5",
+          "type": "chat",
+          "input_price_per_1m": 4.74,
+          "output_price_per_1m": 23.71,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "opus-4-5",
+          "hf_private": true
+        },
+        {
+          "name": "Llama 4 Maverick",
+          "type": "chat",
+          "input_price_per_1m": 0.21,
+          "output_price_per_1m": 0.82,
+          "currency": "EUR",
+          "provider_upstream": "Meta",
+          "canonical_id": "llama-4-maverick",
+          "hf_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+          "hf_private": false,
+          "size_b": 401.6,
+          "size_source": "hf-total",
+          "capabilities": [
+            "vision",
+            "tools",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Mistral Medium",
+          "type": "chat",
+          "input_price_per_1m": 0.38,
+          "output_price_per_1m": 1.9,
+          "currency": "EUR",
+          "provider_upstream": "Mistral",
+          "canonical_id": "mistral-medium"
+        },
+        {
+          "name": "DeepSeek v3.1",
+          "type": "chat",
+          "input_price_per_1m": 0.94,
+          "output_price_per_1m": 3.74,
+          "currency": "EUR",
+          "provider_upstream": "DeepSeek",
+          "canonical_id": "deepseek-1",
+          "size_b": 671,
+          "hf_id": "deepseek-ai/DeepSeek-V3.1",
+          "capabilities": [
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "hf_private": false
+        },
+        {
+          "name": "Sonnet 4.5 Reasoning",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-4-5-reasoning",
+          "hf_private": true
+        },
+        {
+          "name": "GPT-5.1",
+          "type": "chat",
+          "input_price_per_1m": 1.19,
+          "output_price_per_1m": 9.48,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-1",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-4.1",
+          "type": "chat",
+          "input_price_per_1m": 1.9,
+          "output_price_per_1m": 7.59,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-4-1",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Mistral Large 2411",
+          "type": "chat",
+          "input_price_per_1m": 1.9,
+          "output_price_per_1m": 5.69,
+          "currency": "EUR",
+          "provider_upstream": "Mistral",
+          "canonical_id": "mistral-large",
+          "capabilities": [
+            "tools"
+          ]
+        },
+        {
+          "name": "Sonnet 3.7 Reasoning",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-3-7-reasoning",
+          "hf_private": true
+        },
+        {
+          "name": "GPT-4o",
+          "type": "chat",
+          "input_price_per_1m": 2.61,
+          "output_price_per_1m": 10.43,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-4o",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools"
+          ]
+        },
+        {
+          "name": "GPT-5.1 Thinking",
+          "type": "chat",
+          "input_price_per_1m": 1.19,
+          "output_price_per_1m": 9.48,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-1",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-5.2",
+          "type": "chat",
+          "input_price_per_1m": 1.66,
+          "output_price_per_1m": 13.27,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-2",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-5.1 Thinking Fast",
+          "type": "chat",
+          "input_price_per_1m": 1.19,
+          "output_price_per_1m": 9.48,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-1-fast"
+        },
+        {
+          "name": "o3",
+          "type": "chat",
+          "input_price_per_1m": 1.9,
+          "output_price_per_1m": 7.59,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "o3",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "GPT-4.1 Mini",
+          "type": "chat",
+          "input_price_per_1m": 0.38,
+          "output_price_per_1m": 1.52,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-4-1-mini",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Opus 4.5 Reasoning",
+          "type": "chat",
+          "input_price_per_1m": 4.74,
+          "output_price_per_1m": 23.71,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "opus-4-5-reasoning",
+          "hf_private": true
+        },
+        {
+          "name": "GPT oss (120b)",
+          "type": "chat",
+          "input_price_per_1m": 0.28,
+          "output_price_per_1m": 2.37,
+          "currency": "EUR",
+          "size_b": 120,
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-oss-(120b)",
+          "hf_private": false
+        },
+        {
+          "name": "Llama 3.3 70B",
+          "type": "chat",
+          "input_price_per_1m": 0.67,
+          "output_price_per_1m": 0.67,
+          "currency": "EUR",
+          "size_b": 70,
+          "provider_upstream": "Meta",
+          "canonical_id": "llama-3-3-70b",
+          "hf_id": "meta-llama/Llama-3.3-70B-Instruct",
+          "capabilities": [
+            "tools"
+          ],
+          "hf_private": false
+        },
+        {
+          "name": "Sonnet 3.5",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-3-5",
+          "hf_private": true
+        },
+        {
+          "name": "o3 Pro",
+          "type": "chat",
+          "input_price_per_1m": 18.96,
+          "output_price_per_1m": 75.86,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "o3-pro",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "GPT-5.2 Pro",
+          "type": "chat",
+          "input_price_per_1m": 19.91,
+          "output_price_per_1m": 159.3,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-2-pro",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "Sonnet 3.7",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-3-7",
+          "hf_private": true
+        },
+        {
           "name": "Gemini 3.1 Pro Preview",
           "type": "chat",
-          "input_price_per_1m": 2.38,
-          "output_price_per_1m": 14.31,
+          "input_price_per_1m": 2.37,
+          "output_price_per_1m": 14.22,
           "currency": "EUR",
           "provider_upstream": "Google",
           "capabilities": [
@@ -457,10 +834,67 @@
           "canonical_id": "gemini-3-1-pro"
         },
         {
+          "name": "Gemini 2.5 Pro",
+          "type": "chat",
+          "input_price_per_1m": 2.37,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-2-5-pro",
+          "hf_private": true,
+          "capabilities": [
+            "vision",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Gemini 2.5 Pro Reasoning",
+          "type": "chat",
+          "input_price_per_1m": 2.37,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-2-5-pro-reasoning",
+          "hf_private": true
+        },
+        {
+          "name": "Gemini 2.5 Flash",
+          "type": "chat",
+          "input_price_per_1m": 0.28,
+          "output_price_per_1m": 2.37,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-2-5-flash",
+          "hf_private": true,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Sonnet 4.6 Reasoning",
+          "type": "chat",
+          "input_price_per_1m": 2.84,
+          "output_price_per_1m": 14.22,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "sonnet-4-6-reasoning",
+          "hf_private": true
+        },
+        {
           "name": "Mistral Large 3",
           "type": "chat",
-          "input_price_per_1m": 0.48,
-          "output_price_per_1m": 1.43,
+          "input_price_per_1m": 0.47,
+          "output_price_per_1m": 1.42,
           "currency": "EUR",
           "provider_upstream": "Mistral",
           "capabilities": [
@@ -476,10 +910,29 @@
           "canonical_id": "mistral-large-3"
         },
         {
+          "name": "Gemini 3 Flash Preview",
+          "type": "chat",
+          "input_price_per_1m": 0.47,
+          "output_price_per_1m": 2.84,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-3-flash",
+          "hf_private": true,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
           "name": "GPT-5.4 Thinking",
           "type": "chat",
-          "input_price_per_1m": 2.62,
-          "output_price_per_1m": 15.74,
+          "input_price_per_1m": 2.61,
+          "output_price_per_1m": 15.65,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "capabilities": [
@@ -492,10 +945,26 @@
           "canonical_id": "gpt-5-4"
         },
         {
+          "name": "GPT-5",
+          "type": "chat",
+          "input_price_per_1m": 1.19,
+          "output_price_per_1m": 9.48,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
           "name": "GPT-5.4",
           "type": "chat",
-          "input_price_per_1m": 2.62,
-          "output_price_per_1m": 15.74,
+          "input_price_per_1m": 2.61,
+          "output_price_per_1m": 15.65,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "capabilities": [
@@ -506,6 +975,132 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4"
+        },
+        {
+          "name": "GPT-5.2 Thinking",
+          "type": "chat",
+          "input_price_per_1m": 1.66,
+          "output_price_per_1m": 13.27,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-2",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-5 Pro",
+          "type": "chat",
+          "input_price_per_1m": 14.22,
+          "output_price_per_1m": 113.78,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-pro",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "GPT-5 Thinking Fast",
+          "type": "chat",
+          "input_price_per_1m": 1.19,
+          "output_price_per_1m": 9.48,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-fast"
+        },
+        {
+          "name": "GPT-5 Thinking",
+          "type": "chat",
+          "input_price_per_1m": 1.19,
+          "output_price_per_1m": 9.48,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-4.1 Nano",
+          "type": "chat",
+          "input_price_per_1m": 0.09,
+          "output_price_per_1m": 0.38,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-4-1-nano",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-4o Mini",
+          "type": "chat",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 0.57,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-4o-mini",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-5 Mini",
+          "type": "chat",
+          "input_price_per_1m": 0.24,
+          "output_price_per_1m": 1.9,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-mini",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "o3 Mini high",
+          "type": "chat",
+          "input_price_per_1m": 1.15,
+          "output_price_per_1m": 4.59,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "o3-mini-high",
+          "capabilities": [
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "Haiku 4.5",
+          "type": "chat",
+          "input_price_per_1m": 0.95,
+          "output_price_per_1m": 4.74,
+          "currency": "EUR",
+          "provider_upstream": "Anthropic",
+          "canonical_id": "haiku-4-5",
+          "hf_private": true
         }
       ]
     },
@@ -3145,22 +3740,6 @@
           "canonical_id": "llama-3-3-70b"
         },
         {
-          "name": "mistralai/pixtral-12b",
-          "type": "vision",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.1,
-          "currency": "USD",
-          "hf_id": "mistralai/Pixtral-12B-2409",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 12,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "pixtral-12b"
-        },
-        {
           "name": "qwen/qwen3-vl-32b-instruct",
           "type": "vision",
           "input_price_per_1m": 0.104,
@@ -3307,6 +3886,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "glm-4-5-air"
+        },
+        {
+          "name": "nex-agi/deepseek-v3.1-nex-n1",
+          "type": "chat",
+          "input_price_per_1m": 0.135,
+          "output_price_per_1m": 0.5,
+          "currency": "USD",
+          "hf_id": "nex-agi/DeepSeek-V3.1-Nex-N1",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 671.1,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "deepseek-1-nex-n1"
         },
         {
           "name": "qwen/qwen-vl-plus",
@@ -3914,22 +4509,6 @@
           "canonical_id": "minimax-01"
         },
         {
-          "name": "qwen/qwen-2.5-vl-7b-instruct",
-          "type": "vision",
-          "input_price_per_1m": 0.2,
-          "output_price_per_1m": 0.2,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen2.5-VL-7B-Instruct",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen-2-5-vl-7b"
-        },
-        {
           "name": "kwaipilot/kat-coder-pro",
           "type": "chat",
           "input_price_per_1m": 0.207,
@@ -4247,22 +4826,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "minimax-m2-1"
-        },
-        {
-          "name": "nex-agi/deepseek-v3.1-nex-n1",
-          "type": "chat",
-          "input_price_per_1m": 0.27,
-          "output_price_per_1m": 1,
-          "currency": "USD",
-          "hf_id": "nex-agi/DeepSeek-V3.1-Nex-N1",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 671.1,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "deepseek-1-nex-n1"
         },
         {
           "name": "deepseek/deepseek-v3.2-exp",
@@ -4939,22 +5502,6 @@
           "canonical_id": "mixtral-8x7b"
         },
         {
-          "name": "moonshotai/kimi-k2",
-          "type": "chat",
-          "input_price_per_1m": 0.55,
-          "output_price_per_1m": 2.2,
-          "currency": "USD",
-          "hf_id": "moonshotai/Kimi-K2-Instruct",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 65.286,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "kimi-k2"
-        },
-        {
           "name": "thedrummer/skyfall-36b-v2",
           "type": "chat",
           "input_price_per_1m": 0.55,
@@ -4966,6 +5513,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "skyfall-36b"
+        },
+        {
+          "name": "moonshotai/kimi-k2",
+          "type": "chat",
+          "input_price_per_1m": 0.57,
+          "output_price_per_1m": 2.3,
+          "currency": "USD",
+          "hf_id": "moonshotai/Kimi-K2-Instruct",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 65.286,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "kimi-k2"
         },
         {
           "name": "writer/palmyra-x5",
@@ -6232,15 +6795,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-pi",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-pi"
-        },
-        {
           "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6248,6 +6802,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-productivity"
+        },
+        {
+          "name": "inflection/inflection-3-pi",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-pi"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -6496,19 +7059,6 @@
           ],
           "hf_private": true,
           "canonical_id": "aion-1-0"
-        },
-        {
-          "name": "meta-llama/llama-3.1-405b",
-          "type": "chat",
-          "input_price_per_1m": 4,
-          "output_price_per_1m": 4,
-          "currency": "USD",
-          "size_b": 405,
-          "hf_private": false,
-          "hf_id": "meta-llama/llama-3.1-405B",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-3-1-405b"
         },
         {
           "name": "anthropic/claude-opus-4.6",
