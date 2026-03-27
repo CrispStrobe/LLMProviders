@@ -3493,6 +3493,23 @@
           "canonical_id": "qwen3-next-80b-a3b"
         },
         {
+          "name": "reka/reka-edge",
+          "type": "vision",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.1,
+          "currency": "USD",
+          "hf_id": "RekaAI/reka-edge-2603",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools"
+          ],
+          "canonical_id": "reka-edge",
+          "size_b": 7.1,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "nvidia/nemotron-3-super-120b-a12b",
           "type": "chat",
           "input_price_per_1m": 0.1,
@@ -4271,23 +4288,6 @@
           ],
           "hf_private": true,
           "canonical_id": "qwen3-coder-flash"
-        },
-        {
-          "name": "reka/reka-edge",
-          "type": "vision",
-          "input_price_per_1m": 0.2,
-          "output_price_per_1m": 0.2,
-          "currency": "USD",
-          "hf_id": "RekaAI/reka-edge-2603",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools"
-          ],
-          "canonical_id": "reka-edge",
-          "size_b": 7.1,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "openai/gpt-5.4-nano",
