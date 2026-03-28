@@ -4891,6 +4891,17 @@
           "canonical_id": "deepseek-r1-distill-qwen-32b"
         },
         {
+          "name": "kwaipilot/kat-coder-pro-v2",
+          "type": "chat",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 1.2,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "canonical_id": "kat-coder-pro"
+        },
+        {
           "name": "minimax/minimax-m2.7",
           "type": "chat",
           "input_price_per_1m": 0.3,
@@ -5328,8 +5339,8 @@
         {
           "name": "moonshotai/kimi-k2.5",
           "type": "vision",
-          "input_price_per_1m": 0.45,
-          "output_price_per_1m": 2.2,
+          "input_price_per_1m": 0.445,
+          "output_price_per_1m": 2.22,
           "currency": "USD",
           "hf_id": "moonshotai/Kimi-K2.5",
           "capabilities": [
