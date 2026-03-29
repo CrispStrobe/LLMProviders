@@ -4259,6 +4259,23 @@
           "canonical_id": "llama-guard-4-12b"
         },
         {
+          "name": "minimax/minimax-m2.5",
+          "type": "chat",
+          "input_price_per_1m": 0.19,
+          "output_price_per_1m": 1.15,
+          "currency": "USD",
+          "hf_id": "MiniMaxAI/MiniMax-M2.5",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 228.7,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "minimax-m2-5"
+        },
+        {
           "name": "qwen/qwen3.5-27b",
           "type": "vision",
           "input_price_per_1m": 0.195,
@@ -4303,23 +4320,6 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4-nano"
-        },
-        {
-          "name": "minimax/minimax-m2.5",
-          "type": "chat",
-          "input_price_per_1m": 0.2,
-          "output_price_per_1m": 1.17,
-          "currency": "USD",
-          "hf_id": "MiniMaxAI/MiniMax-M2.5",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 228.7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "minimax-m2-5"
         },
         {
           "name": "allenai/olmo-3.1-32b-instruct",
@@ -5320,6 +5320,24 @@
           "canonical_id": "llama-3-1-70b"
         },
         {
+          "name": "moonshotai/kimi-k2.5",
+          "type": "vision",
+          "input_price_per_1m": 0.42,
+          "output_price_per_1m": 2.2,
+          "currency": "USD",
+          "hf_id": "moonshotai/Kimi-K2.5",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 1058.6,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "kimi-k2-5"
+        },
+        {
           "name": "baidu/ernie-4.5-vl-424b-a47b",
           "type": "vision",
           "input_price_per_1m": 0.42,
@@ -5335,24 +5353,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "ernie-4-5-vl-424b-a47b"
-        },
-        {
-          "name": "moonshotai/kimi-k2.5",
-          "type": "vision",
-          "input_price_per_1m": 0.445,
-          "output_price_per_1m": 2.22,
-          "currency": "USD",
-          "hf_id": "moonshotai/Kimi-K2.5",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 1058.6,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "kimi-k2-5"
         },
         {
           "name": "deepseek/deepseek-r1-0528",
@@ -7595,40 +7595,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "gemma-3n-e4b"
-        },
-        {
-          "name": "qwen/qwen3-4b:free",
-          "type": "chat",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3-4B",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 4,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-4b"
-        },
-        {
-          "name": "mistralai/mistral-small-3.1-24b-instruct:free",
-          "type": "vision",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "hf_id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
-          "capabilities": [
-            "vision",
-            "tools"
-          ],
-          "size_b": 24,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "mistral-small-3-1-24b"
         },
         {
           "name": "google/gemma-3-4b-it:free",
