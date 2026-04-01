@@ -2306,19 +2306,6 @@
           "canonical_id": "mistral-small-3-2"
         },
         {
-          "name": "Mistral Small Creative",
-          "type": "chat",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.3,
-          "currency": "USD",
-          "api_endpoint": "labs-mistral-small-creative",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "mistral-small-creative"
-        },
-        {
           "name": "Magistral Medium",
           "type": "chat",
           "input_price_per_1m": 2,
@@ -4182,6 +4169,21 @@
           "canonical_id": "command-r-08"
         },
         {
+          "name": "openai/gpt-4o-mini",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "eu-endpoint"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4o-mini"
+        },
+        {
           "name": "openai/gpt-4o-mini-2024-07-18",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -4196,19 +4198,21 @@
           "canonical_id": "gpt-4o-mini-07-18"
         },
         {
-          "name": "openai/gpt-4o-mini",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.6,
+          "name": "minimax/minimax-m2.5",
+          "type": "chat",
+          "input_price_per_1m": 0.156,
+          "output_price_per_1m": 1,
           "currency": "USD",
+          "hf_id": "MiniMaxAI/MiniMax-M2.5",
           "capabilities": [
-            "vision",
-            "files",
             "tools",
-            "eu-endpoint"
+            "reasoning"
           ],
-          "hf_private": true,
-          "canonical_id": "gpt-4o-mini"
+          "size_b": 228.7,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "minimax-m2-5"
         },
         {
           "name": "qwen/qwen3.5-35b-a3b",
@@ -4274,23 +4278,6 @@
           "canonical_id": "llama-guard-4-12b"
         },
         {
-          "name": "minimax/minimax-m2.5",
-          "type": "chat",
-          "input_price_per_1m": 0.19,
-          "output_price_per_1m": 1.15,
-          "currency": "USD",
-          "hf_id": "MiniMaxAI/MiniMax-M2.5",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 228.7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "minimax-m2-5"
-        },
-        {
           "name": "qwen/qwen3.5-27b",
           "type": "vision",
           "input_price_per_1m": 0.195,
@@ -4331,7 +4318,8 @@
             "vision",
             "files",
             "tools",
-            "reasoning"
+            "reasoning",
+            "eu-endpoint"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4-nano"
@@ -4394,6 +4382,7 @@
           "currency": "USD",
           "capabilities": [
             "vision",
+            "files",
             "tools",
             "reasoning"
           ],
@@ -4443,6 +4432,7 @@
           "currency": "USD",
           "capabilities": [
             "vision",
+            "files",
             "tools",
             "reasoning"
           ],
@@ -5581,7 +5571,8 @@
           "currency": "USD",
           "capabilities": [
             "audio",
-            "audio-out"
+            "audio-out",
+            "tools"
           ],
           "hf_private": true,
           "audio_price_per_1m": 0.6,
@@ -5781,7 +5772,8 @@
             "vision",
             "files",
             "tools",
-            "reasoning"
+            "reasoning",
+            "eu-endpoint"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4-mini"
@@ -6463,20 +6455,21 @@
           "canonical_id": "gpt-5-2"
         },
         {
-          "name": "x-ai/grok-4.20-multi-agent-beta",
+          "name": "x-ai/grok-4.20-multi-agent",
           "type": "vision",
           "input_price_per_1m": 2,
           "output_price_per_1m": 6,
           "currency": "USD",
           "capabilities": [
             "vision",
+            "files",
             "reasoning"
           ],
-          "hf_private": true,
-          "canonical_id": "grok-4-20-multi-agent-beta"
+          "canonical_id": "grok-4-20-multi-agent",
+          "hf_private": true
         },
         {
-          "name": "x-ai/grok-4.20-beta",
+          "name": "x-ai/grok-4.20",
           "type": "vision",
           "input_price_per_1m": 2,
           "output_price_per_1m": 6,
@@ -6486,8 +6479,8 @@
             "tools",
             "reasoning"
           ],
-          "hf_private": true,
-          "canonical_id": "grok-4-20-beta"
+          "canonical_id": "grok-4-20",
+          "hf_private": true
         },
         {
           "name": "google/gemini-3.1-pro-preview-customtools",
@@ -6719,7 +6712,8 @@
           "currency": "USD",
           "capabilities": [
             "audio",
-            "audio-out"
+            "audio-out",
+            "tools"
           ],
           "hf_private": true,
           "audio_price_per_1m": 32,
@@ -6807,15 +6801,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-productivity",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-productivity"
-        },
-        {
           "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6823,6 +6808,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-pi"
+        },
+        {
+          "name": "inflection/inflection-3-productivity",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-productivity"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -6918,6 +6912,7 @@
           "currency": "USD",
           "capabilities": [
             "vision",
+            "files",
             "tools",
             "reasoning"
           ],
@@ -7324,18 +7319,6 @@
           "canonical_id": "gpt-5-4-pro"
         },
         {
-          "name": "openai/gpt-4-0314",
-          "type": "chat",
-          "input_price_per_1m": 30,
-          "output_price_per_1m": 60,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4"
-        },
-        {
           "name": "openai/gpt-4",
           "type": "chat",
           "input_price_per_1m": 30,
@@ -7344,6 +7327,18 @@
           "capabilities": [
             "tools",
             "eu-endpoint"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4"
+        },
+        {
+          "name": "openai/gpt-4-0314",
+          "type": "chat",
+          "input_price_per_1m": 30,
+          "output_price_per_1m": 60,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4"
@@ -7761,22 +7756,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "gpt-oss-120b-128k"
-        },
-        {
-          "name": "Kimi K2-0905 1T 256k",
-          "type": "chat",
-          "input_price_per_1m": 1,
-          "output_price_per_1m": 3,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_id": "moonshotai/Kimi-K2-Instruct-0905",
-          "size_b": 1026.5,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "kimi-k2-1t-256k"
         },
         {
           "name": "Llama 4 Scout (17Bx16E) 128k",
