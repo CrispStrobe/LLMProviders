@@ -2461,7 +2461,7 @@
           "input_price_per_1m": 0.1,
           "output_price_per_1m": 0,
           "currency": "USD",
-          "api_endpoint": "mistral-moderation-latest",
+          "api_endpoint": "mistral-moderation-2603",
           "hf_private": true,
           "canonical_id": "mistral-moderation"
         },
@@ -3480,7 +3480,7 @@
           "canonical_id": "qwen3-next-80b-a3b"
         },
         {
-          "name": "reka/reka-edge",
+          "name": "rekaai/reka-edge",
           "type": "vision",
           "input_price_per_1m": 0.1,
           "output_price_per_1m": 0.1,
@@ -3805,6 +3805,23 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-vl-8b"
+        },
+        {
+          "name": "minimax/minimax-m2.5",
+          "type": "chat",
+          "input_price_per_1m": 0.12,
+          "output_price_per_1m": 1,
+          "currency": "USD",
+          "hf_id": "MiniMaxAI/MiniMax-M2.5",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 228.7,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "minimax-m2-5"
         },
         {
           "name": "qwen/qwen3-coder-next",
@@ -4169,21 +4186,6 @@
           "canonical_id": "command-r-08"
         },
         {
-          "name": "openai/gpt-4o-mini",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "eu-endpoint"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4o-mini"
-        },
-        {
           "name": "openai/gpt-4o-mini-2024-07-18",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -4198,21 +4200,19 @@
           "canonical_id": "gpt-4o-mini-07-18"
         },
         {
-          "name": "minimax/minimax-m2.5",
-          "type": "chat",
-          "input_price_per_1m": 0.156,
-          "output_price_per_1m": 1,
+          "name": "openai/gpt-4o-mini",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.6,
           "currency": "USD",
-          "hf_id": "MiniMaxAI/MiniMax-M2.5",
           "capabilities": [
+            "vision",
+            "files",
             "tools",
-            "reasoning"
+            "eu-endpoint"
           ],
-          "size_b": 228.7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "minimax-m2-5"
+          "hf_private": true,
+          "canonical_id": "gpt-4o-mini"
         },
         {
           "name": "qwen/qwen3.5-35b-a3b",
@@ -4563,6 +4563,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-coder"
+        },
+        {
+          "name": "arcee-ai/trinity-large-thinking",
+          "type": "chat",
+          "input_price_per_1m": 0.25,
+          "output_price_per_1m": 0.9,
+          "currency": "USD",
+          "hf_id": "arcee-ai/Trinity-Large-Thinking",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "trinity-large",
+          "size_b": 398.6,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "bytedance-seed/seed-2.0-lite",
@@ -5091,6 +5107,24 @@
           "canonical_id": "deepseek"
         },
         {
+          "name": "moonshotai/kimi-k2.5",
+          "type": "vision",
+          "input_price_per_1m": 0.3827,
+          "output_price_per_1m": 1.9092,
+          "currency": "USD",
+          "hf_id": "moonshotai/Kimi-K2.5",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 1058.6,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "kimi-k2-5"
+        },
+        {
           "name": "qwen/qwen3.5-397b-a17b",
           "type": "vision",
           "input_price_per_1m": 0.39,
@@ -5311,24 +5345,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "llama-3-1-70b"
-        },
-        {
-          "name": "moonshotai/kimi-k2.5",
-          "type": "vision",
-          "input_price_per_1m": 0.42,
-          "output_price_per_1m": 2.2,
-          "currency": "USD",
-          "hf_id": "moonshotai/Kimi-K2.5",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 1058.6,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "kimi-k2-5"
         },
         {
           "name": "baidu/ernie-4.5-vl-424b-a47b",
@@ -6147,6 +6163,20 @@
           "canonical_id": "o3-mini"
         },
         {
+          "name": "z-ai/glm-5v-turbo",
+          "type": "vision",
+          "input_price_per_1m": 1.2,
+          "output_price_per_1m": 4,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "glm-5v-turbo"
+        },
+        {
           "name": "z-ai/glm-5-turbo",
           "type": "chat",
           "input_price_per_1m": 1.2,
@@ -6801,15 +6831,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-pi",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-pi"
-        },
-        {
           "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6817,6 +6838,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-productivity"
+        },
+        {
+          "name": "inflection/inflection-3-pi",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-pi"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7319,6 +7349,18 @@
           "canonical_id": "gpt-5-4-pro"
         },
         {
+          "name": "openai/gpt-4-0314",
+          "type": "chat",
+          "input_price_per_1m": 30,
+          "output_price_per_1m": 60,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4"
+        },
+        {
           "name": "openai/gpt-4",
           "type": "chat",
           "input_price_per_1m": 30,
@@ -7327,18 +7369,6 @@
           "capabilities": [
             "tools",
             "eu-endpoint"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4"
-        },
-        {
-          "name": "openai/gpt-4-0314",
-          "type": "chat",
-          "input_price_per_1m": 30,
-          "output_price_per_1m": 60,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4"
