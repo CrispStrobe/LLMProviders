@@ -2606,32 +2606,6 @@
       "eu_endpoints": false,
       "models": [
         {
-          "name": "liquid/lfm2-8b-a1b",
-          "type": "chat",
-          "input_price_per_1m": 0.01,
-          "output_price_per_1m": 0.02,
-          "currency": "USD",
-          "hf_id": "LiquidAI/LFM2-8B-A1B",
-          "size_b": 8,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "lfm2-8b-a1b"
-        },
-        {
-          "name": "liquid/lfm-2.2-6b",
-          "type": "chat",
-          "input_price_per_1m": 0.01,
-          "output_price_per_1m": 0.02,
-          "currency": "USD",
-          "hf_id": "LiquidAI/LFM2-2.6B",
-          "size_b": 2.6,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "lfm-2-2-6b"
-        },
-        {
           "name": "ibm-granite/granite-4.0-h-micro",
           "type": "chat",
           "input_price_per_1m": 0.017,
@@ -3809,8 +3783,8 @@
         {
           "name": "minimax/minimax-m2.5",
           "type": "chat",
-          "input_price_per_1m": 0.12,
-          "output_price_per_1m": 1,
+          "input_price_per_1m": 0.118,
+          "output_price_per_1m": 0.99,
           "currency": "USD",
           "hf_id": "MiniMaxAI/MiniMax-M2.5",
           "capabilities": [
@@ -3950,6 +3924,22 @@
           ],
           "hf_private": true,
           "canonical_id": "qwen-vl-plus"
+        },
+        {
+          "name": "google/gemma-4-31b-it",
+          "type": "vision",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 0.4,
+          "currency": "USD",
+          "hf_id": "google/gemma-4-31B-it",
+          "capabilities": [
+            "vision",
+            "video",
+            "reasoning"
+          ],
+          "size_b": 31,
+          "canonical_id": "gemma-4-31b",
+          "hf_private": false
         },
         {
           "name": "baidu/ernie-4.5-vl-28b-a3b",
@@ -4548,6 +4538,22 @@
           "canonical_id": "deepseek-1-terminus"
         },
         {
+          "name": "arcee-ai/trinity-large-thinking",
+          "type": "chat",
+          "input_price_per_1m": 0.22,
+          "output_price_per_1m": 0.85,
+          "currency": "USD",
+          "hf_id": "arcee-ai/Trinity-Large-Thinking",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "trinity-large",
+          "size_b": 398.6,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "qwen/qwen3-coder",
           "type": "chat",
           "input_price_per_1m": 0.22,
@@ -4563,22 +4569,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-coder"
-        },
-        {
-          "name": "arcee-ai/trinity-large-thinking",
-          "type": "chat",
-          "input_price_per_1m": 0.25,
-          "output_price_per_1m": 0.9,
-          "currency": "USD",
-          "hf_id": "arcee-ai/Trinity-Large-Thinking",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "trinity-large",
-          "size_b": 398.6,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "bytedance-seed/seed-2.0-lite",
@@ -5110,7 +5100,7 @@
           "name": "moonshotai/kimi-k2.5",
           "type": "vision",
           "input_price_per_1m": 0.3827,
-          "output_price_per_1m": 1.9092,
+          "output_price_per_1m": 1.72,
           "currency": "USD",
           "hf_id": "moonshotai/Kimi-K2.5",
           "capabilities": [
@@ -7388,12 +7378,14 @@
           "canonical_id": "o1-pro"
         },
         {
-          "name": "qwen/qwen3.6-plus-preview:free",
-          "type": "chat",
+          "name": "qwen/qwen3.6-plus:free",
+          "type": "vision",
           "input_price_per_1m": 0,
           "output_price_per_1m": 0,
           "currency": "USD",
           "capabilities": [
+            "vision",
+            "video",
             "tools",
             "reasoning"
           ],
