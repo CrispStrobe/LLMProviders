@@ -3830,6 +3830,23 @@
           "canonical_id": "qwen-2-5-72b"
         },
         {
+          "name": "google/gemma-4-26b-a4b-it",
+          "type": "vision",
+          "input_price_per_1m": 0.13,
+          "output_price_per_1m": 0.4,
+          "currency": "USD",
+          "hf_id": "google/gemma-4-26B-A4B-it",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 26,
+          "canonical_id": "gemma-4-26b-a4b",
+          "hf_private": false
+        },
+        {
           "name": "qwen/qwen3-vl-30b-a3b-thinking",
           "type": "vision",
           "input_price_per_1m": 0.13,
@@ -3935,6 +3952,7 @@
           "capabilities": [
             "vision",
             "video",
+            "tools",
             "reasoning"
           ],
           "size_b": 31,
