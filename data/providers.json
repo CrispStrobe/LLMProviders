@@ -3795,7 +3795,8 @@
           "hf_private": false,
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
-          "canonical_id": "minimax-m2-5"
+          "canonical_id": "minimax-m2-5",
+          "size_source": "hf-total"
         },
         {
           "name": "qwen/qwen3-coder-next",
@@ -6839,15 +6840,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-productivity",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-productivity"
-        },
-        {
           "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6855,6 +6847,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-pi"
+        },
+        {
+          "name": "inflection/inflection-3-productivity",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-productivity"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7152,21 +7153,6 @@
           "canonical_id": "gpt-4o-05-13"
         },
         {
-          "name": "anthropic/claude-3.5-sonnet",
-          "type": "vision",
-          "input_price_per_1m": 6,
-          "output_price_per_1m": 30,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "eu-endpoint"
-          ],
-          "hf_private": true,
-          "canonical_id": "claude-3-5-sonnet"
-        },
-        {
           "name": "openai/gpt-4o:extended",
           "type": "vision",
           "input_price_per_1m": 6,
@@ -7427,6 +7413,22 @@
           "canonical_id": "nemotron-3-super-120b-a12b"
         },
         {
+          "name": "minimax/minimax-m2.5:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "MiniMaxAI/MiniMax-M2.5",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "minimax-m2-5",
+          "size_b": 228.7,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "stepfun/step-3.5-flash:free",
           "type": "chat",
           "input_price_per_1m": 0,
@@ -7573,6 +7575,36 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "nemotron-nano-9b"
+        },
+        {
+          "name": "openai/gpt-oss-120b:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "openai/gpt-oss-120b",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 120,
+          "canonical_id": "gpt-oss-120b",
+          "hf_private": false
+        },
+        {
+          "name": "openai/gpt-oss-20b:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "openai/gpt-oss-20b",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 20,
+          "canonical_id": "gpt-oss-20b",
+          "hf_private": false
         },
         {
           "name": "z-ai/glm-4.5-air:free",
