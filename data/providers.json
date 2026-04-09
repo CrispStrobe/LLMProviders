@@ -4830,23 +4830,6 @@
           "canonical_id": "qwen-plus"
         },
         {
-          "name": "minimax/minimax-m2.1",
-          "type": "chat",
-          "input_price_per_1m": 0.27,
-          "output_price_per_1m": 0.95,
-          "currency": "USD",
-          "hf_id": "MiniMaxAI/MiniMax-M2.1",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 228.7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "minimax-m2-1"
-        },
-        {
           "name": "deepseek/deepseek-v3.2-exp",
           "type": "chat",
           "input_price_per_1m": 0.27,
@@ -4875,6 +4858,23 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "ernie-4-5-300b-a47b"
+        },
+        {
+          "name": "minimax/minimax-m2.1",
+          "type": "chat",
+          "input_price_per_1m": 0.29,
+          "output_price_per_1m": 0.95,
+          "currency": "USD",
+          "hf_id": "MiniMaxAI/MiniMax-M2.1",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 228.7,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "minimax-m2-1"
         },
         {
           "name": "deepseek/deepseek-r1-distill-qwen-32b",
@@ -6388,8 +6388,8 @@
         {
           "name": "z-ai/glm-5.1",
           "type": "chat",
-          "input_price_per_1m": 1.26,
-          "output_price_per_1m": 3.96,
+          "input_price_per_1m": 1.395,
+          "output_price_per_1m": 4.4,
           "currency": "USD",
           "hf_id": "zai-org/GLM-5.1",
           "capabilities": [
@@ -6855,15 +6855,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-productivity",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-productivity"
-        },
-        {
           "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6871,6 +6862,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-pi"
+        },
+        {
+          "name": "inflection/inflection-3-productivity",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-productivity"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7476,23 +7476,6 @@
           "size_b": 228.7,
           "size_source": "hf-total",
           "hf_private": false
-        },
-        {
-          "name": "stepfun/step-3.5-flash:free",
-          "type": "chat",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "hf_id": "stepfun-ai/Step-3.5-Flash",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 196,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "step-3-5-flash"
         },
         {
           "name": "arcee-ai/trinity-large-preview:free",
