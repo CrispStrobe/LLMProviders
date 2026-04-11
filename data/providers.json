@@ -2586,7 +2586,7 @@
           "name": "openai/gpt-oss-20b",
           "type": "chat",
           "input_price_per_1m": 0.03,
-          "output_price_per_1m": 0.11,
+          "output_price_per_1m": 0.14,
           "currency": "USD",
           "hf_id": "openai/gpt-oss-20b",
           "capabilities": [
@@ -2807,22 +2807,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "trinity-mini"
-        },
-        {
-          "name": "meta-llama/llama-3.2-11b-vision-instruct",
-          "type": "vision",
-          "input_price_per_1m": 0.049,
-          "output_price_per_1m": 0.049,
-          "currency": "USD",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 11,
-          "hf_private": false,
-          "hf_id": "meta-llama/Llama-3.2-11B-Vision-Instruct",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-3-2-11b"
         },
         {
           "name": "qwen/qwen3.5-9b",
@@ -3674,6 +3658,23 @@
           "size_source": "hf-total"
         },
         {
+          "name": "google/gemma-4-26b-a4b-it",
+          "type": "vision",
+          "input_price_per_1m": 0.12,
+          "output_price_per_1m": 0.4,
+          "currency": "USD",
+          "hf_id": "google/gemma-4-26B-A4B-it",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 26,
+          "canonical_id": "gemma-4-26b-a4b",
+          "hf_private": false
+        },
+        {
           "name": "qwen/qwen3-coder-next",
           "type": "chat",
           "input_price_per_1m": 0.12,
@@ -3704,23 +3705,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen-2-5-72b"
-        },
-        {
-          "name": "google/gemma-4-26b-a4b-it",
-          "type": "vision",
-          "input_price_per_1m": 0.13,
-          "output_price_per_1m": 0.4,
-          "currency": "USD",
-          "hf_id": "google/gemma-4-26B-A4B-it",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 26,
-          "canonical_id": "gemma-4-26b-a4b",
-          "hf_private": false
         },
         {
           "name": "qwen/qwen3-vl-30b-a3b-thinking",
@@ -4445,6 +4429,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-coder"
+        },
+        {
+          "name": "meta-llama/llama-3.2-11b-vision-instruct",
+          "type": "vision",
+          "input_price_per_1m": 0.245,
+          "output_price_per_1m": 0.245,
+          "currency": "USD",
+          "capabilities": [
+            "vision"
+          ],
+          "size_b": 11,
+          "hf_private": false,
+          "hf_id": "meta-llama/Llama-3.2-11B-Vision-Instruct",
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "llama-3-2-11b"
         },
         {
           "name": "bytedance-seed/seed-2.0-lite",
@@ -5875,6 +5875,22 @@
           "canonical_id": "maestro-reasoning"
         },
         {
+          "name": "z-ai/glm-5.1",
+          "type": "chat",
+          "input_price_per_1m": 0.95,
+          "output_price_per_1m": 3.15,
+          "currency": "USD",
+          "hf_id": "zai-org/GLM-5.1",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "glm-5-1",
+          "size_b": 753.9,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "xiaomi/mimo-v2-pro",
           "type": "chat",
           "input_price_per_1m": 1,
@@ -6251,22 +6267,6 @@
           "hf_private": true,
           "audio_price_per_1m": 1.25,
           "canonical_id": "gemini-2-5-pro-05-06"
-        },
-        {
-          "name": "z-ai/glm-5.1",
-          "type": "chat",
-          "input_price_per_1m": 1.26,
-          "output_price_per_1m": 3.96,
-          "currency": "USD",
-          "hf_id": "zai-org/GLM-5.1",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "glm-5-1",
-          "size_b": 753.9,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "sao10k/l3-euryale-70b",
