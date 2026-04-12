@@ -2615,22 +2615,6 @@
           "canonical_id": "qwen2-5-coder-7b"
         },
         {
-          "name": "mistralai/mistral-small-3.1-24b-instruct",
-          "type": "vision",
-          "input_price_per_1m": 0.03,
-          "output_price_per_1m": 0.11,
-          "currency": "USD",
-          "hf_id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 24,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "mistral-small-3-1-24b"
-        },
-        {
           "name": "google/gemma-2-9b-it",
           "type": "chat",
           "input_price_per_1m": 0.03,
@@ -4985,6 +4969,22 @@
           "canonical_id": "qwen3-6-plus"
         },
         {
+          "name": "mistralai/mistral-small-3.1-24b-instruct",
+          "type": "vision",
+          "input_price_per_1m": 0.35,
+          "output_price_per_1m": 0.56,
+          "currency": "USD",
+          "hf_id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+          "capabilities": [
+            "vision"
+          ],
+          "size_b": 24,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "mistral-small-3-1-24b"
+        },
+        {
           "name": "moonshotai/kimi-k2.5",
           "type": "vision",
           "input_price_per_1m": 0.3827,
@@ -6720,15 +6720,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-productivity",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-productivity"
-        },
-        {
           "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6736,6 +6727,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-pi"
+        },
+        {
+          "name": "inflection/inflection-3-productivity",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-productivity"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
