@@ -3659,22 +3659,6 @@
           "hf_private": false
         },
         {
-          "name": "qwen/qwen3-coder-next",
-          "type": "chat",
-          "input_price_per_1m": 0.12,
-          "output_price_per_1m": 0.75,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3-Coder-Next",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 79.7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-coder-next"
-        },
-        {
           "name": "qwen/qwen-2.5-72b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.12,
@@ -3884,6 +3868,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "mistral-small"
+        },
+        {
+          "name": "qwen/qwen3-coder-next",
+          "type": "chat",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.8,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3-Coder-Next",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 79.7,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-coder-next"
         },
         {
           "name": "upstage/solar-pro-3",
@@ -5242,23 +5242,6 @@
           "canonical_id": "ernie-4-5-vl-424b-a47b"
         },
         {
-          "name": "deepseek/deepseek-r1-0528",
-          "type": "chat",
-          "input_price_per_1m": 0.45,
-          "output_price_per_1m": 2.15,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-R1-0528",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 671,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "deepseek-r1"
-        },
-        {
           "name": "undi95/remm-slerp-l2-13b",
           "type": "chat",
           "input_price_per_1m": 0.45,
@@ -5332,6 +5315,23 @@
           ],
           "hf_private": true,
           "canonical_id": "mistral-large"
+        },
+        {
+          "name": "deepseek/deepseek-r1-0528",
+          "type": "chat",
+          "input_price_per_1m": 0.5,
+          "output_price_per_1m": 2.15,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-R1-0528",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 671,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "deepseek-r1"
         },
         {
           "name": "arcee-ai/coder-large",
@@ -5737,19 +5737,6 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "morph-fast"
-        },
-        {
-          "name": "eleutherai/llemma_7b",
-          "type": "chat",
-          "input_price_per_1m": 0.8,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "hf_id": "EleutherAI/llemma_7b",
-          "size_b": 7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llemma-7b"
         },
         {
           "name": "alfredpros/codellama-7b-instruct-solidity",
@@ -6720,15 +6707,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-pi",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-pi"
-        },
-        {
           "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6736,6 +6714,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-productivity"
+        },
+        {
+          "name": "inflection/inflection-3-pi",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-pi"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
