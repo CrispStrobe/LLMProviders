@@ -2512,19 +2512,6 @@
           "canonical_id": "gemma-3n-e4b"
         },
         {
-          "name": "meta-llama/llama-guard-3-8b",
-          "type": "chat",
-          "input_price_per_1m": 0.02,
-          "output_price_per_1m": 0.06,
-          "currency": "USD",
-          "size_b": 8,
-          "hf_private": false,
-          "hf_id": "meta-llama/Llama-Guard-3-8B",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-guard-3-8b"
-        },
-        {
           "name": "meta-llama/llama-3.1-8b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.02,
@@ -2599,33 +2586,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "gpt-oss-20b"
-        },
-        {
-          "name": "qwen/qwen2.5-coder-7b-instruct",
-          "type": "chat",
-          "input_price_per_1m": 0.03,
-          "output_price_per_1m": 0.09,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen2.5-Coder-7B-Instruct",
-          "size_b": 7,
-          "size_source": "manual",
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen2-5-coder-7b"
-        },
-        {
-          "name": "google/gemma-2-9b-it",
-          "type": "chat",
-          "input_price_per_1m": 0.03,
-          "output_price_per_1m": 0.09,
-          "currency": "USD",
-          "size_b": 9,
-          "hf_private": false,
-          "hf_id": "google/gemma-2-9b-it",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "gemma-2-9b"
         },
         {
           "name": "meta-llama/llama-3-8b-instruct",
@@ -4021,20 +3981,6 @@
           "canonical_id": "command-r-08"
         },
         {
-          "name": "openai/gpt-4o-mini-2024-07-18",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4o-mini-07-18"
-        },
-        {
           "name": "openai/gpt-4o-mini",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -4048,6 +3994,20 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o-mini"
+        },
+        {
+          "name": "openai/gpt-4o-mini-2024-07-18",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4o-mini-07-18"
         },
         {
           "name": "qwen/qwen3.5-35b-a3b",
@@ -4505,30 +4465,6 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-mini"
-        },
-        {
-          "name": "inception/mercury",
-          "type": "chat",
-          "input_price_per_1m": 0.25,
-          "output_price_per_1m": 0.75,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "mercury"
-        },
-        {
-          "name": "inception/mercury-coder",
-          "type": "chat",
-          "input_price_per_1m": 0.25,
-          "output_price_per_1m": 0.75,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "mercury-coder"
         },
         {
           "name": "anthropic/claude-3-haiku",
@@ -5256,6 +5192,19 @@
           "canonical_id": "qwen3-235b-a22b"
         },
         {
+          "name": "meta-llama/llama-guard-3-8b",
+          "type": "chat",
+          "input_price_per_1m": 0.48,
+          "output_price_per_1m": 0.03,
+          "currency": "USD",
+          "size_b": 8,
+          "hf_private": false,
+          "hf_id": "meta-llama/Llama-Guard-3-8B",
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "llama-guard-3-8b"
+        },
+        {
           "name": "google/gemini-3.1-flash-image-preview",
           "type": "image",
           "input_price_per_1m": 0.5,
@@ -5488,22 +5437,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "glm-4-5"
-        },
-        {
-          "name": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-          "type": "chat",
-          "input_price_per_1m": 0.6,
-          "output_price_per_1m": 1.8,
-          "currency": "USD",
-          "hf_id": "nvidia/Llama-3_1-Nemotron-Ultra-253B-v1",
-          "capabilities": [
-            "reasoning"
-          ],
-          "size_b": 253,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-3-1-nemotron-ultra-253b"
         },
         {
           "name": "microsoft/wizardlm-2-8x22b",
@@ -6691,15 +6624,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-productivity",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-productivity"
-        },
-        {
           "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6707,6 +6631,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-pi"
+        },
+        {
+          "name": "inflection/inflection-3-productivity",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-productivity"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7207,18 +7140,6 @@
           "canonical_id": "gpt-5-4-pro"
         },
         {
-          "name": "openai/gpt-4-0314",
-          "type": "chat",
-          "input_price_per_1m": 30,
-          "output_price_per_1m": 60,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4"
-        },
-        {
           "name": "openai/gpt-4",
           "type": "chat",
           "input_price_per_1m": 30,
@@ -7227,6 +7148,18 @@
           "capabilities": [
             "tools",
             "eu-endpoint"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4"
+        },
+        {
+          "name": "openai/gpt-4-0314",
+          "type": "chat",
+          "input_price_per_1m": 30,
+          "output_price_per_1m": 60,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4"
