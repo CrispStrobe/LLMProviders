@@ -201,6 +201,16 @@
           "canonical_id": "gpt-oss-120b"
         },
         {
+          "name": "Ministral-3-14B-Instruct-2512",
+          "type": "chat",
+          "currency": "CHF",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 0.4,
+          "size_b": 14,
+          "canonical_id": "ministral-3-14b",
+          "hf_private": false
+        },
+        {
           "name": "Kimi-K2.5",
           "type": "chat",
           "input_price_per_1m": 0.6,
@@ -217,6 +227,16 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "kimi-k2-5"
+        },
+        {
+          "name": "Qwen3.5-122B-A10B-FP8",
+          "type": "chat",
+          "currency": "CHF",
+          "input_price_per_1m": 0.4,
+          "output_price_per_1m": 3.2,
+          "size_b": 122,
+          "canonical_id": "qwen3-5-122b-a10b-fp8",
+          "hf_private": false
         },
         {
           "name": "Bge Multilingual Gemma2",
@@ -2499,19 +2519,6 @@
           "canonical_id": "granite-4-0-h-micro"
         },
         {
-          "name": "google/gemma-3n-e4b-it",
-          "type": "chat",
-          "input_price_per_1m": 0.02,
-          "output_price_per_1m": 0.04,
-          "currency": "USD",
-          "size_b": 4,
-          "hf_private": false,
-          "hf_id": "google/gemma-3n-E4B-it",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "gemma-3n-e4b"
-        },
-        {
           "name": "meta-llama/llama-3.1-8b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.02,
@@ -2866,6 +2873,19 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "glm-4-7-flash"
+        },
+        {
+          "name": "google/gemma-3n-e4b-it",
+          "type": "chat",
+          "input_price_per_1m": 0.06,
+          "output_price_per_1m": 0.12,
+          "currency": "USD",
+          "size_b": 4,
+          "hf_private": false,
+          "hf_id": "google/gemma-3n-E4B-it",
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "gemma-3n-e4b"
         },
         {
           "name": "qwen/qwen3-14b",
@@ -7460,6 +7480,20 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "gemma-3n-e4b"
+        },
+        {
+          "name": "meta-llama/llama-guard-4-12b:free",
+          "type": "vision",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "meta-llama/Llama-Guard-4-12B",
+          "capabilities": [
+            "vision"
+          ],
+          "size_b": 12,
+          "canonical_id": "llama-guard-4-12b",
+          "hf_private": false
         },
         {
           "name": "google/gemma-3-4b-it:free",
