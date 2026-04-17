@@ -2961,6 +2961,23 @@
           "canonical_id": "phi-4"
         },
         {
+          "name": "google/gemma-4-26b-a4b-it",
+          "type": "vision",
+          "input_price_per_1m": 0.07,
+          "output_price_per_1m": 0.4,
+          "currency": "USD",
+          "hf_id": "google/gemma-4-26B-A4B-it",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 26,
+          "canonical_id": "gemma-4-26b-a4b",
+          "hf_private": false
+        },
+        {
           "name": "baidu/ernie-4.5-21b-a3b-thinking",
           "type": "chat",
           "input_price_per_1m": 0.07,
@@ -3094,23 +3111,6 @@
           "canonical_id": "gemini-2-0-flash-lite-001"
         },
         {
-          "name": "google/gemma-4-26b-a4b-it",
-          "type": "vision",
-          "input_price_per_1m": 0.08,
-          "output_price_per_1m": 0.35,
-          "currency": "USD",
-          "hf_id": "google/gemma-4-26B-A4B-it",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 26,
-          "canonical_id": "gemma-4-26b-a4b",
-          "hf_private": false
-        },
-        {
           "name": "qwen/qwen3-vl-8b-instruct",
           "type": "vision",
           "input_price_per_1m": 0.08,
@@ -3212,6 +3212,23 @@
           "canonical_id": "gemma-3-27b"
         },
         {
+          "name": "nvidia/nemotron-3-super-120b-a12b",
+          "type": "chat",
+          "input_price_per_1m": 0.09,
+          "output_price_per_1m": 0.45,
+          "currency": "USD",
+          "hf_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 120,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "nemotron-3-super-120b-a12b"
+        },
+        {
           "name": "xiaomi/mimo-v2-flash",
           "type": "chat",
           "input_price_per_1m": 0.09,
@@ -3310,23 +3327,6 @@
           "size_b": 7.1,
           "size_source": "hf-total",
           "hf_private": false
-        },
-        {
-          "name": "nvidia/nemotron-3-super-120b-a12b",
-          "type": "chat",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.5,
-          "currency": "USD",
-          "hf_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 120,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "nemotron-3-super-120b-a12b"
         },
         {
           "name": "bytedance-seed/seed-2.0-mini",
@@ -3740,6 +3740,23 @@
           "canonical_id": "glm-4-5-air"
         },
         {
+          "name": "qwen/qwen3-235b-a22b-thinking-2507",
+          "type": "chat",
+          "input_price_per_1m": 0.13,
+          "output_price_per_1m": 0.6,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 235,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-235b-a22b"
+        },
+        {
           "name": "nex-agi/deepseek-v3.1-nex-n1",
           "type": "chat",
           "input_price_per_1m": 0.135,
@@ -3813,23 +3830,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "hermes-2-pro-llama-3-8b"
-        },
-        {
-          "name": "qwen/qwen3-235b-a22b-thinking-2507",
-          "type": "chat",
-          "input_price_per_1m": 0.1495,
-          "output_price_per_1m": 1.495,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 235,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-235b-a22b"
         },
         {
           "name": "mistralai/mistral-small-2603",
@@ -4485,6 +4485,22 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-mini"
+        },
+        {
+          "name": "qwen/qwen2.5-vl-72b-instruct",
+          "type": "vision",
+          "input_price_per_1m": 0.25,
+          "output_price_per_1m": 0.75,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen2.5-VL-72B-Instruct",
+          "capabilities": [
+            "vision"
+          ],
+          "size_b": 72,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen2-5-vl-72b"
         },
         {
           "name": "anthropic/claude-3-haiku",
@@ -5700,22 +5716,6 @@
           "canonical_id": "aion-rp-llama-3-1-8b"
         },
         {
-          "name": "qwen/qwen2.5-vl-72b-instruct",
-          "type": "vision",
-          "input_price_per_1m": 0.8,
-          "output_price_per_1m": 0.8,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen2.5-VL-72B-Instruct",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 72,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen2-5-vl-72b"
-        },
-        {
           "name": "amazon/nova-pro-v1",
           "type": "vision",
           "input_price_per_1m": 0.8,
@@ -6909,6 +6909,20 @@
           ],
           "hf_private": true,
           "canonical_id": "aion-1-0"
+        },
+        {
+          "name": "anthropic/claude-opus-4.7",
+          "type": "vision",
+          "input_price_per_1m": 5,
+          "output_price_per_1m": 25,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "claude-opus-4-7",
+          "hf_private": true
         },
         {
           "name": "anthropic/claude-opus-4.6",
