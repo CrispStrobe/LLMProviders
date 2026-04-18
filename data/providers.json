@@ -2760,25 +2760,6 @@
           "canonical_id": "trinity-mini"
         },
         {
-          "name": "qwen/qwen3.5-9b",
-          "type": "vision",
-          "input_price_per_1m": 0.05,
-          "output_price_per_1m": 0.15,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.5-9B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 9,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-5-9b"
-        },
-        {
           "name": "nvidia/nemotron-3-nano-30b-a3b",
           "type": "chat",
           "input_price_per_1m": 0.05,
@@ -2961,23 +2942,6 @@
           "canonical_id": "phi-4"
         },
         {
-          "name": "google/gemma-4-26b-a4b-it",
-          "type": "vision",
-          "input_price_per_1m": 0.07,
-          "output_price_per_1m": 0.4,
-          "currency": "USD",
-          "hf_id": "google/gemma-4-26B-A4B-it",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 26,
-          "canonical_id": "gemma-4-26b-a4b",
-          "hf_private": false
-        },
-        {
           "name": "baidu/ernie-4.5-21b-a3b-thinking",
           "type": "chat",
           "input_price_per_1m": 0.07,
@@ -3109,6 +3073,23 @@
           "hf_private": true,
           "audio_price_per_1m": 0.075,
           "canonical_id": "gemini-2-0-flash-lite-001"
+        },
+        {
+          "name": "google/gemma-4-26b-a4b-it",
+          "type": "vision",
+          "input_price_per_1m": 0.08,
+          "output_price_per_1m": 0.35,
+          "currency": "USD",
+          "hf_id": "google/gemma-4-26B-A4B-it",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 26,
+          "canonical_id": "gemma-4-26b-a4b",
+          "hf_private": false
         },
         {
           "name": "qwen/qwen3-vl-8b-instruct",
@@ -3327,6 +3308,25 @@
           "size_b": 7.1,
           "size_source": "hf-total",
           "hf_private": false
+        },
+        {
+          "name": "qwen/qwen3.5-9b",
+          "type": "vision",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.15,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.5-9B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 9,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-5-9b"
         },
         {
           "name": "bytedance-seed/seed-2.0-mini",
@@ -4268,22 +4268,6 @@
           "canonical_id": "grok-code-fast-1"
         },
         {
-          "name": "qwen/qwen2.5-vl-32b-instruct",
-          "type": "vision",
-          "input_price_per_1m": 0.2,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen2.5-VL-32B-Instruct",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 32,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen2-5-vl-32b"
-        },
-        {
           "name": "deepseek/deepseek-chat-v3-0324",
           "type": "chat",
           "input_price_per_1m": 0.2,
@@ -4291,8 +4275,7 @@
           "currency": "USD",
           "hf_id": "deepseek-ai/DeepSeek-V3-0324",
           "capabilities": [
-            "tools",
-            "reasoning"
+            "tools"
           ],
           "size_b": 685,
           "hf_private": false,
@@ -4535,6 +4518,24 @@
           "canonical_id": "minimax-m2"
         },
         {
+          "name": "deepseek/deepseek-v3.2",
+          "type": "chat",
+          "input_price_per_1m": 0.259,
+          "output_price_per_1m": 0.42,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V3.2",
+          "capabilities": [
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "size_b": 685.4,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "deepseek-2"
+        },
+        {
           "name": "qwen/qwen3.5-122b-a10b",
           "type": "vision",
           "input_price_per_1m": 0.26,
@@ -4567,24 +4568,6 @@
           ],
           "hf_private": true,
           "canonical_id": "qwen3-5-plus-02-15"
-        },
-        {
-          "name": "deepseek/deepseek-v3.2",
-          "type": "chat",
-          "input_price_per_1m": 0.26,
-          "output_price_per_1m": 0.38,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V3.2",
-          "capabilities": [
-            "tools",
-            "reasoning",
-            "eu-endpoint"
-          ],
-          "size_b": 685.4,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "deepseek-2"
         },
         {
           "name": "qwen/qwen3-vl-235b-a22b-thinking",
@@ -4939,24 +4922,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "mistral-small-3-1-24b"
-        },
-        {
-          "name": "moonshotai/kimi-k2.5",
-          "type": "vision",
-          "input_price_per_1m": 0.3827,
-          "output_price_per_1m": 1.72,
-          "currency": "USD",
-          "hf_id": "moonshotai/Kimi-K2.5",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 1058.6,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "kimi-k2-5"
         },
         {
           "name": "qwen/qwen3.5-397b-a17b",
@@ -5599,7 +5564,8 @@
           "hf_id": "zai-org/GLM-5",
           "capabilities": [
             "tools",
-            "reasoning"
+            "reasoning",
+            "eu-endpoint"
           ],
           "size_b": 753.9,
           "hf_private": false,
@@ -7494,20 +7460,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "gemma-3n-e4b"
-        },
-        {
-          "name": "meta-llama/llama-guard-4-12b:free",
-          "type": "vision",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "hf_id": "meta-llama/Llama-Guard-4-12B",
-          "capabilities": [
-            "vision"
-          ],
-          "size_b": 12,
-          "canonical_id": "llama-guard-4-12b",
-          "hf_private": false
         },
         {
           "name": "google/gemma-3-4b-it:free",
