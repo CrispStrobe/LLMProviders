@@ -3999,6 +3999,20 @@
           "canonical_id": "command-r-08"
         },
         {
+          "name": "openai/gpt-4o-mini-2024-07-18",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4o-mini-07-18"
+        },
+        {
           "name": "openai/gpt-4o-mini",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -4012,20 +4026,6 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o-mini"
-        },
-        {
-          "name": "openai/gpt-4o-mini-2024-07-18",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4o-mini-07-18"
         },
         {
           "name": "qwen/qwen3.5-35b-a3b",
@@ -6626,15 +6626,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-pi",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-pi"
-        },
-        {
           "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6642,6 +6633,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-productivity"
+        },
+        {
+          "name": "inflection/inflection-3-pi",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-pi"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7142,6 +7142,18 @@
           "canonical_id": "gpt-5-4-pro"
         },
         {
+          "name": "openai/gpt-4-0314",
+          "type": "chat",
+          "input_price_per_1m": 30,
+          "output_price_per_1m": 60,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4"
+        },
+        {
           "name": "openai/gpt-4",
           "type": "chat",
           "input_price_per_1m": 30,
@@ -7150,18 +7162,6 @@
           "capabilities": [
             "tools",
             "eu-endpoint"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4"
-        },
-        {
-          "name": "openai/gpt-4-0314",
-          "type": "chat",
-          "input_price_per_1m": 30,
-          "output_price_per_1m": 60,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4"
