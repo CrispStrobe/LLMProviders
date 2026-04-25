@@ -2673,7 +2673,8 @@
           "output_price_per_1m": 0.13,
           "currency": "USD",
           "capabilities": [
-            "vision"
+            "vision",
+            "tools"
           ],
           "size_b": 12,
           "hf_private": false,
@@ -3152,7 +3153,8 @@
           "output_price_per_1m": 0.16,
           "currency": "USD",
           "capabilities": [
-            "vision"
+            "vision",
+            "tools"
           ],
           "size_b": 27,
           "hf_private": false,
@@ -3719,6 +3721,38 @@
           "canonical_id": "qwen-vl-plus"
         },
         {
+          "name": "deepseek/deepseek-v4-flash",
+          "type": "chat",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 0.28,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Flash",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "deepseek-flash",
+          "size_b": 158.1,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
+          "name": "qwen/qwen3-coder-next",
+          "type": "chat",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 0.8,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3-Coder-Next",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 79.7,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-coder-next"
+        },
+        {
           "name": "baidu/ernie-4.5-vl-28b-a3b",
           "type": "vision",
           "input_price_per_1m": 0.14,
@@ -3817,22 +3851,6 @@
           "hf_status": 200,
           "canonical_id": "minimax-m2-5",
           "size_source": "hf-total"
-        },
-        {
-          "name": "qwen/qwen3-coder-next",
-          "type": "chat",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.8,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3-Coder-Next",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 79.7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-coder-next"
         },
         {
           "name": "arcee-ai/trinity-large-preview",
@@ -6541,6 +6559,22 @@
           "canonical_id": "mistral-large"
         },
         {
+          "name": "deepseek/deepseek-v4-pro",
+          "type": "chat",
+          "input_price_per_1m": 2.1,
+          "output_price_per_1m": 4.4,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Pro",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "deepseek-pro",
+          "size_b": 861.6,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "openai/gpt-5.4",
           "type": "vision",
           "input_price_per_1m": 2.5,
@@ -6919,6 +6953,20 @@
           "canonical_id": "aion-1-0"
         },
         {
+          "name": "openai/gpt-5.5",
+          "type": "vision",
+          "input_price_per_1m": 5,
+          "output_price_per_1m": 30,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "gpt-5-5"
+        },
+        {
           "name": "~anthropic/claude-opus-latest",
           "type": "vision",
           "input_price_per_1m": 5,
@@ -7166,6 +7214,20 @@
           "canonical_id": "gpt-5-2-pro"
         },
         {
+          "name": "openai/gpt-5.5-pro",
+          "type": "vision",
+          "input_price_per_1m": 30,
+          "output_price_per_1m": 180,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "gpt-5-5-pro"
+        },
+        {
           "name": "anthropic/claude-opus-4.6-fast",
           "type": "vision",
           "input_price_per_1m": 30,
@@ -7196,6 +7258,18 @@
           "canonical_id": "gpt-5-4-pro"
         },
         {
+          "name": "openai/gpt-4-0314",
+          "type": "chat",
+          "input_price_per_1m": 30,
+          "output_price_per_1m": 60,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4"
+        },
+        {
           "name": "openai/gpt-4",
           "type": "chat",
           "input_price_per_1m": 30,
@@ -7204,18 +7278,6 @@
           "capabilities": [
             "tools",
             "eu-endpoint"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4"
-        },
-        {
-          "name": "openai/gpt-4-0314",
-          "type": "chat",
-          "input_price_per_1m": 30,
-          "output_price_per_1m": 60,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4"
