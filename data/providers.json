@@ -582,6 +582,22 @@
           "canonical_id": "gpt-5-4"
         },
         {
+          "name": "GPT-5.5",
+          "type": "chat",
+          "input_price_per_1m": 5.17,
+          "output_price_per_1m": 31,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-5",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
           "name": "Gemini 2.5 Flash",
           "type": "chat",
           "input_price_per_1m": 0.28,
@@ -3934,23 +3950,6 @@
           "canonical_id": "llama-guard-4-12b"
         },
         {
-          "name": "qwen/qwen3.6-27b",
-          "type": "vision",
-          "input_price_per_1m": 0.195,
-          "output_price_per_1m": 1.56,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-27B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 27,
-          "canonical_id": "qwen3-6-27b",
-          "hf_private": false
-        },
-        {
           "name": "qwen/qwen3.5-27b",
           "type": "vision",
           "input_price_per_1m": 0.195,
@@ -4766,6 +4765,23 @@
           "canonical_id": "deepseek"
         },
         {
+          "name": "qwen/qwen3.6-27b",
+          "type": "vision",
+          "input_price_per_1m": 0.325,
+          "output_price_per_1m": 3.25,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-27B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 27,
+          "canonical_id": "qwen3-6-27b",
+          "hf_private": false
+        },
+        {
           "name": "qwen/qwen3.6-plus",
           "type": "vision",
           "input_price_per_1m": 0.325,
@@ -5141,6 +5157,25 @@
           "canonical_id": "llama-guard-3-8b"
         },
         {
+          "name": "~google/gemini-flash-latest",
+          "type": "vision",
+          "input_price_per_1m": 0.5,
+          "output_price_per_1m": 3,
+          "currency": "USD",
+          "audio_price_per_1m": 1,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "gemini-flash",
+          "hf_private": true
+        },
+        {
           "name": "google/gemini-3.1-flash-image-preview",
           "type": "image",
           "input_price_per_1m": 0.5,
@@ -5509,6 +5544,20 @@
           "canonical_id": "deepseek-r1"
         },
         {
+          "name": "~moonshotai/kimi-latest",
+          "type": "vision",
+          "input_price_per_1m": 0.7448,
+          "output_price_per_1m": 4.655,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "kimi"
+        },
+        {
           "name": "moonshotai/kimi-k2.6",
           "type": "vision",
           "input_price_per_1m": 0.7448,
@@ -5524,6 +5573,21 @@
           "size_b": 1058.6,
           "size_source": "hf-total",
           "hf_private": false
+        },
+        {
+          "name": "~openai/gpt-mini-latest",
+          "type": "vision",
+          "input_price_per_1m": 0.75,
+          "output_price_per_1m": 4.5,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "gpt-mini"
         },
         {
           "name": "openai/gpt-5.4-mini",
@@ -5717,6 +5781,21 @@
           "canonical_id": "maestro-reasoning"
         },
         {
+          "name": "~anthropic/claude-haiku-latest",
+          "type": "vision",
+          "input_price_per_1m": 1,
+          "output_price_per_1m": 5,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "claude-haiku",
+          "hf_private": true
+        },
+        {
           "name": "xiaomi/mimo-v2.5-pro",
           "type": "chat",
           "input_price_per_1m": 1,
@@ -5821,6 +5900,18 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-3-5-turbo"
+        },
+        {
+          "name": "qwen/qwen3.6-max-preview",
+          "type": "chat",
+          "input_price_per_1m": 1.04,
+          "output_price_per_1m": 6.24,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "qwen3-6-max"
         },
         {
           "name": "qwen/qwen-max",
@@ -6123,18 +6214,6 @@
           "canonical_id": "gemini-2-5-pro-05-06"
         },
         {
-          "name": "qwen/qwen3.6-max-preview",
-          "type": "chat",
-          "input_price_per_1m": 1.3,
-          "output_price_per_1m": 7.8,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "qwen3-6-max"
-        },
-        {
           "name": "deepseek/deepseek-v4-pro",
           "type": "chat",
           "input_price_per_1m": 1.392,
@@ -6255,6 +6334,25 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-2"
+        },
+        {
+          "name": "~google/gemini-pro-latest",
+          "type": "vision",
+          "input_price_per_1m": 2,
+          "output_price_per_1m": 12,
+          "currency": "USD",
+          "audio_price_per_1m": 2,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "gemini-pro",
+          "hf_private": true
         },
         {
           "name": "x-ai/grok-4.20-multi-agent",
@@ -6661,6 +6759,21 @@
           "canonical_id": "gpt-4o"
         },
         {
+          "name": "~anthropic/claude-sonnet-latest",
+          "type": "vision",
+          "input_price_per_1m": 3,
+          "output_price_per_1m": 15,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "claude-sonnet",
+          "hf_private": true
+        },
+        {
           "name": "anthropic/claude-sonnet-4.6",
           "type": "vision",
           "input_price_per_1m": 3,
@@ -6868,6 +6981,21 @@
           "canonical_id": "aion-1-0"
         },
         {
+          "name": "~openai/gpt-latest",
+          "type": "vision",
+          "input_price_per_1m": 5,
+          "output_price_per_1m": 30,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "gpt"
+        },
+        {
           "name": "openai/gpt-5.5",
           "type": "vision",
           "input_price_per_1m": 5,
@@ -6877,7 +7005,8 @@
             "vision",
             "files",
             "tools",
-            "reasoning"
+            "reasoning",
+            "eu-endpoint"
           ],
           "canonical_id": "gpt-5-5"
         },
