@@ -94,19 +94,6 @@
       "eu_endpoints": true,
       "models": [
         {
-          "name": "Gemma-3n-E4B-it",
-          "type": "chat",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.3,
-          "currency": "CHF",
-          "size_b": 4,
-          "hf_private": false,
-          "hf_id": "google/gemma-3n-E4B-it",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "gemma-3n-e4b"
-        },
-        {
           "name": "granite-3.1-8b",
           "type": "chat",
           "input_price_per_1m": 0.1,
@@ -118,57 +105,6 @@
           "hf_validated_at": "2026-03-22T19:58:46.149Z",
           "hf_status": 200,
           "canonical_id": "granite-3-1-8b"
-        },
-        {
-          "name": "Mistral-Small-3.2-24B-Instruct-2506",
-          "type": "chat",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.3,
-          "currency": "CHF",
-          "size_b": 24,
-          "capabilities": [
-            "vision",
-            "tools"
-          ],
-          "hf_id": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "mistral-small-3-2-24b"
-        },
-        {
-          "name": "Qwen3-VL-235B-A22B-Instruct",
-          "type": "chat",
-          "input_price_per_1m": 0.7,
-          "output_price_per_1m": 2,
-          "currency": "CHF",
-          "size_b": 235,
-          "capabilities": [
-            "vision",
-            "tools"
-          ],
-          "hf_id": "Qwen/Qwen3-VL-235B-A22B-Instruct",
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-vl-235b-a22b"
-        },
-        {
-          "name": "Llama 3.3",
-          "type": "chat",
-          "input_price_per_1m": 1,
-          "output_price_per_1m": 3,
-          "currency": "CHF",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 49,
-          "hf_id": "nvidia/Llama-3_3-Nemotron-Super-49B-v1_5",
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-3-3"
         },
         {
           "name": "Apertus-70B-Instruct-2509",
@@ -184,23 +120,6 @@
           "canonical_id": "apertus-70b"
         },
         {
-          "name": "gpt-oss-120b",
-          "type": "chat",
-          "input_price_per_1m": 0.3,
-          "output_price_per_1m": 0.9,
-          "currency": "CHF",
-          "size_b": 120,
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "hf_id": "openai/gpt-oss-120b",
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "gpt-oss-120b"
-        },
-        {
           "name": "Ministral-3-14B-Instruct-2512",
           "type": "chat",
           "currency": "CHF",
@@ -209,25 +128,6 @@
           "size_b": 14,
           "canonical_id": "ministral-3-14b",
           "hf_private": false
-        },
-        {
-          "name": "Kimi-K2.5",
-          "type": "chat",
-          "input_price_per_1m": 0.6,
-          "output_price_per_1m": 3,
-          "currency": "CHF",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "hf_id": "moonshotai/Kimi-K2.5",
-          "size_b": 1058.6,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "kimi-k2-5",
-          "size_source": "hf-total"
         },
         {
           "name": "Qwen3.5-122B-A10B-FP8",
@@ -251,6 +151,23 @@
           "capabilities": [
             "vision",
             "video",
+            "tools",
+            "reasoning"
+          ],
+          "hf_private": false
+        },
+        {
+          "name": "Kimi-K2.6",
+          "type": "chat",
+          "currency": "CHF",
+          "input_price_per_1m": 0.6,
+          "output_price_per_1m": 3,
+          "canonical_id": "kimi-k2-6",
+          "size_b": 1058.6,
+          "size_source": "hf-total",
+          "hf_id": "moonshotai/Kimi-K2.6",
+          "capabilities": [
+            "vision",
             "tools",
             "reasoning"
           ],
@@ -312,23 +229,6 @@
           "canonical_id": "whisper"
         },
         {
-          "name": "Photomaker V2",
-          "type": "image",
-          "input_price_per_1m": 0.3,
-          "output_price_per_1m": 0,
-          "currency": "CHF",
-          "capabilities": [
-            "image-gen"
-          ],
-          "hf_id": "TencentARC/PhotoMaker-V2",
-          "size_b": 3.1,
-          "size_source": "manual",
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "photomaker"
-        },
-        {
           "name": "Flux schnell",
           "type": "image",
           "input_price_per_1m": 0.3,
@@ -344,6 +244,23 @@
           "hf_validated_at": "2026-03-22T19:50:44.558Z",
           "hf_status": 200,
           "canonical_id": "flux-schnell"
+        },
+        {
+          "name": "Photomaker V2",
+          "type": "image",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 0,
+          "currency": "CHF",
+          "capabilities": [
+            "image-gen"
+          ],
+          "hf_id": "TencentARC/PhotoMaker-V2",
+          "size_b": 3.1,
+          "size_source": "manual",
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "photomaker"
         }
       ],
       "lastUpdated": "2026-03-02T04:54:47.632Z"
@@ -2366,7 +2283,7 @@
           "name": "mistralai/mistral-nemo",
           "type": "chat",
           "input_price_per_1m": 0.02,
-          "output_price_per_1m": 0.04,
+          "output_price_per_1m": 0.03,
           "currency": "USD",
           "hf_id": "mistralai/Mistral-Nemo-Instruct-2407",
           "capabilities": [
@@ -2827,8 +2744,7 @@
           "currency": "USD",
           "hf_id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
           "capabilities": [
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "size_b": 30,
           "hf_private": false,
@@ -2912,12 +2828,22 @@
             "video",
             "audio",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "audio_price_per_1m": 0.075,
           "canonical_id": "gemini-2-0-flash-lite-001"
+        },
+        {
+          "name": "inclusionai/ling-2.6-flash",
+          "type": "chat",
+          "input_price_per_1m": 0.08,
+          "output_price_per_1m": 0.24,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "canonical_id": "ling-2-6-flash"
         },
         {
           "name": "qwen/qwen3-vl-8b-instruct",
@@ -3377,8 +3303,7 @@
             "video",
             "audio",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "audio_price_per_1m": 0.7,
@@ -3391,8 +3316,7 @@
           "output_price_per_1m": 0.32,
           "currency": "USD",
           "capabilities": [
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "size_b": 70,
           "hf_private": false,
@@ -3813,23 +3737,6 @@
           "canonical_id": "gpt-4o-mini-search"
         },
         {
-          "name": "qwen/qwq-32b",
-          "type": "chat",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.58,
-          "currency": "USD",
-          "hf_id": "Qwen/QwQ-32B",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 32,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwq-32b"
-        },
-        {
           "name": "cohere/command-r-08-2024",
           "type": "chat",
           "input_price_per_1m": 0.15,
@@ -3990,8 +3897,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4-nano"
@@ -4318,8 +4224,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-1-codex-mini"
@@ -4364,8 +4269,7 @@
           "currency": "USD",
           "capabilities": [
             "vision",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "claude-3-haiku"
@@ -4379,8 +4283,7 @@
           "hf_id": "deepseek-ai/DeepSeek-V3.2",
           "capabilities": [
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "size_b": 685.4,
           "hf_private": false,
@@ -4397,8 +4300,7 @@
           "hf_id": "MiniMaxAI/MiniMax-M2",
           "capabilities": [
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "size_b": 228.7,
           "hf_private": false,
@@ -4836,8 +4738,7 @@
           "hf_id": "zai-org/GLM-4.7",
           "capabilities": [
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "size_b": 358.3,
           "hf_private": false,
@@ -5069,8 +4970,7 @@
           "output_price_per_1m": 0.4,
           "currency": "USD",
           "capabilities": [
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "size_b": 70,
           "hf_private": false,
@@ -5169,8 +5069,7 @@
             "audio",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "gemini-flash",
           "hf_private": true
@@ -5338,8 +5237,7 @@
           "hf_id": "zai-org/GLM-5",
           "capabilities": [
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "size_b": 753.9,
           "hf_private": false,
@@ -5383,8 +5281,7 @@
           "hf_id": "moonshotai/Kimi-K2-Thinking",
           "capabilities": [
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "size_b": 1058.1,
           "hf_private": false,
@@ -5533,8 +5430,7 @@
           "hf_id": "deepseek-ai/DeepSeek-R1",
           "capabilities": [
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "size_b": 671,
           "size_source": "manual",
@@ -5552,8 +5448,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "kimi"
         },
@@ -5584,8 +5479,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "gpt-mini"
         },
@@ -5599,8 +5493,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4-mini"
@@ -5719,8 +5612,7 @@
           "currency": "USD",
           "capabilities": [
             "vision",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "claude-3-5-haiku"
@@ -5789,8 +5681,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "claude-haiku",
           "hf_private": true
@@ -5895,8 +5786,7 @@
           "output_price_per_1m": 2,
           "currency": "USD",
           "capabilities": [
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-3-5-turbo"
@@ -6051,8 +5941,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-1-codex-max"
@@ -6095,8 +5984,7 @@
           "capabilities": [
             "vision",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-1"
@@ -6110,8 +5998,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-1-codex"
@@ -6171,7 +6058,8 @@
             "audio",
             "files",
             "tools",
-            "reasoning"
+            "reasoning",
+            "eu-endpoint"
           ],
           "hf_private": true,
           "audio_price_per_1m": 1.25,
@@ -6206,8 +6094,7 @@
             "audio",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "audio_price_per_1m": 1.25,
@@ -6267,8 +6154,7 @@
           "capabilities": [
             "vision",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-3"
@@ -6283,8 +6169,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-3-codex"
@@ -6298,8 +6183,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-2-codex"
@@ -6313,8 +6197,7 @@
           "capabilities": [
             "vision",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-2"
@@ -6329,8 +6212,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-2"
@@ -6348,8 +6230,7 @@
             "audio",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "gemini-pro",
           "hf_private": true
@@ -6597,8 +6478,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4"
@@ -6626,8 +6506,7 @@
           "currency": "USD",
           "capabilities": [
             "vision",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "nova-premier"
@@ -6737,8 +6616,7 @@
           "capabilities": [
             "vision",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o-08-06"
@@ -6752,8 +6630,7 @@
           "capabilities": [
             "vision",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o"
@@ -6767,8 +6644,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "claude-sonnet",
           "hf_private": true
@@ -6894,8 +6770,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "claude-3-7-sonnet"
@@ -6910,8 +6785,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "claude-3-7-sonnet"
@@ -6949,8 +6823,7 @@
           "output_price_per_1m": 4,
           "currency": "USD",
           "capabilities": [
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-3-5-turbo-16k"
@@ -6990,8 +6863,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "gpt"
         },
@@ -7005,8 +6877,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "gpt-5-5"
         },
@@ -7019,8 +6890,7 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "canonical_id": "claude-opus",
           "hf_private": true
@@ -7034,7 +6904,8 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning"
+            "reasoning",
+            "eu-endpoint"
           ],
           "canonical_id": "claude-opus-4-7",
           "hf_private": true
@@ -7048,7 +6919,8 @@
           "capabilities": [
             "vision",
             "tools",
-            "reasoning"
+            "reasoning",
+            "eu-endpoint"
           ],
           "hf_private": true,
           "canonical_id": "claude-opus-4-6"
@@ -7078,8 +6950,7 @@
           "capabilities": [
             "vision",
             "files",
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o-05-13"
@@ -7190,8 +7061,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "claude-opus-4-1"
@@ -7206,8 +7076,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "claude-opus-4"
@@ -7295,8 +7164,7 @@
             "vision",
             "files",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4-pro"
@@ -7320,8 +7188,7 @@
           "output_price_per_1m": 60,
           "currency": "USD",
           "capabilities": [
-            "tools",
-            "eu-endpoint"
+            "tools"
           ],
           "hf_private": true,
           "canonical_id": "gpt-4"
@@ -7339,6 +7206,51 @@
           ],
           "hf_private": true,
           "canonical_id": "o1-pro"
+        },
+        {
+          "name": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "type": "vision",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 30,
+          "canonical_id": "nemotron-3-nano-omni-30b-a3b-reasoning",
+          "hf_private": false
+        },
+        {
+          "name": "poolside/laguna-xs.2:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "poolside/Laguna-XS.2",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "laguna-xs-2",
+          "size_b": 33.4,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
+          "name": "poolside/laguna-m.1:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "laguna-m-1"
         },
         {
           "name": "inclusionai/ling-2.6-1t:free",
@@ -7366,17 +7278,6 @@
           "size_b": 298.8,
           "size_source": "hf-total",
           "hf_private": false
-        },
-        {
-          "name": "inclusionai/ling-2.6-flash:free",
-          "type": "chat",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "canonical_id": "ling-2-6-flash"
         },
         {
           "name": "baidu/qianfan-ocr-fast:free",
