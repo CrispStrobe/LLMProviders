@@ -4532,6 +4532,23 @@
           "canonical_id": "hermes-3-llama-3-1-70b"
         },
         {
+          "name": "qwen/qwen3.6-27b",
+          "type": "vision",
+          "input_price_per_1m": 0.32,
+          "output_price_per_1m": 3.2,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-27B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 27,
+          "canonical_id": "qwen3-6-27b",
+          "hf_private": false
+        },
+        {
           "name": "deepseek/deepseek-chat",
           "type": "chat",
           "input_price_per_1m": 0.32,
@@ -4547,23 +4564,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "deepseek"
-        },
-        {
-          "name": "qwen/qwen3.6-27b",
-          "type": "vision",
-          "input_price_per_1m": 0.325,
-          "output_price_per_1m": 3.25,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-27B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 27,
-          "canonical_id": "qwen3-6-27b",
-          "hf_private": false
         },
         {
           "name": "qwen/qwen3.6-plus",
@@ -6482,15 +6482,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-productivity",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-productivity"
-        },
-        {
           "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6498,6 +6489,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-pi"
+        },
+        {
+          "name": "inflection/inflection-3-productivity",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-productivity"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7074,7 +7074,7 @@
           "canonical_id": "gpt-5-4-pro"
         },
         {
-          "name": "openai/gpt-4-0314",
+          "name": "openai/gpt-4",
           "type": "chat",
           "input_price_per_1m": 30,
           "output_price_per_1m": 60,
@@ -7086,7 +7086,7 @@
           "canonical_id": "gpt-4"
         },
         {
-          "name": "openai/gpt-4",
+          "name": "openai/gpt-4-0314",
           "type": "chat",
           "input_price_per_1m": 30,
           "output_price_per_1m": 60,
