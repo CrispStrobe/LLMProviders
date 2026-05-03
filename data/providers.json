@@ -291,15 +291,78 @@
           "hf_private": false
         },
         {
-          "name": "GPT oss (120b)",
+          "name": "Gemini 2.5 Flash",
           "type": "chat",
           "input_price_per_1m": 0.28,
           "output_price_per_1m": 2.35,
           "currency": "EUR",
-          "size_b": 120,
-          "provider_upstream": "OpenAI",
-          "canonical_id": "gpt-oss-(120b)",
-          "hf_private": false
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-2-5-flash",
+          "hf_private": true,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Gemini 2.5 Pro",
+          "type": "chat",
+          "input_price_per_1m": 2.35,
+          "output_price_per_1m": 14.09,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-2-5-pro",
+          "hf_private": true,
+          "capabilities": [
+            "vision",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "Gemini 3.1 Pro Preview",
+          "type": "chat",
+          "input_price_per_1m": 2.35,
+          "output_price_per_1m": 14.09,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning"
+          ],
+          "hf_private": true,
+          "canonical_id": "gemini-3-1-pro"
+        },
+        {
+          "name": "Gemini 3 Flash Preview",
+          "type": "chat",
+          "input_price_per_1m": 0.47,
+          "output_price_per_1m": 2.82,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-3-flash",
+          "hf_private": true,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
         },
         {
           "name": "GPT-5",
@@ -315,37 +378,6 @@
             "tools",
             "reasoning",
             "eu-endpoint"
-          ]
-        },
-        {
-          "name": "GPT-5 Mini",
-          "type": "chat",
-          "input_price_per_1m": 0.23,
-          "output_price_per_1m": 1.88,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "canonical_id": "gpt-5-mini",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning",
-            "eu-endpoint"
-          ]
-        },
-        {
-          "name": "GPT-5 Pro",
-          "type": "chat",
-          "input_price_per_1m": 14.09,
-          "output_price_per_1m": 112.73,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "canonical_id": "gpt-5-pro",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning"
           ]
         },
         {
@@ -452,78 +484,46 @@
           ]
         },
         {
-          "name": "Gemini 2.5 Flash",
+          "name": "GPT-5 Mini",
+          "type": "chat",
+          "input_price_per_1m": 0.23,
+          "output_price_per_1m": 1.88,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-mini",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ]
+        },
+        {
+          "name": "GPT-5 Pro",
+          "type": "chat",
+          "input_price_per_1m": 14.09,
+          "output_price_per_1m": 112.73,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-5-pro",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "GPT oss (120b)",
           "type": "chat",
           "input_price_per_1m": 0.28,
           "output_price_per_1m": 2.35,
           "currency": "EUR",
-          "provider_upstream": "Google",
-          "canonical_id": "gemini-2-5-flash",
-          "hf_private": true,
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "files",
-            "tools",
-            "reasoning",
-            "eu-endpoint"
-          ]
-        },
-        {
-          "name": "Gemini 2.5 Pro",
-          "type": "chat",
-          "input_price_per_1m": 2.35,
-          "output_price_per_1m": 14.09,
-          "currency": "EUR",
-          "provider_upstream": "Google",
-          "canonical_id": "gemini-2-5-pro",
-          "hf_private": true,
-          "capabilities": [
-            "vision",
-            "audio",
-            "files",
-            "tools",
-            "reasoning",
-            "eu-endpoint"
-          ]
-        },
-        {
-          "name": "Gemini 3 Flash Preview",
-          "type": "chat",
-          "input_price_per_1m": 0.47,
-          "output_price_per_1m": 2.82,
-          "currency": "EUR",
-          "provider_upstream": "Google",
-          "canonical_id": "gemini-3-flash",
-          "hf_private": true,
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "files",
-            "tools",
-            "reasoning",
-            "eu-endpoint"
-          ]
-        },
-        {
-          "name": "Gemini 3.1 Pro Preview",
-          "type": "chat",
-          "input_price_per_1m": 2.35,
-          "output_price_per_1m": 14.09,
-          "currency": "EUR",
-          "provider_upstream": "Google",
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "files",
-            "tools",
-            "reasoning"
-          ],
-          "hf_private": true,
-          "canonical_id": "gemini-3-1-pro"
+          "size_b": 120,
+          "provider_upstream": "OpenAI",
+          "canonical_id": "gpt-oss-(120b)",
+          "hf_private": false
         },
         {
           "name": "Haiku 4.5",
@@ -588,6 +588,51 @@
           "canonical_id": "mistral-large-3"
         },
         {
+          "name": "o3",
+          "type": "chat",
+          "input_price_per_1m": 1.88,
+          "output_price_per_1m": 7.52,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "o3",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "o3 Pro",
+          "type": "chat",
+          "input_price_per_1m": 18.79,
+          "output_price_per_1m": 75.15,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "o3-pro",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
+          "name": "o4 Mini",
+          "type": "chat",
+          "input_price_per_1m": 1.03,
+          "output_price_per_1m": 4.13,
+          "currency": "EUR",
+          "provider_upstream": "OpenAI",
+          "canonical_id": "o4-mini",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "Opus 4.5",
           "type": "chat",
           "input_price_per_1m": 4.7,
@@ -636,51 +681,6 @@
           "provider_upstream": "Anthropic",
           "canonical_id": "sonnet-4-6",
           "hf_private": true
-        },
-        {
-          "name": "o3",
-          "type": "chat",
-          "input_price_per_1m": 1.88,
-          "output_price_per_1m": 7.52,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "canonical_id": "o3",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
-          "name": "o3 Pro",
-          "type": "chat",
-          "input_price_per_1m": 18.79,
-          "output_price_per_1m": 75.15,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "canonical_id": "o3-pro",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning"
-          ]
-        },
-        {
-          "name": "o4 Mini",
-          "type": "chat",
-          "input_price_per_1m": 1.03,
-          "output_price_per_1m": 4.13,
-          "currency": "EUR",
-          "provider_upstream": "OpenAI",
-          "canonical_id": "o4-mini",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning"
-          ]
         }
       ]
     },
