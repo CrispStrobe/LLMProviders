@@ -2298,6 +2298,25 @@
           "canonical_id": "gpt-oss-120b"
         },
         {
+          "name": "qwen/qwen3.5-9b",
+          "type": "vision",
+          "input_price_per_1m": 0.04,
+          "output_price_per_1m": 0.15,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.5-9B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 9,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-5-9b"
+        },
+        {
           "name": "nvidia/nemotron-nano-9b-v2",
           "type": "chat",
           "input_price_per_1m": 0.04,
@@ -2996,25 +3015,6 @@
           "hf_private": false
         },
         {
-          "name": "qwen/qwen3.5-9b",
-          "type": "vision",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.15,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.5-9B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 9,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-5-9b"
-        },
-        {
           "name": "bytedance-seed/seed-2.0-mini",
           "type": "vision",
           "input_price_per_1m": 0.1,
@@ -3438,6 +3438,25 @@
           "hf_private": false
         },
         {
+          "name": "qwen/qwen3.5-35b-a3b",
+          "type": "vision",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 1,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.5-35B-A3B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 35,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-5-35b-a3b"
+        },
+        {
           "name": "baidu/ernie-4.5-vl-28b-a3b",
           "type": "vision",
           "input_price_per_1m": 0.14,
@@ -3535,25 +3554,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "mistral-small"
-        },
-        {
-          "name": "qwen/qwen3.5-35b-a3b",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 1,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.5-35B-A3B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 35,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-5-35b-a3b"
         },
         {
           "name": "minimax/minimax-m2.5",
@@ -4010,6 +4010,24 @@
           "canonical_id": "llama-3-2-11b"
         },
         {
+          "name": "google/gemini-3.1-flash-lite",
+          "type": "vision",
+          "input_price_per_1m": 0.25,
+          "output_price_per_1m": 1.5,
+          "currency": "USD",
+          "audio_price_per_1m": 0.5,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "gemini-3-1-flash-lite",
+          "hf_private": true
+        },
+        {
           "name": "qwen/qwen3.6-flash",
           "type": "vision",
           "input_price_per_1m": 0.25,
@@ -4363,20 +4381,9 @@
           "canonical_id": "deepseek-r1-distill-qwen-32b"
         },
         {
-          "name": "kwaipilot/kat-coder-pro-v2",
-          "type": "chat",
-          "input_price_per_1m": 0.3,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "canonical_id": "kat-coder-pro"
-        },
-        {
           "name": "minimax/minimax-m2.7",
           "type": "chat",
-          "input_price_per_1m": 0.3,
+          "input_price_per_1m": 0.299,
           "output_price_per_1m": 1.2,
           "currency": "USD",
           "capabilities": [
@@ -4390,6 +4397,28 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "minimax-m2-7"
+        },
+        {
+          "name": "inclusionai/ling-2.6-1t",
+          "type": "chat",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 2.5,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "canonical_id": "ling-2-6-1t"
+        },
+        {
+          "name": "kwaipilot/kat-coder-pro-v2",
+          "type": "chat",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 1.2,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "canonical_id": "kat-coder-pro"
         },
         {
           "name": "minimax/minimax-m2-her",
@@ -4632,23 +4661,6 @@
           "canonical_id": "qwen-2-5-72b"
         },
         {
-          "name": "z-ai/glm-4.7",
-          "type": "chat",
-          "input_price_per_1m": 0.38,
-          "output_price_per_1m": 1.74,
-          "currency": "USD",
-          "hf_id": "zai-org/GLM-4.7",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 358.3,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "glm-4-7"
-        },
-        {
           "name": "qwen/qwen3.5-397b-a17b",
           "type": "vision",
           "input_price_per_1m": 0.39,
@@ -4732,6 +4744,23 @@
           ],
           "hf_private": true,
           "canonical_id": "mimo-omni"
+        },
+        {
+          "name": "z-ai/glm-4.7",
+          "type": "chat",
+          "input_price_per_1m": 0.4,
+          "output_price_per_1m": 1.75,
+          "currency": "USD",
+          "hf_id": "zai-org/GLM-4.7",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 358.3,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "glm-4-7"
         },
         {
           "name": "mistralai/devstral-2512",
@@ -5072,22 +5101,6 @@
           ],
           "hf_private": true,
           "canonical_id": "qwen-vl-max"
-        },
-        {
-          "name": "mistralai/mixtral-8x7b-instruct",
-          "type": "chat",
-          "input_price_per_1m": 0.54,
-          "output_price_per_1m": 0.54,
-          "currency": "USD",
-          "hf_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "mixtral-8x7b"
         },
         {
           "name": "thedrummer/skyfall-36b-v2",
@@ -5809,22 +5822,6 @@
           ],
           "hf_private": true,
           "canonical_id": "glm-5-turbo"
-        },
-        {
-          "name": "nvidia/llama-3.1-nemotron-70b-instruct",
-          "type": "chat",
-          "input_price_per_1m": 1.2,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "hf_id": "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 70,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-3-1-nemotron-70b"
         },
         {
           "name": "x-ai/grok-4.3",
@@ -7197,17 +7194,6 @@
             "reasoning"
           ],
           "canonical_id": "laguna-m-1"
-        },
-        {
-          "name": "inclusionai/ling-2.6-1t:free",
-          "type": "chat",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "canonical_id": "ling-2-6-1t"
         },
         {
           "name": "tencent/hy3-preview:free",
