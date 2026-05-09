@@ -2643,6 +2643,22 @@
           "canonical_id": "phi-4"
         },
         {
+          "name": "tencent/hy3-preview",
+          "type": "chat",
+          "input_price_per_1m": 0.066,
+          "output_price_per_1m": 0.26,
+          "currency": "USD",
+          "hf_id": "tencent/Hy3-preview",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "hy3",
+          "size_b": 298.8,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "baidu/ernie-4.5-21b-a3b-thinking",
           "type": "chat",
           "input_price_per_1m": 0.07,
@@ -2833,7 +2849,7 @@
           "name": "qwen/qwen3-32b",
           "type": "chat",
           "input_price_per_1m": 0.08,
-          "output_price_per_1m": 0.24,
+          "output_price_per_1m": 0.28,
           "currency": "USD",
           "hf_id": "Qwen/Qwen3-32B",
           "capabilities": [
@@ -2896,23 +2912,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "nemotron-3-super-120b-a12b"
-        },
-        {
-          "name": "xiaomi/mimo-v2-flash",
-          "type": "chat",
-          "input_price_per_1m": 0.09,
-          "output_price_per_1m": 0.29,
-          "currency": "USD",
-          "hf_id": "XiaomiMiMo/MiMo-V2-Flash",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 309.8,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "mimo-flash"
         },
         {
           "name": "alibaba/tongyi-deepresearch-30b-a3b",
@@ -3045,6 +3044,23 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "step-3-5-flash"
+        },
+        {
+          "name": "xiaomi/mimo-v2-flash",
+          "type": "chat",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.3,
+          "currency": "USD",
+          "hf_id": "XiaomiMiMo/MiMo-V2-Flash",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 309.8,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "mimo-flash"
         },
         {
           "name": "mistralai/ministral-3b-2512",
@@ -4504,23 +4520,6 @@
           ],
           "hf_private": true,
           "canonical_id": "codestral"
-        },
-        {
-          "name": "tngtech/deepseek-r1t2-chimera",
-          "type": "chat",
-          "input_price_per_1m": 0.3,
-          "output_price_per_1m": 1.1,
-          "currency": "USD",
-          "hf_id": "tngtech/DeepSeek-TNG-R1T2-Chimera",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 30.8,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "deepseek-r1t2-chimera"
         },
         {
           "name": "google/gemini-2.5-flash",
@@ -7139,6 +7138,18 @@
           "canonical_id": "o1-pro"
         },
         {
+          "name": "inclusionai/ring-2.6-1t:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "ring-2-6-1t"
+        },
+        {
           "name": "baidu/cobuddy:free",
           "type": "chat",
           "input_price_per_1m": 0,
@@ -7194,22 +7205,6 @@
             "reasoning"
           ],
           "canonical_id": "laguna-m-1"
-        },
-        {
-          "name": "tencent/hy3-preview:free",
-          "type": "chat",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "hy3",
-          "hf_id": "tencent/Hy3-preview",
-          "size_b": 298.8,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "baidu/qianfan-ocr-fast:free",
