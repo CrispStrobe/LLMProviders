@@ -4745,6 +4745,23 @@
           "canonical_id": "mimo-omni"
         },
         {
+          "name": "moonshotai/kimi-k2.5",
+          "type": "vision",
+          "input_price_per_1m": 0.4,
+          "output_price_per_1m": 1.98,
+          "currency": "USD",
+          "hf_id": "moonshotai/Kimi-K2.5",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "kimi-k2-5",
+          "size_b": 1058.6,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "z-ai/glm-4.7",
           "type": "chat",
           "input_price_per_1m": 0.4,
@@ -4913,23 +4930,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "ernie-4-5-vl-424b-a47b"
-        },
-        {
-          "name": "moonshotai/kimi-k2.5",
-          "type": "vision",
-          "input_price_per_1m": 0.44,
-          "output_price_per_1m": 2,
-          "currency": "USD",
-          "hf_id": "moonshotai/Kimi-K2.5",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "kimi-k2-5",
-          "size_b": 1058.6,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "undi95/remm-slerp-l2-13b",
@@ -6495,15 +6495,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-pi",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-pi"
-        },
-        {
           "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6511,6 +6502,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-productivity"
+        },
+        {
+          "name": "inflection/inflection-3-pi",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-pi"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -6676,36 +6676,6 @@
           ],
           "hf_private": true,
           "canonical_id": "sonar-pro"
-        },
-        {
-          "name": "anthropic/claude-3.7-sonnet",
-          "type": "vision",
-          "input_price_per_1m": 3,
-          "output_price_per_1m": 15,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning"
-          ],
-          "hf_private": true,
-          "canonical_id": "claude-3-7-sonnet"
-        },
-        {
-          "name": "anthropic/claude-3.7-sonnet:thinking",
-          "type": "vision",
-          "input_price_per_1m": 3,
-          "output_price_per_1m": 15,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools",
-            "reasoning"
-          ],
-          "hf_private": true,
-          "canonical_id": "claude-3-7-sonnet"
         },
         {
           "name": "sao10k/l3.1-70b-hanami-x1",
@@ -7100,7 +7070,7 @@
           "canonical_id": "gpt-5-4-pro"
         },
         {
-          "name": "openai/gpt-4",
+          "name": "openai/gpt-4-0314",
           "type": "chat",
           "input_price_per_1m": 30,
           "output_price_per_1m": 60,
@@ -7112,7 +7082,7 @@
           "canonical_id": "gpt-4"
         },
         {
-          "name": "openai/gpt-4-0314",
+          "name": "openai/gpt-4",
           "type": "chat",
           "input_price_per_1m": 30,
           "output_price_per_1m": 60,
