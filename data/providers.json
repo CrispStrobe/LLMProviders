@@ -2134,7 +2134,7 @@
           "name": "mistralai/mistral-nemo",
           "type": "chat",
           "input_price_per_1m": 0.02,
-          "output_price_per_1m": 0.03,
+          "output_price_per_1m": 0.04,
           "currency": "USD",
           "hf_id": "mistralai/Mistral-Nemo-Instruct-2407",
           "capabilities": [
@@ -2217,7 +2217,7 @@
           "name": "openai/gpt-oss-120b",
           "type": "chat",
           "input_price_per_1m": 0.039,
-          "output_price_per_1m": 0.18,
+          "output_price_per_1m": 0.19,
           "currency": "USD",
           "hf_id": "openai/gpt-oss-120b",
           "capabilities": [
@@ -2457,23 +2457,6 @@
           "canonical_id": "llama-3-2-3b"
         },
         {
-          "name": "google/gemma-4-26b-a4b-it",
-          "type": "vision",
-          "input_price_per_1m": 0.06,
-          "output_price_per_1m": 0.33,
-          "currency": "USD",
-          "hf_id": "google/gemma-4-26B-A4B-it",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 26,
-          "canonical_id": "gemma-4-26b-a4b",
-          "hf_private": false
-        },
-        {
           "name": "z-ai/glm-4.7-flash",
           "type": "chat",
           "input_price_per_1m": 0.06,
@@ -2573,6 +2556,23 @@
           "canonical_id": "hy3",
           "size_b": 298.8,
           "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
+          "name": "google/gemma-4-26b-a4b-it",
+          "type": "vision",
+          "input_price_per_1m": 0.07,
+          "output_price_per_1m": 0.34,
+          "currency": "USD",
+          "hf_id": "google/gemma-4-26B-A4B-it",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 26,
+          "canonical_id": "gemma-4-26b-a4b",
           "hf_private": false
         },
         {
@@ -2815,23 +2815,6 @@
           "canonical_id": "gemma-3-27b"
         },
         {
-          "name": "nvidia/nemotron-3-super-120b-a12b",
-          "type": "chat",
-          "input_price_per_1m": 0.09,
-          "output_price_per_1m": 0.45,
-          "currency": "USD",
-          "hf_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 120,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "nemotron-3-super-120b-a12b"
-        },
-        {
           "name": "alibaba/tongyi-deepresearch-30b-a3b",
           "type": "chat",
           "input_price_per_1m": 0.09,
@@ -2930,6 +2913,23 @@
           "size_b": 7.1,
           "size_source": "hf-total",
           "hf_private": false
+        },
+        {
+          "name": "nvidia/nemotron-3-super-120b-a12b",
+          "type": "chat",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.5,
+          "currency": "USD",
+          "hf_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 120,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "nemotron-3-super-120b-a12b"
         },
         {
           "name": "bytedance-seed/seed-2.0-mini",
