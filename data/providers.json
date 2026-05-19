@@ -81,6 +81,23 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "bge-m3"
+        },
+        {
+          "name": "Qwen3-VL Embedding-8B",
+          "type": "embedding",
+          "input_price_per_1m": 0.11,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "canonical_id": "qwen3-vl-embedding-8b",
+          "hf_private": true
+        },
+        {
+          "name": "Qwen3-VL Reranker-8B",
+          "type": "embedding",
+          "input_price_per_1m": 0.045,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "canonical_id": "qwen3-vl-reranker-8b"
         }
       ],
       "lastUpdated": "2026-03-02T04:54:46.028Z"
@@ -3641,20 +3658,6 @@
           "canonical_id": "command-r-08"
         },
         {
-          "name": "openai/gpt-4o-mini-2024-07-18",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4o-mini-07-18"
-        },
-        {
           "name": "openai/gpt-4o-mini",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -3668,6 +3671,20 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o-mini"
+        },
+        {
+          "name": "openai/gpt-4o-mini-2024-07-18",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4o-mini-07-18"
         },
         {
           "name": "thedrummer/rocinante-12b",
@@ -6366,15 +6383,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-productivity",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-productivity"
-        },
-        {
           "name": "inflection/inflection-3-pi",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6382,6 +6390,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-pi"
+        },
+        {
+          "name": "inflection/inflection-3-productivity",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-productivity"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7688,16 +7705,18 @@
           "canonical_id": "flux-kontext-max"
         },
         {
-          "name": "flux-tools/flux-outpainting",
+          "name": "flux-tools/outpainting-v1",
           "display_name": "FLUX Outpainting",
           "type": "image",
           "capabilities": [
             "image-out"
           ],
           "price_per_image": 0.1,
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
           "currency": "USD",
           "category": "FLUX Tools",
-          "canonical_id": "flux-outpainting"
+          "canonical_id": "outpainting"
         }
       ]
     }
