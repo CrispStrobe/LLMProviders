@@ -3398,7 +3398,7 @@
         {
           "name": "qwen/qwen3.5-35b-a3b",
           "type": "vision",
-          "input_price_per_1m": 0.14,
+          "input_price_per_1m": 0.139,
           "output_price_per_1m": 1,
           "currency": "USD",
           "hf_id": "Qwen/Qwen3.5-35B-A3B",
@@ -3462,6 +3462,23 @@
           "canonical_id": "hermes-2-pro-llama-3-8b"
         },
         {
+          "name": "qwen/qwen3.6-35b-a3b",
+          "type": "vision",
+          "input_price_per_1m": 0.149,
+          "output_price_per_1m": 1,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-35B-A3B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 35,
+          "canonical_id": "qwen3-6-35b-a3b",
+          "hf_private": false
+        },
+        {
           "name": "qwen/qwen3-235b-a22b-thinking-2507",
           "type": "chat",
           "input_price_per_1m": 0.1495,
@@ -3490,23 +3507,6 @@
             "reasoning"
           ],
           "canonical_id": "perceptron-mk1"
-        },
-        {
-          "name": "qwen/qwen3.6-35b-a3b",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 1,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-35B-A3B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 35,
-          "canonical_id": "qwen3-6-35b-a3b",
-          "hf_private": false
         },
         {
           "name": "mistralai/mistral-small-2603",
@@ -3658,6 +3658,20 @@
           "canonical_id": "command-r-08"
         },
         {
+          "name": "openai/gpt-4o-mini-2024-07-18",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "files",
+            "tools"
+          ],
+          "hf_private": true,
+          "canonical_id": "gpt-4o-mini-07-18"
+        },
+        {
           "name": "openai/gpt-4o-mini",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -3671,20 +3685,6 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o-mini"
-        },
-        {
-          "name": "openai/gpt-4o-mini-2024-07-18",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "files",
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4o-mini-07-18"
         },
         {
           "name": "thedrummer/rocinante-12b",
@@ -4851,24 +4851,6 @@
           "canonical_id": "llama-guard-3-8b"
         },
         {
-          "name": "~google/gemini-flash-latest",
-          "type": "vision",
-          "input_price_per_1m": 0.5,
-          "output_price_per_1m": 3,
-          "currency": "USD",
-          "audio_price_per_1m": 1,
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "files",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "gemini-flash",
-          "hf_private": true
-        },
-        {
           "name": "google/gemini-3.1-flash-image-preview",
           "type": "image",
           "input_price_per_1m": 0.5,
@@ -5467,22 +5449,6 @@
           "canonical_id": "maestro-reasoning"
         },
         {
-          "name": "z-ai/glm-5.1",
-          "type": "chat",
-          "input_price_per_1m": 0.98,
-          "output_price_per_1m": 3.08,
-          "currency": "USD",
-          "hf_id": "zai-org/GLM-5.1",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "glm-5-1",
-          "size_b": 753.9,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
           "name": "~anthropic/claude-haiku-latest",
           "type": "vision",
           "input_price_per_1m": 1,
@@ -5934,6 +5900,24 @@
           "canonical_id": "l3-euryale-70b"
         },
         {
+          "name": "google/gemini-3.5-flash",
+          "type": "vision",
+          "input_price_per_1m": 1.5,
+          "output_price_per_1m": 9,
+          "currency": "USD",
+          "audio_price_per_1m": 3,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "gemini-3-5-flash",
+          "hf_private": true
+        },
+        {
           "name": "mistralai/mistral-medium-3-5",
           "type": "vision",
           "input_price_per_1m": 1.5,
@@ -5946,6 +5930,24 @@
             "reasoning"
           ],
           "canonical_id": "mistral-medium-3-5"
+        },
+        {
+          "name": "~google/gemini-flash-latest",
+          "type": "vision",
+          "input_price_per_1m": 1.5,
+          "output_price_per_1m": 9,
+          "currency": "USD",
+          "audio_price_per_1m": 3,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "gemini-flash",
+          "hf_private": true
         },
         {
           "name": "openai/gpt-3.5-turbo-instruct",
@@ -6383,15 +6385,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-pi",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-pi"
-        },
-        {
           "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6399,6 +6392,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-productivity"
+        },
+        {
+          "name": "inflection/inflection-3-pi",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-pi"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -7712,8 +7714,6 @@
             "image-out"
           ],
           "price_per_image": 0.1,
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
           "currency": "USD",
           "category": "FLUX Tools",
           "canonical_id": "outpainting"
