@@ -178,6 +178,26 @@
           "hf_private": false
         },
         {
+          "name": "NVIDIA-Nemotron-3-Nano-30B-A3B-FP8",
+          "type": "chat",
+          "currency": "CHF",
+          "input_price_per_1m": 0.05,
+          "output_price_per_1m": 0.2,
+          "size_b": 30,
+          "canonical_id": "nvidia-nemotron-3-nano-30b-a3b-fp8",
+          "hf_private": false
+        },
+        {
+          "name": "Mistral-Small-4-119B-2603",
+          "type": "chat",
+          "currency": "CHF",
+          "input_price_per_1m": 0.2,
+          "output_price_per_1m": 0.75,
+          "size_b": 119,
+          "canonical_id": "mistral-small-4-119b",
+          "hf_private": false
+        },
+        {
           "name": "bge-reranker-v2-m3",
           "type": "embedding",
           "currency": "CHF",
@@ -297,7 +317,7 @@
           "name": "DeepSeek v3.1",
           "type": "chat",
           "input_price_per_1m": 0.85,
-          "output_price_per_1m": 3.37,
+          "output_price_per_1m": 3.39,
           "currency": "EUR",
           "provider_upstream": "DeepSeek",
           "canonical_id": "deepseek-1",
@@ -314,7 +334,7 @@
           "name": "Gemini 2.5 Flash",
           "type": "chat",
           "input_price_per_1m": 0.26,
-          "output_price_per_1m": 2.14,
+          "output_price_per_1m": 2.15,
           "currency": "EUR",
           "provider_upstream": "Google",
           "canonical_id": "gemini-2-5-flash",
@@ -332,8 +352,8 @@
         {
           "name": "Gemini 2.5 Pro",
           "type": "chat",
-          "input_price_per_1m": 2.14,
-          "output_price_per_1m": 12.84,
+          "input_price_per_1m": 2.15,
+          "output_price_per_1m": 12.92,
           "currency": "EUR",
           "provider_upstream": "Google",
           "canonical_id": "gemini-2-5-pro",
@@ -350,8 +370,8 @@
         {
           "name": "Gemini 3.1 Pro Preview",
           "type": "chat",
-          "input_price_per_1m": 2.14,
-          "output_price_per_1m": 12.84,
+          "input_price_per_1m": 2.15,
+          "output_price_per_1m": 12.92,
           "currency": "EUR",
           "provider_upstream": "Google",
           "capabilities": [
@@ -366,10 +386,28 @@
           "canonical_id": "gemini-3-1-pro"
         },
         {
+          "name": "Gemini 3.5 Flash",
+          "type": "chat",
+          "input_price_per_1m": 1.29,
+          "output_price_per_1m": 7.75,
+          "currency": "EUR",
+          "provider_upstream": "Google",
+          "canonical_id": "gemini-3-5-flash",
+          "hf_private": true,
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "files",
+            "tools",
+            "reasoning"
+          ]
+        },
+        {
           "name": "Gemini 3 Flash Preview",
           "type": "chat",
           "input_price_per_1m": 0.43,
-          "output_price_per_1m": 2.57,
+          "output_price_per_1m": 2.58,
           "currency": "EUR",
           "provider_upstream": "Google",
           "canonical_id": "gemini-3-flash",
@@ -387,8 +425,8 @@
         {
           "name": "GPT-5",
           "type": "chat",
-          "input_price_per_1m": 1.07,
-          "output_price_per_1m": 8.56,
+          "input_price_per_1m": 1.08,
+          "output_price_per_1m": 8.61,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5",
@@ -403,8 +441,8 @@
         {
           "name": "GPT-5.1",
           "type": "chat",
-          "input_price_per_1m": 1.07,
-          "output_price_per_1m": 8.56,
+          "input_price_per_1m": 1.08,
+          "output_price_per_1m": 8.61,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-1",
@@ -418,8 +456,8 @@
         {
           "name": "GPT-5.1 Thinking Fast",
           "type": "chat",
-          "input_price_per_1m": 1.07,
-          "output_price_per_1m": 8.56,
+          "input_price_per_1m": 1.08,
+          "output_price_per_1m": 8.61,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-1-fast"
@@ -427,8 +465,8 @@
         {
           "name": "GPT-5.2",
           "type": "chat",
-          "input_price_per_1m": 1.5,
-          "output_price_per_1m": 11.98,
+          "input_price_per_1m": 1.51,
+          "output_price_per_1m": 12.05,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-2",
@@ -443,8 +481,8 @@
         {
           "name": "GPT-5.2 Pro",
           "type": "chat",
-          "input_price_per_1m": 17.98,
-          "output_price_per_1m": 143.81,
+          "input_price_per_1m": 18.08,
+          "output_price_per_1m": 144.65,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-2-pro",
@@ -458,8 +496,8 @@
         {
           "name": "GPT-5.4",
           "type": "chat",
-          "input_price_per_1m": 2.35,
-          "output_price_per_1m": 14.12,
+          "input_price_per_1m": 2.37,
+          "output_price_per_1m": 14.21,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "capabilities": [
@@ -475,7 +513,7 @@
           "name": "GPT-5.4 Mini",
           "type": "chat",
           "input_price_per_1m": 0.71,
-          "output_price_per_1m": 4.24,
+          "output_price_per_1m": 4.26,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-4-mini",
@@ -490,8 +528,8 @@
         {
           "name": "GPT-5.5",
           "type": "chat",
-          "input_price_per_1m": 4.71,
-          "output_price_per_1m": 28.25,
+          "input_price_per_1m": 4.74,
+          "output_price_per_1m": 28.41,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-5",
@@ -506,8 +544,8 @@
         {
           "name": "GPT-5 Mini",
           "type": "chat",
-          "input_price_per_1m": 0.21,
-          "output_price_per_1m": 1.71,
+          "input_price_per_1m": 0.22,
+          "output_price_per_1m": 1.72,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-mini",
@@ -522,8 +560,8 @@
         {
           "name": "GPT-5 Pro",
           "type": "chat",
-          "input_price_per_1m": 12.84,
-          "output_price_per_1m": 102.72,
+          "input_price_per_1m": 12.92,
+          "output_price_per_1m": 103.32,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "gpt-5-pro",
@@ -538,7 +576,7 @@
           "name": "GPT oss (120b)",
           "type": "chat",
           "input_price_per_1m": 0.26,
-          "output_price_per_1m": 2.14,
+          "output_price_per_1m": 2.15,
           "currency": "EUR",
           "size_b": 120,
           "provider_upstream": "OpenAI",
@@ -549,7 +587,7 @@
           "name": "Haiku 4.5",
           "type": "chat",
           "input_price_per_1m": 0.86,
-          "output_price_per_1m": 4.28,
+          "output_price_per_1m": 4.31,
           "currency": "EUR",
           "provider_upstream": "Anthropic",
           "canonical_id": "haiku-4-5",
@@ -592,7 +630,7 @@
           "name": "Mistral Large 3",
           "type": "chat",
           "input_price_per_1m": 0.43,
-          "output_price_per_1m": 1.28,
+          "output_price_per_1m": 1.29,
           "currency": "EUR",
           "provider_upstream": "Mistral",
           "capabilities": [
@@ -610,8 +648,8 @@
         {
           "name": "o3",
           "type": "chat",
-          "input_price_per_1m": 1.71,
-          "output_price_per_1m": 6.85,
+          "input_price_per_1m": 1.72,
+          "output_price_per_1m": 6.89,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "o3",
@@ -625,8 +663,8 @@
         {
           "name": "o3 Pro",
           "type": "chat",
-          "input_price_per_1m": 17.12,
-          "output_price_per_1m": 68.48,
+          "input_price_per_1m": 17.22,
+          "output_price_per_1m": 68.88,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "o3-pro",
@@ -640,8 +678,8 @@
         {
           "name": "o4 Mini",
           "type": "chat",
-          "input_price_per_1m": 0.94,
-          "output_price_per_1m": 3.77,
+          "input_price_per_1m": 0.95,
+          "output_price_per_1m": 3.79,
           "currency": "EUR",
           "provider_upstream": "OpenAI",
           "canonical_id": "o4-mini",
@@ -655,8 +693,8 @@
         {
           "name": "Opus 4.5",
           "type": "chat",
-          "input_price_per_1m": 4.28,
-          "output_price_per_1m": 21.4,
+          "input_price_per_1m": 4.31,
+          "output_price_per_1m": 21.53,
           "currency": "EUR",
           "provider_upstream": "Anthropic",
           "canonical_id": "opus-4-5",
@@ -665,8 +703,8 @@
         {
           "name": "Opus 4.6",
           "type": "chat",
-          "input_price_per_1m": 4.28,
-          "output_price_per_1m": 21.4,
+          "input_price_per_1m": 4.31,
+          "output_price_per_1m": 21.53,
           "currency": "EUR",
           "provider_upstream": "Anthropic",
           "canonical_id": "opus-4-6",
@@ -675,8 +713,8 @@
         {
           "name": "Opus 4.7",
           "type": "chat",
-          "input_price_per_1m": 4.28,
-          "output_price_per_1m": 21.4,
+          "input_price_per_1m": 4.31,
+          "output_price_per_1m": 21.53,
           "currency": "EUR",
           "provider_upstream": "Anthropic",
           "canonical_id": "opus-4-7",
@@ -685,8 +723,8 @@
         {
           "name": "Sonnet 4.5",
           "type": "chat",
-          "input_price_per_1m": 2.57,
-          "output_price_per_1m": 12.84,
+          "input_price_per_1m": 2.58,
+          "output_price_per_1m": 12.92,
           "currency": "EUR",
           "provider_upstream": "Anthropic",
           "canonical_id": "sonnet-4-5",
@@ -695,8 +733,8 @@
         {
           "name": "Sonnet 4.6",
           "type": "chat",
-          "input_price_per_1m": 2.57,
-          "output_price_per_1m": 12.84,
+          "input_price_per_1m": 2.58,
+          "output_price_per_1m": 12.92,
           "currency": "EUR",
           "provider_upstream": "Anthropic",
           "canonical_id": "sonnet-4-6",
@@ -1591,6 +1629,16 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "gpt-oss-120b"
+        },
+        {
+          "name": "mistral-medium-3.5-128b",
+          "type": "chat",
+          "currency": "EUR",
+          "input_price_per_1m": 1.5,
+          "output_price_per_1m": 7.5,
+          "size_b": 128,
+          "canonical_id": "mistral-medium-3-5-128b",
+          "hf_private": false
         },
         {
           "name": "whisper-large-v3",
@@ -2669,6 +2717,17 @@
           "canonical_id": "ring-2-6-1t"
         },
         {
+          "name": "inclusionai/ling-2.6-1t",
+          "type": "chat",
+          "input_price_per_1m": 0.075,
+          "output_price_per_1m": 0.625,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "canonical_id": "ling-2-6-1t"
+        },
+        {
           "name": "bytedance-seed/seed-1.6-flash",
           "type": "vision",
           "input_price_per_1m": 0.075,
@@ -2849,6 +2908,23 @@
           "canonical_id": "nemotron-3-super-120b-a12b"
         },
         {
+          "name": "stepfun/step-3.5-flash",
+          "type": "chat",
+          "input_price_per_1m": 0.09,
+          "output_price_per_1m": 0.3,
+          "currency": "USD",
+          "hf_id": "stepfun-ai/Step-3.5-Flash",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 196,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "step-3-5-flash"
+        },
+        {
           "name": "alibaba/tongyi-deepresearch-30b-a3b",
           "type": "chat",
           "input_price_per_1m": 0.09,
@@ -2962,23 +3038,6 @@
           ],
           "hf_private": true,
           "canonical_id": "seed-2-0-mini"
-        },
-        {
-          "name": "stepfun/step-3.5-flash",
-          "type": "chat",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.3,
-          "currency": "USD",
-          "hf_id": "stepfun-ai/Step-3.5-Flash",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 196,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "step-3-5-flash"
         },
         {
           "name": "xiaomi/mimo-v2-flash",
@@ -4342,17 +4401,6 @@
           "canonical_id": "qwen3-5-plus-20260420"
         },
         {
-          "name": "inclusionai/ling-2.6-1t",
-          "type": "chat",
-          "input_price_per_1m": 0.3,
-          "output_price_per_1m": 2.5,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "canonical_id": "ling-2-6-1t"
-        },
-        {
           "name": "kwaipilot/kat-coder-pro-v2",
           "type": "chat",
           "input_price_per_1m": 0.3,
@@ -5447,6 +5495,20 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "maestro-reasoning"
+        },
+        {
+          "name": "x-ai/grok-build-0.1",
+          "type": "vision",
+          "input_price_per_1m": 1,
+          "output_price_per_1m": 2,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "grok-build-0-1",
+          "hf_private": true
         },
         {
           "name": "~anthropic/claude-haiku-latest",
@@ -7585,6 +7647,20 @@
           "size_source": "manual",
           "hf_private": false,
           "canonical_id": "flux-2-pro"
+        },
+        {
+          "name": "flux-tools/erase-v1",
+          "display_name": "FLUX Erase",
+          "type": "image",
+          "capabilities": [
+            "image-out"
+          ],
+          "price_per_image": 0.034,
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "category": "FLUX Tools",
+          "canonical_id": "erase"
         },
         {
           "name": "flux-kontext-pro",
