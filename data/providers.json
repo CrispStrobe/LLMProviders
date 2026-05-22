@@ -3371,6 +3371,20 @@
           "hf_private": false
         },
         {
+          "name": "qwen/qwen3.6-flash",
+          "type": "vision",
+          "input_price_per_1m": 0.1238,
+          "output_price_per_1m": 0.7425,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "qwen3-6-flash"
+        },
+        {
           "name": "qwen/qwen3-vl-30b-a3b-thinking",
           "type": "vision",
           "input_price_per_1m": 0.13,
@@ -3521,23 +3535,6 @@
           "canonical_id": "hermes-2-pro-llama-3-8b"
         },
         {
-          "name": "qwen/qwen3.6-35b-a3b",
-          "type": "vision",
-          "input_price_per_1m": 0.149,
-          "output_price_per_1m": 1,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-35B-A3B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 35,
-          "canonical_id": "qwen3-6-35b-a3b",
-          "hf_private": false
-        },
-        {
           "name": "qwen/qwen3-235b-a22b-thinking-2507",
           "type": "chat",
           "input_price_per_1m": 0.1495,
@@ -3566,6 +3563,23 @@
             "reasoning"
           ],
           "canonical_id": "perceptron-mk1"
+        },
+        {
+          "name": "qwen/qwen3.6-35b-a3b",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 1,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-35B-A3B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 35,
+          "canonical_id": "qwen3-6-35b-a3b",
+          "hf_private": false
         },
         {
           "name": "mistralai/mistral-small-2603",
@@ -3602,20 +3616,6 @@
           "hf_status": 200,
           "canonical_id": "minimax-m2-5",
           "size_source": "hf-total"
-        },
-        {
-          "name": "arcee-ai/trinity-large-preview",
-          "type": "chat",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.45,
-          "currency": "USD",
-          "hf_id": "arcee-ai/Trinity-Large-Preview",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 400,
-          "canonical_id": "trinity-large",
-          "hf_private": false
         },
         {
           "name": "upstage/solar-pro-3",
@@ -3762,6 +3762,20 @@
           "canonical_id": "rocinante-12b"
         },
         {
+          "name": "qwen/qwen3.6-plus",
+          "type": "vision",
+          "input_price_per_1m": 0.1794,
+          "output_price_per_1m": 1.0732,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "qwen3-6-plus"
+        },
+        {
           "name": "arcee-ai/spotlight",
           "type": "vision",
           "input_price_per_1m": 0.18,
@@ -3788,20 +3802,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "llama-guard-4-12b"
-        },
-        {
-          "name": "qwen/qwen3.6-flash",
-          "type": "vision",
-          "input_price_per_1m": 0.1875,
-          "output_price_per_1m": 1.125,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "qwen3-6-flash"
         },
         {
           "name": "qwen/qwen3.5-27b",
@@ -4401,6 +4401,23 @@
           "canonical_id": "qwen3-5-plus-20260420"
         },
         {
+          "name": "qwen/qwen3.6-27b",
+          "type": "vision",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 3.2,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-27B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 27,
+          "canonical_id": "qwen3-6-27b",
+          "hf_private": false
+        },
+        {
           "name": "kwaipilot/kat-coder-pro-v2",
           "type": "chat",
           "input_price_per_1m": 0.3,
@@ -4530,23 +4547,6 @@
           "canonical_id": "hermes-3-llama-3-1-70b"
         },
         {
-          "name": "qwen/qwen3.6-27b",
-          "type": "vision",
-          "input_price_per_1m": 0.32,
-          "output_price_per_1m": 3.2,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-27B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 27,
-          "canonical_id": "qwen3-6-27b",
-          "hf_private": false
-        },
-        {
           "name": "deepseek/deepseek-chat",
           "type": "chat",
           "input_price_per_1m": 0.32,
@@ -4562,20 +4562,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "deepseek"
-        },
-        {
-          "name": "qwen/qwen3.6-plus",
-          "type": "vision",
-          "input_price_per_1m": 0.325,
-          "output_price_per_1m": 1.95,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "qwen3-6-plus"
         },
         {
           "name": "mistralai/mistral-small-3.1-24b-instruct",
@@ -5497,6 +5483,22 @@
           "canonical_id": "maestro-reasoning"
         },
         {
+          "name": "z-ai/glm-5.1",
+          "type": "chat",
+          "input_price_per_1m": 0.98,
+          "output_price_per_1m": 3.08,
+          "currency": "USD",
+          "hf_id": "zai-org/GLM-5.1",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "glm-5-1",
+          "size_b": 753.9,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "x-ai/grok-build-0.1",
           "type": "vision",
           "input_price_per_1m": 1,
@@ -6336,6 +6338,18 @@
           ],
           "hf_private": true,
           "canonical_id": "mistral-large"
+        },
+        {
+          "name": "qwen/qwen3.7-max",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 7.5,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "qwen3-7-max"
         },
         {
           "name": "openai/gpt-5.4",
@@ -7656,8 +7670,6 @@
             "image-out"
           ],
           "price_per_image": 0.034,
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
           "currency": "USD",
           "category": "FLUX Tools",
           "canonical_id": "erase"
