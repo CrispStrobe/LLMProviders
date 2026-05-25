@@ -2925,23 +2925,6 @@
           "canonical_id": "step-3-5-flash"
         },
         {
-          "name": "alibaba/tongyi-deepresearch-30b-a3b",
-          "type": "chat",
-          "input_price_per_1m": 0.09,
-          "output_price_per_1m": 0.45,
-          "currency": "USD",
-          "hf_id": "Alibaba-NLP/Tongyi-DeepResearch-30B-A3B",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 30,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "tongyi-deepresearch-30b-a3b"
-        },
-        {
           "name": "qwen/qwen3-next-80b-a3b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.09,
