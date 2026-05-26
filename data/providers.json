@@ -3965,6 +3965,23 @@
           "canonical_id": "qwen3-coder"
         },
         {
+          "name": "deepseek/deepseek-chat",
+          "type": "chat",
+          "input_price_per_1m": 0.2288,
+          "output_price_per_1m": 0.9144,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V3",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 671,
+          "size_source": "manual",
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "deepseek"
+        },
+        {
           "name": "meta-llama/llama-3.2-11b-vision-instruct",
           "type": "vision",
           "input_price_per_1m": 0.245,
@@ -4514,23 +4531,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "hermes-3-llama-3-1-70b"
-        },
-        {
-          "name": "deepseek/deepseek-chat",
-          "type": "chat",
-          "input_price_per_1m": 0.32,
-          "output_price_per_1m": 0.89,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V3",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 671,
-          "size_source": "manual",
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "deepseek"
         },
         {
           "name": "qwen/qwen3.6-plus",
