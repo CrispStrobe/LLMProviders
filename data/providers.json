@@ -3354,6 +3354,23 @@
           "hf_private": false
         },
         {
+          "name": "z-ai/glm-4.5-air",
+          "type": "chat",
+          "input_price_per_1m": 0.125,
+          "output_price_per_1m": 0.84,
+          "currency": "USD",
+          "hf_id": "zai-org/GLM-4.5-Air",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 110.5,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "glm-4-5-air"
+        },
+        {
           "name": "qwen/qwen3-vl-30b-a3b-thinking",
           "type": "vision",
           "input_price_per_1m": 0.13,
@@ -3405,23 +3422,6 @@
           "canonical_id": "hermes-4-70b"
         },
         {
-          "name": "z-ai/glm-4.5-air",
-          "type": "chat",
-          "input_price_per_1m": 0.13,
-          "output_price_per_1m": 0.85,
-          "currency": "USD",
-          "hf_id": "zai-org/GLM-4.5-Air",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 110.5,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "glm-4-5-air"
-        },
-        {
           "name": "nex-agi/deepseek-v3.1-nex-n1",
           "type": "chat",
           "input_price_per_1m": 0.135,
@@ -3455,6 +3455,42 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-5-35b-a3b"
+        },
+        {
+          "name": "qwen/qwen3.6-35b-a3b",
+          "type": "vision",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 1,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-35B-A3B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 35,
+          "canonical_id": "qwen3-6-35b-a3b",
+          "hf_private": false
+        },
+        {
+          "name": "xiaomi/mimo-v2.5",
+          "type": "vision",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 0.28,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "audio",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "mimo-5",
+          "hf_id": "XiaomiMiMo/MiMo-V2.5",
+          "size_b": 310.8,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "baidu/ernie-4.5-vl-28b-a3b",
@@ -3532,23 +3568,6 @@
             "reasoning"
           ],
           "canonical_id": "perceptron-mk1"
-        },
-        {
-          "name": "qwen/qwen3.6-35b-a3b",
-          "type": "vision",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 1,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-35B-A3B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 35,
-          "canonical_id": "qwen3-6-35b-a3b",
-          "hf_private": false
         },
         {
           "name": "mistralai/mistral-small-2603",
@@ -4340,6 +4359,23 @@
           "canonical_id": "deepseek-2-speciale"
         },
         {
+          "name": "qwen/qwen3.6-27b",
+          "type": "vision",
+          "input_price_per_1m": 0.29,
+          "output_price_per_1m": 3.2,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-27B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 27,
+          "canonical_id": "qwen3-6-27b",
+          "hf_private": false
+        },
+        {
           "name": "minimax/minimax-m2.1",
           "type": "chat",
           "input_price_per_1m": 0.29,
@@ -4385,23 +4421,6 @@
             "reasoning"
           ],
           "canonical_id": "qwen3-5-plus-20260420"
-        },
-        {
-          "name": "qwen/qwen3.6-27b",
-          "type": "vision",
-          "input_price_per_1m": 0.3,
-          "output_price_per_1m": 3.2,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-27B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 27,
-          "canonical_id": "qwen3-6-27b",
-          "hf_private": false
         },
         {
           "name": "kwaipilot/kat-coder-pro-v2",
@@ -4596,25 +4615,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-5-397b-a17b"
-        },
-        {
-          "name": "xiaomi/mimo-v2.5",
-          "type": "vision",
-          "input_price_per_1m": 0.4,
-          "output_price_per_1m": 2,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "mimo-5",
-          "hf_id": "XiaomiMiMo/MiMo-V2.5",
-          "size_b": 310.8,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "xiaomi/mimo-v2-omni",
@@ -4823,6 +4823,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "glm-4-6"
+        },
+        {
+          "name": "xiaomi/mimo-v2.5-pro",
+          "type": "chat",
+          "input_price_per_1m": 0.435,
+          "output_price_per_1m": 0.87,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "mimo-5-pro",
+          "hf_id": "XiaomiMiMo/MiMo-V2.5-Pro",
+          "size_b": 1023.2,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "undi95/remm-slerp-l2-13b",
@@ -5511,22 +5527,6 @@
           "hf_private": true
         },
         {
-          "name": "xiaomi/mimo-v2.5-pro",
-          "type": "chat",
-          "input_price_per_1m": 1,
-          "output_price_per_1m": 3,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "mimo-5-pro",
-          "hf_id": "XiaomiMiMo/MiMo-V2.5-Pro",
-          "size_b": 1023.2,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
           "name": "xiaomi/mimo-v2-pro",
           "type": "chat",
           "input_price_per_1m": 1,
@@ -5716,6 +5716,18 @@
           ],
           "hf_private": true,
           "canonical_id": "glm-5-turbo"
+        },
+        {
+          "name": "qwen/qwen3.7-max",
+          "type": "chat",
+          "input_price_per_1m": 1.25,
+          "output_price_per_1m": 3.75,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "qwen3-7-max"
         },
         {
           "name": "x-ai/grok-4.3",
@@ -6321,18 +6333,6 @@
           ],
           "hf_private": true,
           "canonical_id": "mistral-large"
-        },
-        {
-          "name": "qwen/qwen3.7-max",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 7.5,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "qwen3-7-max"
         },
         {
           "name": "openai/gpt-5.4",
@@ -7130,22 +7130,6 @@
           ],
           "size_b": 31,
           "canonical_id": "gemma-4-31b",
-          "hf_private": false
-        },
-        {
-          "name": "arcee-ai/trinity-large-thinking:free",
-          "type": "chat",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "hf_id": "arcee-ai/Trinity-Large-Thinking",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "trinity-large",
-          "size_b": 398.6,
-          "size_source": "hf-total",
           "hf_private": false
         },
         {
