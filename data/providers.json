@@ -2651,38 +2651,6 @@
           "canonical_id": "phi-4"
         },
         {
-          "name": "baidu/ernie-4.5-21b-a3b-thinking",
-          "type": "chat",
-          "input_price_per_1m": 0.07,
-          "output_price_per_1m": 0.28,
-          "currency": "USD",
-          "hf_id": "baidu/ERNIE-4.5-21B-A3B-Thinking",
-          "capabilities": [
-            "reasoning"
-          ],
-          "size_b": 21,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "ernie-4-5-21b-a3b"
-        },
-        {
-          "name": "baidu/ernie-4.5-21b-a3b",
-          "type": "chat",
-          "input_price_per_1m": 0.07,
-          "output_price_per_1m": 0.28,
-          "currency": "USD",
-          "hf_id": "baidu/ERNIE-4.5-21B-A3B-PT",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 21,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "ernie-4-5-21b-a3b"
-        },
-        {
           "name": "qwen/qwen3-coder-30b-a3b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.07,
@@ -3138,6 +3106,23 @@
           "canonical_id": "gemini-2-5-flash-lite-09"
         },
         {
+          "name": "qwen/qwen3-235b-a22b-thinking-2507",
+          "type": "chat",
+          "input_price_per_1m": 0.1,
+          "output_price_per_1m": 0.1,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 235,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-235b-a22b"
+        },
+        {
           "name": "z-ai/glm-4-32b",
           "type": "chat",
           "input_price_per_1m": 0.1,
@@ -3314,19 +3299,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-coder-next"
-        },
-        {
-          "name": "mistralai/mistral-7b-instruct-v0.1",
-          "type": "chat",
-          "input_price_per_1m": 0.11,
-          "output_price_per_1m": 0.19,
-          "currency": "USD",
-          "hf_id": "mistralai/Mistral-7B-Instruct-v0.1",
-          "size_b": 7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "mistral-7b-1"
         },
         {
           "name": "qwen/qwen3-vl-8b-thinking",
@@ -3550,23 +3522,6 @@
           "canonical_id": "hermes-2-pro-llama-3-8b"
         },
         {
-          "name": "qwen/qwen3-235b-a22b-thinking-2507",
-          "type": "chat",
-          "input_price_per_1m": 0.1495,
-          "output_price_per_1m": 1.495,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 235,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-235b-a22b"
-        },
-        {
           "name": "perceptron/perceptron-mk1",
           "type": "vision",
           "input_price_per_1m": 0.15,
@@ -3614,19 +3569,6 @@
           "hf_status": 200,
           "canonical_id": "minimax-m2-5",
           "size_source": "hf-total"
-        },
-        {
-          "name": "upstage/solar-pro-3",
-          "type": "chat",
-          "input_price_per_1m": 0.15,
-          "output_price_per_1m": 0.6,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "hf_private": true,
-          "canonical_id": "solar-pro-3"
         },
         {
           "name": "essentialai/rnj-1-instruct",
@@ -3684,7 +3626,8 @@
           "output_price_per_1m": 0.6,
           "currency": "USD",
           "capabilities": [
-            "vision"
+            "vision",
+            "tools"
           ],
           "size_b": 17,
           "hf_private": false,
@@ -4215,6 +4158,24 @@
           "canonical_id": "minimax-m2"
         },
         {
+          "name": "minimax/minimax-m2.7",
+          "type": "chat",
+          "input_price_per_1m": 0.26,
+          "output_price_per_1m": 1.2,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "hf_private": false,
+          "size_b": 230,
+          "size_source": "manual",
+          "hf_id": "MiniMaxAI/MiniMax-M2.7",
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "minimax-m2-7"
+        },
+        {
           "name": "qwen/qwen3.5-122b-a10b",
           "type": "vision",
           "input_price_per_1m": 0.26,
@@ -4336,24 +4297,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "deepseek-1-terminus"
-        },
-        {
-          "name": "minimax/minimax-m2.7",
-          "type": "chat",
-          "input_price_per_1m": 0.279,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "hf_private": false,
-          "size_b": 230,
-          "size_source": "manual",
-          "hf_id": "MiniMaxAI/MiniMax-M2.7",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "minimax-m2-7"
         },
         {
           "name": "baidu/ernie-4.5-300b-a47b",
@@ -5388,19 +5331,6 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "morph-fast"
-        },
-        {
-          "name": "alfredpros/codellama-7b-instruct-solidity",
-          "type": "chat",
-          "input_price_per_1m": 0.8,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "hf_id": "AlfredPros/CodeLlama-7b-Instruct-Solidity",
-          "size_b": 7,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "codellama-7b-solidity"
         },
         {
           "name": "aion-labs/aion-rp-llama-3.1-8b",
@@ -7167,22 +7097,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "nemotron-3-super-120b-a12b"
-        },
-        {
-          "name": "minimax/minimax-m2.5:free",
-          "type": "chat",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "hf_id": "MiniMaxAI/MiniMax-M2.5",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "minimax-m2-5",
-          "size_b": 228.7,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "liquid/lfm-2.5-1.2b-thinking:free",
