@@ -2417,6 +2417,22 @@
           "canonical_id": "llama-3-8b"
         },
         {
+          "name": "qwen/qwen3-30b-a3b-instruct-2507",
+          "type": "chat",
+          "input_price_per_1m": 0.0428,
+          "output_price_per_1m": 0.1716,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 30,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-30b-a3b"
+        },
+        {
           "name": "arcee-ai/trinity-mini",
           "type": "chat",
           "input_price_per_1m": 0.045,
@@ -2601,6 +2617,22 @@
           "canonical_id": "mythomax-l2-13b"
         },
         {
+          "name": "tencent/hy3-preview",
+          "type": "chat",
+          "input_price_per_1m": 0.063,
+          "output_price_per_1m": 0.21,
+          "currency": "USD",
+          "hf_id": "tencent/Hy3-preview",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "hy3",
+          "size_b": 298.8,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "qwen/qwen3.5-flash-02-23",
           "type": "vision",
           "input_price_per_1m": 0.065,
@@ -2628,22 +2660,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "phi-4"
-        },
-        {
-          "name": "tencent/hy3-preview",
-          "type": "chat",
-          "input_price_per_1m": 0.066,
-          "output_price_per_1m": 0.26,
-          "currency": "USD",
-          "hf_id": "tencent/Hy3-preview",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "hy3",
-          "size_b": 298.8,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "qwen/qwen3-coder-30b-a3b-instruct",
@@ -2736,23 +2752,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "mistral-small-3-2-24b"
-        },
-        {
-          "name": "google/gemini-2.0-flash-lite-001",
-          "type": "vision",
-          "input_price_per_1m": 0.075,
-          "output_price_per_1m": 0.3,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "files",
-            "tools"
-          ],
-          "hf_private": true,
-          "audio_price_per_1m": 0.075,
-          "canonical_id": "gemini-2-0-flash-lite-001"
         },
         {
           "name": "microsoft/phi-4-mini-instruct",
@@ -2900,22 +2899,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-next-80b-a3b"
-        },
-        {
-          "name": "qwen/qwen3-30b-a3b-instruct-2507",
-          "type": "chat",
-          "input_price_per_1m": 0.09,
-          "output_price_per_1m": 0.3,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 30,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-30b-a3b"
         },
         {
           "name": "qwen/qwen3-30b-a3b",
@@ -3199,23 +3182,6 @@
           "size_b": 20.9,
           "size_source": "hf-total",
           "hf_private": false
-        },
-        {
-          "name": "google/gemini-2.0-flash-001",
-          "type": "vision",
-          "input_price_per_1m": 0.1,
-          "output_price_per_1m": 0.4,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "video",
-            "audio",
-            "files",
-            "tools"
-          ],
-          "hf_private": true,
-          "audio_price_per_1m": 0.7,
-          "canonical_id": "gemini-2-0-flash-001"
         },
         {
           "name": "meta-llama/llama-3.3-70b-instruct",
@@ -3882,6 +3848,23 @@
           "canonical_id": "minimax-01"
         },
         {
+          "name": "deepseek/deepseek-chat",
+          "type": "chat",
+          "input_price_per_1m": 0.2002,
+          "output_price_per_1m": 0.8001,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V3",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 671,
+          "size_source": "manual",
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "deepseek"
+        },
+        {
           "name": "deepseek/deepseek-chat-v3.1",
           "type": "chat",
           "input_price_per_1m": 0.21,
@@ -3931,21 +3914,21 @@
           "canonical_id": "qwen3-coder"
         },
         {
-          "name": "deepseek/deepseek-chat",
+          "name": "deepseek/deepseek-v3.2",
           "type": "chat",
           "input_price_per_1m": 0.2288,
-          "output_price_per_1m": 0.9144,
+          "output_price_per_1m": 0.3432,
           "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V3",
+          "hf_id": "deepseek-ai/DeepSeek-V3.2",
           "capabilities": [
-            "tools"
+            "tools",
+            "reasoning"
           ],
-          "size_b": 671,
-          "size_source": "manual",
+          "size_b": 685.4,
           "hf_private": false,
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
-          "canonical_id": "deepseek"
+          "canonical_id": "deepseek-2"
         },
         {
           "name": "meta-llama/llama-3.2-11b-vision-instruct",
@@ -4102,23 +4085,6 @@
           "canonical_id": "claude-3-haiku"
         },
         {
-          "name": "deepseek/deepseek-v3.2",
-          "type": "chat",
-          "input_price_per_1m": 0.252,
-          "output_price_per_1m": 0.378,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V3.2",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 685.4,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "deepseek-2"
-        },
-        {
           "name": "minimax/minimax-m2",
           "type": "chat",
           "input_price_per_1m": 0.255,
@@ -4134,24 +4100,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "minimax-m2"
-        },
-        {
-          "name": "minimax/minimax-m2.7",
-          "type": "chat",
-          "input_price_per_1m": 0.26,
-          "output_price_per_1m": 1.2,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "hf_private": false,
-          "size_b": 230,
-          "size_source": "manual",
-          "hf_id": "MiniMaxAI/MiniMax-M2.7",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "minimax-m2-7"
         },
         {
           "name": "qwen/qwen3.5-122b-a10b",
@@ -4277,17 +4225,22 @@
           "canonical_id": "deepseek-1-terminus"
         },
         {
-          "name": "baidu/ernie-4.5-300b-a47b",
+          "name": "minimax/minimax-m2.7",
           "type": "chat",
-          "input_price_per_1m": 0.28,
-          "output_price_per_1m": 1.1,
+          "input_price_per_1m": 0.279,
+          "output_price_per_1m": 1.2,
           "currency": "USD",
-          "hf_id": "baidu/ERNIE-4.5-300B-A47B-PT",
-          "size_b": 300,
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
           "hf_private": false,
+          "size_b": 230,
+          "size_source": "manual",
+          "hf_id": "MiniMaxAI/MiniMax-M2.7",
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
-          "canonical_id": "ernie-4-5-300b-a47b"
+          "canonical_id": "minimax-m2-7"
         },
         {
           "name": "qwen/qwen3.6-27b",
@@ -7489,7 +7442,7 @@
           "capabilities": [
             "image-out"
           ],
-          "price_per_image": 0.034,
+          "price_per_image": 0.03,
           "currency": "USD",
           "category": "FLUX Tools",
           "canonical_id": "erase"
