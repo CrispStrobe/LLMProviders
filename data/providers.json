@@ -2417,22 +2417,6 @@
           "canonical_id": "llama-3-8b"
         },
         {
-          "name": "qwen/qwen3-30b-a3b-instruct-2507",
-          "type": "chat",
-          "input_price_per_1m": 0.0428,
-          "output_price_per_1m": 0.1716,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 30,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "qwen3-30b-a3b"
-        },
-        {
           "name": "arcee-ai/trinity-mini",
           "type": "chat",
           "input_price_per_1m": 0.045,
@@ -2448,6 +2432,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "trinity-mini"
+        },
+        {
+          "name": "qwen/qwen3-30b-a3b-instruct-2507",
+          "type": "chat",
+          "input_price_per_1m": 0.0482,
+          "output_price_per_1m": 0.1931,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 30,
+          "hf_private": false,
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "qwen3-30b-a3b"
         },
         {
           "name": "ibm-granite/granite-4.1-8b",
@@ -4527,6 +4527,19 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-5-397b-a17b"
+        },
+        {
+          "name": "qwen/qwen3.7-plus",
+          "type": "vision",
+          "input_price_per_1m": 0.4,
+          "output_price_per_1m": 1.6,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "qwen3-7-plus"
         },
         {
           "name": "moonshotai/kimi-k2.5",
@@ -6820,18 +6833,6 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-5-4-pro"
-        },
-        {
-          "name": "openai/gpt-4-0314",
-          "type": "chat",
-          "input_price_per_1m": 30,
-          "output_price_per_1m": 60,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4"
         },
         {
           "name": "openai/gpt-4",
