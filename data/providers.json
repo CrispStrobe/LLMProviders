@@ -2188,7 +2188,7 @@
           "name": "meta-llama/llama-3.1-8b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.02,
-          "output_price_per_1m": 0.05,
+          "output_price_per_1m": 0.03,
           "currency": "USD",
           "capabilities": [
             "tools"
@@ -4780,6 +4780,21 @@
           "canonical_id": "llama-guard-3-8b"
         },
         {
+          "name": "nvidia/nemotron-3-ultra-550b-a55b",
+          "type": "chat",
+          "input_price_per_1m": 0.5,
+          "output_price_per_1m": 2.5,
+          "currency": "USD",
+          "hf_id": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 550,
+          "canonical_id": "nemotron-3-ultra-550b-a55b",
+          "hf_private": false
+        },
+        {
           "name": "google/gemini-3.1-flash-image-preview",
           "type": "image",
           "input_price_per_1m": 0.5,
@@ -6259,15 +6274,6 @@
           "canonical_id": "gpt-4o-11-20"
         },
         {
-          "name": "inflection/inflection-3-pi",
-          "type": "chat",
-          "input_price_per_1m": 2.5,
-          "output_price_per_1m": 10,
-          "currency": "USD",
-          "hf_private": true,
-          "canonical_id": "inflection-3-pi"
-        },
-        {
           "name": "inflection/inflection-3-productivity",
           "type": "chat",
           "input_price_per_1m": 2.5,
@@ -6275,6 +6281,15 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "inflection-3-productivity"
+        },
+        {
+          "name": "inflection/inflection-3-pi",
+          "type": "chat",
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 10,
+          "currency": "USD",
+          "hf_private": true,
+          "canonical_id": "inflection-3-pi"
         },
         {
           "name": "cohere/command-r-plus-08-2024",
@@ -6859,6 +6874,36 @@
           ],
           "hf_private": true,
           "canonical_id": "o1-pro"
+        },
+        {
+          "name": "nvidia/nemotron-3.5-content-safety:free",
+          "type": "vision",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "nvidia/Nemotron-3.5-Content-Safety",
+          "capabilities": [
+            "vision",
+            "reasoning"
+          ],
+          "size_b": 4,
+          "canonical_id": "nemotron-3-5-content-safety",
+          "hf_private": false
+        },
+        {
+          "name": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 550,
+          "canonical_id": "nemotron-3-ultra-550b-a55b",
+          "hf_private": false
         },
         {
           "name": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
