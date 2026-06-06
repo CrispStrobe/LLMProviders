@@ -3266,7 +3266,7 @@
           "name": "google/gemma-4-31b-it",
           "type": "vision",
           "input_price_per_1m": 0.12,
-          "output_price_per_1m": 0.37,
+          "output_price_per_1m": 0.36,
           "currency": "USD",
           "hf_id": "google/gemma-4-31B-it",
           "capabilities": [
@@ -3451,19 +3451,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "hunyuan-a13b"
-        },
-        {
-          "name": "nousresearch/hermes-2-pro-llama-3-8b",
-          "type": "chat",
-          "input_price_per_1m": 0.14,
-          "output_price_per_1m": 0.14,
-          "currency": "USD",
-          "hf_id": "NousResearch/Hermes-2-Pro-Llama-3-8B",
-          "size_b": 8,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "hermes-2-pro-llama-3-8b"
         },
         {
           "name": "perceptron/perceptron-mk1",
@@ -5814,22 +5801,6 @@
           "hf_private": true,
           "audio_price_per_1m": 1.25,
           "canonical_id": "gemini-2-5-pro-05-06"
-        },
-        {
-          "name": "sao10k/l3-euryale-70b",
-          "type": "chat",
-          "input_price_per_1m": 1.48,
-          "output_price_per_1m": 1.48,
-          "currency": "USD",
-          "hf_id": "Sao10K/L3-70B-Euryale-v2.1",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 70,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "l3-euryale-70b"
         },
         {
           "name": "google/gemini-3.5-flash",
