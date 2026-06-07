@@ -2401,22 +2401,6 @@
           "canonical_id": "l3-lunaris-8b"
         },
         {
-          "name": "meta-llama/llama-3-8b-instruct",
-          "type": "chat",
-          "input_price_per_1m": 0.04,
-          "output_price_per_1m": 0.04,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 8,
-          "hf_private": false,
-          "hf_id": "meta-llama/Meta-Llama-3-8B-Instruct",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-3-8b"
-        },
-        {
           "name": "arcee-ai/trinity-mini",
           "type": "chat",
           "input_price_per_1m": 0.045,
@@ -3419,24 +3403,6 @@
           "canonical_id": "qwen3-5-35b-a3b"
         },
         {
-          "name": "baidu/ernie-4.5-vl-28b-a3b",
-          "type": "vision",
-          "input_price_per_1m": 0.14,
-          "output_price_per_1m": 0.56,
-          "currency": "USD",
-          "hf_id": "baidu/ERNIE-4.5-VL-28B-A3B-PT",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 28,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "ernie-4-5-vl-28b-a3b"
-        },
-        {
           "name": "tencent/hunyuan-a13b-instruct",
           "type": "chat",
           "input_price_per_1m": 0.14,
@@ -3451,6 +3417,22 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "hunyuan-a13b"
+        },
+        {
+          "name": "meta-llama/llama-3-8b-instruct",
+          "type": "chat",
+          "input_price_per_1m": 0.14,
+          "output_price_per_1m": 0.14,
+          "currency": "USD",
+          "capabilities": [
+            "tools"
+          ],
+          "size_b": 8,
+          "hf_private": false,
+          "hf_id": "meta-llama/Meta-Llama-3-8B-Instruct",
+          "hf_validated_at": "2026-03-22T19:23:09.981Z",
+          "hf_status": 200,
+          "canonical_id": "llama-3-8b"
         },
         {
           "name": "perceptron/perceptron-mk1",
@@ -3644,18 +3626,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "rocinante-12b"
-        },
-        {
-          "name": "arcee-ai/spotlight",
-          "type": "vision",
-          "input_price_per_1m": 0.18,
-          "output_price_per_1m": 0.18,
-          "currency": "USD",
-          "capabilities": [
-            "vision"
-          ],
-          "hf_private": true,
-          "canonical_id": "spotlight"
         },
         {
           "name": "meta-llama/llama-guard-4-12b",
@@ -4244,8 +4214,8 @@
         {
           "name": "qwen/qwen3.6-27b",
           "type": "vision",
-          "input_price_per_1m": 0.29,
-          "output_price_per_1m": 3.2,
+          "input_price_per_1m": 0.289,
+          "output_price_per_1m": 2.4,
           "currency": "USD",
           "hf_id": "Qwen/Qwen3.6-27B",
           "capabilities": [
@@ -6658,18 +6628,6 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-4-turbo"
-        },
-        {
-          "name": "openai/gpt-4-1106-preview",
-          "type": "chat",
-          "input_price_per_1m": 10,
-          "output_price_per_1m": 30,
-          "currency": "USD",
-          "capabilities": [
-            "tools"
-          ],
-          "hf_private": true,
-          "canonical_id": "gpt-4"
         },
         {
           "name": "openai/gpt-5-pro",
