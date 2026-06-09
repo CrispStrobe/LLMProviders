@@ -3315,22 +3315,6 @@
           "canonical_id": "hermes-4-70b"
         },
         {
-          "name": "nex-agi/deepseek-v3.1-nex-n1",
-          "type": "chat",
-          "input_price_per_1m": 0.135,
-          "output_price_per_1m": 0.5,
-          "currency": "USD",
-          "hf_id": "nex-agi/DeepSeek-V3.1-Nex-N1",
-          "capabilities": [
-            "tools"
-          ],
-          "size_b": 671.1,
-          "hf_private": false,
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "deepseek-1-nex-n1"
-        },
-        {
           "name": "qwen/qwen3.6-35b-a3b",
           "type": "vision",
           "input_price_per_1m": 0.14,
@@ -6803,6 +6787,23 @@
           ],
           "hf_private": true,
           "canonical_id": "o1-pro"
+        },
+        {
+          "name": "nex-agi/nex-n2-pro:free",
+          "type": "vision",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "nex-agi/Nex-N2-Pro",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "nex-n2-pro",
+          "size_b": 396.8,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "nvidia/nemotron-3.5-content-safety:free",
