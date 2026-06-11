@@ -3311,23 +3311,6 @@
           "canonical_id": "hermes-4-70b"
         },
         {
-          "name": "qwen/qwen3.6-35b-a3b",
-          "type": "vision",
-          "input_price_per_1m": 0.14,
-          "output_price_per_1m": 1,
-          "currency": "USD",
-          "hf_id": "Qwen/Qwen3.6-35B-A3B",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 35,
-          "canonical_id": "qwen3-6-35b-a3b",
-          "hf_private": false
-        },
-        {
           "name": "xiaomi/mimo-v2.5",
           "type": "vision",
           "input_price_per_1m": 0.14,
@@ -3409,6 +3392,23 @@
             "reasoning"
           ],
           "canonical_id": "perceptron-mk1"
+        },
+        {
+          "name": "qwen/qwen3.6-35b-a3b",
+          "type": "vision",
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 1,
+          "currency": "USD",
+          "hf_id": "Qwen/Qwen3.6-35B-A3B",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 35,
+          "canonical_id": "qwen3-6-35b-a3b",
+          "hf_private": false
         },
         {
           "name": "mistralai/mistral-small-2603",
@@ -6882,23 +6882,6 @@
             "reasoning"
           ],
           "canonical_id": "laguna-m-1"
-        },
-        {
-          "name": "moonshotai/kimi-k2.6:free",
-          "type": "vision",
-          "input_price_per_1m": 0,
-          "output_price_per_1m": 0,
-          "currency": "USD",
-          "hf_id": "moonshotai/Kimi-K2.6",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "kimi-k2-6",
-          "size_b": 1058.6,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "google/gemma-4-26b-a4b-it:free",
