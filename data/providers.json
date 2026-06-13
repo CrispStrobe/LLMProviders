@@ -3648,7 +3648,8 @@
           ],
           "size_b": 196,
           "canonical_id": "step-3-7-flash",
-          "hf_private": false
+          "hf_private": false,
+          "hf_id": "stepfun-ai/Step-3.7-Flash"
         },
         {
           "name": "openai/gpt-5.4-nano",
@@ -4128,8 +4129,8 @@
         {
           "name": "qwen/qwen3.6-27b",
           "type": "vision",
-          "input_price_per_1m": 0.289,
-          "output_price_per_1m": 2.4,
+          "input_price_per_1m": 0.2885,
+          "output_price_per_1m": 3.17,
           "currency": "USD",
           "hf_id": "Qwen/Qwen3.6-27B",
           "capabilities": [
@@ -4181,7 +4182,7 @@
           "input_price_per_1m": 0.3,
           "output_price_per_1m": 1.2,
           "currency": "USD",
-          "hf_id": "MiniMaxAI/MiniMax-M3",
+          "hf_id": "MiniMaxAI/Minimax-M3",
           "capabilities": [
             "vision",
             "video",
@@ -4189,7 +4190,9 @@
             "reasoning"
           ],
           "canonical_id": "minimax-m3",
-          "hf_private": false
+          "hf_private": false,
+          "size_b": 427,
+          "size_source": "hf-total"
         },
         {
           "name": "qwen/qwen3.5-plus-20260420",
@@ -4365,23 +4368,6 @@
           "canonical_id": "llama-3-2-11b"
         },
         {
-          "name": "moonshotai/kimi-k2.5",
-          "type": "vision",
-          "input_price_per_1m": 0.35,
-          "output_price_per_1m": 1.89,
-          "currency": "USD",
-          "hf_id": "moonshotai/Kimi-K2.5",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "kimi-k2-5",
-          "size_b": 1058.6,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
           "name": "mistralai/mistral-small-3.1-24b-instruct",
           "type": "vision",
           "input_price_per_1m": 0.351,
@@ -4412,6 +4398,23 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen-2-5-72b"
+        },
+        {
+          "name": "moonshotai/kimi-k2.5",
+          "type": "vision",
+          "input_price_per_1m": 0.375,
+          "output_price_per_1m": 2.025,
+          "currency": "USD",
+          "hf_id": "moonshotai/Kimi-K2.5",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "kimi-k2-5",
+          "size_b": 1058.6,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "qwen/qwen3.5-397b-a17b",
@@ -4656,19 +4659,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-235b-a22b"
-        },
-        {
-          "name": "meta-llama/llama-guard-3-8b",
-          "type": "chat",
-          "input_price_per_1m": 0.484,
-          "output_price_per_1m": 0.03,
-          "currency": "USD",
-          "size_b": 8,
-          "hf_private": false,
-          "hf_id": "meta-llama/Llama-Guard-3-8B",
-          "hf_validated_at": "2026-03-22T19:23:09.981Z",
-          "hf_status": 200,
-          "canonical_id": "llama-guard-3-8b"
         },
         {
           "name": "nvidia/nemotron-3-ultra-550b-a55b",
@@ -4991,8 +4981,8 @@
         {
           "name": "~moonshotai/kimi-latest",
           "type": "vision",
-          "input_price_per_1m": 0.67,
-          "output_price_per_1m": 3.39,
+          "input_price_per_1m": 0.68,
+          "output_price_per_1m": 3.41,
           "currency": "USD",
           "capabilities": [
             "vision",
@@ -5004,8 +4994,8 @@
         {
           "name": "moonshotai/kimi-k2.6",
           "type": "vision",
-          "input_price_per_1m": 0.67,
-          "output_price_per_1m": 3.39,
+          "input_price_per_1m": 0.68,
+          "output_price_per_1m": 3.41,
           "currency": "USD",
           "hf_id": "moonshotai/Kimi-K2.6",
           "capabilities": [
@@ -5293,6 +5283,24 @@
           "currency": "USD",
           "hf_private": true,
           "canonical_id": "morph-large"
+        },
+        {
+          "name": "moonshotai/kimi-k2.7-code",
+          "type": "vision",
+          "input_price_per_1m": 0.95,
+          "output_price_per_1m": 4,
+          "currency": "USD",
+          "hf_id": "moonshotai/Kimi-K2.7-Code",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "kimi-k2-7-code",
+          "size_b": 1058.6,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "z-ai/glm-5.1",
