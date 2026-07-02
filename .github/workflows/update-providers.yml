@@ -15,8 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -38,7 +36,6 @@ jobs:
           git add data/providers.json
           git diff --staged --quiet && echo "No changes." || (
             git commit -m "chore: update provider data [skip ci]" &&
-            git pull --rebase origin main &&
             git push origin main
           )
 
@@ -51,7 +48,6 @@ jobs:
             exit 0
           fi
           git remote add hf https://cstr:$HF_TOKEN@huggingface.co/spaces/cstr/LLMProviders || true
-          # Prepend metadata only for the HF version of README
           cat .huggingface/space.yml README.md > HF_README.md
           mv HF_README.md README.md
           git commit -am "chore: sync to Hugging Face with metadata" || true
