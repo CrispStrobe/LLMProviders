@@ -422,7 +422,14 @@ async function main() {
     try {
       process.stdout.write(`Fetching ${f.providerName}... `);
       const models = await f.fn();
-      if (updateProviderModels(data.providers, f.providerName, models)) console.log(`✓ ${models.length} models`);
+      // Never overwrite good data with an empty result — a fetcher returns []
+      // when it's skipped (missing API key) or silently broke. Keep last-good
+      // instead of wiping; the health-check workflow surfaces real breakage.
+      if (!Array.isArray(models) || models.length === 0) {
+        console.log('– skipped (0 models, keeping existing)');
+      } else if (updateProviderModels(data.providers, f.providerName, models)) {
+        console.log(`✓ ${models.length} models`);
+      }
     } catch (err) { console.log(`✗ ${err.message}`); }
   }
   await propagateExtraData(data);
