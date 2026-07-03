@@ -1,0 +1,54 @@
+name: Provider health check
+
+# Catches upstream breakage: if a provider changes its page/API shape and a
+# fetcher starts returning 0 models (or throws), this run goes red and notifies.
+on:
+  schedule:
+    - cron: '0 12 * * *'   # daily at 12:00 UTC (independent of the 06:00 data update)
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/healthcheck.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/providers/**'
+      - 'scripts/fetch-providers.js'
+      - 'scripts/healthcheck.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Verify every provider fetcher still returns a sane number of models.
+  fetchers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm install
+      - name: Run fetcher health check
+        env:
+          REQUESTY_API_KEY: ${{ secrets.REQUESTY_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          NSCALE_API_KEY: ${{ secrets.NSCALE_API_KEY }}
+          NEBIUS_API_KEY: ${{ secrets.NEBIUS_API_KEY }}
+        run: node scripts/healthcheck.js
+
+  # Verify the app still builds (TypeScript + Vite).
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build

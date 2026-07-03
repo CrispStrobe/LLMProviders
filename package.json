@@ -25,7 +25,8 @@
     "fetch:benchmarks": "node scripts/fetch-benchmarks.js",
     "push:hf": "node scripts/sync-hf.js",
     "server": "node server.js",
-    "dev:api": "node server.js"
+    "dev:api": "node server.js",
+    "healthcheck": "node scripts/healthcheck.js"
   },
   "keywords": [],
   "author": "",
