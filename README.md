@@ -23,6 +23,9 @@ Compare pricing, capabilities, and benchmark scores across LLM providers — wit
 | Langdock | EU 🇩🇪 | GDPR-compliant, sovereign |
 | Nebius | EU 🇫🇮 | GDPR-compliant |
 | Scaleway | EU 🇫🇷 | GDPR-compliant |
+| OVHcloud | EU 🇫🇷 | GDPR-compliant, sovereign, pay-per-token |
+| STACKIT | EU 🇩🇪 | Schwarz Group, fully sovereign (no US hyperscaler) |
+| Nscale | EEA 🇬🇧/🇳🇴 | UK HQ, EEA (Norway) hosting, pay-per-token |
 | Mistral AI | EU 🇫🇷 | GDPR-compliant |
 | Black Forest Labs | EU 🇩🇪 | FLUX image models |
 | OpenRouter | US | Aggregator, 600+ models |

@@ -3,72 +3,45 @@
 /**
  * Mistral AI pricing fetcher.
  *
- * mistral.ai/pricing uses Next.js App Router RSC streaming format.
- * Pricing data is embedded in self.__next_f.push([1, "..."]) script tags,
- * NOT in __NEXT_DATA__. We find the script containing "api_grid" and
- * extract the `apis` array which has all models with their price entries.
+ * As of 2026 mistral.ai re-platformed onto Astro and moved API pricing to
+ * /pricing/api/ (the old /pricing now shows Le Chat subscription plans, and the
+ * previous Next.js RSC "apis" payload is gone). On the new page each model is a
+ * card:
+ *
+ *   <p class="text-h5 font-mistral">Mistral Medium 3.5</p>
+ *   ...
+ *   <p>Input (/M tokens)</p>  <mistral-atom-text-price data-prices='{"priceUsd":1.5,...}'>
+ *   <p>Output (/M tokens)</p> <mistral-atom-text-price data-prices='{"priceUsd":7.5,...}'>
+ *
+ * We walk the model-name headings and price atoms in document order, reading the
+ * USD price out of each atom's data-prices JSON and the unit from its row label.
  */
 
-const URL = 'https://mistral.ai/pricing';
+const cheerio = require('cheerio');
 const { getText } = require('../fetch-utils');
 
-const stripHtml = (html) => (html || '').replace(/<[^>]+>/g, '').trim();
-
-const parseUsd = (html) => {
-  const text = stripHtml(html);
-  if (!text || text === 'N/A' || text === '-') return null;
-  // Take the first dollar amount found (handles "X (audio)" / "X (text)" variants)
-  const match = text.match(/\$?([\d]+\.[\d]*|[\d]+)/);
-  return match ? parseFloat(match[1]) : null;
-};
+const URL = 'https://mistral.ai/pricing/api/';
 
 const getSizeB = (name) => {
   const match = (name || '').match(/[^.\d](\d+)[Bb]/) || (name || '').match(/^(\d+)[Bb]/);
   return match ? parseInt(match[1]) : undefined;
 };
 
-const MODEL_TYPE_MAP = {
-  'embedding models': 'embedding',
-  'classifier models': 'chat',
-  'open models': 'chat',
-  'premier model': 'chat',
-  'other models': 'chat',
-};
-
-const getModelType = (name, rawType) => {
+const getModelType = (name) => {
   const n = (name || '').toLowerCase();
   if (n.includes('voxtral')) return 'audio';
   if (n.includes('embed')) return 'embedding';
-  return MODEL_TYPE_MAP[rawType] || 'chat';
+  return 'chat';
 };
 
-function extractApisArray(payload) {
-  // Find the "apis":[...] block in the RSC payload string
-  const start = payload.indexOf('"apis":[{');
-  if (start === -1) return null;
-
-  // Walk forward from start to find the opening '[' of the array
-  let i = start;
-  while (i < payload.length && payload[i] !== '[') i++;
-  i++; // step past '['
-  const arrStart = i;
-  let depth = 0;
-
-  while (i < payload.length) {
-    if (payload[i] === '[') depth++;
-    else if (payload[i] === ']') {
-      if (depth === 0) break;
-      depth--;
-    }
-    i++;
-  }
-
+const priceUsd = ($, atom) => {
   try {
-    return JSON.parse('[' + payload.slice(arrStart, i) + ']');
+    const d = JSON.parse($(atom).attr('data-prices') || '{}');
+    return typeof d.priceUsd === 'number' ? d.priceUsd : null;
   } catch {
     return null;
   }
-}
+};
 
 async function fetchMistral() {
   const html = await getText(URL, {
@@ -79,107 +52,65 @@ async function fetchMistral() {
     },
   });
 
-  // The page uses Next.js App Router RSC streaming. Pricing data is in a
-  // self.__next_f.push([1, "ENCODED_STRING"]) script tag. Inside the raw HTML,
-  // inner quotes are escaped as \" so we search for the literal \\"apis\\":[{
-  // (which represents \"apis\":[{ in the actual HTML bytes).
-  const MARKER = '\\"apis\\":[{';
-  const markerIdx = html.indexOf(MARKER);
-  if (markerIdx === -1) throw new Error('Could not find apis marker in page HTML');
-
-  // Find the enclosing <script> tag
-  const scriptTagStart = html.lastIndexOf('<script', markerIdx);
-  const contentStart = html.indexOf('>', scriptTagStart) + 1;
-  const contentEnd = html.indexOf('</script>', contentStart);
-  const src = html.slice(contentStart, contentEnd);
-
-  // Format: self.__next_f.push([1,"ENCODED_PAYLOAD"])
-  // Extract the JSON-encoded string and parse it once to get the RSC payload string.
-  const pushAt = src.indexOf('[1,');
-  const strStart = pushAt + 3; // points to opening "
-  const lastBracket = src.lastIndexOf('])');
-  const jsonStr = src.slice(strStart, lastBracket); // "ENCODED_PAYLOAD"
-
-  let payload;
-  try {
-    payload = JSON.parse(jsonStr);
-  } catch (e) {
-    throw new Error(`Failed to parse RSC payload: ${e.message}`);
+  if (html.includes('cf-browser-verification') || html.includes('Just a moment')) {
+    throw new Error('Blocked by Cloudflare');
   }
 
-  const apis = extractApisArray(payload);
-  if (!apis) throw new Error('Could not find API pricing data in page');
+  const $ = cheerio.load(html);
+
+  // Ordered walk: model-name headings interleaved with price atoms. Each atom's
+  // unit comes from the label <p> that shares its row (its parent's first <p>).
+  const acc = new Map();
+  let currentName = null;
+
+  $('p.text-h5.font-mistral, mistral-atom-text-price').each((_, el) => {
+    if (el.tagName === 'p') {
+      currentName = $(el).text().trim();
+      return;
+    }
+    if (!currentName) return;
+
+    const label = $(el).parent().find('p').first().text().trim().toLowerCase();
+    const val = priceUsd($, el);
+    if (val === null) return;
+
+    const m = acc.get(currentName) || { name: currentName };
+    if (label.startsWith('input') && label.includes('m tokens')) m.input = val;
+    else if (label.startsWith('output') && label.includes('m tokens')) m.output = val;
+    else if (label.includes('min')) m.perMin = val;
+    acc.set(currentName, m);
+  });
 
   const models = [];
+  for (const m of acc.values()) {
+    // Only emit rows we could price as a model (token or per-minute). This drops
+    // Agent-API feature rows (per-call / per-1K-images) and free entries.
+    if (m.input == null && m.output == null && m.perMin == null) continue;
 
-  for (const api of apis) {
-    const name = (api.name || '').trim();
-    const rawType = (api.type || '').toLowerCase();
-    const endpoint = api.api_endpoint || null;
-
-    // Skip pure tool entries (no model pricing)
-    if (rawType === 'tools' || rawType === 'tool') continue;
-    if (!api.price || api.price.length === 0) continue;
-
-    // Find input and output prices from the price array
-    let inputPrice = null;
-    let outputPrice = null;
-    let audioPrice = null;
-    let audioPriceMin = null;
-
-    for (const p of api.price) {
-      const label = (p.value || '').toLowerCase();
-      const priceHtml = p.price_dollar || p.price_euro || '';
-      const val = parseUsd(priceHtml);
-      if (val === null) continue;
-
-      if (label.includes('audio input') || label.includes('audio entrant')) {
-        // Check if it's per minute or per token
-        if (label.includes('min')) audioPriceMin = val;
-        else audioPrice = val;
-      } else if (label.includes('transcribe') || label.includes('reconnaissance')) {
-        audioPriceMin = val;
-      } else if (label.includes('input') || label.includes('in ')) {
-        inputPrice = val;
-      } else if (label.includes('output') || label.includes('out ')) {
-        outputPrice = val;
-      }
-    }
-
-    // Skip if we couldn't get any price
-    if (inputPrice === null && outputPrice === null && audioPriceMin === null) continue;
-
-    const type = getModelType(name, rawType);
-    const size_b = getSizeB(name);
+    const type = getModelType(m.name);
     const caps = [];
     if (type === 'audio') caps.push('audio');
-    if (name.toLowerCase().includes('voxtral')) caps.push('tools');
+    if (/magistral/i.test(m.name)) caps.push('reasoning');
 
-    const model = {
-      name,
-      type,
-      currency: 'USD',
-    };
-
+    const model = { name: m.name, type, currency: 'USD' };
     if (caps.length) model.capabilities = caps;
 
-    if (audioPriceMin !== null) {
-      model.price_per_minute = audioPriceMin;
-    }
-    if (audioPrice !== null) {
-      model.audio_price_per_1m = audioPrice;
-    }
-    if (inputPrice !== null) {
-      model.input_price_per_1m = inputPrice;
-    }
-    if (outputPrice !== null) {
-      model.output_price_per_1m = outputPrice ?? 0;
+    if (m.perMin != null) model.price_per_minute = m.perMin;
+    if (m.input != null) model.input_price_per_1m = m.input;
+    if (m.output != null) model.output_price_per_1m = m.output;
+    // Chat/embedding models should always expose an output field for the UI.
+    if (type !== 'audio' && model.input_price_per_1m != null && model.output_price_per_1m == null) {
+      model.output_price_per_1m = 0;
     }
 
+    const size_b = getSizeB(m.name);
     if (size_b) model.size_b = size_b;
-    if (endpoint) model.api_endpoint = endpoint;
 
     models.push(model);
+  }
+
+  if (models.length === 0) {
+    throw new Error('No priced models parsed from Mistral pricing page (structure changed?)');
   }
 
   return models;
@@ -199,7 +130,6 @@ if (require.main === module) {
         ms.forEach((m) => {
           let priceStr = '';
           if (m.price_per_minute !== undefined) priceStr += `$${m.price_per_minute}/min `;
-          if (m.audio_price_per_1m !== undefined) priceStr += `(Audio: $${m.audio_price_per_1m}/M) `;
           if (m.input_price_per_1m !== undefined || m.output_price_per_1m !== undefined) {
             priceStr += `$${m.input_price_per_1m ?? 0} / $${m.output_price_per_1m ?? 0}`;
           }

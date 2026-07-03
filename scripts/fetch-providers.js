@@ -13,6 +13,9 @@ const DATA_FILE = path.join(__dirname, '..', 'data', 'providers.json');
 // Registry of all available fetchers.
 const FETCHER_MODULES = {
   scaleway: require('./providers/scaleway'),
+  ovhcloud: require('./providers/ovhcloud'),
+  stackit: require('./providers/stackit'),
+  nscale: require('./providers/nscale'),
   openrouter: require('./providers/openrouter'),
   requesty: require('./providers/requesty'),
   nebius: require('./providers/nebius'),
