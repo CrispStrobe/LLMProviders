@@ -41,7 +41,7 @@ const CHECKS = [
   { key: 'nebius',            min: 10,  keyEnv: null },
   { key: 'nscale',            min: 5,   keyEnv: 'NSCALE_API_KEY' },
   { key: 'requesty',          min: 40,  keyEnv: null },
-  { key: 'openrouter',        min: 80,  keyEnv: 'OPENROUTER_API_KEY' },
+  { key: 'openrouter',        min: 80,  keyEnv: null },
 ];
 
 const TIMEOUT_MS = 120000;
