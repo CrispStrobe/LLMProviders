@@ -18,18 +18,13 @@ const getSizeB = (id) => {
 };
 
 async function fetchRequesty() {
+  // The models catalog is public — no key required. If REQUESTY_API_KEY is set
+  // we send it anyway (may lift rate limits), but it is not needed.
   const apiKey = loadApiKey();
-  if (!apiKey) {
-    console.warn('  (no REQUESTY_API_KEY found – skipping Requesty)');
-    return [];
-  }
+  const headers = { Accept: 'application/json' };
+  if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
 
-  const data = await getJson(API_URL, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      Accept: 'application/json',
-    },
-  });
+  const data = await getJson(API_URL, { headers });
 
   const models = [];
 
@@ -43,7 +38,7 @@ async function fetchRequesty() {
     const caps = [];
     if (model.supports_vision) caps.push('vision');
     if (model.supports_reasoning) caps.push('reasoning');
-    if (model.supports_tool_calls) caps.push('tools');
+    if (model.supports_tool_calling || model.supports_tool_calls) caps.push('tools');
 
     const baseType = model.api === 'chat' ? 'chat' : model.api;
     const type = (baseType === 'chat' && model.supports_vision) ? 'vision' : baseType;

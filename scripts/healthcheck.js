@@ -20,6 +20,9 @@
  */
 
 const path = require('path');
+// Load local .env (project or ../AIToolkit) so keyed-provider detection is
+// deterministic before we probe process.env. No-op in CI (uses real secrets).
+require('./load-env').loadEnv();
 
 // key: provider module under scripts/providers/
 // min: lowest model count we still consider healthy (set well below the live
@@ -35,9 +38,9 @@ const CHECKS = [
   { key: 'infomaniak',        min: 6,   keyEnv: null },
   { key: 'ionos',             min: 5,   keyEnv: null },
   { key: 'black-forest-labs', min: 6,   keyEnv: null },
-  { key: 'nebius',            min: 10,  keyEnv: 'NEBIUS_API_KEY' },
+  { key: 'nebius',            min: 10,  keyEnv: null },
   { key: 'nscale',            min: 5,   keyEnv: 'NSCALE_API_KEY' },
-  { key: 'requesty',          min: 40,  keyEnv: 'REQUESTY_API_KEY' },
+  { key: 'requesty',          min: 40,  keyEnv: null },
   { key: 'openrouter',        min: 80,  keyEnv: 'OPENROUTER_API_KEY' },
 ];
 

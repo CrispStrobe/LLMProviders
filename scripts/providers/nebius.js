@@ -3,118 +3,115 @@
 /**
  * Nebius Token Factory (formerly Nebius AI Studio) pricing fetcher.
  *
- * Nebius rebranded to "Token Factory" and moved its pricing behind a
- * client-rendered app; the old server-rendered __NEXT_DATA__ pricing page is
- * gone. The authoritative, documented source is now the OpenAI-compatible
- * `GET /v1/models?verbose=true` endpoint, which returns OpenRouter-style
- * RichModel objects:
+ * The public "Model endpoints" page (tokenfactory.nebius.com/endpoints) lists
+ * every shared model with pricing to anonymous users. It loads that data from
+ * a CSRF-protected proxy endpoint — no API key required:
  *
- *   { id, name, context_length, architecture: { modality }, quantization,
- *     pricing: { prompt, completion, image, price_per_minute, ... } }
+ *   GET https://tokenfactory.nebius.com/proxy/inference/private/v1/models_info
  *
- * pricing.* are USD PER TOKEN, encoded as strings (e.g. "0.000001"), so we
- * multiply by 1e6 for our per-1M convention. modality is "in->out"
- * (e.g. "text->text", "text+image->text").
+ * To call it we first load the app once to obtain an anonymous CSRF cookie
+ * (__Host-psifi.x-csrf-token), then replay it as both the Cookie and the
+ * x-csrf-token header. The response is richer than the authenticated
+ * /v1/models API: each model carries huggingface_url, size_b, vendor, tags and
+ * `flavors` with per-million-token prices.
  *
- * Requires NEBIUS_API_KEY (local ../AIToolkit/.env or a CI secret). Without it
- * the fetcher skips and the provider keeps its existing data.
+ *   { models: [ { type, name, huggingface_url, size_b, flavors: [
+ *       { model_id, model_type, label, input_price_per_million_tokens,
+ *         output_price_per_million_tokens, use_cases, tags, context_window_k } ] } ] }
  */
 
-const { loadEnv } = require('../load-env');
-loadEnv();
-const { getJson } = require('../fetch-utils');
+const { fetchRobust } = require('../fetch-utils');
 
-const API_URL = 'https://api.tokenfactory.nebius.com/v1/models?verbose=true';
+const BOOTSTRAP_URL = 'https://tokenfactory.nebius.com/endpoints';
+const MODELS_URL = 'https://tokenfactory.nebius.com/proxy/inference/private/v1/models_info';
+const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-const loadApiKey = () => process.env.NEBIUS_API_KEY || null;
+// Load the app once to mint an anonymous CSRF token (returned as a cookie).
+async function getCsrf() {
+  const res = await fetchRobust(BOOTSTRAP_URL, { headers: { 'User-Agent': UA } });
+  const setCookie = res.headers.get('set-cookie') || '';
+  const m = setCookie.match(/__Host-psifi\.x-csrf-token=([^;,]+)/);
+  if (!m) throw new Error('could not obtain CSRF cookie from Token Factory');
+  const cookieVal = m[1];
+  const headerVal = decodeURIComponent(cookieVal).split('|')[0];
+  return { cookieVal, headerVal };
+}
 
-// per-token string -> per-1M number
-const perMillion = (v) => {
-  const n = parseFloat(v);
-  if (!isFinite(n) || n <= 0) return 0;
-  return Math.round(n * 1_000_000 * 10000) / 10000;
+const getType = (modelType) => {
+  const t = (modelType || '').toLowerCase();
+  if (t.includes('embedding')) return 'embedding';
+  if (t === 'image2text' || t.includes('vision')) return 'vision';
+  if (t === 'text2image' || t.includes('image_generation')) return 'image';
+  return 'chat';
 };
 
-const getSizeB = (id) => {
-  const match = (id || '').match(/[^.\d](\d+)[Bb]/) || (id || '').match(/^(\d+)[Bb]/);
-  return match ? parseInt(match[1]) : undefined;
+const hfIdFrom = (model, flavor) => {
+  const url = model.huggingface_url || '';
+  if (url.includes('huggingface.co/')) return url.split('huggingface.co/')[1].replace(/\/+$/, '');
+  const id = flavor.model_id || '';
+  return /^[^/\s]+\/[^/\s]+$/.test(id) ? id : undefined;
 };
 
-// Classify from OpenRouter-style modality "in->out" (+ id fallback).
-function classify(modality, id) {
-  const m = (modality || '').toLowerCase();
-  const s = (id || '').toLowerCase();
-  const [inPart = '', outPart = ''] = m.split('->');
+function buildEntry(model, flavor, labelSuffix) {
+  const type = getType(flavor.model_type || model.type);
+  const input = Number(flavor.input_price_per_million_tokens);
+  const output = Number(flavor.output_price_per_million_tokens);
 
-  if (inPart.includes('audio') || outPart.includes('audio') || s.includes('whisper') || s.includes('voxtral')) {
-    return { type: 'audio', caps: ['audio'] };
-  }
-  if (outPart.includes('image')) return { type: 'image', caps: ['image-gen'] };
-  if (outPart.includes('embed') || m.includes('embedding') || s.includes('embed')) {
-    return { type: 'embedding', caps: [] };
-  }
   const caps = [];
-  const isVision = inPart.includes('image');
-  if (isVision) caps.push('vision');
-  return { type: isVision ? 'vision' : 'chat', caps };
+  const uses = (flavor.use_cases || []).map((u) => u.toLowerCase());
+  const tags = (flavor.tags || model.tags || []).map((t) => t.toLowerCase());
+  if (type === 'vision') caps.push('vision');
+  if (uses.includes('function_calling') || tags.includes('tool use')) caps.push('tools');
+  if (uses.includes('reasoning') || tags.includes('reasoning')) caps.push('reasoning');
+
+  const entry = {
+    name: model.name + (labelSuffix ? ` (${labelSuffix})` : ''),
+    type,
+    input_price_per_1m: isFinite(input) ? input : 0,
+    output_price_per_1m: isFinite(output) ? output : 0,
+    currency: 'USD',
+  };
+  if (caps.length) entry.capabilities = caps;
+
+  const hf_id = hfIdFrom(model, flavor);
+  if (hf_id) entry.hf_id = hf_id;
+
+  const size_b = Number(model.size_b) || undefined;
+  if (size_b) entry.size_b = size_b;
+
+  const ctx = Number(flavor.context_window_k || model.context_window_k);
+  if (ctx) entry.context_window = ctx * 1000;
+
+  return entry;
 }
 
 async function fetchNebius() {
-  const apiKey = loadApiKey();
-  if (!apiKey) {
-    console.warn('  (no NEBIUS_API_KEY found – skipping Nebius)');
-    return [];
-  }
+  const { cookieVal, headerVal } = await getCsrf();
 
-  const data = await getJson(API_URL, {
-    headers: { Authorization: `Bearer ${apiKey}`, Accept: 'application/json' },
+  const res = await fetchRobust(MODELS_URL, {
+    headers: {
+      'User-Agent': UA,
+      Accept: 'application/json',
+      'x-csrf-token': headerVal,
+      Cookie: `__Host-psifi.x-csrf-token=${cookieVal}`,
+    },
   });
+  const data = await res.json();
+  const list = data.models || data.data || (Array.isArray(data) ? data : []);
 
   const models = [];
-
-  for (const m of data.data || []) {
-    const id = m.id;
-    if (!id) continue;
-
-    const pricing = m.pricing || {};
-    const input = perMillion(pricing.prompt);
-    const output = perMillion(pricing.completion);
-    const perMin = parseFloat(pricing.price_per_minute || '0') || 0;
-    const perImage = parseFloat(pricing.image || '0') || 0;
-
-    const { type, caps } = classify(m.architecture?.modality, id);
-
-    const entry = { name: id, type, currency: 'USD' };
-    if (caps.length) entry.capabilities = caps;
-
-    if (type === 'audio' && perMin > 0) {
-      entry.price_per_minute = Math.round(perMin * 1e6) / 1e6;
-    } else if (type === 'image') {
-      // Image models: `image` is a per-image price; prompt/completion usually 0.
-      if (perImage > 0) entry.price_per_image = perImage;
-      else { entry.input_price_per_1m = input; entry.output_price_per_1m = output; }
-    } else {
-      entry.input_price_per_1m = input;
-      entry.output_price_per_1m = output;
+  for (const model of list) {
+    const flavors = Array.isArray(model.flavors) && model.flavors.length ? model.flavors : [{}];
+    const multi = flavors.length > 1;
+    for (const flavor of flavors) {
+      // Only label-suffix when a model exposes several priced variants.
+      const suffix = multi ? (flavor.label || flavor.quantization) : '';
+      const entry = buildEntry(model, flavor, suffix);
+      if (entry.input_price_per_1m > 0 || entry.output_price_per_1m > 0) models.push(entry);
     }
-
-    // Drop entries we couldn't price at all (unavailable / placeholder rows).
-    const hasPrice =
-      entry.input_price_per_1m > 0 ||
-      entry.output_price_per_1m > 0 ||
-      entry.price_per_image > 0 ||
-      entry.price_per_minute > 0;
-    if (!hasPrice) continue;
-
-    if (m.context_length) entry.context_window = m.context_length;
-    if (/^[^/\s]+\/[^/\s]+$/.test(id)) entry.hf_id = id;
-    const size_b = getSizeB(id);
-    if (size_b) entry.size_b = size_b;
-
-    models.push(entry);
   }
 
-  models.sort((a, b) => (a.input_price_per_1m ?? 0) - (b.input_price_per_1m ?? 0));
+  models.sort((a, b) => a.input_price_per_1m - b.input_price_per_1m);
   return models;
 }
 
@@ -124,19 +121,14 @@ module.exports = { fetchNebius, providerName: 'Nebius' };
 if (require.main === module) {
   fetchNebius()
     .then((models) => {
-      console.log(`Fetched ${models.length} models from Nebius:\n`);
+      console.log(`Fetched ${models.length} models from Nebius (public models_info):\n`);
       const byType = {};
       models.forEach((m) => { (byType[m.type] = byType[m.type] || []).push(m); });
       for (const [type, ms] of Object.entries(byType)) {
         console.log(`  [${type}]`);
-        ms.slice(0, 30).forEach((m) => {
-          const price = m.price_per_image !== undefined
-            ? `$${m.price_per_image}/img`
-            : m.price_per_minute !== undefined
-              ? `$${m.price_per_minute}/min`
-              : `$${m.input_price_per_1m} / $${m.output_price_per_1m}`;
-          console.log(`    ${m.name.padEnd(55)} ${price}`);
-        });
+        ms.forEach((m) =>
+          console.log(`    ${m.name.padEnd(45)} $${m.input_price_per_1m} / $${m.output_price_per_1m}`)
+        );
       }
     })
     .catch((err) => {

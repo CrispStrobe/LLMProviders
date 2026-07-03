@@ -34,10 +34,7 @@ jobs:
       - run: npm install
       - name: Run fetcher health check
         env:
-          REQUESTY_API_KEY: ${{ secrets.REQUESTY_API_KEY }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           NSCALE_API_KEY: ${{ secrets.NSCALE_API_KEY }}
-          NEBIUS_API_KEY: ${{ secrets.NEBIUS_API_KEY }}
         run: node scripts/healthcheck.js
 
   # Verify the app still builds (TypeScript + Vite).
