@@ -5,7 +5,7 @@
 //
 // Without an API key: ~342 models (public subset).
 // With an API key:    ~600+ models including image-gen (FLUX, etc.) and subscriber-only models.
-// Set OPENROUTER_API_KEY in env or ../AIToolkit/.env to unlock all models.
+// Set OPENROUTER_API_KEY in the environment to unlock all models.
 
 const { loadEnv } = require('../load-env');
 loadEnv();

@@ -20,7 +20,7 @@
  */
 
 const path = require('path');
-// Load local .env (project, ../AIToolkit, then ~/.env) so keyed-provider
+// Load any local .env via load-env so keyed-provider
 // detection is deterministic before we probe process.env. No-op in CI.
 require('./load-env').loadEnv();
 

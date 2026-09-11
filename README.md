@@ -143,10 +143,10 @@ REQUESTY_API_KEY=...       # optional; Requesty currently returns its catalog
                            #   publicly, so this is not needed today
 ```
 
-Loaded from `.env` in the project root, then `../AIToolkit/.env`, then `~/.env`
-— every one of those that exists is read, earlier files winning, so a
-credential shared across projects can live in the home file alone. A variable
-already set in the real environment is never overwritten.
+Set them in your environment or in a project `.env` (gitignored). If you keep
+credentials outside the repo, point `PROVIDERS_ENV_FILES` at those files
+(path-separator delimited) and they are loaded too. A variable already present
+in the environment always wins.
 
 In CI they come from repository secrets of the same name. A missing secret
 makes that fetcher skip rather than fail, so forks work without any.

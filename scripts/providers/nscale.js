@@ -13,7 +13,7 @@
  * output). The endpoint carries no type/capability fields, so those are
  * derived from the model id (as the Requesty/Scaleway fetchers do).
  *
- * Requires NSCALE_TOKEN (or NSCALE_API_KEY) from a local .env or a CI secret.
+ * Requires NSCALE_TOKEN (or NSCALE_API_KEY) from the environment or a CI secret.
  * Without it the fetcher skips and the provider keeps its existing data.
  */
 
