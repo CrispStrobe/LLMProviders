@@ -124,6 +124,14 @@ The management panel (⚙ Manage Data) is local-only and shows an offline notice
 2. Register it in `scripts/fetch-providers.js` under `FETCHER_MODULES`
 3. Add an entry in `data/providers.json`
 4. Add an npm script in `package.json`
+5. Add it to `CHECKS` in `scripts/healthcheck.js` with a `min` set well below
+   the live count — without this the fetcher can break silently, since
+   `fetch-providers.js` keeps last-good data on an empty result
+
+Public, keyless sources need no workflow change: the daily `update-providers`
+run picks them up from `FETCHER_MODULES`. A fetcher needing a key should return
+`[]` when it is absent (see `nscale.js`) and declare `keyEnv` in the health
+check, so forks without secrets still pass.
 
 ## License
 
