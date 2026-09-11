@@ -1,6 +1,9 @@
-import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import providersData from '../data/providers.json'
-import benchmarksData from '../data/benchmarks.json'
+// benchmarks.json is ~1.5 MB — an order of magnitude larger than everything
+// else on the page — and nothing above the fold needs it. It is imported
+// dynamically below so first paint ships only the provider table; benchmark
+// columns fill in when it arrives.
 import { ManagementPanel } from './components/ManagementPanel'
 
 interface Model {
@@ -140,7 +143,12 @@ function App() {
 
   // Live data — initialized from bundled JSON, refreshed from /api/* when available
   const [liveProviders, setLiveProviders] = useState<Provider[]>((providersData as any).providers);
-  const [liveBenchmarks, setLiveBenchmarks] = useState<BenchmarkEntry[]>(benchmarksData as BenchmarkEntry[]);
+  const [liveBenchmarks, setLiveBenchmarks] = useState<BenchmarkEntry[]>([]);
+  const [benchmarksLoading, setBenchmarksLoading] = useState(true);
+  const [benchmarksFailed, setBenchmarksFailed] = useState(false);
+  // /api/benchmarks is fresher than the bundled copy, so once it has answered
+  // the late-arriving dynamic import must not overwrite it.
+  const apiBenchmarksLoaded = useRef(false);
 
   const getGroupKey = useCallback((m: Model) => {
     return (m.hf_id || m.canonical_id || m.name || '').toLowerCase();
@@ -153,9 +161,33 @@ function App() {
       .catch(() => {});
     fetch('/api/benchmarks')
       .then(r => r.ok ? r.json() : null)
-      .then(d => { if (Array.isArray(d)) setLiveBenchmarks(d); })
+      .then(d => {
+        if (Array.isArray(d)) {
+          apiBenchmarksLoaded.current = true;
+          setLiveBenchmarks(d);
+          setBenchmarksLoading(false);
+        }
+      })
       .catch(() => {});
   }, [dataVersion]);
+
+  // Bundled benchmark data, loaded off the critical path. Skipped if the
+  // management API already supplied a fresher copy.
+  useEffect(() => {
+    let cancelled = false;
+    import('../data/benchmarks.json')
+      .then(m => {
+        if (cancelled || apiBenchmarksLoaded.current) return;
+        setLiveBenchmarks(m.default as BenchmarkEntry[]);
+      })
+      .catch(() => {
+        // Say so rather than leaving every benchmark column showing an em-dash,
+        // which is indistinguishable from "this model has no scores".
+        if (!cancelled && !apiBenchmarksLoaded.current) setBenchmarksFailed(true);
+      })
+      .finally(() => { if (!cancelled) setBenchmarksLoading(false); });
+    return () => { cancelled = true; };
+  }, []);
 
   const fmtNum = (v?: number, decimals = 0) => (v !== undefined && Number.isFinite(v)) ? v.toFixed(decimals) : '–';
   const fmtPct = (v?: number) => (v !== undefined && Number.isFinite(v)) ? `${(v * 100).toFixed(0)}%` : '–';
@@ -450,6 +482,16 @@ function App() {
             <p>Analyze costs, data sovereignty, and model efficiency.</p>
           </div>
           <div className="header-actions">
+            {benchmarksLoading && (
+              <span className="data-stale-hint" title="Benchmark data is loading; those columns fill in shortly">
+                … loading benchmarks
+              </span>
+            )}
+            {benchmarksFailed && (
+              <span className="data-stale-hint" title="Benchmark data could not be loaded — benchmark columns will stay empty">
+                ⚠ benchmarks unavailable
+              </span>
+            )}
             {dataVersion > 0 && (
               <span className="data-stale-hint" title="Data refreshed from server">
                 ↻ data updated
