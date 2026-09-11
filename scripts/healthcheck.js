@@ -34,7 +34,7 @@ const CHECKS = [
   { key: 'stackit',           min: 4,   keyEnv: null },
   { key: 'mistral',           min: 10,  keyEnv: null },
   { key: 'langdock',          min: 12,  keyEnv: null },
-  { key: 'groq',              min: 5,   keyEnv: null },
+  { key: 'groq',              min: 8,   keyEnv: null },
   { key: 'infomaniak',        min: 6,   keyEnv: null },
   { key: 'ionos',             min: 5,   keyEnv: null },
   { key: 'black-forest-labs', min: 6,   keyEnv: null },

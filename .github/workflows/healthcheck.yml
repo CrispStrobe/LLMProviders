@@ -35,6 +35,7 @@ jobs:
       - name: Run fetcher health check
         env:
           NSCALE_API_KEY: ${{ secrets.NSCALE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: node scripts/healthcheck.js
 
   # Verify the app still builds (TypeScript + Vite).

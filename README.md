@@ -99,6 +99,8 @@ API keys (optional — checked in `scripts/load-env.js`):
 ```
 REQUESTY_API_KEY=...       # required for Requesty
 OPENROUTER_API_KEY=...     # optional; unlocks 600+ models vs 342 public
+NSCALE_API_KEY=...         # required for Nscale (catalog is behind the API)
+GROQ_API_KEY=...           # optional; adds context windows to Groq models
 ```
 
 Place in `.env` in the project root or `../AIToolkit/.env`.
