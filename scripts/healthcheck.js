@@ -20,14 +20,15 @@
  */
 
 const path = require('path');
-// Load local .env (project or ../AIToolkit) so keyed-provider detection is
-// deterministic before we probe process.env. No-op in CI (uses real secrets).
+// Load local .env (project, ../AIToolkit, then ~/.env) so keyed-provider
+// detection is deterministic before we probe process.env. No-op in CI.
 require('./load-env').loadEnv();
 
 // key: provider module under scripts/providers/
 // min: lowest model count we still consider healthy (set well below the live
 //      count so normal catalog churn never trips it, but a broken scraper does)
-// keyEnv: env var required to reach the source (null = public scrape)
+// keyEnv: env var(s) required to reach the source (null = public scrape).
+//         An array means any one of them is enough.
 const CHECKS = [
   { key: 'scaleway',          min: 8,   keyEnv: null },
   { key: 'ovhcloud',          min: 10,  keyEnv: null },
@@ -39,7 +40,7 @@ const CHECKS = [
   { key: 'ionos',             min: 5,   keyEnv: null },
   { key: 'black-forest-labs', min: 6,   keyEnv: null },
   { key: 'nebius',            min: 10,  keyEnv: null },
-  { key: 'nscale',            min: 5,   keyEnv: 'NSCALE_API_KEY' },
+  { key: 'nscale',            min: 5,   keyEnv: ['NSCALE_TOKEN', 'NSCALE_API_KEY'] },
   { key: 'eurouter',          min: 80,  keyEnv: null },
   { key: 'hostyourai',        min: 15,  keyEnv: null },
   { key: 'requesty',          min: 40,  keyEnv: null },
@@ -69,8 +70,9 @@ async function main() {
     const { key, min, keyEnv } = check;
     let providerName = key;
 
-    if (keyEnv && !process.env[keyEnv]) {
-      results.push({ key, providerName, status: 'SKIP', count: null, note: `no ${keyEnv}` });
+    const keyEnvs = keyEnv == null ? [] : (Array.isArray(keyEnv) ? keyEnv : [keyEnv]);
+    if (keyEnvs.length && !keyEnvs.some((k) => process.env[k])) {
+      results.push({ key, providerName, status: 'SKIP', count: null, note: `no ${keyEnvs.join(' / ')}` });
       continue;
     }
 

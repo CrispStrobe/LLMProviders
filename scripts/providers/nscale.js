@@ -13,8 +13,8 @@
  * output). The endpoint carries no type/capability fields, so those are
  * derived from the model id (as the Requesty/Scaleway fetchers do).
  *
- * Requires NSCALE_API_KEY (local ../AIToolkit/.env or a CI secret). Without it
- * the fetcher skips and the provider keeps its existing data.
+ * Requires NSCALE_TOKEN (or NSCALE_API_KEY) from a local .env or a CI secret.
+ * Without it the fetcher skips and the provider keeps its existing data.
  */
 
 const { loadEnv } = require('../load-env');
@@ -23,7 +23,10 @@ const { getJson } = require('../fetch-utils');
 
 const API_URL = 'https://inference.api.nscale.com/v1/models';
 
-const loadApiKey = () => process.env.NSCALE_API_KEY || null;
+// NSCALE_TOKEN is the name Nscale's own console hands out (and what the shared
+// .env uses); NSCALE_API_KEY is kept as an alias so existing setups and the CI
+// secret of that name keep working.
+const loadApiKey = () => process.env.NSCALE_API_KEY || process.env.NSCALE_TOKEN || null;
 
 const EMBED_KEYWORDS = ['embed', 'bge', 'gte', 'e5-', 'stella', 'arctic-embed', 'nomic-embed'];
 const IMAGE_KEYWORDS = ['flux', 'stable-diffusion', 'sdxl', 'sd3', 'text-to-image'];
@@ -56,7 +59,7 @@ function classify(id) {
 async function fetchNscale() {
   const apiKey = loadApiKey();
   if (!apiKey) {
-    console.warn('  (no NSCALE_API_KEY found – skipping Nscale)');
+    console.warn('  (no NSCALE_TOKEN / NSCALE_API_KEY found – skipping Nscale)');
     return [];
   }
 

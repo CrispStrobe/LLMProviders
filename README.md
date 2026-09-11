@@ -25,7 +25,7 @@ Compare pricing, capabilities, and benchmark scores across LLM providers — wit
 | Scaleway | EU 🇫🇷 | GDPR-compliant |
 | OVHcloud | EU 🇫🇷 | GDPR-compliant, sovereign, pay-per-token |
 | STACKIT | EU 🇩🇪 | Schwarz Group, fully sovereign (no US hyperscaler) |
-| Nscale | EEA 🇬🇧/🇳🇴 | UK HQ, EEA (Norway) hosting, pay-per-token — **needs `NSCALE_API_KEY` or stays empty** |
+| Nscale | EEA 🇬🇧/🇳🇴 | UK HQ, EEA (Norway) hosting, pay-per-token — **needs `NSCALE_TOKEN` or stays empty** |
 | EUrouter | EU 🇳🇱 | EUrouter B.V., Amsterdam; EU-only sub-processors. Routes across EU providers — but see the caveat below |
 | HostYourAI | EU 🇳🇱 | HostYourAI B.V.; open models on EU GPUs via vLLM, DPA + EU Sovereignty Mode |
 | Mistral AI | EU 🇫🇷 | GDPR-compliant |
@@ -100,7 +100,7 @@ npm run fetch:mistral       # Mistral AI
 npm run fetch:scaleway      # Scaleway
 npm run fetch:ovhcloud      # OVHcloud
 npm run fetch:stackit       # STACKIT
-npm run fetch:nscale        # Nscale (needs NSCALE_API_KEY)
+npm run fetch:nscale        # Nscale (needs NSCALE_TOKEN)
 npm run fetch:langdock      # Langdock
 npm run fetch:groq          # Groq
 npm run fetch:ionos         # IONOS
@@ -134,17 +134,22 @@ is fetched from a public, keyless source, so a clone with no `.env` at all
 still populates almost the whole table:
 
 ```
-NSCALE_API_KEY=...         # REQUIRED for Nscale — its catalog is only behind
-                           #   the API, so without this Nscale stays empty
+NSCALE_TOKEN=...           # REQUIRED for Nscale — its catalog is only behind
+                           #   the API, so without this Nscale stays empty.
+                           #   NSCALE_API_KEY is accepted as an alias
 OPENROUTER_API_KEY=...     # optional; unlocks the full catalog vs public subset
 GROQ_API_KEY=...           # optional; adds context windows to Groq models
 REQUESTY_API_KEY=...       # optional; Requesty currently returns its catalog
                            #   publicly, so this is not needed today
 ```
 
-Place in `.env` in the project root or `../AIToolkit/.env`. In CI they are read
-from repository secrets of the same name; a missing secret makes that fetcher
-skip rather than fail, so forks work without any.
+Loaded from `.env` in the project root, then `../AIToolkit/.env`, then `~/.env`
+— every one of those that exists is read, earlier files winning, so a
+credential shared across projects can live in the home file alone. A variable
+already set in the real environment is never overwritten.
+
+In CI they come from repository secrets of the same name. A missing secret
+makes that fetcher skip rather than fail, so forks work without any.
 
 ## Deployment
 
