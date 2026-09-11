@@ -26,6 +26,8 @@ Compare pricing, capabilities, and benchmark scores across LLM providers — wit
 | OVHcloud | EU 🇫🇷 | GDPR-compliant, sovereign, pay-per-token |
 | STACKIT | EU 🇩🇪 | Schwarz Group, fully sovereign (no US hyperscaler) |
 | Nscale | EEA 🇬🇧/🇳🇴 | UK HQ, EEA (Norway) hosting, pay-per-token |
+| EUrouter | EU 🇳🇱 | Amsterdam, EU-only sub-processors; router across EU providers |
+| HostYourAI | EU 🇳🇱 | Dutch, EU GPUs via vLLM, per-token router + dedicated GPUs |
 | Mistral AI | EU 🇫🇷 | GDPR-compliant |
 | Black Forest Labs | EU 🇩🇪 | FLUX image models |
 | OpenRouter | US | Aggregator, 600+ models |
@@ -67,6 +69,8 @@ Fetcher scripts pull live pricing from each provider and update `data/providers.
 
 ```bash
 npm run fetch               # all providers
+npm run fetch:eurouter      # EUrouter
+npm run fetch:hostyourai    # HostYourAI
 npm run fetch:openrouter    # OpenRouter only
 npm run fetch:requesty      # Requesty only (needs REQUESTY_API_KEY)
 npm run fetch:nebius        # Nebius

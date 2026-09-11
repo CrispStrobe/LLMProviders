@@ -16,6 +16,8 @@ const FETCHER_MODULES = {
   ovhcloud: require('./providers/ovhcloud'),
   stackit: require('./providers/stackit'),
   nscale: require('./providers/nscale'),
+  eurouter: require('./providers/eurouter'),
+  hostyourai: require('./providers/hostyourai'),
   openrouter: require('./providers/openrouter'),
   requesty: require('./providers/requesty'),
   nebius: require('./providers/nebius'),

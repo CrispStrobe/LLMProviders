@@ -40,6 +40,8 @@ const CHECKS = [
   { key: 'black-forest-labs', min: 6,   keyEnv: null },
   { key: 'nebius',            min: 10,  keyEnv: null },
   { key: 'nscale',            min: 5,   keyEnv: 'NSCALE_API_KEY' },
+  { key: 'eurouter',          min: 80,  keyEnv: null },
+  { key: 'hostyourai',        min: 15,  keyEnv: null },
   { key: 'requesty',          min: 40,  keyEnv: null },
   { key: 'openrouter',        min: 80,  keyEnv: null },
 ];
