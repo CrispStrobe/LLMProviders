@@ -152,7 +152,7 @@ async function fetchOpenRouter() {
     if (!sizeB && model.hugging_face_id) sizeB = getSizeB(model.hugging_face_id);
     if (!sizeB && model.description) {
       // Improved description regex: catch "size of 2B", "effective 2B", "196B parameters", etc.
-      const descMatch = model.description.match(/([\d.]+)[Bb](?:[ -]parameter| size| effective)/i) || 
+      const descMatch = model.description.match(/(?<!activates\s)(?<!active\s)([\d.]+)[Bb](?:[ -]parameter| size| effective)/i) || 
                         model.description.match(/effective parameter size of ([\d.]+)[Bb]/i);
       if (descMatch) sizeB = parseFloat(descMatch[1]);
     }

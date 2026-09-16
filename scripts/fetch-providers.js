@@ -98,8 +98,8 @@ function getCanonicalId(name) {
   let id = name.toLowerCase()
     .split('/').pop() // Strip provider prefixes (e.g. "openai/")
     .replace(/[:@].*$/, '') // Strip tags/versions (e.g. ":free", "@latest")
+    .replace(/\b(instruct|it|chat|thinking|latest|preview|vision|experimental|exp|v\d+(\.\d+)*)\b/g, '') // Strip common suffixes BEFORE replacing dots
     .replace(/[-_.]/g, ' ') // Standardize separators
-    .replace(/\b(instruct|it|chat|thinking|latest|preview|vision|experimental|exp|v\d+(\.\d+)*)\b/g, '') // Strip common suffixes
     .replace(/\b\d{4}\b/g, '') // Strip 4-digit dates (e.g. 2507, 2411)
     .replace(/\s+/g, '-') // Collapse to kebab-case
     .trim()
