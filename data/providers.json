@@ -3182,6 +3182,23 @@
           "hf_private": false
         },
         {
+          "name": "deepseek/deepseek-v4.1-flash-1017",
+          "type": "vision",
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 1.2,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "reasoning",
+            "tools"
+          ],
+          "context_window": 1000000,
+          "canonical_id": "deepseek-1-flash",
+          "size_b": 8,
+          "hf_id": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "hf_private": false
+        },
+        {
           "name": "novita/deepseek-v4.1-flash",
           "type": "vision",
           "input_price_per_1m": 0.3,
@@ -7662,6 +7679,23 @@
           "hf_private": false
         },
         {
+          "name": "Reflection Beam 1.0",
+          "type": "chat",
+          "input_price_per_1m": 0.25,
+          "output_price_per_1m": 1,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "hf_id": "reflection/Beam-1.0-501B-A23B",
+          "context_window": 1048000,
+          "canonical_id": "reflection-beam-1-0",
+          "size_b": 501.3,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "Nemotron 3.5 Super VL",
           "type": "vision",
           "input_price_per_1m": 0.3,
@@ -11670,6 +11704,22 @@
           "hf_private": false
         },
         {
+          "name": "Qwen3 235B A22B Instruct",
+          "currency": "EUR",
+          "type": "chat",
+          "input_price_per_1m": 0.08,
+          "output_price_per_1m": 0.53,
+          "context_window": 256000,
+          "size_b": 235,
+          "canonical_id": "qwen3-235b-a22b",
+          "hf_id": "Qwen/Qwen3-235B-A22B",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "hf_private": false
+        },
+        {
           "name": "Gemma 3 27B",
           "currency": "EUR",
           "type": "chat",
@@ -11883,6 +11933,17 @@
           ]
         },
         {
+          "name": "Ministral 3 14B",
+          "currency": "EUR",
+          "type": "chat",
+          "input_price_per_1m": 0.23,
+          "output_price_per_1m": 0.23,
+          "context_window": 256000,
+          "size_b": 14,
+          "canonical_id": "ministral-3-14b",
+          "hf_private": false
+        },
+        {
           "name": "Pixtral 12B",
           "currency": "EUR",
           "type": "vision",
@@ -11894,17 +11955,6 @@
           "context_window": 125000,
           "size_b": 12,
           "canonical_id": "pixtral-12b",
-          "hf_private": false
-        },
-        {
-          "name": "Ministral 3 14B",
-          "currency": "EUR",
-          "type": "chat",
-          "input_price_per_1m": 0.23,
-          "output_price_per_1m": 0.23,
-          "context_window": 256000,
-          "size_b": 14,
-          "canonical_id": "ministral-3-14b",
           "hf_private": false
         },
         {
@@ -12182,22 +12232,6 @@
           "size_b": 671,
           "size_source": "manual",
           "hf_id": "deepseek-ai/DeepSeek-R1",
-          "hf_private": false
-        },
-        {
-          "name": "Qwen3 235B A22B Instruct",
-          "currency": "EUR",
-          "type": "chat",
-          "input_price_per_1m": 0.86,
-          "output_price_per_1m": 2.59,
-          "context_window": 256000,
-          "size_b": 235,
-          "canonical_id": "qwen3-235b-a22b",
-          "hf_id": "Qwen/Qwen3-235B-A22B",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
           "hf_private": false
         },
         {
@@ -12713,8 +12747,8 @@
         {
           "name": "~deepseek/deepseek-v4-flash-latest",
           "type": "chat",
-          "input_price_per_1m": 0.01,
-          "output_price_per_1m": 1.152,
+          "input_price_per_1m": 0.0092,
+          "output_price_per_1m": 0.2971,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -12729,8 +12763,8 @@
         {
           "name": "deepseek/deepseek-v4-flash-0731",
           "type": "chat",
-          "input_price_per_1m": 0.01,
-          "output_price_per_1m": 1.152,
+          "input_price_per_1m": 0.0092,
+          "output_price_per_1m": 0.2971,
           "currency": "USD",
           "hf_id": "deepseek-ai/DeepSeek-V4-Flash-0731",
           "capabilities": [
@@ -12774,36 +12808,36 @@
           "canonical_id": "granite-4-0-h-micro"
         },
         {
-          "name": "~z-ai/glm-flash-latest",
+          "name": "~deepseek/deepseek-flash-latest",
           "type": "vision",
-          "input_price_per_1m": 0.0171,
-          "output_price_per_1m": 0.9,
+          "input_price_per_1m": 0.0179,
+          "output_price_per_1m": 0.6246,
           "currency": "USD",
           "capabilities": [
             "vision",
-            "video",
             "tools",
             "reasoning"
           ],
-          "canonical_id": "glm-flash"
+          "canonical_id": "deepseek-flash",
+          "size_b": 304.6,
+          "size_source": "hf-total",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
+          "hf_private": false
         },
         {
-          "name": "z-ai/glm-5.3-flash",
+          "name": "deepseek/deepseek-v4.1-flash",
           "type": "vision",
-          "input_price_per_1m": 0.0171,
-          "output_price_per_1m": 0.9,
+          "input_price_per_1m": 0.0179,
+          "output_price_per_1m": 0.6246,
           "currency": "USD",
-          "hf_id": "zai-org/GLM-5.3-Flash",
+          "hf_id": "deepseek-ai/DeepSeek-V4.1-Flash",
           "capabilities": [
             "vision",
-            "video",
             "tools",
-            "reasoning",
-            "eu-endpoint"
+            "reasoning"
           ],
-          "canonical_id": "glm-5-3-flash",
-          "size_b": 321.3,
-          "size_source": "hf-total",
+          "size_b": 8,
+          "canonical_id": "deepseek-1-flash",
           "hf_private": false
         },
         {
@@ -12873,6 +12907,22 @@
           "hf_private": false
         },
         {
+          "name": "deepseek/deepseek-v4-flash",
+          "type": "chat",
+          "input_price_per_1m": 0.0214,
+          "output_price_per_1m": 0.0428,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Flash",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "deepseek-flash",
+          "size_b": 158.1,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "openai/gpt-oss-20b:batch",
           "type": "chat",
           "input_price_per_1m": 0.024,
@@ -12885,6 +12935,23 @@
           ],
           "size_b": 20,
           "canonical_id": "gpt-oss-20b",
+          "hf_private": false
+        },
+        {
+          "name": "z-ai/glm-5.2",
+          "type": "chat",
+          "input_price_per_1m": 0.0241,
+          "output_price_per_1m": 2.3746,
+          "currency": "USD",
+          "hf_id": "zai-org/GLM-5.2",
+          "capabilities": [
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "glm-5-2",
+          "size_b": 753.3,
+          "size_source": "hf-total",
           "hf_private": false
         },
         {
@@ -12944,6 +13011,39 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "llama-3-2-1b"
+        },
+        {
+          "name": "~z-ai/glm-flash-latest",
+          "type": "vision",
+          "input_price_per_1m": 0.0278,
+          "output_price_per_1m": 0.3966,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "glm-flash"
+        },
+        {
+          "name": "z-ai/glm-5.3-flash",
+          "type": "vision",
+          "input_price_per_1m": 0.0278,
+          "output_price_per_1m": 0.3966,
+          "currency": "USD",
+          "hf_id": "zai-org/GLM-5.3-Flash",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "glm-5-3-flash",
+          "size_b": 321.3,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "openai/gpt-oss-120b:batch",
@@ -13015,56 +13115,6 @@
           ],
           "hf_private": true,
           "canonical_id": "nova-micro"
-        },
-        {
-          "name": "z-ai/glm-5.2",
-          "type": "chat",
-          "input_price_per_1m": 0.0351,
-          "output_price_per_1m": 6,
-          "currency": "USD",
-          "hf_id": "zai-org/GLM-5.2",
-          "capabilities": [
-            "tools",
-            "reasoning",
-            "eu-endpoint"
-          ],
-          "canonical_id": "glm-5-2",
-          "size_b": 753.3,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
-          "name": "~deepseek/deepseek-flash-latest",
-          "type": "vision",
-          "input_price_per_1m": 0.036,
-          "output_price_per_1m": 0.684,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "deepseek-flash",
-          "size_b": 304.6,
-          "size_source": "hf-total",
-          "hf_id": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
-          "hf_private": false
-        },
-        {
-          "name": "deepseek/deepseek-v4.1-flash",
-          "type": "vision",
-          "input_price_per_1m": 0.036,
-          "output_price_per_1m": 0.684,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 8,
-          "canonical_id": "deepseek-1-flash",
-          "hf_private": false
         },
         {
           "name": "cohere/command-r7b-12-2024",
@@ -13170,22 +13220,6 @@
           "hf_private": false
         },
         {
-          "name": "deepseek/deepseek-v4-flash",
-          "type": "chat",
-          "input_price_per_1m": 0.045,
-          "output_price_per_1m": 1.152,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V4-Flash",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "deepseek-flash",
-          "size_b": 158.1,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
           "name": "liquid/lfm-2.5-24b-a2b",
           "type": "chat",
           "input_price_per_1m": 0.05,
@@ -13266,6 +13300,22 @@
           "hf_id": "inference-net/schematron-v2-llama-3.2-3b",
           "size_b": 3,
           "canonical_id": "schematron-small",
+          "hf_private": false
+        },
+        {
+          "name": "deepseek/deepseek-v4.1-flash:batch",
+          "type": "vision",
+          "input_price_per_1m": 0.05,
+          "output_price_per_1m": 0.15,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V4.1-Flash",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 8,
+          "canonical_id": "deepseek-1-flash",
           "hf_private": false
         },
         {
@@ -13495,35 +13545,6 @@
           "canonical_id": "nova-lite"
         },
         {
-          "name": "~z-ai/glm-latest",
-          "type": "chat",
-          "input_price_per_1m": 0.0608,
-          "output_price_per_1m": 4.4,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "glm"
-        },
-        {
-          "name": "z-ai/glm-5.3",
-          "type": "chat",
-          "input_price_per_1m": 0.0608,
-          "output_price_per_1m": 4.4,
-          "currency": "USD",
-          "capabilities": [
-            "tools",
-            "reasoning",
-            "eu-endpoint"
-          ],
-          "canonical_id": "glm-5-3",
-          "hf_id": "zai-org/GLM-5.3",
-          "size_b": 753.3,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
           "name": "qwen/qwen3.5-35b-a3b",
           "type": "vision",
           "input_price_per_1m": 0.065,
@@ -13556,6 +13577,35 @@
           ],
           "hf_private": true,
           "canonical_id": "qwen3-5-flash-02-23"
+        },
+        {
+          "name": "~z-ai/glm-latest",
+          "type": "chat",
+          "input_price_per_1m": 0.069,
+          "output_price_per_1m": 3.939,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "glm"
+        },
+        {
+          "name": "z-ai/glm-5.3",
+          "type": "chat",
+          "input_price_per_1m": 0.069,
+          "output_price_per_1m": 3.939,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning",
+            "eu-endpoint"
+          ],
+          "canonical_id": "glm-5-3",
+          "hf_id": "zai-org/GLM-5.3",
+          "size_b": 753.3,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "qwen/qwen3-coder-30b-a3b-instruct",
@@ -14297,22 +14347,6 @@
           "canonical_id": "qwen-2-5-7b"
         },
         {
-          "name": "deepseek/deepseek-v4.1-flash:batch",
-          "type": "vision",
-          "input_price_per_1m": 0.112,
-          "output_price_per_1m": 0.336,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "capabilities": [
-            "vision",
-            "tools",
-            "reasoning"
-          ],
-          "size_b": 8,
-          "canonical_id": "deepseek-1-flash",
-          "hf_private": false
-        },
-        {
           "name": "xiaomi/mimo-v2.5",
           "type": "vision",
           "input_price_per_1m": 0.119,
@@ -14363,6 +14397,38 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-30b-a3b"
+        },
+        {
+          "name": "~deepseek/deepseek-pro-latest",
+          "type": "chat",
+          "input_price_per_1m": 0.1233,
+          "output_price_per_1m": 0.5588,
+          "currency": "USD",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "deepseek-pro",
+          "size_b": 1650.5,
+          "size_source": "hf-total",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Pro-0813",
+          "hf_private": false
+        },
+        {
+          "name": "deepseek/deepseek-v4-pro-0813",
+          "type": "chat",
+          "input_price_per_1m": 0.1233,
+          "output_price_per_1m": 0.5588,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Pro-0813",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "deepseek-pro",
+          "size_b": 1650.5,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "google/gemini-3.1-flash-lite:batch",
@@ -14676,6 +14742,22 @@
           ],
           "hf_private": true,
           "canonical_id": "gpt-4o-mini-07-18"
+        },
+        {
+          "name": "deepseek/deepseek-v4-pro",
+          "type": "chat",
+          "input_price_per_1m": 0.1675,
+          "output_price_per_1m": 0.4607,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Pro",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "deepseek-pro",
+          "size_b": 861.6,
+          "size_source": "hf-total",
+          "hf_private": false
         },
         {
           "name": "tencent/hy3-preview",
@@ -15020,6 +15102,19 @@
           "canonical_id": "qwen3-coder"
         },
         {
+          "name": "qwen/qwen3.7-plus:batch",
+          "type": "vision",
+          "input_price_per_1m": 0.23,
+          "output_price_per_1m": 0.92,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "qwen3-7-plus"
+        },
+        {
           "name": "minimax/minimax-m3",
           "type": "vision",
           "input_price_per_1m": 0.23,
@@ -15038,35 +15133,18 @@
           "size_source": "hf-total"
         },
         {
-          "name": "~deepseek/deepseek-pro-latest",
+          "name": "reflection/beam-1.0-501b-a23b",
           "type": "chat",
           "input_price_per_1m": 0.25,
-          "output_price_per_1m": 5,
+          "output_price_per_1m": 1,
           "currency": "USD",
+          "hf_id": "reflection/Beam-1.0-501B-A23B",
           "capabilities": [
             "tools",
             "reasoning"
           ],
-          "canonical_id": "deepseek-pro",
-          "size_b": 1650.5,
-          "size_source": "hf-total",
-          "hf_id": "deepseek-ai/DeepSeek-V4-Pro-0813",
-          "hf_private": false
-        },
-        {
-          "name": "deepseek/deepseek-v4-pro-0813",
-          "type": "chat",
-          "input_price_per_1m": 0.25,
-          "output_price_per_1m": 5,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V4-Pro-0813",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "deepseek-pro",
-          "size_b": 1650.5,
-          "size_source": "hf-total",
+          "size_b": 501,
+          "canonical_id": "beam-1-0-501b-a23b",
           "hf_private": false
         },
         {
@@ -15399,6 +15477,38 @@
           "canonical_id": "qwen-plus"
         },
         {
+          "name": "moonshotai/kimi-k3",
+          "type": "vision",
+          "input_price_per_1m": 0.27,
+          "output_price_per_1m": 14.2307,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "kimi-k3",
+          "hf_id": "moonshotai/Kimi-K3",
+          "size_b": 2779.9,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
+          "name": "~moonshotai/kimi-latest",
+          "type": "vision",
+          "input_price_per_1m": 0.27,
+          "output_price_per_1m": 14.2307,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "kimi"
+        },
+        {
           "name": "minimax/minimax-m2.5",
           "type": "chat",
           "input_price_per_1m": 0.27,
@@ -15467,38 +15577,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-vl-30b-a3b"
-        },
-        {
-          "name": "moonshotai/kimi-k3",
-          "type": "vision",
-          "input_price_per_1m": 0.294,
-          "output_price_per_1m": 24,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "kimi-k3",
-          "hf_id": "moonshotai/Kimi-K3",
-          "size_b": 2779.9,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
-          "name": "~moonshotai/kimi-latest",
-          "type": "vision",
-          "input_price_per_1m": 0.294,
-          "output_price_per_1m": 24,
-          "currency": "USD",
-          "capabilities": [
-            "vision",
-            "video",
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "kimi"
         },
         {
           "name": "moondream/moondream3-preview",
@@ -16098,8 +16176,8 @@
         {
           "name": "moonshotai/kimi-k2.6",
           "type": "vision",
-          "input_price_per_1m": 0.441,
-          "output_price_per_1m": 3.2,
+          "input_price_per_1m": 0.4323,
+          "output_price_per_1m": 1.82,
           "currency": "USD",
           "hf_id": "moonshotai/Kimi-K2.6",
           "capabilities": [
@@ -16144,22 +16222,6 @@
           ],
           "canonical_id": "inkling-small",
           "size_b": 266,
-          "size_source": "hf-total",
-          "hf_private": false
-        },
-        {
-          "name": "deepseek/deepseek-v4-pro",
-          "type": "chat",
-          "input_price_per_1m": 0.45,
-          "output_price_per_1m": 3.48,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V4-Pro",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "deepseek-pro",
-          "size_b": 861.6,
           "size_source": "hf-total",
           "hf_private": false
         },
@@ -16399,6 +16461,20 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "kimi-k2"
+        },
+        {
+          "name": "elorian/glimpse",
+          "type": "vision",
+          "input_price_per_1m": 0.6,
+          "output_price_per_1m": 3,
+          "currency": "USD",
+          "capabilities": [
+            "vision",
+            "video",
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "glimpse"
         },
         {
           "name": "z-ai/glm-5",
@@ -16897,8 +16973,8 @@
         {
           "name": "tencent/hy4-preview",
           "type": "chat",
-          "input_price_per_1m": 0.801,
-          "output_price_per_1m": 2.48,
+          "input_price_per_1m": 0.834,
+          "output_price_per_1m": 2.501,
           "currency": "USD",
           "capabilities": [
             "tools",
@@ -16979,8 +17055,8 @@
         {
           "name": "z-ai/glm-5.1",
           "type": "chat",
-          "input_price_per_1m": 0.966,
-          "output_price_per_1m": 3.036,
+          "input_price_per_1m": 0.9646,
+          "output_price_per_1m": 3.0316,
           "currency": "USD",
           "hf_id": "zai-org/GLM-5.1",
           "capabilities": [
@@ -19333,6 +19409,21 @@
           ],
           "hf_private": true,
           "canonical_id": "o1-pro"
+        },
+        {
+          "name": "xingchen-agi/xing4.0-29b-a4b:free",
+          "type": "chat",
+          "input_price_per_1m": 0,
+          "output_price_per_1m": 0,
+          "currency": "USD",
+          "hf_id": "XingChen-AGI/Xing4.0-29B-A4B",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "size_b": 29,
+          "canonical_id": "xing4-0-29b-a4b",
+          "hf_private": false
         },
         {
           "name": "nvidia/nemotron-3.5-super-vl:free",
