@@ -20,7 +20,7 @@
 const cheerio = require('cheerio');
 const { getText } = require('../fetch-utils');
 
-const URL = 'https://mistral.ai/pricing/api/';
+const URL = 'https://docs.mistral.ai/inference/pricing';
 
 const getSizeB = (name) => {
   const match = (name || '').match(/[^.\d](\d+)[Bb]/) || (name || '').match(/^(\d+)[Bb]/);
@@ -58,27 +58,59 @@ async function fetchMistral() {
 
   const $ = cheerio.load(html);
 
-  // Ordered walk: model-name headings interleaved with price atoms. Each atom's
-  // unit comes from the label <p> that shares its row (its parent's first <p>).
+  // Current docs.mistral.ai layout: one table per model family with the
+  // columns Model | Input | Cached input | Output, plus featured cards
+  // (h3 + <dl>) for a few models. Read both; tables win on duplicates.
   const acc = new Map();
-  let currentName = null;
+  const num = (s) => {
+    const m = (s || '').match(/\$\s*([0-9]+(?:\.[0-9]+)?)/);
+    return m ? parseFloat(m[1]) : null;
+  };
 
-  $('p.text-h5.font-mistral, mistral-atom-text-price').each((_, el) => {
-    if (el.tagName === 'p') {
-      currentName = $(el).text().trim();
-      return;
+  $('table').each((_, table) => {
+    const headers = $(table).find('thead th').map((__, th) => $(th).text().trim().toLowerCase()).get();
+    if (!headers.length) return;
+    const iName = headers.findIndex((h) => h.includes('model'));
+    const iIn = headers.findIndex((h) => h.includes('input') && !h.includes('cached'));
+    const iCache = headers.findIndex((h) => h.includes('cached'));
+    const iOut = headers.findIndex((h) => h.includes('output'));
+    if (iName < 0 || (iIn < 0 && iOut < 0)) return;
+
+    $(table).find('tbody tr').each((__, tr) => {
+      const cells = $(tr).find('td');
+      if (!cells.length) return;
+      const name = cells.eq(iName).text().replace(/↗/g, '').trim();
+      if (!name) return;
+      const input = iIn >= 0 ? num(cells.eq(iIn).text()) : null;
+      const output = iOut >= 0 ? num(cells.eq(iOut).text()) : null;
+      const cached = iCache >= 0 ? num(cells.eq(iCache).text()) : null;
+      if (input == null && output == null) return;
+      acc.set(name, { name, input, output, cached });
+    });
+  });
+
+  // Featured cards: <h3>Model</h3> followed by <dt>Input</dt><dd>$0.7 /M Tokens</dd>.
+  $('h3').each((_, h) => {
+    const name = $(h).text().trim();
+    if (!name || acc.has(name)) return;
+    const dl = $(h).parent().find('dl').first();
+    if (!dl.length) return;
+
+    const entry = { name };
+    dl.find('div').each((__, row) => {
+      const label = $(row).find('dt').first().text().trim().toLowerCase();
+      const valText = $(row).find('dd').first().text().trim();
+      const val = num(valText);
+      if (val === null) return;
+      const perMillion = /\/\s*m|tokens/i.test(valText);
+      if (label.startsWith('input') && perMillion) entry.input = val;
+      else if (label.startsWith('output') && perMillion) entry.output = val;
+      else if (label.includes('min')) entry.perMin = val;
+    });
+
+    if (entry.input != null || entry.output != null || entry.perMin != null) {
+      acc.set(name, entry);
     }
-    if (!currentName) return;
-
-    const label = $(el).parent().find('p').first().text().trim().toLowerCase();
-    const val = priceUsd($, el);
-    if (val === null) return;
-
-    const m = acc.get(currentName) || { name: currentName };
-    if (label.startsWith('input') && label.includes('m tokens')) m.input = val;
-    else if (label.startsWith('output') && label.includes('m tokens')) m.output = val;
-    else if (label.includes('min')) m.perMin = val;
-    acc.set(currentName, m);
   });
 
   const models = [];
