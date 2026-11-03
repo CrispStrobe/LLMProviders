@@ -2,7 +2,7 @@ name: Update benchmark data
 
 on:
   schedule:
-    - cron: '0 4 * * 0'   # weekly, Sunday at 04:00 UTC
+    - cron: '0 5 * * *'   # daily at 05:00 UTC (LMArena publishes daily)
   workflow_dispatch:        # allow manual trigger from GitHub Actions UI
 
 permissions:
@@ -23,10 +23,39 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - run: npm install
+      - run: npm ci
 
       - name: Fetch all benchmark data
+        env:
+          # Optional. Without it the Artificial Analysis source is skipped.
+          ARTIFICIAL_ANALYSIS_API_KEY: ${{ secrets.ARTIFICIAL_ANALYSIS_API_KEY }}
         run: node scripts/fetch-benchmarks.js
+
+      - name: Check coverage
+        run: |
+          node -e "
+          const d = require('./data/benchmarks.json');
+          const n = (k) => d.filter((x) => x[k] !== undefined && x[k] !== null).length;
+          const c = {
+            total: d.length,
+            hf: n('hf_id'),
+            arena: n('arena_elo'),
+            livebench: n('lb_global'),
+            aider: n('aider_pass_rate'),
+            skillsbench: n('sb_score'),
+            omnidoc: n('ocr_omnidoc'),
+          };
+          console.log(c);
+          const bad = [];
+          if (c.hf < 1000) bad.push('hf');
+          if (c.arena < 100) bad.push('arena');
+          if (c.livebench < 50) bad.push('livebench');
+          if (c.omnidoc < 10) bad.push('omnidoc');
+          if (bad.length) {
+            console.error('benchmark coverage regressed: ' + bad.join(', '));
+            process.exit(1);
+          }
+          "
 
       - name: Commit if changed
         run: |

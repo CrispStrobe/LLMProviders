@@ -14,6 +14,7 @@ on:
     paths:
       - 'scripts/providers/**'
       - 'scripts/fetch-providers.js'
+      - 'scripts/fetch-benchmarks.js'
       - 'scripts/healthcheck.js'
   workflow_dispatch:
 
@@ -38,6 +39,47 @@ jobs:
           NSCALE_API_KEY: ${{ secrets.NSCALE_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: node scripts/healthcheck.js
+
+  # Verify every benchmark source still returns usable data.
+  benchmarks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - name: Fetch benchmark sources
+        env:
+          ARTIFICIAL_ANALYSIS_API_KEY: ${{ secrets.ARTIFICIAL_ANALYSIS_API_KEY }}
+        run: node scripts/fetch-benchmarks.js
+      - name: Assert coverage
+        run: |
+          node -e "
+          const d = require('./data/benchmarks.json');
+          const n = (k) => d.filter((x) => x[k] !== undefined && x[k] !== null).length;
+          const c = {
+            total: d.length,
+            hf: n('hf_id'),
+            arena: n('arena_elo'),
+            livebench: n('lb_global'),
+            aider: n('aider_pass_rate'),
+            skillsbench: n('sb_score'),
+            omnidoc: n('ocr_omnidoc'),
+          };
+          console.log(c);
+          const bad = [];
+          if (c.hf < 1000) bad.push('hf');
+          if (c.arena < 100) bad.push('arena');
+          if (c.livebench < 50) bad.push('livebench');
+          if (c.omnidoc < 10) bad.push('omnidoc');
+          if (bad.length) {
+            console.error('benchmark coverage regressed: ' + bad.join(', '));
+            process.exit(1);
+          }
+          "
 
   # Verify the app still builds (TypeScript + Vite).
   build:

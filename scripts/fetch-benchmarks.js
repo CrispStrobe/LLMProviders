@@ -35,7 +35,6 @@ const fs   = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const { getJson, getText, fetchRobust } = require('./fetch-utils');
-const { parquetReadObjects } = require('hyparquet');
 const { loadEnv } = require('./load-env');
 
 loadEnv();
@@ -121,10 +120,16 @@ const HF_ROWS_URL = 'https://datasets-server.huggingface.co/rows' +
 const HF_PARQUET_URL =
   'https://huggingface.co/datasets/open-llm-leaderboard/contents/resolve/main/data/train-00000-of-00001.parquet';
 
+let _parquet;
+async function parquetRows(buf) {
+  if (!_parquet) _parquet = await import('hyparquet');
+  return _parquet.parquetReadObjects({ file: buf });
+}
+
 async function readParquet(url) {
   const res = await fetchRobust(url);
   const buf = await res.arrayBuffer();
-  return parquetReadObjects({ file: buf });
+  return parquetRows(buf);
 }
 
 async function fetchHFLeaderboard() {
@@ -328,7 +333,7 @@ async function fetchArenaConfig(config) {
     `${config}/latest-00000-of-00001.parquet`;
   const res = await fetchRobust(url);
   const buf = await res.arrayBuffer();
-  let rows = await parquetReadObjects({ file: buf });
+  let rows = await parquetRows(buf);
   const cats = [...new Set(rows.map((r) => r.category))];
   if (cats.includes('overall')) rows = rows.filter((r) => r.category === 'overall');
   const dates = [...new Set(rows.map(publishDate).filter(Boolean))].sort();
