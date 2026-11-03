@@ -175,7 +175,7 @@ async function fetchHFLeaderboard() {
 // ─── LiveBench ───────────────────────────────────────────────────────────────
 
 const LB_GITHUB_TREE = 'https://api.github.com/repos/LiveBench/livebench.github.io/git/trees/main?recursive=1';
-const LB_BASE_URL    = 'https://livebench.ai';
+const LB_BASE_URL    = 'https://raw.githubusercontent.com/LiveBench/livebench.github.io/main/public';
 
 const LB_SUFFIX_RE = new RegExp(
   '(-thinking-(?:auto-)?(?:\\d+k-)?(?:(?:high|medium|low)-effort)?|' +
@@ -242,7 +242,16 @@ async function fetchLiveBench() {
     .sort();
   console.log(`${dates.length} releases (${dates[0]} → ${dates[dates.length - 1]})`);
 
-  const cats = await getJson(`${LB_BASE_URL}/categories_${dates[dates.length - 1]}.json`);
+  const catDates = tree.tree
+    .filter((f) => f.path.startsWith('public/categories_') && f.path.endsWith('.json'))
+    .map((f) => f.path.replace('public/categories_', '').replace('.json', ''))
+    .sort();
+  if (!catDates.length) throw new Error('No categories_*.json files in LiveBench repo');
+  const catDate = catDates[catDates.length - 1];
+  if (catDate !== dates[dates.length - 1]) {
+    console.log(`   (newest table ${dates[dates.length - 1]} has no categories file; using ${catDate})`);
+  }
+  const cats = await getJson(`${LB_BASE_URL}/categories_${catDate}.json`);
   const taskToGroup = {};
   for (const [cat, tasks] of Object.entries(cats)) {
     const group =
@@ -310,31 +319,29 @@ function mergeLiveBench(entries, lbEntries) {
 // ─── Chatbot Arena ───────────────────────────────────────────────────────────
 
 async function fetchChatbotArena() {
-  process.stdout.write('Chatbot Arena: fetching RSC leaderboard... ');
-  const text = await getText('https://lmarena.ai/en/leaderboard/text', {
-    headers: { 'User-Agent': 'Mozilla/5.0', 'RSC': '1', 'Accept': 'text/x-component' },
-  });
-  let entries = null;
-  for (const line of text.split('\n')) {
-    if (!line.includes('"entries":[') || !line.includes('"rating":')) continue;
-    const start = line.indexOf('"entries":[') + '"entries":'.length;
-    let depth = 0, end = -1;
-    for (let i = start; i < line.length; i++) {
-      if (line[i] === '[' || line[i] === '{') depth++;
-      else if (line[i] === ']' || line[i] === '}') { depth--; if (depth === 0) { end = i + 1; break; } }
-    }
-    entries = JSON.parse(line.substring(start, end));
-    break;
+  process.stdout.write('Chatbot Arena: fetching HF leaderboard dataset... ');
+  // lmarena.ai now redirects to arena.ai behind Cloudflare (403 to scrapers).
+  // The official dataset is published on Hugging Face with the same fields.
+  const base =
+    'https://datasets-server.huggingface.co/rows?dataset=lmarena-ai%2Fleaderboard-dataset&config=text&split=latest';
+  // The dataset holds ~11k historical rows, ordered by rank and starting with
+  // the latest publish date. The top 500 cover every model we can match.
+  const rows = [];
+  const MAX_ROWS = 500;
+  for (let offset = 0; offset < MAX_ROWS; offset += 100) {
+    const page = await getJson(`${base}&offset=${offset}&length=100`);
+    for (const r of page.rows || []) rows.push(r.row);
+    if (!page.rows || page.rows.length < 100) break;
+    await new Promise((r) => setTimeout(r, 800));
   }
-  if (!entries) throw new Error('Could not find entries in RSC payload');
-  console.log(`${entries.length} models`);
-  return entries.map((e) => {
+  console.log(`${rows.length} models`);
+  return rows.map((e) => {
     const entry = {
-      arena_name:  e.modelDisplayName,
-      arena_org:   e.modelOrganization,
+      arena_name:  e.model_name,
+      arena_org:   e.organization,
       arena_elo:   e.rating,
       arena_rank:  e.rank,
-      arena_votes: e.votes,
+      arena_votes: e.vote_count,
       sources: {},
     };
     Object.keys(entry).forEach(k => {
@@ -349,8 +356,10 @@ function mergeArena(entries, arenaEntries) {
   for (const a of arenaEntries) arenaMap.set(normName(a.arena_name), a);
   let matched = 0;
   for (const e of entries) {
+    const stripParen = (s) => (s || '').replace(/\([^)]*\)/g, ' ');
     const candidates = [normName(e.name || ''), normName(e.lb_name || ''), normName((e.slug || '').split('/').pop() || ''), normName((e.hf_id || '').split('/').pop() || '')];
-    const a = candidates.map((c) => arenaMap.get(c)).find(Boolean);
+    const all = [...candidates, ...candidates.map((c) => normName(stripParen(c)))].filter(Boolean);
+    const a = all.map((c) => arenaMap.get(c)).find(Boolean);
     if (a) {
       e.arena_elo = a.arena_elo; e.arena_rank = a.arena_rank; e.arena_votes = a.arena_votes;
       e.sources = { ...(e.sources || {}), ...(a.sources || {}) };
@@ -822,15 +831,19 @@ async function main() {
   const source = process.argv[2]?.toLowerCase();
   if (source) { await refreshSource(source); return; }
 
+  const safe = (name, p) => p.catch((e) => {
+    console.warn(`\n  ⚠ ${name} failed: ${e.message}`);
+    return [];
+  });
   const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, mtebEntries, readmeEntries] = await Promise.all([
-    fetchLLMStats(),
-    fetchHFLeaderboard(),
-    fetchLiveBench(),
-    fetchChatbotArena(),
-    fetchAider(),
-    fetchArtificialAnalysis(),
-    fetchMTEB(),
-    fetchHFReadmeBenchmarks(),
+    safe('LLMStats', fetchLLMStats()),
+    safe('HF', fetchHFLeaderboard()),
+    safe('LiveBench', fetchLiveBench()),
+    safe('Arena', fetchChatbotArena()),
+    safe('Aider', fetchAider()),
+    safe('Artificial Analysis', fetchArtificialAnalysis()),
+    safe('MTEB', fetchMTEB()),
+    safe('HF README', fetchHFReadmeBenchmarks()),
   ]);
 
   const merged  = mergeEntries(llmstats, hfEntries);
