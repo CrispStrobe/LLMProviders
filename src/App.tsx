@@ -113,6 +113,7 @@ interface BenchmarkEntry {
   mteb_retrieval?: number;
   // OCR Benchmark
   ocr_avg?: number;
+  ocr_omnidoc?: number; // OmniDocBench Overall (0-100)
 }
 
 const normalizeName = (s?: string) =>
@@ -417,6 +418,7 @@ function App() {
         case 'arena_vision_elo':
         case 'arena_agent_score':
         case 'sb_score':
+        case 'ocr_omnidoc':
         case 'aider_pass_rate':
         case 'aa_intelligence':
         case 'aa_tokens_per_s':
@@ -591,6 +593,7 @@ function App() {
                 <th onClick={() => requestSort('arena_vision_elo')} className="sortable" title="LMArena Vision leaderboard (ELO)">Arena Vis {getSortIcon('arena_vision_elo')}</th>
                 <th onClick={() => requestSort('arena_agent_score')} className="sortable" title="LMArena Agent Arena (score)">Arena Agt {getSortIcon('arena_agent_score')}</th>
                 <th onClick={() => requestSort('sb_score')} className="sortable" title="SkillsBench v1.1, with skills (0-100)">SkillsBench {getSortIcon('sb_score')}</th>
+                <th onClick={() => requestSort('ocr_omnidoc')} className="sortable" title="OmniDocBench Overall (document parsing OCR, 0-100, Apache-2.0)">ODB {getSortIcon('ocr_omnidoc')}</th>
                 <th onClick={() => requestSort('aider_pass_rate')} className="sortable" title="Aider code editing benchmark (pass rate, 133 tasks)">Aider {getSortIcon('aider_pass_rate')}</th>
                 <th onClick={() => requestSort('aa_intelligence')} className="sortable" title="Artificial Analysis Intelligence Index (0-100)">AA Intel {getSortIcon('aa_intelligence')}</th>
                 <th onClick={() => requestSort('aa_tokens_per_s')} className="sortable" title="Artificial Analysis Median Speed (Tokens per Second)">AA Speed {getSortIcon('aa_tokens_per_s')}</th>
@@ -659,6 +662,9 @@ function App() {
                           {bm?.ocr_avg !== undefined && (
                             <div className="tooltip-row"><strong>OCR:</strong> {bm.ocr_avg.toFixed(1)} (olmOCR-bench)</div>
                           )}
+                          {bm?.ocr_omnidoc !== undefined && (
+                            <div className="tooltip-row"><strong>OCR (OmniDocBench):</strong> {bm.ocr_omnidoc.toFixed(1)}</div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -700,6 +706,7 @@ function App() {
                       <td className="benchmark-cell">{fmtNum(bm?.arena_vision_elo)}</td>
                       <td className="benchmark-cell">{fmtPct(bm?.arena_agent_score)}</td>
                       <td className="benchmark-cell">{fmtNum(bm?.sb_score, 1)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.ocr_omnidoc, 1)}</td>
                       <td className="benchmark-cell">{fmtPct(bm?.aider_pass_rate)}</td>
                       <td className="benchmark-cell">{fmtNum(bm?.aa_intelligence)}</td>
                       <td className="benchmark-cell">{fmtNum(bm?.aa_tokens_per_s)}</td>
@@ -728,7 +735,7 @@ function App() {
       
       <footer>
         <p>* All prices normalized to USD for comparison using 1 EUR = {EXCHANGE_RATE_EUR_TO_USD} USD.</p>
-        <p>Benchmark data from LLMStats, HF Leaderboard, LiveBench, Aider, MTEB, SkillsBench (Apache-2.0), and <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>. Arena leaderboards are from <a href="https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset" target="_blank" rel="noopener noreferrer">LMArena</a> (CC BY 4.0).</p>
+        <p>Benchmark data from LLMStats, HF Leaderboard, LiveBench, Aider, MTEB, SkillsBench (Apache-2.0), OmniDocBench (Apache-2.0), and <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>. Arena leaderboards are from <a href="https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset" target="_blank" rel="noopener noreferrer">LMArena</a> (CC BY 4.0).</p>
         <p>Sorted by input price by default.</p>
       </footer>
     </div>

@@ -70025,7 +70025,8 @@
       "arena_elo": "arena",
       "arena_webdev_elo": "arena",
       "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
+      "arena_factuality_elo": "arena",
+      "ocr_omnidoc": "omnidocbench"
     },
     "arena_name": "Kimi K2.5 (Thinking)",
     "arena_org": "moonshot",
@@ -70034,7 +70035,8 @@
     "arena_votes": 74682,
     "arena_webdev_elo": 1436.2450288272603,
     "arena_vision_elo": 1269.0200631630391,
-    "arena_factuality_elo": 1444.8415581602603
+    "arena_factuality_elo": 1444.8415581602603,
+    "ocr_omnidoc": 84.53
   },
   {
     "name": "kimi-k2.6",
@@ -70843,14 +70845,16 @@
       "arena_elo": "arena",
       "arena_webdev_elo": "arena",
       "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
+      "arena_factuality_elo": "arena",
+      "ocr_omnidoc": "omnidocbench"
     },
     "arena_elo": 1479.4013927240617,
     "arena_rank": 22,
     "arena_votes": 42057,
     "arena_webdev_elo": 1439.9733520268244,
     "arena_vision_elo": 1304.7505620472593,
-    "arena_factuality_elo": 1481.2423640533875
+    "arena_factuality_elo": 1481.2423640533875,
+    "ocr_omnidoc": 92.91
   },
   {
     "name": "Muse Spark 1.1",
@@ -71040,7 +71044,8 @@
       "arena_webdev_elo": "arena",
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena",
-      "sb_score": "skillsbench"
+      "sb_score": "skillsbench",
+      "ocr_omnidoc": "omnidocbench"
     },
     "arena_elo": 1465.6660542386348,
     "arena_rank": 37,
@@ -71049,7 +71054,8 @@
     "arena_vision_elo": 1284.9469808114234,
     "arena_factuality_elo": 1467.4990310300334,
     "sb_score": 54.6068,
-    "sb_lift": 20.3884
+    "sb_lift": 20.3884,
+    "ocr_omnidoc": 92.62
   },
   {
     "name": "DeepSeek-V4.1-Flash-20260910 (Max)",
@@ -72222,14 +72228,16 @@
       "arena_elo": "arena",
       "arena_webdev_elo": "arena",
       "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
+      "arena_factuality_elo": "arena",
+      "ocr_omnidoc": "omnidocbench"
     },
     "arena_elo": 1412.2817740990185,
     "arena_rank": 138,
     "arena_votes": 83793,
     "arena_webdev_elo": 1416.424922259506,
     "arena_vision_elo": 1228.610129112436,
-    "arena_factuality_elo": 1441.5668613661435
+    "arena_factuality_elo": 1441.5668613661435,
+    "ocr_omnidoc": 86.59
   },
   {
     "name": "MiMo-V2-Flash (Non-Thinking)",
@@ -75578,6 +75586,249 @@
     }
   },
   {
+    "name": "OXR-1.0",
+    "ocr_omnidoc": 97.03,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "TeleOCR",
+    "ocr_omnidoc": 96.91,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "OvisOCR2",
+    "ocr_omnidoc": 96.47,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "PaddleOCR-VL-1.6",
+    "ocr_omnidoc": 96.34,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "MinerU2.5-Pro",
+    "ocr_omnidoc": 95.75,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "GLM-OCR",
+    "ocr_omnidoc": 95.22,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench",
+      "ocr_avg": "manual"
+    },
+    "ocr_avg": 75.2
+  },
+  {
+    "name": "PaddleOCR-VL-1.5",
+    "ocr_omnidoc": 94.93,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "PaddleOCR-VL",
+    "ocr_omnidoc": 94.18,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench",
+      "ocr_avg": "manual"
+    },
+    "ocr_avg": 80
+  },
+  {
+    "name": "Unlimited-OCR",
+    "ocr_omnidoc": 94,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Youtu-Parsing",
+    "ocr_omnidoc": 93.74,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Qianfan-OCR",
+    "ocr_omnidoc": 93.9,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench",
+      "ocr_avg": "manual"
+    },
+    "ocr_avg": 79.8
+  },
+  {
+    "name": "Ovis2.6-30B-A3B",
+    "ocr_omnidoc": 93.7,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Logics-Parsing-v2",
+    "ocr_omnidoc": 93.33,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "ABot-OCR",
+    "ocr_omnidoc": 93.3,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "FireRed-OCR",
+    "ocr_omnidoc": 93.26,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench",
+      "ocr_avg": "manual"
+    },
+    "ocr_avg": 70.2
+  },
+  {
+    "name": "MinerU-2.5",
+    "ocr_omnidoc": 93.04,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "MonkeyOCR V2",
+    "ocr_omnidoc": 91.8,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "dots.ocr",
+    "ocr_omnidoc": 90.77,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench",
+      "ocr_avg": "manual"
+    },
+    "ocr_avg": 79.1
+  },
+  {
+    "name": "OpenDoc-0.1B",
+    "ocr_omnidoc": 90.67,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "DeepSeek-OCR 2",
+    "ocr_omnidoc": 90.25,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench",
+      "ocr_avg": "manual"
+    },
+    "ocr_avg": 76.3
+  },
+  {
+    "name": "HunyuanOCR",
+    "ocr_omnidoc": 89.95,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Qwen3-VL-235B",
+    "ocr_omnidoc": 89.78,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Dolphin-v2",
+    "ocr_omnidoc": 89.5,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "OCRVerse",
+    "ocr_omnidoc": 88.6,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "MonkeyOCR-pro-3B",
+    "ocr_omnidoc": 88.57,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Dolphin-1.5",
+    "ocr_omnidoc": 86.52,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "MinerU-Pipeline",
+    "ocr_omnidoc": 86.47,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "olmOCR",
+    "ocr_omnidoc": 85.74,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Mistral OCR",
+    "ocr_omnidoc": 85.66,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "InternVL3.5-241B",
+    "ocr_omnidoc": 83.76,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Nanonets-OCR-s",
+    "ocr_omnidoc": 83.61,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "POINTS-Reader",
+    "ocr_omnidoc": 83.37,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
+    "name": "Marker",
+    "ocr_omnidoc": 78.44,
+    "sources": {
+      "ocr_omnidoc": "omnidocbench"
+    }
+  },
+  {
     "hf_id": "datalab-to/chandra-ocr-2",
     "name": "chandra-ocr-2",
     "ocr_avg": 85.9,
@@ -75626,38 +75877,6 @@
     }
   },
   {
-    "hf_id": "PaddlePaddle/PaddleOCR-VL",
-    "name": "PaddleOCR-VL",
-    "ocr_avg": 80,
-    "sources": {
-      "ocr_avg": "manual"
-    }
-  },
-  {
-    "hf_id": "baidu/Qianfan-OCR",
-    "name": "Qianfan-OCR",
-    "ocr_avg": 79.8,
-    "sources": {
-      "ocr_avg": "manual"
-    }
-  },
-  {
-    "hf_id": "rednote-hilab/dots.ocr",
-    "name": "dots.ocr",
-    "ocr_avg": 79.1,
-    "sources": {
-      "ocr_avg": "manual"
-    }
-  },
-  {
-    "hf_id": "deepseek-ai/DeepSeek-OCR-2",
-    "name": "DeepSeek-OCR-2",
-    "ocr_avg": 76.3,
-    "sources": {
-      "ocr_avg": "manual"
-    }
-  },
-  {
     "hf_id": "lightonai/LightOnOCR-1B-1025",
     "name": "LightOnOCR-1B-1025",
     "ocr_avg": 76.1,
@@ -75677,22 +75896,6 @@
     "hf_id": "opendatalab/MinerU2.5-2509-1.2B",
     "name": "MinerU2.5-2509-1.2B",
     "ocr_avg": 75.2,
-    "sources": {
-      "ocr_avg": "manual"
-    }
-  },
-  {
-    "hf_id": "zai-org/GLM-OCR",
-    "name": "GLM-OCR",
-    "ocr_avg": 75.2,
-    "sources": {
-      "ocr_avg": "manual"
-    }
-  },
-  {
-    "hf_id": "FireRedTeam/FireRed-OCR",
-    "name": "FireRed-OCR",
-    "ocr_avg": 70.2,
     "sources": {
       "ocr_avg": "manual"
     }

@@ -677,6 +677,71 @@ function mergeMTEB(entries, mtebEntries) {
 
 // ─── OCR Benchmarks ────────────────────────────────────────────────────────
 
+// OmniDocBench (Apache-2.0) publishes its leaderboard as an HTML table in the
+// repo README: Model Type | Methods | Size | Overall | TextEdit | FormulaCDM |
+// TableTEDS | TableTEDS-S | Read OrderEdit.
+const OMNIDOC_README =
+  'https://raw.githubusercontent.com/opendatalab/OmniDocBench/main/README.md';
+
+async function fetchOmniDocBench() {
+  process.stdout.write('OmniDocBench: fetching leaderboard table... ');
+  const md = await getText(OMNIDOC_README);
+  const table = (md.match(/<table[\s\S]*?<\/table>/i) || [])[0];
+  if (!table) throw new Error('No leaderboard <table> in README');
+
+  const rows = [...table.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)].map((m) =>
+    [...m[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((c) =>
+      c[1].replace(/<[^>]+>/g, '').replace(/&#x2191;|&#x2193;|&nbsp;/g, '').trim()
+    )
+  );
+  const body = rows.filter((r) => r.length >= 4 && r[0] !== 'Model Type');
+  const models = [];
+  for (const r of body) {
+    const overall = parseFloat(r[3]);
+    if (!Number.isFinite(overall)) continue;
+    models.push({
+      name: r[0],
+      size: r[2],
+      overall,
+      text_edit: parseFloat(r[4]),
+      formula_cdm: parseFloat(r[5]),
+      table_teds: parseFloat(r[6]),
+    });
+  }
+  console.log(`${models.length} models`);
+  return models;
+}
+
+function mergeOmniDocBench(entries, odbEntries) {
+  if (!odbEntries.length) return entries;
+  const map = new Map();
+  for (const d of odbEntries) map.set(normName(d.name), d);
+
+  let matched = 0;
+  for (const e of entries) {
+    const candidates = [
+      normName(e.name || ''),
+      normName((e.hf_id || '').split('/').pop() || ''),
+      normName(e.hf_id || ''),
+    ].filter(Boolean);
+    const d = candidates.map((c) => map.get(c)).find(Boolean);
+    if (d) {
+      e.ocr_omnidoc = d.overall;
+      e.sources = { ...(e.sources || {}), ocr_omnidoc: 'omnidocbench' };
+      map.delete(normName(d.name));
+      matched++;
+    }
+  }
+
+  const rest = [...map.values()].map((d) => ({
+    name: d.name,
+    ocr_omnidoc: d.overall,
+    sources: { ocr_omnidoc: 'omnidocbench' },
+  }));
+  console.log(`  OmniDocBench: ${matched} matched, ${rest.length} new entries`);
+  return [...entries, ...rest];
+}
+
 function mergeOCR(entries) {
   const ocrData = [
     { name: 'datalab-to/chandra-ocr-2', score: 85.9 },
@@ -807,7 +872,7 @@ async function refreshSource(source) {
   else if (source === 'aider') result = mergeAider(stripped, await fetchAider());
   else if (source === 'aa') result = mergeArtificialAnalysis(stripped, await fetchArtificialAnalysis());
   else if (source === 'mteb') result = mergeMTEB(stripped, await fetchMTEB());
-  else if (source === 'ocr') result = mergeOCR(stripped);
+  else if (source === 'ocr') result = mergeOCR(mergeOmniDocBench(stripped, await fetchOmniDocBench().catch(() => [])), []);
   fs.writeFileSync(OUT_FILE, JSON.stringify(result, null, 2));
 }
 
@@ -897,7 +962,7 @@ async function main() {
     console.warn(`\n  ⚠ ${name} failed: ${e.message}`);
     return [];
   });
-  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, sbEntries, mtebEntries, readmeEntries] = await Promise.all([
+  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, sbEntries, odbEntries, mtebEntries, readmeEntries] = await Promise.all([
     safe('LLMStats', fetchLLMStats()),
     safe('HF', fetchHFLeaderboard()),
     safe('LiveBench', fetchLiveBench()),
@@ -905,6 +970,7 @@ async function main() {
     safe('Aider', fetchAider()),
     safe('Artificial Analysis', fetchArtificialAnalysis()),
     safe('SkillsBench', fetchSkillsBench()),
+    safe('OmniDocBench', fetchOmniDocBench()),
     safe('MTEB', fetchMTEB()),
     safe('HF README', fetchHFReadmeBenchmarks()),
   ]);
@@ -917,7 +983,8 @@ async function main() {
   const withSB  = mergeSkillsBench(withAA, sbEntries);
   const withMTEB = mergeMTEB(withSB, mtebEntries);
   const withReadme = mergeMTEB(withMTEB, readmeEntries);
-  const all     = mergeOCR(withReadme);
+  const withODB = mergeOmniDocBench(withReadme, odbEntries);
+  const all     = mergeOCR(withODB);
 
   console.log(`\nTotal entries: ${all.length}`);
   console.log(`  With LiveBench: ${all.filter(e => e.lb_name).length} | Arena: ${all.filter(e => e.arena_elo).length} | Aider: ${all.filter(e => e.aider_pass_rate !== undefined).length} | AA: ${all.filter(e => e.aa_intelligence !== undefined).length} | MTEB: ${all.filter(e => e.mteb_avg !== undefined).length} | OCR: ${all.filter(e => e.ocr_avg !== undefined).length}`);
