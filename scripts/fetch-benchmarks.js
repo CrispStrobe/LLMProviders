@@ -34,7 +34,8 @@
 const fs   = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
-const { getJson, getText } = require('./fetch-utils');
+const { getJson, getText, fetchRobust } = require('./fetch-utils');
+const { parquetReadObjects } = require('hyparquet');
 const { loadEnv } = require('./load-env');
 
 loadEnv();
@@ -117,34 +118,19 @@ async function fetchLLMStats() {
 const HF_ROWS_URL = 'https://datasets-server.huggingface.co/rows' +
   '?dataset=open-llm-leaderboard%2Fcontents&config=default&split=train';
 
-async function fetchHFPage(offset, limit = 100) {
-  const data = await getJson(`${HF_ROWS_URL}&offset=${offset}&limit=${limit}`);
-  return { rows: data.rows.map((r) => r.row), total: data.num_rows_total };
+const HF_PARQUET_URL =
+  'https://huggingface.co/datasets/open-llm-leaderboard/contents/resolve/main/data/train-00000-of-00001.parquet';
+
+async function readParquet(url) {
+  const res = await fetchRobust(url);
+  const buf = await res.arrayBuffer();
+  return parquetReadObjects({ file: buf });
 }
 
 async function fetchHFLeaderboard() {
-  process.stdout.write('HF Leaderboard: probing total... ');
-  const first = await fetchHFPage(0, 1);
-  const total = first.total;
-  console.log(`${total} rows`);
-
-  const LIMIT = 100;
-  const pages = Math.ceil(total / LIMIT);
-  const allRows = [...first.rows];
-
-  // Fetch remaining pages in batches of 5 concurrent requests
-  const CONCURRENT = 5;
-  for (let p = 1; p < pages; p += CONCURRENT) {
-    const batch = [];
-    for (let q = p; q < Math.min(p + CONCURRENT, pages); q++) {
-      batch.push(fetchHFPage(q * LIMIT, LIMIT));
-    }
-    const results = await Promise.all(batch);
-    results.forEach((r) => allRows.push(...r.rows));
-    const done = Math.min((p + CONCURRENT) * LIMIT, total);
-    process.stdout.write(`  HF: ${done}/${total}\r`);
-  }
-  console.log(`  HF: ${total}/${total} — filtering...            `);
+  process.stdout.write('HF Leaderboard: reading parquet... ');
+  const allRows = await readParquet(HF_PARQUET_URL);
+  console.log(`${allRows.length} rows — filtering...`);
 
   // The Average column name has a Unicode emoji
   const AVG_KEY = Object.keys(allRows[0]).find((k) => k.startsWith('Average'));
@@ -318,37 +304,63 @@ function mergeLiveBench(entries, lbEntries) {
 
 // ─── Chatbot Arena ───────────────────────────────────────────────────────────
 
+// LMArena publishes one dataset with 23 leaderboards (CC-BY-4.0).
+// Each config stores the full history, so keep only the newest publish date.
+const ARENA_CONFIGS = {
+  text:            { field: 'arena_elo',             kind: 'elo' },
+  webdev:          { field: 'arena_webdev_elo',      kind: 'elo' },
+  vision:          { field: 'arena_vision_elo',      kind: 'elo' },
+  text_factuality: { field: 'arena_factuality_elo',  kind: 'elo' },
+  search:          { field: 'arena_search_elo',      kind: 'elo' },
+  agent:           { field: 'arena_agent_score',     kind: 'score' },
+};
+
+function publishDate(row) {
+  const d = row.leaderboard_publish_date;
+  if (d == null) return '';
+  if (d instanceof Date) return d.toISOString().slice(0, 10);
+  return String(d).slice(0, 10);
+}
+
+async function fetchArenaConfig(config) {
+  const url =
+    'https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/resolve/main/' +
+    `${config}/latest-00000-of-00001.parquet`;
+  const res = await fetchRobust(url);
+  const buf = await res.arrayBuffer();
+  let rows = await parquetReadObjects({ file: buf });
+  const cats = [...new Set(rows.map((r) => r.category))];
+  if (cats.includes('overall')) rows = rows.filter((r) => r.category === 'overall');
+  const dates = [...new Set(rows.map(publishDate).filter(Boolean))].sort();
+  const latest = dates[dates.length - 1];
+  return latest ? rows.filter((r) => publishDate(r) === latest) : rows;
+}
+
 async function fetchChatbotArena() {
-  process.stdout.write('Chatbot Arena: fetching HF leaderboard dataset... ');
-  // lmarena.ai now redirects to arena.ai behind Cloudflare (403 to scrapers).
-  // The official dataset is published on Hugging Face with the same fields.
-  const base =
-    'https://datasets-server.huggingface.co/rows?dataset=lmarena-ai%2Fleaderboard-dataset&config=text&split=latest';
-  // The dataset holds ~11k historical rows, ordered by rank and starting with
-  // the latest publish date. The top 500 cover every model we can match.
-  const rows = [];
-  const MAX_ROWS = 500;
-  for (let offset = 0; offset < MAX_ROWS; offset += 100) {
-    const page = await getJson(`${base}&offset=${offset}&length=100`);
-    for (const r of page.rows || []) rows.push(r.row);
-    if (!page.rows || page.rows.length < 100) break;
-    await new Promise((r) => setTimeout(r, 800));
+  process.stdout.write('Chatbot Arena: reading HF parquet leaderboards...\n');
+  const byModel = new Map();
+  for (const [config, spec] of Object.entries(ARENA_CONFIGS)) {
+    let rows = [];
+    try {
+      rows = await fetchArenaConfig(config);
+    } catch (e) {
+      console.warn(`  ⚠ Arena ${config}: ${e.message}`);
+      continue;
+    }
+    for (const e of rows) {
+      const key = normName(e.model_name);
+      const rec = byModel.get(key) || { arena_name: e.model_name, arena_org: e.organization, sources: {} };
+      rec[spec.field] = spec.kind === 'elo' ? e.rating : e.score;
+      if (config === 'text') {
+        rec.arena_rank = e.rank;
+        rec.arena_votes = e.vote_count;
+      }
+      rec.sources[spec.field] = 'arena';
+      byModel.set(key, rec);
+    }
+    console.log(`  Arena ${config}: ${rows.length} models`);
   }
-  console.log(`${rows.length} models`);
-  return rows.map((e) => {
-    const entry = {
-      arena_name:  e.model_name,
-      arena_org:   e.organization,
-      arena_elo:   e.rating,
-      arena_rank:  e.rank,
-      arena_votes: e.vote_count,
-      sources: {},
-    };
-    Object.keys(entry).forEach(k => {
-      if (k.startsWith('arena_') && entry[k] !== undefined) entry.sources[k] = 'arena';
-    });
-    return entry;
-  });
+  return [...byModel.values()];
 }
 
 function mergeArena(entries, arenaEntries) {
@@ -361,7 +373,9 @@ function mergeArena(entries, arenaEntries) {
     const all = [...candidates, ...candidates.map((c) => normName(stripParen(c)))].filter(Boolean);
     const a = all.map((c) => arenaMap.get(c)).find(Boolean);
     if (a) {
-      e.arena_elo = a.arena_elo; e.arena_rank = a.arena_rank; e.arena_votes = a.arena_votes;
+      for (const k of Object.keys(a)) {
+        if (k.startsWith('arena_')) e[k] = a[k];
+      }
       e.sources = { ...(e.sources || {}), ...(a.sources || {}) };
       arenaMap.delete(normName(a.arena_name)); matched++;
     }
@@ -491,6 +505,54 @@ function mergeArtificialAnalysis(entries, aaEntries) {
 
   console.log(`  AA: ${matched} matched, ${newEntries.length} new entries`);
   return [...entries, ...newEntries];
+}
+
+// ─── SkillsBench (Apache-2.0) ───────────────────────────────────────────────
+
+const SKILLSBENCH_URL =
+  'https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/resolve/main/leaderboard/skillsbench/v1.1/official.json';
+
+async function fetchSkillsBench() {
+  process.stdout.write('SkillsBench: fetching official leaderboard... ');
+  const rows = await getJson(SKILLSBENCH_URL);
+  const byModel = new Map();
+  for (const r of rows) {
+    if (r.with_skills_score == null) continue;
+    const key = normName(r.model);
+    const prev = byModel.get(key);
+    if (!prev || r.with_skills_score > prev.sb_score) {
+      byModel.set(key, { name: r.model, sb_score: r.with_skills_score, sb_lift: r.skill_lift });
+    }
+  }
+  console.log(`${byModel.size} models`);
+  return [...byModel.values()];
+}
+
+function mergeSkillsBench(entries, sbEntries) {
+  const map = new Map();
+  for (const s of sbEntries) map.set(normName(s.name), s);
+
+  const stripParen = (s) => (s || '').replace(/\([^)]*\)/g, ' ');
+  let matched = 0;
+  for (const e of entries) {
+    const candidates = [normName(e.name || ''), normName(e.lb_name || ''), normName((e.slug || '').split('/').pop() || ''), normName((e.hf_id || '').split('/').pop() || ''), normName(stripParen(e.arena_name))].filter(Boolean);
+    const s = candidates.map((c) => map.get(c)).find(Boolean);
+    if (s) {
+      e.sb_score = s.sb_score;
+      if (s.sb_lift !== undefined) e.sb_lift = s.sb_lift;
+      e.sources = { ...(e.sources || {}), sb_score: 'skillsbench' };
+      map.delete(normName(s.name));
+      matched++;
+    }
+  }
+  const rest = [...map.values()].map((s) => ({
+    name: s.name,
+    sb_score: s.sb_score,
+    ...(s.sb_lift !== undefined ? { sb_lift: s.sb_lift } : {}),
+    sources: { sb_score: 'skillsbench' },
+  }));
+  console.log(`  SkillsBench: ${matched} matched, ${rest.length} new entries`);
+  return [...entries, ...rest];
 }
 
 // ─── MTEB ──────────────────────────────────────────────────────────────────
@@ -835,13 +897,14 @@ async function main() {
     console.warn(`\n  ⚠ ${name} failed: ${e.message}`);
     return [];
   });
-  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, mtebEntries, readmeEntries] = await Promise.all([
+  const [llmstats, hfEntries, lbEntries, arenaEntries, aiderEntries, aaEntries, sbEntries, mtebEntries, readmeEntries] = await Promise.all([
     safe('LLMStats', fetchLLMStats()),
     safe('HF', fetchHFLeaderboard()),
     safe('LiveBench', fetchLiveBench()),
     safe('Arena', fetchChatbotArena()),
     safe('Aider', fetchAider()),
     safe('Artificial Analysis', fetchArtificialAnalysis()),
+    safe('SkillsBench', fetchSkillsBench()),
     safe('MTEB', fetchMTEB()),
     safe('HF README', fetchHFReadmeBenchmarks()),
   ]);
@@ -851,7 +914,8 @@ async function main() {
   const withAr  = mergeArena(withLB, arenaEntries);
   const withAi  = mergeAider(withAr, aiderEntries);
   const withAA  = mergeArtificialAnalysis(withAi, aaEntries);
-  const withMTEB = mergeMTEB(withAA, mtebEntries);
+  const withSB  = mergeSkillsBench(withAA, sbEntries);
+  const withMTEB = mergeMTEB(withSB, mtebEntries);
   const withReadme = mergeMTEB(withMTEB, readmeEntries);
   const all     = mergeOCR(withReadme);
 

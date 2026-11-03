@@ -82,6 +82,14 @@ interface BenchmarkEntry {
   arena_elo?: number;   // raw ELO score ~800-1500 (higher = better)
   arena_rank?: number;
   arena_votes?: number;
+  arena_webdev_elo?: number;     // LMArena webdev leaderboard
+  arena_vision_elo?: number;     // LMArena vision leaderboard
+  arena_factuality_elo?: number; // LMArena factuality leaderboard
+  arena_search_elo?: number;     // LMArena search leaderboard
+  arena_agent_score?: number;    // LMArena agent arena (0-1)
+  // SkillsBench (agent skills, 0-100)
+  sb_score?: number;
+  sb_lift?: number;
   // Aider code editing benchmark (aider.chat)
   aider_pass_rate?: number; // 0-1, first-pass success on 133 coding tasks
   // Artificial Analysis (artificialanalysis.ai)
@@ -405,6 +413,10 @@ function App() {
         case 'lb_if':
         case 'lb_data_analysis':
         case 'arena_elo':
+        case 'arena_webdev_elo':
+        case 'arena_vision_elo':
+        case 'arena_agent_score':
+        case 'sb_score':
         case 'aider_pass_rate':
         case 'aa_intelligence':
         case 'aa_tokens_per_s':
@@ -574,7 +586,11 @@ function App() {
               <th onClick={() => requestSort('price')} className="sortable">Input Price (USD) {getSortIcon('price')}</th>
               <th onClick={() => requestSort('output_price')} className="sortable">Output Price {getSortIcon('output_price')}</th>
               {showBenchmarks && <>
-                <th onClick={() => requestSort('arena_elo')} className="sortable" title="Chatbot Arena ELO (human preference votes)">Arena ELO {getSortIcon('arena_elo')}</th>
+                <th onClick={() => requestSort('arena_elo')} className="sortable" title="Chatbot Arena ELO (LMArena, CC BY 4.0)">Arena ELO {getSortIcon('arena_elo')}</th>
+                <th onClick={() => requestSort('arena_webdev_elo')} className="sortable" title="LMArena WebDev leaderboard (ELO)">Arena Web {getSortIcon('arena_webdev_elo')}</th>
+                <th onClick={() => requestSort('arena_vision_elo')} className="sortable" title="LMArena Vision leaderboard (ELO)">Arena Vis {getSortIcon('arena_vision_elo')}</th>
+                <th onClick={() => requestSort('arena_agent_score')} className="sortable" title="LMArena Agent Arena (score)">Arena Agt {getSortIcon('arena_agent_score')}</th>
+                <th onClick={() => requestSort('sb_score')} className="sortable" title="SkillsBench v1.1, with skills (0-100)">SkillsBench {getSortIcon('sb_score')}</th>
                 <th onClick={() => requestSort('aider_pass_rate')} className="sortable" title="Aider code editing benchmark (pass rate, 133 tasks)">Aider {getSortIcon('aider_pass_rate')}</th>
                 <th onClick={() => requestSort('aa_intelligence')} className="sortable" title="Artificial Analysis Intelligence Index (0-100)">AA Intel {getSortIcon('aa_intelligence')}</th>
                 <th onClick={() => requestSort('aa_tokens_per_s')} className="sortable" title="Artificial Analysis Median Speed (Tokens per Second)">AA Speed {getSortIcon('aa_tokens_per_s')}</th>
@@ -680,6 +696,10 @@ function App() {
                   {showBenchmarks && (
                     <>
                       <td className="benchmark-cell">{fmtNum(bm?.arena_elo)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.arena_webdev_elo)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.arena_vision_elo)}</td>
+                      <td className="benchmark-cell">{fmtPct(bm?.arena_agent_score)}</td>
+                      <td className="benchmark-cell">{fmtNum(bm?.sb_score, 1)}</td>
                       <td className="benchmark-cell">{fmtPct(bm?.aider_pass_rate)}</td>
                       <td className="benchmark-cell">{fmtNum(bm?.aa_intelligence)}</td>
                       <td className="benchmark-cell">{fmtNum(bm?.aa_tokens_per_s)}</td>
@@ -708,7 +728,7 @@ function App() {
       
       <footer>
         <p>* All prices normalized to USD for comparison using 1 EUR = {EXCHANGE_RATE_EUR_TO_USD} USD.</p>
-        <p>Benchmark data from LLMStats, HF Leaderboard, LiveBench, Chatbot Arena, Aider, MTEB, and <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>.</p>
+        <p>Benchmark data from LLMStats, HF Leaderboard, LiveBench, Aider, MTEB, SkillsBench (Apache-2.0), and <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>. Arena leaderboards are from <a href="https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset" target="_blank" rel="noopener noreferrer">LMArena</a> (CC BY 4.0).</p>
         <p>Sorted by input price by default.</p>
       </footer>
     </div>
