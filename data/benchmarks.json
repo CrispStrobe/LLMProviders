@@ -17,7 +17,7 @@
     },
     "arena_name": "Jamba 1.5 Large",
     "arena_org": "",
-    "arena_elo": 1237.0005423556381,
+    "arena_elo": 1236.9858702781748,
     "arena_rank": 301,
     "arena_votes": 8662
   },
@@ -39,7 +39,7 @@
     },
     "arena_name": "Jamba 1.5 Mini",
     "arena_org": "",
-    "arena_elo": 1186.6521257567038,
+    "arena_elo": 1186.6374583470654,
     "arena_rank": 329,
     "arena_votes": 8858
   },
@@ -153,10 +153,10 @@
     "lb_data_analysis": 0.5411900000000001,
     "arena_name": "Claude 3.5 Haiku (20241022)",
     "arena_org": "anthropic",
-    "arena_elo": 1255.3891286269982,
+    "arena_elo": 1255.3518487320878,
     "arena_rank": 296,
-    "arena_votes": 69056,
-    "arena_vision_elo": 1092.531857925993,
+    "arena_votes": 69053,
+    "arena_vision_elo": 1092.0567931377254,
     "aider_pass_rate": 0.617
   },
   {
@@ -192,10 +192,10 @@
     "lb_data_analysis": 0.5411,
     "arena_name": "Claude 3.5 Sonnet (20240620)",
     "arena_org": "anthropic",
-    "arena_elo": 1280.896652398561,
+    "arena_elo": 1280.8810136455568,
     "arena_rank": 274,
     "arena_votes": 82419,
-    "arena_vision_elo": 1120.325739597657,
+    "arena_vision_elo": 1120.3089421138893,
     "aider_pass_rate": 0.5710000000000001
   },
   {
@@ -234,10 +234,10 @@
     "lb_data_analysis": 0.5618650000000001,
     "arena_name": "Claude 3.5 Sonnet (20241022)",
     "arena_org": "anthropic",
-    "arena_elo": 1297.8386892679282,
+    "arena_elo": 1297.7672438339482,
     "arena_rank": 254,
-    "arena_votes": 87771,
-    "arena_vision_elo": 1125.5350076422883,
+    "arena_votes": 87759,
+    "arena_vision_elo": 1125.5065167674193,
     "aider_pass_rate": 0.6920000000000001
   },
   {
@@ -274,10 +274,10 @@
     "lb_data_analysis": 0.3731,
     "arena_name": "Claude 3 Haiku (20240307)",
     "arena_org": "anthropic",
-    "arena_elo": 1194.6570990793484,
+    "arena_elo": 1194.6417538188314,
     "arena_rank": 324,
     "arena_votes": 117701,
-    "arena_vision_elo": 950.1664511454893,
+    "arena_vision_elo": 950.1503504452564,
     "aider_pass_rate": 0.406
   },
   {
@@ -315,10 +315,10 @@
     "lb_data_analysis": 0.5784,
     "arena_name": "Claude 3 Opus (20240229)",
     "arena_org": "anthropic",
-    "arena_elo": 1261.9814463613552,
+    "arena_elo": 1261.9659229325368,
     "arena_rank": 292,
     "arena_votes": 194909,
-    "arena_vision_elo": 1022.9373580178788,
+    "arena_vision_elo": 1022.9210131177075,
     "aider_pass_rate": 0.534
   },
   {
@@ -356,10 +356,10 @@
     "lb_data_analysis": 0.38839999999999997,
     "arena_name": "Claude 3 Sonnet (20240229)",
     "arena_org": "anthropic",
-    "arena_elo": 1218.0144731217395,
+    "arena_elo": 1217.999663499353,
     "arena_rank": 314,
     "arena_votes": 109284,
-    "arena_vision_elo": 983.9308987957681,
+    "arena_vision_elo": 983.9149453642742,
     "aider_pass_rate": 0.436
   },
   {
@@ -388,7 +388,7 @@
     "lb_data_analysis": 0.2354,
     "arena_name": "Command R+",
     "arena_org": "cohere",
-    "arena_elo": 1163.1100539155575,
+    "arena_elo": 1163.095233635345,
     "arena_rank": 341,
     "arena_votes": 54036
   },
@@ -422,7 +422,7 @@
     "lb_data_analysis": 0.69625,
     "arena_name": "DeepSeek-R1",
     "arena_org": "deepseek",
-    "arena_elo": 1372.653848920152,
+    "arena_elo": 1372.6529657608748,
     "arena_rank": 184,
     "arena_votes": 18524
   },
@@ -454,7 +454,7 @@
     "lb_data_analysis": 0.4417,
     "arena_name": "DeepSeek-V2.5",
     "arena_org": "deepseek",
-    "arena_elo": 1271.2289949457931,
+    "arena_elo": 1271.2130473920242,
     "arena_rank": 284,
     "arena_votes": 24572,
     "aider_pass_rate": 0.5489999999999999
@@ -487,7 +487,7 @@
     "lb_data_analysis": 0.6241,
     "arena_name": "DeepSeek-V3",
     "arena_org": "deepseek",
-    "arena_elo": 1332.4697958402517,
+    "arena_elo": 1332.4609008327932,
     "arena_rank": 227,
     "arena_votes": 21770
   },
@@ -645,7 +645,7 @@
     "lb_data_analysis": 0.4481,
     "arena_name": "Gemma 2 27B IT",
     "arena_org": "google",
-    "arena_elo": 1231.354781871701,
+    "arena_elo": 1231.3419556133488,
     "arena_rank": 303,
     "arena_votes": 75754
   },
@@ -687,7 +687,7 @@
     "lb_data_analysis": 0.2959,
     "arena_name": "Gemma 2 9B IT",
     "arena_org": "google",
-    "arena_elo": 1207.3693729283832,
+    "arena_elo": 1207.356455200811,
     "arena_rank": 319,
     "arena_votes": 54611
   },
@@ -757,7 +757,7 @@
     "hf_avg": 43.409948245645786,
     "arena_name": "Llama 3.1 70B Instruct",
     "arena_org": "meta",
-    "arena_elo": 1260.8844836857302,
+    "arena_elo": 1260.8685967107156,
     "arena_rank": 293,
     "arena_votes": 55240,
     "aider_pass_rate": 0.436
@@ -804,7 +804,7 @@
     "hf_avg": 28.01011138792457,
     "arena_name": "Llama 3.1 8B Instruct",
     "arena_org": "meta",
-    "arena_elo": 1186.5545901947103,
+    "arena_elo": 1186.5387197583752,
     "arena_rank": 330,
     "arena_votes": 49605,
     "aider_pass_rate": 0.263
@@ -862,7 +862,7 @@
     "hf_avg": 24.204650807793456,
     "arena_name": "Llama 3.2 3B Instruct",
     "arena_org": "meta",
-    "arena_elo": 1109.5096276380536,
+    "arena_elo": 1109.494942687767,
     "arena_rank": 364,
     "arena_votes": 7936
   },
@@ -916,9 +916,9 @@
     "hf_avg": 44.84747145129876,
     "arena_name": "Llama 3.3 70B Instruct",
     "arena_org": "meta",
-    "arena_elo": 1274.2339448941143,
+    "arena_elo": 1274.1932737696206,
     "arena_rank": 279,
-    "arena_votes": 54493,
+    "arena_votes": 54491,
     "aider_pass_rate": 0.42100000000000004
   },
   {
@@ -1005,7 +1005,7 @@
     },
     "arena_name": "Phi-3.5 Vision Instruct",
     "arena_org": "microsoft",
-    "arena_vision_elo": 851.4841159333629
+    "arena_vision_elo": 851.4680849496863
   },
   {
     "slug": "microsoft/phi-4",
@@ -1043,7 +1043,7 @@
     "lb_data_analysis": 0.4376,
     "arena_name": "Phi-4",
     "arena_org": "microsoft",
-    "arena_elo": 1216.6603026331472,
+    "arena_elo": 1216.6552229178305,
     "arena_rank": 317,
     "arena_votes": 24126
   },
@@ -1105,7 +1105,7 @@
     },
     "arena_name": "Mistral Large 2 (2407)",
     "arena_org": "mistral",
-    "arena_elo": 1266.1223583516378,
+    "arena_elo": 1266.1065941745364,
     "arena_rank": 286,
     "arena_votes": 45459,
     "aider_pass_rate": 0.39799999999999996
@@ -1176,7 +1176,7 @@
     },
     "arena_name": "Pixtral 12B (2409)",
     "arena_org": "mistral",
-    "arena_vision_elo": 1008.5847589149262
+    "arena_vision_elo": 1008.5671972581226
   },
   {
     "slug": "mistral/pixtral-large",
@@ -1227,7 +1227,7 @@
     "lb_data_analysis": 0.33599999999999997,
     "arena_name": "Llama 3.1 Nemotron 70B Instruct",
     "arena_org": "nvidia",
-    "arena_elo": 1282.6318653427738,
+    "arena_elo": 1282.6153035009827,
     "arena_rank": 269,
     "arena_votes": 7140
   },
@@ -1261,7 +1261,7 @@
     "lb_data_analysis": 0.3682,
     "arena_name": "GPT-3.5 Turbo (0125)",
     "arena_org": "openai",
-    "arena_elo": 1124.8957839258728,
+    "arena_elo": 1124.8808951249393,
     "arena_rank": 357,
     "arena_votes": 66207,
     "aider_pass_rate": 0.414
@@ -1297,7 +1297,7 @@
     "lb_data_analysis": 0.39039999999999997,
     "arena_name": "GPT-4 (0613)",
     "arena_org": "openai",
-    "arena_elo": 1185.982205356655,
+    "arena_elo": 1185.9673234215925,
     "arena_rank": 331,
     "arena_votes": 88723,
     "aider_pass_rate": 0.466
@@ -1331,10 +1331,10 @@
     "lb_data_analysis": 0.4998,
     "arena_name": "GPT-4 Turbo (2024-04-09)",
     "arena_org": "openai",
-    "arena_elo": 1271.668366608304,
+    "arena_elo": 1271.6528631309145,
     "arena_rank": 282,
     "arena_votes": 98114,
-    "arena_vision_elo": 1089.8779178737723
+    "arena_vision_elo": 1089.8618032450818
   },
   {
     "slug": "openai/gpt-4o-2024-05-13",
@@ -1367,10 +1367,10 @@
     "lb_data_analysis": 0.4661,
     "arena_name": "GPT-4o (2024-05-13)",
     "arena_org": "openai",
-    "arena_elo": 1300.4126129264994,
+    "arena_elo": 1300.396821593649,
     "arena_rank": 250,
     "arena_votes": 112881,
-    "arena_vision_elo": 1136.635611496261,
+    "arena_vision_elo": 1136.618562292946,
     "aider_pass_rate": 0.602
   },
   {
@@ -1401,10 +1401,10 @@
     "lb_data_analysis": 0.6236999999999999,
     "arena_name": "GPT-4o (2024-08-06)",
     "arena_org": "openai",
-    "arena_elo": 1282.5185711415197,
+    "arena_elo": 1282.502543271007,
     "arena_rank": 270,
     "arena_votes": 45499,
-    "arena_vision_elo": 1064.564991850618,
+    "arena_vision_elo": 1064.5477550795529,
     "aider_pass_rate": 0.5710000000000001
   },
   {
@@ -1440,10 +1440,10 @@
     "lb_data_analysis": 0.55099,
     "arena_name": "GPT-4o mini (2024-07-18)",
     "arena_org": "openai",
-    "arena_elo": 1286.3528401890399,
+    "arena_elo": 1286.3428742990222,
     "arena_rank": 266,
     "arena_votes": 68705,
-    "arena_vision_elo": 1065.6313069345274,
+    "arena_vision_elo": 1065.6204980065731,
     "aider_pass_rate": 0.406
   },
   {
@@ -1485,10 +1485,10 @@
     "hf_avg": 27.639223265636087,
     "arena_name": "o1 (2024-12-17)",
     "arena_org": "openai",
-    "arena_elo": 1365.7933983738872,
+    "arena_elo": 1365.788282867661,
     "arena_rank": 194,
     "arena_votes": 27807,
-    "arena_vision_elo": 1168.371030308677,
+    "arena_vision_elo": 1168.368796909418,
     "aider_pass_rate": 0.654
   },
   {
@@ -1508,7 +1508,7 @@
     },
     "arena_name": "o1-mini",
     "arena_org": "openai",
-    "arena_elo": 1317.0514782906916,
+    "arena_elo": 1317.0377231637954,
     "arena_rank": 241,
     "arena_votes": 51981,
     "aider_pass_rate": 0.5
@@ -1530,7 +1530,7 @@
     },
     "arena_name": "o1-preview",
     "arena_org": "openai",
-    "arena_elo": 1352.7494178866673,
+    "arena_elo": 1352.7332742250126,
     "arena_rank": 208,
     "arena_votes": 31122,
     "aider_pass_rate": 0.579
@@ -1559,9 +1559,9 @@
     },
     "arena_name": "o3-mini",
     "arena_org": "openai",
-    "arena_elo": 1319.4064542183678,
+    "arena_elo": 1319.4162547529388,
     "arena_rank": 238,
-    "arena_votes": 56735
+    "arena_votes": 56721
   },
   {
     "slug": "openai/o3",
@@ -1686,7 +1686,7 @@
     "lb_data_analysis": 0.4718,
     "arena_name": "Qwen2.5-72B-Instruct",
     "arena_org": "alibaba",
-    "arena_elo": 1268.9953893416152,
+    "arena_elo": 1268.980516909578,
     "arena_rank": 285,
     "arena_votes": 39406
   },
@@ -1760,7 +1760,7 @@
     "lb_data_analysis": 0.48810000000000003,
     "arena_name": "Qwen2.5-Coder-32B-Instruct",
     "arena_org": "alibaba",
-    "arena_elo": 1230.0212940556198,
+    "arena_elo": 1230.0038470831814,
     "arena_rank": 304,
     "arena_votes": 5432,
     "aider_pass_rate": 0.594
@@ -1843,7 +1843,7 @@
     "lb_data_analysis": 0.1636,
     "arena_name": "Qwen2-72B-Instruct",
     "arena_org": "alibaba",
-    "arena_elo": 1203.2485507387414,
+    "arena_elo": 1203.2338153618446,
     "arena_rank": 322,
     "arena_votes": 37325,
     "aider_pass_rate": 0.444
@@ -1909,7 +1909,7 @@
     "hf_avg": 39.53661995549832,
     "arena_name": "Qwen2-VL-72B",
     "arena_org": "alibaba",
-    "arena_vision_elo": 1046.9531967381797
+    "arena_vision_elo": 1046.9360739516023
   },
   {
     "slug": "qwen/qwq-32b-preview",
@@ -1943,7 +1943,7 @@
     "lb_data_analysis": 0.25925,
     "arena_name": "QwQ-32B-Preview",
     "arena_org": "alibaba",
-    "arena_elo": 1161.7700834730654,
+    "arena_elo": 1161.7536883816115,
     "arena_rank": 343,
     "arena_votes": 3231
   },
@@ -2121,7 +2121,7 @@
     "hf_avg": 33.35799367075618,
     "arena_name": "Yi 1.5 34B Chat",
     "arena_org": "",
-    "arena_elo": 1172.9344385201462,
+    "arena_elo": 1172.9196159229766,
     "arena_rank": 335,
     "arena_votes": 24146
   },
@@ -2347,7 +2347,7 @@
     "hf_avg": 24.226662652803373,
     "arena_name": "Yi 34B Chat",
     "arena_org": "",
-    "arena_elo": 1128.445588324374,
+    "arena_elo": 1128.430617682547,
     "arena_rank": 354,
     "arena_votes": 15483
   },
@@ -2867,7 +2867,7 @@
     "hf_avg": 14.343669671742774,
     "arena_name": "Llama 3 8B Instruct",
     "arena_org": "meta",
-    "arena_elo": 1165.5792666299885,
+    "arena_elo": 1165.5644355237187,
     "arena_rank": 338,
     "arena_votes": 104642
   },
@@ -4763,7 +4763,7 @@
     "hf_avg": 29.718510126577055,
     "arena_name": "Aya Expanse 32B",
     "arena_org": "cohere",
-    "arena_elo": 1223.9851424788685,
+    "arena_elo": 1223.9710220767681,
     "arena_rank": 312,
     "arena_votes": 27124
   },
@@ -4791,7 +4791,7 @@
     "hf_avg": 22.406573697993498,
     "arena_name": "Aya Expanse 8B",
     "arena_org": "cohere",
-    "arena_elo": 1185.0880154678862,
+    "arena_elo": 1185.074394092697,
     "arena_rank": 332,
     "arena_votes": 9818
   },
@@ -11065,7 +11065,7 @@
     "lb_data_analysis": 0.081,
     "arena_name": "Zephyr 7B Alpha",
     "arena_org": "",
-    "arena_elo": 1058.3430374770055,
+    "arena_elo": 1058.3280546225799,
     "arena_rank": 388,
     "arena_votes": 1785
   },
@@ -11099,7 +11099,7 @@
     "lb_data_analysis": 0.0762,
     "arena_name": "Zephyr 7B Beta",
     "arena_org": "",
-    "arena_elo": 1069.395760178566,
+    "arena_elo": 1069.380798941842,
     "arena_rank": 385,
     "arena_votes": 11118
   },
@@ -11149,7 +11149,7 @@
     "hf_avg": 34.125963384670946,
     "arena_name": "Zephyr ORPO 141B A35B v0.1",
     "arena_org": "",
-    "arena_elo": 1143.6680577424963,
+    "arena_elo": 1143.6530817698854,
     "arena_rank": 348,
     "arena_votes": 4652
   },
@@ -11331,7 +11331,7 @@
     "hf_avg": 15.02227766709556,
     "arena_name": "SmolLM2 1.7B Instruct",
     "arena_org": "",
-    "arena_elo": 1041.9975021572077,
+    "arena_elo": 1041.9811204467587,
     "arena_rank": 398,
     "arena_votes": 2199
   },
@@ -18357,7 +18357,7 @@
     "hf_avg": 27.353190438571634,
     "arena_name": "Nous Hermes 2 Mixtral 8x7B DPO",
     "arena_org": "",
-    "arena_elo": 1112.0138943755924,
+    "arena_elo": 1111.998922226435,
     "arena_rank": 362,
     "arena_votes": 3777
   },
@@ -20273,9 +20273,9 @@
     "lb_data_analysis": 0.69529,
     "arena_name": "QwQ-32B",
     "arena_org": "alibaba",
-    "arena_elo": 1329.043678839363,
+    "arena_elo": 1329.0914888064553,
     "arena_rank": 232,
-    "arena_votes": 25177
+    "arena_votes": 25174
   },
   {
     "hf_id": "Qwen/Qwen1.5-0.5B",
@@ -20430,7 +20430,7 @@
     "lb_data_analysis": 0.20179999999999998,
     "arena_name": "Qwen1.5-110B-Chat",
     "arena_org": "alibaba",
-    "arena_elo": 1174.5467824172626,
+    "arena_elo": 1174.5318553752595,
     "arena_rank": 334,
     "arena_votes": 26195,
     "aider_pass_rate": 0.308
@@ -20481,7 +20481,7 @@
     "hf_avg": 23.566106475051374,
     "arena_name": "Qwen1.5-14B-Chat",
     "arena_org": "alibaba",
-    "arena_elo": 1127.66896734913,
+    "arena_elo": 1127.6540026842472,
     "arena_rank": 355,
     "arena_votes": 17839
   },
@@ -20531,7 +20531,7 @@
     "hf_avg": 29.25746822860332,
     "arena_name": "Qwen1.5-32B-Chat",
     "arena_org": "alibaba",
-    "arena_elo": 1137.1780655479756,
+    "arena_elo": 1137.163127183795,
     "arena_rank": 350,
     "arena_votes": 21741
   },
@@ -20587,7 +20587,7 @@
     "lb_data_analysis": 0.0469,
     "arena_name": "Qwen1.5-4B-Chat",
     "arena_org": "alibaba",
-    "arena_elo": 997.2076490798005,
+    "arena_elo": 997.1926628845156,
     "arena_rank": 406,
     "arena_votes": 7597
   },
@@ -20643,7 +20643,7 @@
     "lb_data_analysis": 0.0435,
     "arena_name": "Qwen1.5-7B-Chat",
     "arena_org": "alibaba",
-    "arena_elo": 1083.4342730786866,
+    "arena_elo": 1083.419305396266,
     "arena_rank": 378,
     "arena_votes": 4737
   },
@@ -20947,7 +20947,7 @@
     "hf_avg": 26.493258763428177,
     "arena_name": "Qwen2-VL-7B-Instruct",
     "arena_org": "alibaba",
-    "arena_vision_elo": 989.9252350715336
+    "arena_vision_elo": 989.9082902430323
   },
   {
     "hf_id": "Qwen/Qwen2.5-0.5B",
@@ -30247,7 +30247,7 @@
     "hf_avg": 42.33178738532094,
     "arena_name": "Llama 3.1 Tulu 3 70B",
     "arena_org": "allenai",
-    "arena_elo": 1255.7017068066589,
+    "arena_elo": 1255.686050054531,
     "arena_rank": 295,
     "arena_votes": 2846
   },
@@ -30341,7 +30341,7 @@
     "hf_avg": 26.034998081672143,
     "arena_name": "Llama 3.1 Tulu 3 8B",
     "arena_org": "allenai",
-    "arena_elo": 1193.2842176045915,
+    "arena_elo": 1193.2685527111032,
     "arena_rank": 325,
     "arena_votes": 2896
   },
@@ -33901,7 +33901,7 @@
     "hf_avg": 20.83936104726783,
     "arena_name": "Starling LM 7B Alpha",
     "arena_org": "",
-    "arena_elo": 1107.6358840536582,
+    "arena_elo": 1107.6209202364585,
     "arena_rank": 365,
     "arena_votes": 10224
   },
@@ -35939,7 +35939,7 @@
     "hf_avg": 27.310631874736753,
     "arena_name": "DeepSeek LLM 67B Chat",
     "arena_org": "deepseek",
-    "arena_elo": 1105.0043462460053,
+    "arena_elo": 1104.9893606141702,
     "arena_rank": 368,
     "arena_votes": 4932
   },
@@ -38649,7 +38649,7 @@
     "hf_avg": 8.053373854341979,
     "arena_name": "Gemma 1.1 2B IT",
     "arena_org": "google",
-    "arena_elo": 1022.197173624908,
+    "arena_elo": 1022.1822487925106,
     "arena_rank": 404,
     "arena_votes": 10854
   },
@@ -38683,7 +38683,7 @@
     "lb_data_analysis": 0.0726,
     "arena_name": "Gemma 1.1 7B IT",
     "arena_org": "google",
-    "arena_elo": 1093.9473484400726,
+    "arena_elo": 1093.932482837388,
     "arena_rank": 374,
     "arena_votes": 23893
   },
@@ -38755,7 +38755,7 @@
     "hf_avg": 17.046939294966545,
     "arena_name": "Gemma 2 2B IT",
     "arena_org": "google",
-    "arena_elo": 1155.7512846627624,
+    "arena_elo": 1155.7383933662604,
     "arena_rank": 345,
     "arena_votes": 46616
   },
@@ -38849,7 +38849,7 @@
     "hf_avg": 7.485804130315127,
     "arena_name": "Gemma 2B IT",
     "arena_org": "google",
-    "arena_elo": 1002.1202620771184,
+    "arena_elo": 1002.1052315847505,
     "arena_rank": 405,
     "arena_votes": 4780
   },
@@ -38899,7 +38899,7 @@
     "hf_avg": 13.067087110466217,
     "arena_name": "Gemma 7B IT",
     "arena_org": "google",
-    "arena_elo": 1056.12854408776,
+    "arena_elo": 1056.1135780405475,
     "arena_rank": 391,
     "arena_votes": 8925
   },
@@ -40741,7 +40741,7 @@
     "hf_avg": 9.39218439885523,
     "arena_name": "LLaMA 13B",
     "arena_org": "meta",
-    "arena_elo": 833.4819229699849,
+    "arena_elo": 833.4669435157075,
     "arena_rank": 419,
     "arena_votes": 2391
   },
@@ -41319,7 +41319,7 @@
     "hf_avg": 18.396095114284222,
     "arena_name": "Granite 3.0 2B Instruct",
     "arena_org": "ibm",
-    "arena_elo": 1079.8237006022864,
+    "arena_elo": 1079.8072353841214,
     "arena_rank": 382,
     "arena_votes": 6837
   },
@@ -41413,7 +41413,7 @@
     "hf_avg": 24.027678753483297,
     "arena_name": "Granite 3.0 8B Instruct",
     "arena_org": "ibm",
-    "arena_elo": 1096.4203680884266,
+    "arena_elo": 1096.4038611010672,
     "arena_rank": 372,
     "arena_votes": 6638
   },
@@ -41507,7 +41507,7 @@
     "hf_avg": 21.712212822028288,
     "arena_name": "Granite 3.1 2B Instruct",
     "arena_org": "ibm",
-    "arena_elo": 1127.3849756129448,
+    "arena_elo": 1127.3697667790384,
     "arena_rank": 356,
     "arena_votes": 3188
   },
@@ -41601,7 +41601,7 @@
     "hf_avg": 30.6030430081627,
     "arena_name": "Granite 3.1 8B Instruct",
     "arena_org": "ibm",
-    "arena_elo": 1149.5031145638968,
+    "arena_elo": 1149.48782383228,
     "arena_rank": 346,
     "arena_votes": 3090
   },
@@ -42461,7 +42461,7 @@
     "hf_avg": 38.87959582082076,
     "arena_name": "InternLM2.5 20B Chat",
     "arena_org": "",
-    "arena_elo": 1158.421487315993,
+    "arena_elo": 1158.4066473358748,
     "arena_rank": 344,
     "arena_votes": 9901
   },
@@ -46517,7 +46517,7 @@
     "hf_avg": 14.443126333711135,
     "arena_name": "Llama 3.2 1B Instruct",
     "arena_org": "meta",
-    "arena_elo": 1054.6099914712167,
+    "arena_elo": 1054.5954204227662,
     "arena_rank": 392,
     "arena_votes": 8045
   },
@@ -46815,7 +46815,7 @@
     "lb_data_analysis": 0.2044,
     "arena_name": "Phi-3 Medium 4K Instruct",
     "arena_org": "microsoft",
-    "arena_elo": 1137.5255077500833,
+    "arena_elo": 1137.5107727013426,
     "arena_rank": 349,
     "arena_votes": 25055
   },
@@ -46849,7 +46849,7 @@
     "lb_data_analysis": 0.26030000000000003,
     "arena_name": "Phi-3 Mini 128K Instruct",
     "arena_org": "microsoft",
-    "arena_elo": 1050.3629599176484,
+    "arena_elo": 1050.348016534148,
     "arena_rank": 397,
     "arena_votes": 20685
   },
@@ -46883,7 +46883,7 @@
     "lb_data_analysis": 0.2232,
     "arena_name": "Phi-3 Mini 4K Instruct",
     "arena_org": "microsoft",
-    "arena_elo": 1073.2805508074466,
+    "arena_elo": 1073.2657094805472,
     "arena_rank": 384,
     "arena_votes": 20118
   },
@@ -46973,7 +46973,7 @@
     "lb_data_analysis": 0.2343,
     "arena_name": "Phi-3 Small 8K Instruct",
     "arena_org": "microsoft",
-    "arena_elo": 1109.7983017958509,
+    "arena_elo": 1109.7834831335074,
     "arena_rank": 363,
     "arena_votes": 17766
   },
@@ -47423,7 +47423,7 @@
     "lb_data_analysis": 0.059300000000000005,
     "arena_name": "Mistral 7B Instruct v0.2",
     "arena_org": "mistral",
-    "arena_elo": 1089.5394885491264,
+    "arena_elo": 1089.5245220888876,
     "arena_rank": 376,
     "arena_votes": 19402
   },
@@ -47639,7 +47639,7 @@
     "lb_data_analysis": 0.255,
     "arena_name": "Mixtral 8x22B Instruct v0.1",
     "arena_org": "mistral",
-    "arena_elo": 1161.9623243063847,
+    "arena_elo": 1161.9475322604376,
     "arena_rank": 342,
     "arena_votes": 51416
   },
@@ -47695,7 +47695,7 @@
     "lb_data_analysis": 0.1619,
     "arena_name": "Mixtral 8x7B Instruct v0.1",
     "arena_org": "mistral",
-    "arena_elo": 1131.533624725182,
+    "arena_elo": 1131.5187555410826,
     "arena_rank": 352,
     "arena_votes": 73503
   },
@@ -51963,7 +51963,7 @@
     "hf_avg": 22.70925524673515,
     "arena_name": "OpenChat 3.5 (0106)",
     "arena_org": "",
-    "arena_elo": 1106.5834175859072,
+    "arena_elo": 1106.5684335154929,
     "arena_rank": 366,
     "arena_votes": 12637
   },
@@ -52035,7 +52035,7 @@
     "hf_avg": 21.635827111564595,
     "arena_name": "OpenChat 3.5",
     "arena_org": "",
-    "arena_elo": 1097.006877616248,
+    "arena_elo": 1096.991913883896,
     "arena_rank": 371,
     "arena_votes": 7968
   },
@@ -54151,7 +54151,7 @@
     "hf_avg": 22.3449346084354,
     "arena_name": "Gemma 2 9B IT SimPO",
     "arena_org": "",
-    "arena_elo": 1227.040537421406,
+    "arena_elo": 1227.0258600556626,
     "arena_rank": 308,
     "arena_votes": 10072
   },
@@ -60553,7 +60553,7 @@
     "lb_data_analysis": 0.1738,
     "arena_name": "OpenHermes 2.5 Mistral 7B",
     "arena_org": "",
-    "arena_elo": 1092.4737967621568,
+    "arena_elo": 1092.4588422702536,
     "arena_rank": 375,
     "arena_votes": 5006
   },
@@ -62479,7 +62479,7 @@
     "hf_avg": 20.57236409322395,
     "arena_name": "SOLAR 10.7B Instruct v1.0",
     "arena_org": "upstage",
-    "arena_elo": 1083.061724330194,
+    "arena_elo": 1083.0467688172837,
     "arena_rank": 379,
     "arena_votes": 4155
   },
@@ -65077,7 +65077,7 @@
     },
     "arena_name": "Command R+ (08-2024)",
     "arena_org": "cohere",
-    "arena_elo": 1187.3354116031178,
+    "arena_elo": 1187.3207002487275,
     "arena_rank": 328,
     "arena_votes": 10140
   },
@@ -65144,7 +65144,7 @@
     },
     "arena_name": "DeepSeek-Coder-V2",
     "arena_org": "deepseek",
-    "arena_elo": 1191.1666419375047,
+    "arena_elo": 1191.151942383103,
     "arena_rank": 326,
     "arena_votes": 15147
   },
@@ -65443,7 +65443,7 @@
     },
     "arena_name": "Mistral Large (2402)",
     "arena_org": "mistral",
-    "arena_elo": 1176.452947507485,
+    "arena_elo": 1176.4381224270933,
     "arena_rank": 333,
     "arena_votes": 62436
   },
@@ -65525,7 +65525,7 @@
     },
     "arena_name": "Qwen1.5-72B-Chat",
     "arena_org": "alibaba",
-    "arena_elo": 1166.1281082324704,
+    "arena_elo": 1166.113156492322,
     "arena_rank": 337,
     "arena_votes": 39302
   },
@@ -65569,7 +65569,7 @@
     },
     "arena_name": "Starling LM 7B Beta",
     "arena_org": "",
-    "arena_elo": 1132.0185855774776,
+    "arena_elo": 1132.0036158318774,
     "arena_rank": 351,
     "arena_votes": 16056
   },
@@ -65677,10 +65677,10 @@
     },
     "arena_name": "Gemini 1.5 Flash (002)",
     "arena_org": "google",
-    "arena_elo": 1286.630168066074,
+    "arena_elo": 1286.6160273173139,
     "arena_rank": 265,
     "arena_votes": 34902,
-    "arena_vision_elo": 1140.6509804901093
+    "arena_vision_elo": 1140.6334898422278
   },
   {
     "name": "gemini-1.5-pro-002",
@@ -65705,10 +65705,10 @@
     },
     "arena_name": "Gemini 1.5 Pro (002)",
     "arena_org": "google",
-    "arena_elo": 1319.108082614057,
+    "arena_elo": 1319.0960054383788,
     "arena_rank": 239,
     "arena_votes": 55606,
-    "arena_vision_elo": 1161.4112593754335,
+    "arena_vision_elo": 1161.3942515284589,
     "aider_pass_rate": 0.496
   },
   {
@@ -66002,10 +66002,10 @@
     },
     "arena_name": "Gemini 2.0 Flash-Lite Preview (02-05)",
     "arena_org": "google",
-    "arena_elo": 1329.5450461070186,
+    "arena_elo": 1329.5440876997825,
     "arena_rank": 231,
     "arena_votes": 24955,
-    "arena_vision_elo": 1100.4121559686478
+    "arena_vision_elo": 1100.4051708881182
   },
   {
     "name": "gemini-2.0-flash-thinking-exp-01-21",
@@ -66168,7 +66168,7 @@
     },
     "arena_name": "Mistral Large (2411)",
     "arena_org": "mistral",
-    "arena_elo": 1265.2895017749975,
+    "arena_elo": 1265.2840840503081,
     "arena_rank": 287,
     "arena_votes": 28073,
     "aider_pass_rate": 0.466
@@ -66369,9 +66369,9 @@
     },
     "arena_name": "Qwen2.5-Max",
     "arena_org": "alibaba",
-    "arena_elo": 1366.6369670821641,
+    "arena_elo": 1366.6680380856449,
     "arena_rank": 191,
-    "arena_votes": 32487
+    "arena_votes": 32485
   },
   {
     "name": "gpt-4.5-preview",
@@ -66457,11 +66457,11 @@
     },
     "arena_name": "Gemma 3 27B IT",
     "arena_org": "google",
-    "arena_elo": 1357.7160204860982,
+    "arena_elo": 1357.7277968695348,
     "arena_rank": 202,
-    "arena_votes": 46670,
-    "arena_vision_elo": 1164.5475341760637,
-    "arena_factuality_elo": 1379.1322721807026
+    "arena_votes": 46653,
+    "arena_vision_elo": 1164.4726533983944,
+    "arena_factuality_elo": 1379.0803933613151
   },
   {
     "name": "gemini-2.5-pro-exp-03-25",
@@ -66505,9 +66505,9 @@
     },
     "arena_name": "DeepSeek-V3 (0324)",
     "arena_org": "deepseek",
-    "arena_elo": 1374.6123489840884,
+    "arena_elo": 1374.6263584889307,
     "arena_rank": 182,
-    "arena_votes": 44977
+    "arena_votes": 44964
   },
   {
     "name": "chatgpt-4o-latest-2025-03-27",
@@ -66594,10 +66594,10 @@
     },
     "arena_name": "Claude 3.7 Sonnet (20250219)",
     "arena_org": "anthropic",
-    "arena_elo": 1299.3424382328653,
+    "arena_elo": 1299.3172749695582,
     "arena_rank": 251,
-    "arena_votes": 42573,
-    "arena_vision_elo": 1150.9199242115913
+    "arena_votes": 42566,
+    "arena_vision_elo": 1150.8680135710001
   },
   {
     "name": "command-a-03-2025",
@@ -66623,10 +66623,10 @@
     },
     "arena_name": "Command A (03-2025)",
     "arena_org": "cohere",
-    "arena_elo": 1330.8998818474033,
+    "arena_elo": 1330.9450691547747,
     "arena_rank": 228,
-    "arena_votes": 55763,
-    "arena_factuality_elo": 1362.8130387471356
+    "arena_votes": 55754,
+    "arena_factuality_elo": 1362.9531416504403
   },
   {
     "name": "gemini-1.5-flash-8b-001",
@@ -66650,10 +66650,10 @@
     },
     "arena_name": "Gemini 1.5 Flash-8B (001)",
     "arena_org": "google",
-    "arena_elo": 1225.8332375291734,
+    "arena_elo": 1225.8184241546514,
     "arena_rank": 310,
     "arena_votes": 35558,
-    "arena_vision_elo": 1044.1098596319841
+    "arena_vision_elo": 1044.092413014393
   },
   {
     "name": "gemini-2.0-flash-001",
@@ -66677,10 +66677,10 @@
     },
     "arena_name": "Gemini 2.0 Flash (001)",
     "arena_org": "google",
-    "arena_elo": 1354.0429289409012,
+    "arena_elo": 1354.1043180665704,
     "arena_rank": 206,
-    "arena_votes": 43443,
-    "arena_vision_elo": 1157.8670571616651
+    "arena_votes": 43439,
+    "arena_vision_elo": 1157.8249372705986
   },
   {
     "name": "gemini-2.0-flash-lite-001",
@@ -66724,7 +66724,7 @@
     },
     "arena_name": "Gemma 3 12B IT",
     "arena_org": "google",
-    "arena_elo": 1334.1942341595081,
+    "arena_elo": 1334.199088292102,
     "arena_rank": 224,
     "arena_votes": 3829
   },
@@ -66749,7 +66749,7 @@
     },
     "arena_name": "Gemma 3 4B IT",
     "arena_org": "google",
-    "arena_elo": 1290.7768383785806,
+    "arena_elo": 1290.781787734271,
     "arena_rank": 258,
     "arena_votes": 4171
   },
@@ -66777,10 +66777,10 @@
     },
     "arena_name": "GPT-4.5 Preview (2025-02-27)",
     "arena_org": "openai",
-    "arena_elo": 1417.3451783692672,
+    "arena_elo": 1417.346241747963,
     "arena_rank": 126,
     "arena_votes": 14547,
-    "arena_vision_elo": 1194.8945254653543
+    "arena_vision_elo": 1194.8961248842725
   },
   {
     "name": "llama-4-maverick-17b-128e-instruct",
@@ -66804,10 +66804,10 @@
     },
     "arena_name": "Llama 4 Maverick 17B 128E Instruct",
     "arena_org": "meta",
-    "arena_elo": 1287.2143793107657,
+    "arena_elo": 1287.2081389705147,
     "arena_rank": 264,
-    "arena_votes": 39439,
-    "arena_vision_elo": 1141.7080159614773
+    "arena_votes": 39436,
+    "arena_vision_elo": 1141.769614776003
   },
   {
     "name": "grok-3-beta",
@@ -66876,11 +66876,11 @@
     },
     "arena_name": "GPT-4.1 (2025-04-14)",
     "arena_org": "openai",
-    "arena_elo": 1382.9323727916305,
+    "arena_elo": 1382.9127779137775,
     "arena_rank": 175,
-    "arena_votes": 50298,
-    "arena_vision_elo": 1210.427481255077,
-    "arena_factuality_elo": 1407.4792197568727
+    "arena_votes": 50281,
+    "arena_vision_elo": 1210.5185991708947,
+    "arena_factuality_elo": 1407.4961840839728
   },
   {
     "name": "gpt-4.1-mini-2025-04-14",
@@ -66906,10 +66906,10 @@
     },
     "arena_name": "GPT-4.1 mini (2025-04-14)",
     "arena_org": "openai",
-    "arena_elo": 1340.4871098545568,
+    "arena_elo": 1340.5618660451423,
     "arena_rank": 214,
-    "arena_votes": 38696,
-    "arena_vision_elo": 1181.412382204995
+    "arena_votes": 38690,
+    "arena_vision_elo": 1181.527570723203
   },
   {
     "name": "gpt-4.1-nano-2025-04-14",
@@ -66935,10 +66935,10 @@
     },
     "arena_name": "GPT-4.1 nano (2025-04-14)",
     "arena_org": "openai",
-    "arena_elo": 1284.7709818107187,
+    "arena_elo": 1284.775791545142,
     "arena_rank": 267,
     "arena_votes": 6103,
-    "arena_vision_elo": 1063.2309556256519
+    "arena_vision_elo": 1063.247574831222
   },
   {
     "name": "o3-2025-04-16-high",
@@ -67110,9 +67110,9 @@
     },
     "arena_name": "DeepSeek-R1 (0528)",
     "arena_org": "deepseek",
-    "arena_elo": 1427.7121292645102,
-    "arena_rank": 102,
-    "arena_votes": 18165
+    "arena_elo": 1427.6996246414467,
+    "arena_rank": 101,
+    "arena_votes": 18160
   },
   {
     "name": "gemini-2.5-flash-preview-05-20",
@@ -67305,9 +67305,9 @@
     },
     "arena_name": "Qwen3-235B-A22B",
     "arena_org": "alibaba",
-    "arena_elo": 1366.2309120481973,
+    "arena_elo": 1366.1504579774637,
     "arena_rank": 192,
-    "arena_votes": 25950
+    "arena_votes": 25945
   },
   {
     "name": "qwen3-30b-a3b",
@@ -67332,9 +67332,9 @@
     },
     "arena_name": "Qwen3-30B-A3B",
     "arena_org": "alibaba",
-    "arena_elo": 1316.957318687116,
+    "arena_elo": 1316.8746839906134,
     "arena_rank": 242,
-    "arena_votes": 26156
+    "arena_votes": 26159
   },
   {
     "name": "qwen3-32b",
@@ -67359,8 +67359,8 @@
     },
     "arena_name": "Qwen3-32B",
     "arena_org": "alibaba",
-    "arena_elo": 1340.064959182076,
-    "arena_rank": 217,
+    "arena_elo": 1340.072482214821,
+    "arena_rank": 216,
     "arena_votes": 3926
   },
   {
@@ -67409,11 +67409,11 @@
     },
     "arena_name": "Claude Sonnet 4.5 (20250929)",
     "arena_org": "anthropic",
-    "arena_elo": 1438.5105346522719,
+    "arena_elo": 1438.562826566877,
     "arena_rank": 79,
-    "arena_votes": 82621,
-    "arena_webdev_elo": 1384.9137217755942,
-    "arena_factuality_elo": 1448.5189780697515
+    "arena_votes": 82549,
+    "arena_webdev_elo": 1384.832008109538,
+    "arena_factuality_elo": 1448.6230879642608
   },
   {
     "name": "deepseek-v3.1-terminus",
@@ -67438,9 +67438,9 @@
     },
     "arena_name": "DeepSeek-V3.1-Terminus",
     "arena_org": "deepseek",
-    "arena_elo": 1417.1000728838098,
-    "arena_rank": 127,
-    "arena_votes": 3609
+    "arena_elo": 1417.4827620976869,
+    "arena_rank": 125,
+    "arena_votes": 3607
   },
   {
     "name": "gemini-2.5-flash-06-05",
@@ -67530,11 +67530,11 @@
     },
     "arena_name": "Gemini 2.5 Flash Preview (09-2025)",
     "arena_org": "google",
-    "arena_elo": 1406.4700823094486,
+    "arena_elo": 1406.534448918444,
     "arena_rank": 146,
-    "arena_votes": 32996,
-    "arena_vision_elo": 1253.5405678106654,
-    "arena_factuality_elo": 1424.1720172361431
+    "arena_votes": 32970,
+    "arena_vision_elo": 1253.289872085592,
+    "arena_factuality_elo": 1424.1936212757976
   },
   {
     "name": "gemini-2.5-pro-06-05",
@@ -67580,9 +67580,9 @@
     },
     "arena_name": "GLM-4.5",
     "arena_org": "zai",
-    "arena_elo": 1430.0002251768442,
+    "arena_elo": 1430.0831094921716,
     "arena_rank": 96,
-    "arena_votes": 23797
+    "arena_votes": 23789
   },
   {
     "name": "glm-4.5-air",
@@ -67608,10 +67608,10 @@
     },
     "arena_name": "GLM-4.5-Air",
     "arena_org": "zai",
-    "arena_elo": 1383.6899892358351,
+    "arena_elo": 1383.6779790874496,
     "arena_rank": 174,
-    "arena_votes": 30652,
-    "arena_factuality_elo": 1394.1053237959795
+    "arena_votes": 30643,
+    "arena_factuality_elo": 1394.033066542811
   },
   {
     "name": "glm-4.6",
@@ -67638,11 +67638,11 @@
     },
     "arena_name": "GLM-4.6",
     "arena_org": "zai",
-    "arena_elo": 1440.055945869893,
+    "arena_elo": 1440.0724429841346,
     "arena_rank": 76,
-    "arena_votes": 35810,
-    "arena_webdev_elo": 1341.1518521405144,
-    "arena_factuality_elo": 1446.8297359794094
+    "arena_votes": 35786,
+    "arena_webdev_elo": 1340.934870158264,
+    "arena_factuality_elo": 1446.8438918097536
   },
   {
     "name": "gpt-5",
@@ -67711,11 +67711,11 @@
     },
     "arena_name": "GPT-5 (High)",
     "arena_org": "openai",
-    "arena_elo": 1406.153572986234,
+    "arena_elo": 1406.191202862073,
     "arena_rank": 147,
-    "arena_votes": 31718,
-    "arena_vision_elo": 1208.2372274682316,
-    "arena_factuality_elo": 1420.4183934247822
+    "arena_votes": 31704,
+    "arena_vision_elo": 1208.3728702409435,
+    "arena_factuality_elo": 1420.1837320951654
   },
   {
     "name": "gpt-5-low",
@@ -67784,11 +67784,11 @@
     },
     "arena_name": "GPT-5 mini (High)",
     "arena_org": "openai",
-    "arena_elo": 1373.2050491205664,
+    "arena_elo": 1373.3123731115318,
     "arena_rank": 183,
-    "arena_votes": 26793,
-    "arena_vision_elo": 1202.226332986973,
-    "arena_factuality_elo": 1393.4304802911795
+    "arena_votes": 26785,
+    "arena_vision_elo": 1202.3922763748742,
+    "arena_factuality_elo": 1393.634291819861
   },
   {
     "name": "gpt-5-mini-low",
@@ -67898,10 +67898,10 @@
     },
     "arena_name": "GPT-5 nano (High)",
     "arena_org": "openai",
-    "arena_elo": 1319.894487346712,
+    "arena_elo": 1319.8909382553327,
     "arena_rank": 235,
-    "arena_votes": 8134,
-    "arena_vision_elo": 1159.4544819902562
+    "arena_votes": 8135,
+    "arena_vision_elo": 1159.1774587860868
   },
   {
     "name": "gpt-5-nano-low",
@@ -67970,11 +67970,11 @@
     },
     "arena_name": "GPT-5 Chat",
     "arena_org": "openai",
-    "arena_elo": 1403.2764374555445,
+    "arena_elo": 1403.3373875089542,
     "arena_rank": 151,
-    "arena_votes": 31187,
-    "arena_vision_elo": 1232.1875376313596,
-    "arena_factuality_elo": 1421.5991299403652
+    "arena_votes": 31172,
+    "arena_vision_elo": 1232.1601618052744,
+    "arena_factuality_elo": 1421.600184585985
   },
   {
     "name": "gpt-oss-120b",
@@ -68000,10 +68000,10 @@
     },
     "arena_name": "gpt-oss-120b",
     "arena_org": "openai",
-    "arena_elo": 1365.4559711448665,
+    "arena_elo": 1365.3808885235676,
     "arena_rank": 195,
-    "arena_votes": 30200,
-    "arena_factuality_elo": 1384.4836730866668
+    "arena_votes": 30189,
+    "arena_factuality_elo": 1384.2831350487193
   },
   {
     "name": "grok-4-0709",
@@ -68030,11 +68030,11 @@
     },
     "arena_name": "Grok 4 (0709)",
     "arena_org": "xai",
-    "arena_elo": 1411.4423982430517,
-    "arena_rank": 140,
-    "arena_votes": 39678,
-    "arena_vision_elo": 1210.2191984801007,
-    "arena_factuality_elo": 1418.0560313237554
+    "arena_elo": 1411.5044414764047,
+    "arena_rank": 139,
+    "arena_votes": 39663,
+    "arena_vision_elo": 1210.1835179218422,
+    "arena_factuality_elo": 1418.1392280579012
   },
   {
     "name": "grok-code-fast-1-0825",
@@ -68102,10 +68102,10 @@
     },
     "arena_name": "Qwen3-235B-A22B-Instruct (2507)",
     "arena_org": "alibaba",
-    "arena_elo": 1419.1699403460743,
-    "arena_rank": 122,
-    "arena_votes": 98081,
-    "arena_factuality_elo": 1430.7630126824047
+    "arena_elo": 1419.2574563228402,
+    "arena_rank": 121,
+    "arena_votes": 98029,
+    "arena_factuality_elo": 1430.8818586775678
   },
   {
     "name": "qwen3-235b-a22b-thinking-2507",
@@ -68130,9 +68130,9 @@
     },
     "arena_name": "Qwen3-235B-A22B-Thinking (2507)",
     "arena_org": "alibaba",
-    "arena_elo": 1415.285013799918,
-    "arena_rank": 133,
-    "arena_votes": 8822
+    "arena_elo": 1415.2442567043033,
+    "arena_rank": 132,
+    "arena_votes": 8820
   },
   {
     "name": "qwen3-coder-480b-a35b-instruct",
@@ -68159,11 +68159,11 @@
     },
     "arena_name": "Qwen3-Coder-480B-A35B-Instruct",
     "arena_org": "alibaba",
-    "arena_elo": 1356.5912537081879,
+    "arena_elo": 1356.580509592687,
     "arena_rank": 203,
-    "arena_votes": 25190,
-    "arena_webdev_elo": 1274.7527065636266,
-    "arena_factuality_elo": 1399.801789269592
+    "arena_votes": 25184,
+    "arena_webdev_elo": 1274.458603418766,
+    "arena_factuality_elo": 1399.8992106258984
   },
   {
     "name": "qwen3-max-2025-09-23",
@@ -68188,9 +68188,9 @@
     },
     "arena_name": "Qwen3-Max (2025-09-23)",
     "arena_org": "alibaba",
-    "arena_elo": 1412.9676923357692,
-    "arena_rank": 137,
-    "arena_votes": 9026
+    "arena_elo": 1413.0386626915877,
+    "arena_rank": 136,
+    "arena_votes": 9025
   },
   {
     "name": "qwen3-next-80b-a3b-instruct",
@@ -68216,10 +68216,10 @@
     },
     "arena_name": "Qwen3-Next-80B-A3B-Instruct",
     "arena_org": "alibaba",
-    "arena_elo": 1417.0108729012018,
-    "arena_rank": 128,
-    "arena_votes": 22753,
-    "arena_factuality_elo": 1418.2974309829663
+    "arena_elo": 1417.0387607715713,
+    "arena_rank": 127,
+    "arena_votes": 22745,
+    "arena_factuality_elo": 1418.3771997146769
   },
   {
     "name": "qwen3-next-80b-a3b",
@@ -68244,9 +68244,9 @@
     },
     "arena_name": "Qwen3-Next-80B-A3B-Thinking",
     "arena_org": "alibaba",
-    "arena_elo": 1368.0643809074534,
+    "arena_elo": 1368.379916783117,
     "arena_rank": 190,
-    "arena_votes": 13476
+    "arena_votes": 13469
   },
   {
     "name": "claude-haiku-4-5-20251001",
@@ -68273,11 +68273,11 @@
     },
     "arena_name": "Claude Haiku 4.5 (20251001)",
     "arena_org": "anthropic",
-    "arena_elo": 1396.8738757631809,
-    "arena_rank": 162,
-    "arena_votes": 154063,
-    "arena_webdev_elo": 1330.3720212251565,
-    "arena_factuality_elo": 1418.4569367380825
+    "arena_elo": 1396.923776799847,
+    "arena_rank": 160,
+    "arena_votes": 155928,
+    "arena_webdev_elo": 1330.2066953958904,
+    "arena_factuality_elo": 1418.5619766699788
   },
   {
     "name": "deepseek-v3.2-exp",
@@ -68304,11 +68304,11 @@
     },
     "arena_name": "DeepSeek-V3.2-Exp",
     "arena_org": "deepseek",
-    "arena_elo": 1422.156931470477,
-    "arena_rank": 113,
-    "arena_votes": 11996,
-    "arena_webdev_elo": 1271.4406409272704,
-    "arena_factuality_elo": 1435.985335168823
+    "arena_elo": 1422.2153650503392,
+    "arena_rank": 112,
+    "arena_votes": 11989,
+    "arena_webdev_elo": 1271.3921912759488,
+    "arena_factuality_elo": 1435.9630271959554
   },
   {
     "name": "minimax-m2",
@@ -68335,11 +68335,11 @@
     },
     "arena_name": "MiniMax-M2",
     "arena_org": "minimax",
-    "arena_elo": 1340.0940766507936,
-    "arena_rank": 216,
-    "arena_votes": 6850,
-    "arena_webdev_elo": 1297.1093946778446,
-    "arena_factuality_elo": 1359.7325969887386
+    "arena_elo": 1340.0643000181635,
+    "arena_rank": 217,
+    "arena_votes": 6849,
+    "arena_webdev_elo": 1296.9584206323925,
+    "arena_factuality_elo": 1359.6253825275016
   },
   {
     "name": "kimi-k2",
@@ -68469,7 +68469,7 @@
     },
     "arena_name": "GPT-5.1-Codex",
     "arena_org": "openai",
-    "arena_webdev_elo": 1337.1172107840903
+    "arena_webdev_elo": 1336.5919581506255
   },
   {
     "name": "gpt-5.1-codex-mini",
@@ -68494,7 +68494,7 @@
     },
     "arena_name": "GPT-5.1-Codex-Mini",
     "arena_org": "openai",
-    "arena_webdev_elo": 1243.5470502084045
+    "arena_webdev_elo": 1243.345905224566
   },
   {
     "name": "gemini-3-pro-preview-11-2025-high",
@@ -68585,12 +68585,12 @@
     },
     "arena_name": "Grok 4.1 Fast (Reasoning)",
     "arena_org": "xai",
-    "arena_elo": 1407.9257602152961,
+    "arena_elo": 1408.2120603673097,
     "arena_rank": 144,
-    "arena_votes": 57500,
-    "arena_webdev_elo": 1242.0822790398674,
-    "arena_vision_elo": 1201.173872613477,
-    "arena_factuality_elo": 1413.3751075061048
+    "arena_votes": 57463,
+    "arena_webdev_elo": 1241.5682477978817,
+    "arena_vision_elo": 1201.0768955952958,
+    "arena_factuality_elo": 1413.6486006231
   },
   {
     "name": "claude-opus-4-5-20251101",
@@ -68617,11 +68617,11 @@
     },
     "arena_name": "Claude Opus 4.5 (20251101)",
     "arena_org": "anthropic",
-    "arena_elo": 1450.897532023202,
-    "arena_rank": 52,
-    "arena_votes": 72825,
-    "arena_webdev_elo": 1469.2204625828695,
-    "arena_factuality_elo": 1459.1080106979095
+    "arena_elo": 1451.0233668985402,
+    "arena_rank": 51,
+    "arena_votes": 72755,
+    "arena_webdev_elo": 1468.8875098700041,
+    "arena_factuality_elo": 1459.2542038426204
   },
   {
     "name": "deepseek-v3.2",
@@ -68648,11 +68648,11 @@
     },
     "arena_name": "DeepSeek-V3.2",
     "arena_org": "deepseek",
-    "arena_elo": 1424.4339762941336,
-    "arena_rank": 107,
-    "arena_votes": 48095,
-    "arena_webdev_elo": 1325.750670059786,
-    "arena_factuality_elo": 1436.5364065134613
+    "arena_elo": 1424.4970490699325,
+    "arena_rank": 106,
+    "arena_votes": 48062,
+    "arena_webdev_elo": 1325.8628955104134,
+    "arena_factuality_elo": 1436.6248916226566
   },
   {
     "name": "deepseek-v3.2-speciale",
@@ -68763,11 +68763,11 @@
     },
     "arena_name": "GLM-4.6V",
     "arena_org": "zai",
-    "arena_elo": 1376.4801975206647,
+    "arena_elo": 1376.5041824406726,
     "arena_rank": 181,
-    "arena_votes": 2833,
-    "arena_vision_elo": 1163.9380369890487,
-    "arena_factuality_elo": 1391.0488209125963
+    "arena_votes": 2835,
+    "arena_vision_elo": 1163.4474301532427,
+    "arena_factuality_elo": 1391.0736221054087
   },
   {
     "name": "gpt-5.1-2025-11-13-low",
@@ -68983,11 +68983,11 @@
     },
     "arena_name": "GLM-4.7",
     "arena_org": "zai",
-    "arena_elo": 1435.433626966485,
-    "arena_rank": 89,
-    "arena_votes": 12239,
-    "arena_webdev_elo": 1435.1854984949694,
-    "arena_factuality_elo": 1443.8717907491957
+    "arena_elo": 1435.6797495241435,
+    "arena_rank": 88,
+    "arena_votes": 12236,
+    "arena_webdev_elo": 1435.2268790879016,
+    "arena_factuality_elo": 1444.1198547791262
   },
   {
     "name": "arcee-trinity-large-preview",
@@ -69036,12 +69036,12 @@
     },
     "arena_name": "Claude Opus 4.6",
     "arena_org": "anthropic",
-    "arena_elo": 1496.249600345462,
+    "arena_elo": 1496.532690642485,
     "arena_rank": 10,
-    "arena_votes": 89324,
-    "arena_webdev_elo": 1537.008164689128,
-    "arena_vision_elo": 1312.4357611862335,
-    "arena_factuality_elo": 1487.3636037987114
+    "arena_votes": 90487,
+    "arena_webdev_elo": 1537.1315940141897,
+    "arena_vision_elo": 1312.1844142956118,
+    "arena_factuality_elo": 1487.7123001877726
   },
   {
     "name": "claude-sonnet-4-6",
@@ -69069,12 +69069,12 @@
     },
     "arena_name": "Claude Sonnet 4.6",
     "arena_org": "anthropic",
-    "arena_elo": 1457.7072065845523,
-    "arena_rank": 42,
-    "arena_votes": 70916,
-    "arena_webdev_elo": 1522.6524947374642,
-    "arena_vision_elo": 1282.7633262406994,
-    "arena_factuality_elo": 1460.4823389659784
+    "arena_elo": 1457.7710871011243,
+    "arena_rank": 43,
+    "arena_votes": 70800,
+    "arena_webdev_elo": 1522.1821952552073,
+    "arena_vision_elo": 1282.2820963445336,
+    "arena_factuality_elo": 1460.6198993376206
   },
   {
     "name": "claude-opus-4-7",
@@ -69103,13 +69103,13 @@
     },
     "arena_name": "Claude Opus 4.7",
     "arena_org": "anthropic",
-    "arena_elo": 1482.9867831568845,
-    "arena_rank": 17,
-    "arena_votes": 66140,
-    "arena_webdev_elo": 1555.4286270187122,
-    "arena_vision_elo": 1316.9363635860252,
-    "arena_factuality_elo": 1475.543843481287,
-    "arena_search_elo": 1230.1465939891823
+    "arena_elo": 1483.185302716492,
+    "arena_rank": 18,
+    "arena_votes": 66092,
+    "arena_webdev_elo": 1555.31373708365,
+    "arena_vision_elo": 1317.1665427491134,
+    "arena_factuality_elo": 1475.8165666705672,
+    "arena_search_elo": 1231.035568747532
   },
   {
     "name": "claude-opus-4-7-xhigh-effort",
@@ -69159,13 +69159,13 @@
     },
     "arena_name": "Claude Opus 4.8",
     "arena_org": "anthropic",
-    "arena_elo": 1454.0343497697008,
+    "arena_elo": 1454.2445713926988,
     "arena_rank": 47,
-    "arena_votes": 65121,
-    "arena_webdev_elo": 1535.9780359669865,
-    "arena_vision_elo": 1288.5014584649741,
-    "arena_factuality_elo": 1464.7280992390686,
-    "arena_search_elo": 1204.1091608362344
+    "arena_votes": 65250,
+    "arena_webdev_elo": 1535.7325374753316,
+    "arena_vision_elo": 1288.4999729803455,
+    "arena_factuality_elo": 1464.9331489826054,
+    "arena_search_elo": 1203.7441899229082
   },
   {
     "name": "claude-opus-4-8-xhigh-effort",
@@ -69214,11 +69214,11 @@
     },
     "arena_name": "DeepSeek-V4-Pro",
     "arena_org": "deepseek",
-    "arena_elo": 1451.127948896642,
+    "arena_elo": 1451.2508812011422,
     "arena_rank": 50,
-    "arena_votes": 57572,
-    "arena_webdev_elo": 1447.1690797309973,
-    "arena_factuality_elo": 1454.6498315815847,
+    "arena_votes": 57481,
+    "arena_webdev_elo": 1447.2129137282368,
+    "arena_factuality_elo": 1454.767063453979,
     "sb_score": 50.1,
     "sb_lift": 23.2
   },
@@ -69247,10 +69247,10 @@
     },
     "arena_name": "DeepSeek-V4-Flash",
     "arena_org": "deepseek",
-    "arena_elo": 1431.8349064358508,
+    "arena_elo": 1431.8848231980496,
     "arena_rank": 92,
-    "arena_votes": 51944,
-    "arena_factuality_elo": 1438.7755020588872,
+    "arena_votes": 51862,
+    "arena_factuality_elo": 1438.881684757499,
     "sb_score": 44.7,
     "sb_lift": 17.2
   },
@@ -69344,12 +69344,12 @@
     },
     "arena_name": "Gemini 3.5 Flash (High)",
     "arena_org": "google",
-    "arena_elo": 1482.1752519916417,
+    "arena_elo": 1482.3255415509836,
     "arena_rank": 19,
-    "arena_votes": 48376,
-    "arena_webdev_elo": 1499.2741854109668,
-    "arena_vision_elo": 1308.32534406439,
-    "arena_factuality_elo": 1477.1554098803163,
+    "arena_votes": 48503,
+    "arena_webdev_elo": 1499.09763863856,
+    "arena_vision_elo": 1306.636342231253,
+    "arena_factuality_elo": 1477.4750596154727,
     "sb_score": 48.2,
     "sb_lift": 7.1
   },
@@ -69399,11 +69399,11 @@
     },
     "arena_name": "GLM-5",
     "arena_org": "zai",
-    "arena_elo": 1445.8732815789967,
+    "arena_elo": 1446.1332544380264,
     "arena_rank": 61,
-    "arena_votes": 29255,
-    "arena_webdev_elo": 1435.569438296295,
-    "arena_factuality_elo": 1451.5303023561073
+    "arena_votes": 29233,
+    "arena_webdev_elo": 1435.23717505712,
+    "arena_factuality_elo": 1451.8051256003419
   },
   {
     "name": "glm-5v-turbo",
@@ -69431,12 +69431,12 @@
     },
     "arena_name": "GLM-5V-Turbo",
     "arena_org": "zai",
-    "arena_elo": 1437.7206378217234,
+    "arena_elo": 1437.5398050470305,
     "arena_rank": 82,
-    "arena_votes": 10476,
-    "arena_webdev_elo": 1400.9863808273662,
-    "arena_vision_elo": 1263.9092869157691,
-    "arena_factuality_elo": 1440.776862369954
+    "arena_votes": 10451,
+    "arena_webdev_elo": 1400.568858879064,
+    "arena_vision_elo": 1265.552578937713,
+    "arena_factuality_elo": 1440.8521815436704
   },
   {
     "name": "glm-5.1",
@@ -69464,11 +69464,11 @@
     },
     "arena_name": "GLM-5.1",
     "arena_org": "zai",
-    "arena_elo": 1462.815587844631,
+    "arena_elo": 1462.551110206827,
     "arena_rank": 40,
-    "arena_votes": 66771,
-    "arena_webdev_elo": 1507.854558177699,
-    "arena_factuality_elo": 1455.9283164882315,
+    "arena_votes": 68317,
+    "arena_webdev_elo": 1507.832685516293,
+    "arena_factuality_elo": 1455.6407795922628,
     "sb_score": 58.4,
     "sb_lift": 25.7
   },
@@ -69495,7 +69495,7 @@
     },
     "arena_name": "GPT-5.2-Codex",
     "arena_org": "openai",
-    "arena_webdev_elo": 1338.6655694153849
+    "arena_webdev_elo": 1338.554326720894
   },
   {
     "name": "gpt-5.3-codex-high",
@@ -69585,11 +69585,11 @@
     },
     "arena_name": "GPT-5.4 (High)",
     "arena_org": "openai",
-    "arena_elo": 1469.0796271547601,
-    "arena_rank": 34,
-    "arena_votes": 64748,
-    "arena_vision_elo": 1302.6274518457858,
-    "arena_factuality_elo": 1484.2552745842195
+    "arena_elo": 1469.2507141125013,
+    "arena_rank": 33,
+    "arena_votes": 64663,
+    "arena_vision_elo": 1300.7425057548119,
+    "arena_factuality_elo": 1484.345671988035
   },
   {
     "name": "gpt-5.4-xhigh",
@@ -69662,12 +69662,12 @@
     },
     "arena_name": "GPT-5.4 mini (High)",
     "arena_org": "openai",
-    "arena_elo": 1411.5822872883195,
-    "arena_rank": 139,
-    "arena_votes": 63432,
-    "arena_webdev_elo": 1397.299194720604,
-    "arena_vision_elo": 1244.8170157186942,
-    "arena_factuality_elo": 1446.3034701090373
+    "arena_elo": 1411.6242280397983,
+    "arena_rank": 138,
+    "arena_votes": 63383,
+    "arena_webdev_elo": 1397.6401390972742,
+    "arena_vision_elo": 1244.5924793656513,
+    "arena_factuality_elo": 1446.3424091312952
   },
   {
     "name": "gpt-5.4-mini-low",
@@ -69778,11 +69778,11 @@
     },
     "arena_name": "GPT-5.4 nano (High)",
     "arena_org": "openai",
-    "arena_elo": 1371.9819749441592,
+    "arena_elo": 1372.0579204035344,
     "arena_rank": 185,
-    "arena_votes": 62314,
-    "arena_vision_elo": 1195.6011013077389,
-    "arena_factuality_elo": 1416.8060258326213
+    "arena_votes": 62234,
+    "arena_vision_elo": 1195.4947397221463,
+    "arena_factuality_elo": 1416.6324705398292
   },
   {
     "name": "gpt-5.4-nano-low",
@@ -69873,11 +69873,11 @@
     },
     "arena_name": "GPT-5.5 (High)",
     "arena_org": "openai",
-    "arena_elo": 1471.5686765564028,
-    "arena_rank": 31,
-    "arena_votes": 69377,
-    "arena_vision_elo": 1293.1289585205832,
-    "arena_factuality_elo": 1485.6946993858064,
+    "arena_elo": 1471.4245164694507,
+    "arena_rank": 30,
+    "arena_votes": 69197,
+    "arena_vision_elo": 1294.2407509732893,
+    "arena_factuality_elo": 1485.5956777847905,
     "sb_score": 67.3,
     "sb_lift": 15.8
   },
@@ -69993,13 +69993,13 @@
     },
     "arena_name": "Grok 4.3",
     "arena_org": "xai",
-    "arena_elo": 1396.8750353792248,
+    "arena_elo": 1396.8573564517903,
     "arena_rank": 161,
-    "arena_votes": 71287,
-    "arena_webdev_elo": 1357.5695879962777,
-    "arena_vision_elo": 1229.283685177617,
-    "arena_factuality_elo": 1426.7920139679495,
-    "arena_search_elo": 1165.805999435794,
+    "arena_votes": 71157,
+    "arena_webdev_elo": 1357.325611435104,
+    "arena_vision_elo": 1228.0146298872564,
+    "arena_factuality_elo": 1426.7121686893934,
+    "arena_search_elo": 1165.6153978196785,
     "sb_score": 41.7,
     "sb_lift": 18.8
   },
@@ -70030,12 +70030,12 @@
     },
     "arena_name": "Kimi K2.5 (Thinking)",
     "arena_org": "moonshot",
-    "arena_elo": 1444.9047566343556,
-    "arena_rank": 65,
-    "arena_votes": 74682,
-    "arena_webdev_elo": 1436.2450288272603,
-    "arena_vision_elo": 1269.0200631630391,
-    "arena_factuality_elo": 1444.8415581602603,
+    "arena_elo": 1444.8691183624826,
+    "arena_rank": 64,
+    "arena_votes": 74560,
+    "arena_webdev_elo": 1435.9766620864866,
+    "arena_vision_elo": 1268.917086628653,
+    "arena_factuality_elo": 1444.926282483821,
     "ocr_omnidoc": 84.53
   },
   {
@@ -70065,12 +70065,12 @@
     },
     "arena_name": "Kimi K2.6",
     "arena_org": "moonshot",
-    "arena_elo": 1455.5569844394659,
+    "arena_elo": 1455.5146178933594,
     "arena_rank": 45,
-    "arena_votes": 39978,
-    "arena_webdev_elo": 1509.2234110707893,
-    "arena_vision_elo": 1282.1119761531568,
-    "arena_factuality_elo": 1456.2258173219805,
+    "arena_votes": 39930,
+    "arena_webdev_elo": 1509.0642696484624,
+    "arena_vision_elo": 1282.1905903219626,
+    "arena_factuality_elo": 1456.285582795489,
     "sb_score": 54,
     "sb_lift": 20.6
   },
@@ -70099,11 +70099,11 @@
     },
     "arena_name": "MiniMax-M2.5",
     "arena_org": "minimax",
-    "arena_elo": 1359.1187658871881,
+    "arena_elo": 1359.1984100092789,
     "arena_rank": 201,
-    "arena_votes": 42783,
-    "arena_webdev_elo": 1386.1630928790391,
-    "arena_factuality_elo": 1385.0086362085779
+    "arena_votes": 42742,
+    "arena_webdev_elo": 1385.9454705473267,
+    "arena_factuality_elo": 1384.9812956308456
   },
   {
     "name": "mimo-v2-pro",
@@ -70130,11 +70130,11 @@
     },
     "arena_name": "MiMo-V2-Pro",
     "arena_org": "xiaomi",
-    "arena_elo": 1436.077292475447,
-    "arena_rank": 86,
-    "arena_votes": 25421,
-    "arena_webdev_elo": 1434.1505957574632,
-    "arena_factuality_elo": 1443.2389649005952
+    "arena_elo": 1436.1306521974332,
+    "arena_rank": 85,
+    "arena_votes": 25395,
+    "arena_webdev_elo": 1433.8797757849395,
+    "arena_factuality_elo": 1443.327502039293
   },
   {
     "name": "minimax-m2.7",
@@ -70162,11 +70162,11 @@
     },
     "arena_name": "MiniMax-M2.7",
     "arena_org": "minimax",
-    "arena_elo": 1404.7893350912168,
-    "arena_rank": 150,
-    "arena_votes": 89197,
-    "arena_webdev_elo": 1398.1916538931569,
-    "arena_factuality_elo": 1422.2193176539183,
+    "arena_elo": 1405.0248107195996,
+    "arena_rank": 149,
+    "arena_votes": 90861,
+    "arena_webdev_elo": 1397.7506430218687,
+    "arena_factuality_elo": 1422.3064457454188,
     "sb_score": 34.9,
     "sb_lift": 16.8
   },
@@ -70216,11 +70216,11 @@
     },
     "arena_name": "Qwen3.6-Plus",
     "arena_org": "alibaba",
-    "arena_elo": 1436.3188743920932,
-    "arena_rank": 85,
-    "arena_votes": 48126,
-    "arena_webdev_elo": 1461.6254246112119,
-    "arena_factuality_elo": 1437.43937831819
+    "arena_elo": 1436.0737829232098,
+    "arena_rank": 86,
+    "arena_votes": 48031,
+    "arena_webdev_elo": 1461.1644928916776,
+    "arena_factuality_elo": 1437.3590151786434
   },
   {
     "name": "qwen3.6-27b",
@@ -70317,12 +70317,12 @@
     },
     "arena_name": "MiniMax-M3",
     "arena_org": "minimax",
-    "arena_elo": 1431.2697157853881,
-    "arena_rank": 93,
-    "arena_votes": 68611,
-    "arena_webdev_elo": 1483.3051511403955,
-    "arena_vision_elo": 1251.0548647162113,
-    "arena_factuality_elo": 1433.9890639016808,
+    "arena_elo": 1428.209133483891,
+    "arena_rank": 99,
+    "arena_votes": 73158,
+    "arena_webdev_elo": 1484.120638094494,
+    "arena_vision_elo": 1248.6443052716168,
+    "arena_factuality_elo": 1432.6590672860339,
     "arena_agent_score": -0.10396707055734586,
     "sb_score": 53,
     "sb_lift": 23.3
@@ -70434,7 +70434,7 @@
     },
     "arena_name": "Kimi K2.7 Code",
     "arena_org": "moonshot",
-    "arena_webdev_elo": 1473.5355204604502
+    "arena_webdev_elo": 1473.4464187270783
   },
   {
     "name": "glm-5.2",
@@ -70503,11 +70503,11 @@
     },
     "arena_name": "GPT-5.5",
     "arena_org": "openai",
-    "arena_elo": 1466.7520045322913,
+    "arena_elo": 1466.7919503842886,
     "arena_rank": 36,
-    "arena_votes": 70949,
-    "arena_vision_elo": 1296.996303119526,
-    "arena_factuality_elo": 1481.82937808558
+    "arena_votes": 70828,
+    "arena_vision_elo": 1295.898799054896,
+    "arena_factuality_elo": 1481.9170445189602
   },
   {
     "name": "Gemini 4 Carbon (High)",
@@ -70519,11 +70519,11 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1540.042092301771,
+    "arena_elo": 1539.077948051864,
     "arena_rank": 1,
-    "arena_votes": 4403,
-    "arena_webdev_elo": 1768.1522310766236,
-    "arena_factuality_elo": 1521.585410134738,
+    "arena_votes": 4483,
+    "arena_webdev_elo": 1767.2109623977199,
+    "arena_factuality_elo": 1521.6115925303784,
     "arena_agent_score": 0.16716595213257168
   },
   {
@@ -70536,27 +70536,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1528.576999134275,
+    "arena_elo": 1530.3608071364822,
     "arena_rank": 2,
-    "arena_votes": 11889,
-    "arena_webdev_elo": 1679.2118291253184,
-    "arena_factuality_elo": 1499.5393093700945,
+    "arena_votes": 18399,
+    "arena_webdev_elo": 1682.730503374457,
+    "arena_factuality_elo": 1499.039329784453,
     "arena_agent_score": 0.10525164824272239
-  },
-  {
-    "name": "Claude Opus 5.5 (High)",
-    "arena_name": "Claude Opus 5.5 (High)",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1515.7998278195173,
-    "arena_rank": 3,
-    "arena_votes": 11415,
-    "arena_vision_elo": 1320.823800046,
-    "arena_factuality_elo": 1508.6768839478725
   },
   {
     "name": "Claude Fable 5.1 (Max)",
@@ -70569,13 +70554,28 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1513.833920367425,
-    "arena_rank": 4,
-    "arena_votes": 17178,
-    "arena_webdev_elo": 1745.8518267992542,
-    "arena_vision_elo": 1319.4899087995987,
-    "arena_factuality_elo": 1499.6872570429105,
+    "arena_elo": 1513.45871924281,
+    "arena_rank": 3,
+    "arena_votes": 19892,
+    "arena_webdev_elo": 1745.6544210964503,
+    "arena_vision_elo": 1320.6853619776432,
+    "arena_factuality_elo": 1499.3713007951937,
     "arena_agent_score": 0.13857005028518268
+  },
+  {
+    "name": "Claude Opus 5.5 (High)",
+    "arena_name": "Claude Opus 5.5 (High)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1512.2748674596626,
+    "arena_rank": 4,
+    "arena_votes": 14849,
+    "arena_vision_elo": 1324.1481781418217,
+    "arena_factuality_elo": 1505.3758633079751
   },
   {
     "name": "Claude Opus 5 (Max)",
@@ -70587,12 +70587,29 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1507.9090505684276,
+    "arena_elo": 1506.833725235481,
     "arena_rank": 5,
-    "arena_votes": 35531,
-    "arena_webdev_elo": 1690.5239169555273,
-    "arena_factuality_elo": 1488.3899253060238,
+    "arena_votes": 36681,
+    "arena_webdev_elo": 1691.3101535857807,
+    "arena_factuality_elo": 1487.6616212679883,
     "arena_agent_score": 0.07661953023610667
+  },
+  {
+    "name": "Muse Wonder (Max)",
+    "arena_name": "Muse Wonder (Max)",
+    "arena_org": "meta",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_factuality_elo": "arena",
+      "arena_agent_score": "arena"
+    },
+    "arena_elo": 1505.1195618761026,
+    "arena_rank": 6,
+    "arena_votes": 11229,
+    "arena_webdev_elo": 1649.4669722087165,
+    "arena_factuality_elo": 1497.1450515701017,
+    "arena_agent_score": 0.024335809889644497
   },
   {
     "name": "Claude Opus 5 (High)",
@@ -70605,13 +70622,13 @@
       "arena_factuality_elo": "arena",
       "arena_search_elo": "arena"
     },
-    "arena_elo": 1504.0842536838559,
-    "arena_rank": 6,
-    "arena_votes": 73167,
-    "arena_webdev_elo": 1658.189754773115,
-    "arena_vision_elo": 1319.623943187484,
-    "arena_factuality_elo": 1478.2463912748244,
-    "arena_search_elo": 1241.5675643501204
+    "arena_elo": 1502.8371076048454,
+    "arena_rank": 7,
+    "arena_votes": 75732,
+    "arena_webdev_elo": 1657.35898677545,
+    "arena_vision_elo": 1317.0608457535589,
+    "arena_factuality_elo": 1477.4977668793663,
+    "arena_search_elo": 1239.8939722124694
   },
   {
     "name": "Claude Opus 4.6 (High)",
@@ -70623,29 +70640,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1501.723643841503,
-    "arena_rank": 7,
-    "arena_votes": 84512,
-    "arena_webdev_elo": 1546.235576890829,
-    "arena_vision_elo": 1315.6723027974679,
-    "arena_factuality_elo": 1492.6206364725124
-  },
-  {
-    "name": "Muse Wonder (Max)",
-    "arena_name": "Muse Wonder (Max)",
-    "arena_org": "meta",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena",
-      "arena_agent_score": "arena"
-    },
-    "arena_elo": 1499.1665529054426,
+    "arena_elo": 1501.7257258972131,
     "arena_rank": 8,
-    "arena_votes": 7749,
-    "arena_webdev_elo": 1652.0939667524244,
-    "arena_factuality_elo": 1494.3281894689617,
-    "arena_agent_score": 0.024335809889644497
+    "arena_votes": 85548,
+    "arena_webdev_elo": 1546.0036361657574,
+    "arena_vision_elo": 1315.4615303104085,
+    "arena_factuality_elo": 1492.7964209690635
   },
   {
     "name": "Gemini 3.8 Flash (High)",
@@ -70658,12 +70658,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1498.492321637017,
+    "arena_elo": 1500.5434039395386,
     "arena_rank": 9,
-    "arena_votes": 47803,
-    "arena_webdev_elo": 1583.2994176433617,
-    "arena_vision_elo": 1315.379362654793,
-    "arena_factuality_elo": 1471.999695318515,
+    "arena_votes": 59680,
+    "arena_webdev_elo": 1582.970427756538,
+    "arena_vision_elo": 1315.8861022210901,
+    "arena_factuality_elo": 1471.6903968750257,
     "arena_agent_score": 0.025819514653005995
   },
   {
@@ -70678,13 +70678,13 @@
       "arena_search_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1491.5611245046712,
+    "arena_elo": 1491.7837143679953,
     "arena_rank": 11,
-    "arena_votes": 45341,
-    "arena_webdev_elo": 1624.082589402146,
-    "arena_vision_elo": 1324.8788723175815,
-    "arena_factuality_elo": 1482.7252484146788,
-    "arena_search_elo": 1229.1397516536,
+    "arena_votes": 46601,
+    "arena_webdev_elo": 1624.9582258269954,
+    "arena_vision_elo": 1325.577502396927,
+    "arena_factuality_elo": 1483.1497039092983,
+    "arena_search_elo": 1229.109001846581,
     "arena_agent_score": 0.078224963210975
   },
   {
@@ -70698,12 +70698,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1491.3511193426757,
+    "arena_elo": 1490.9614498482088,
     "arena_rank": 12,
-    "arena_votes": 4037,
-    "arena_webdev_elo": 1625.417548626546,
-    "arena_vision_elo": 1262.8399732080727,
-    "arena_factuality_elo": 1484.500529278321,
+    "arena_votes": 4189,
+    "arena_webdev_elo": 1623.503406790277,
+    "arena_vision_elo": 1266.028706672753,
+    "arena_factuality_elo": 1484.5347410091672,
     "arena_agent_score": 0.026810364256876926
   },
   {
@@ -70717,12 +70717,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1490.6255540345564,
+    "arena_elo": 1490.6610244517217,
     "arena_rank": 13,
-    "arena_votes": 22134,
-    "arena_webdev_elo": 1656.2348593321256,
-    "arena_vision_elo": 1308.414166200037,
-    "arena_factuality_elo": 1479.0976183377575,
+    "arena_votes": 25672,
+    "arena_webdev_elo": 1653.5661472648244,
+    "arena_vision_elo": 1308.3961939544977,
+    "arena_factuality_elo": 1479.4736607018954,
     "arena_agent_score": 0.025113832728772198
   },
   {
@@ -70735,12 +70735,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1489.7195611000939,
+    "arena_elo": 1489.7034643572908,
     "arena_rank": 14,
-    "arena_votes": 65110,
-    "arena_webdev_elo": 1557.537773306169,
-    "arena_vision_elo": 1313.1064247103911,
-    "arena_factuality_elo": 1477.3835732801695
+    "arena_votes": 65007,
+    "arena_webdev_elo": 1557.3375106467906,
+    "arena_vision_elo": 1313.487413516971,
+    "arena_factuality_elo": 1477.5357862924207
   },
   {
     "name": "Gemini 3.7 Flash (High)",
@@ -70753,12 +70753,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1489.1174089814049,
+    "arena_elo": 1488.359211614609,
     "arena_rank": 15,
-    "arena_votes": 32289,
-    "arena_webdev_elo": 1589.6728568868868,
-    "arena_vision_elo": 1314.2261159913364,
-    "arena_factuality_elo": 1475.7612738640719,
+    "arena_votes": 34346,
+    "arena_webdev_elo": 1588.5374817949314,
+    "arena_vision_elo": 1313.1887352494234,
+    "arena_factuality_elo": 1475.2510825554918,
     "arena_agent_score": -0.01602518748124285
   },
   {
@@ -70773,13 +70773,13 @@
       "arena_search_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1483.2905770662637,
+    "arena_elo": 1484.12729261351,
     "arena_rank": 16,
-    "arena_votes": 31915,
-    "arena_webdev_elo": 1671.885286248237,
-    "arena_vision_elo": 1312.935382439709,
-    "arena_factuality_elo": 1471.1131041117414,
-    "arena_search_elo": 1261.0761861904762,
+    "arena_votes": 36028,
+    "arena_webdev_elo": 1671.4051425529362,
+    "arena_vision_elo": 1312.5237893924257,
+    "arena_factuality_elo": 1472.2732393660872,
+    "arena_search_elo": 1259.7195724552687,
     "arena_agent_score": 0.004788293142734283
   },
   {
@@ -70793,12 +70793,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1482.6647890503186,
-    "arena_rank": 18,
-    "arena_votes": 11724,
-    "arena_webdev_elo": 1533.6689783572438,
-    "arena_vision_elo": 1304.2153267211183,
-    "arena_factuality_elo": 1479.0311309903066,
+    "arena_elo": 1483.581739302105,
+    "arena_rank": 17,
+    "arena_votes": 14436,
+    "arena_webdev_elo": 1533.6188625789164,
+    "arena_vision_elo": 1303.6940338894801,
+    "arena_factuality_elo": 1479.1987406832163,
     "arena_agent_score": -0.07698988459758775
   },
   {
@@ -70812,30 +70812,13 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1480.106155285645,
+    "arena_elo": 1480.03117267829,
     "arena_rank": 20,
-    "arena_votes": 132547,
-    "arena_webdev_elo": 1446.6498483953492,
-    "arena_vision_elo": 1295.7822786391075,
-    "arena_factuality_elo": 1471.681102473267,
+    "arena_votes": 134284,
+    "arena_webdev_elo": 1446.505950543424,
+    "arena_vision_elo": 1296.4870513109436,
+    "arena_factuality_elo": 1471.5053020340683,
     "arena_agent_score": -0.044409818497287236
-  },
-  {
-    "name": "Gemini 3.6 Flash (High)",
-    "arena_name": "Gemini 3.6 Flash (High)",
-    "arena_org": "google",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1479.7907457527913,
-    "arena_rank": 21,
-    "arena_votes": 36028,
-    "arena_webdev_elo": 1537.5456409227427,
-    "arena_vision_elo": 1298.8770393167063,
-    "arena_factuality_elo": 1471.8834448872242
   },
   {
     "name": "Gemini 3 Pro",
@@ -70848,13 +70831,30 @@
       "arena_factuality_elo": "arena",
       "ocr_omnidoc": "omnidocbench"
     },
-    "arena_elo": 1479.4013927240617,
-    "arena_rank": 22,
-    "arena_votes": 42057,
-    "arena_webdev_elo": 1439.9733520268244,
-    "arena_vision_elo": 1304.7505620472593,
-    "arena_factuality_elo": 1481.2423640533875,
+    "arena_elo": 1479.5804323711639,
+    "arena_rank": 21,
+    "arena_votes": 42019,
+    "arena_webdev_elo": 1440.008479723813,
+    "arena_vision_elo": 1304.694093387501,
+    "arena_factuality_elo": 1481.522834715669,
     "ocr_omnidoc": 92.91
+  },
+  {
+    "name": "Gemini 3.6 Flash (High)",
+    "arena_name": "Gemini 3.6 Flash (High)",
+    "arena_org": "google",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1479.1774912115811,
+    "arena_rank": 22,
+    "arena_votes": 36116,
+    "arena_webdev_elo": 1537.0446520559992,
+    "arena_vision_elo": 1296.8508466581304,
+    "arena_factuality_elo": 1471.810535239366
   },
   {
     "name": "Muse Spark 1.1",
@@ -70867,12 +70867,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1478.2815890769307,
+    "arena_elo": 1478.2399219575875,
     "arena_rank": 23,
-    "arena_votes": 46354,
-    "arena_webdev_elo": 1542.4822191942499,
-    "arena_vision_elo": 1292.5016810249715,
-    "arena_factuality_elo": 1462.4390990353086,
+    "arena_votes": 46714,
+    "arena_webdev_elo": 1541.7732291532873,
+    "arena_vision_elo": 1291.29057352443,
+    "arena_factuality_elo": 1462.8528083130927,
     "arena_agent_score": -0.07659459536438275
   },
   {
@@ -70885,57 +70885,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1478.1611062806182,
+    "arena_elo": 1478.0893780695649,
     "arena_rank": 24,
-    "arena_votes": 47196,
-    "arena_webdev_elo": 1490.6327257802702,
-    "arena_vision_elo": 1306.2726858221172,
-    "arena_factuality_elo": 1467.4855449615793
-  },
-  {
-    "name": "Kimi K3 (Max)",
-    "arena_name": "Kimi K3 (Max)",
-    "arena_org": "moonshot",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena",
-      "arena_agent_score": "arena"
-    },
-    "arena_elo": 1475.6886282072523,
-    "arena_rank": 25,
-    "arena_votes": 36780,
-    "arena_webdev_elo": 1656.390908396489,
-    "arena_factuality_elo": 1471.512844599586,
-    "arena_agent_score": 0.008419453885193499
-  },
-  {
-    "name": "Qwen3.7-Max-Preview",
-    "arena_name": "Qwen3.7-Max-Preview",
-    "arena_org": "alibaba",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1474.6658533225145,
-    "arena_rank": 26,
-    "arena_votes": 3932,
-    "arena_factuality_elo": 1479.6414572900849
-  },
-  {
-    "name": "Muse Spark",
-    "arena_name": "Muse Spark",
-    "arena_org": "meta",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1474.0351614672354,
-    "arena_rank": 27,
-    "arena_votes": 14140,
-    "arena_vision_elo": 1305.7748111360863,
-    "arena_factuality_elo": 1467.631515883443
+    "arena_votes": 47284,
+    "arena_webdev_elo": 1489.8000814418892,
+    "arena_vision_elo": 1306.0254251213828,
+    "arena_factuality_elo": 1467.4147156239137
   },
   {
     "name": "GLM-5.3 (Max)",
@@ -70947,12 +70902,57 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1473.7757049962415,
-    "arena_rank": 28,
-    "arena_votes": 26606,
-    "arena_webdev_elo": 1622.8098625429598,
-    "arena_factuality_elo": 1466.11196945312,
+    "arena_elo": 1475.8955432898135,
+    "arena_rank": 25,
+    "arena_votes": 30776,
+    "arena_webdev_elo": 1620.690237511691,
+    "arena_factuality_elo": 1467.9432938168857,
     "arena_agent_score": 0.010890920338008515
+  },
+  {
+    "name": "Kimi K3 (Max)",
+    "arena_name": "Kimi K3 (Max)",
+    "arena_org": "moonshot",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_factuality_elo": "arena",
+      "arena_agent_score": "arena"
+    },
+    "arena_elo": 1475.436486575478,
+    "arena_rank": 26,
+    "arena_votes": 40814,
+    "arena_webdev_elo": 1656.5133396725882,
+    "arena_factuality_elo": 1471.035613546589,
+    "arena_agent_score": 0.008419453885193499
+  },
+  {
+    "name": "Qwen3.7-Max-Preview",
+    "arena_name": "Qwen3.7-Max-Preview",
+    "arena_org": "alibaba",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1474.9068413283785,
+    "arena_rank": 27,
+    "arena_votes": 3926,
+    "arena_factuality_elo": 1479.8669395834158
+  },
+  {
+    "name": "Muse Spark",
+    "arena_name": "Muse Spark",
+    "arena_org": "meta",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1474.1244940614479,
+    "arena_rank": 28,
+    "arena_votes": 14119,
+    "arena_vision_elo": 1305.6182065869123,
+    "arena_factuality_elo": 1467.8272257236695
   },
   {
     "name": "GLM-5.3-Flash",
@@ -70965,30 +70965,13 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1473.0371705099178,
+    "arena_elo": 1472.4328778416277,
     "arena_rank": 29,
-    "arena_votes": 41642,
-    "arena_webdev_elo": 1606.6486731495352,
-    "arena_vision_elo": 1293.8678100737243,
-    "arena_factuality_elo": 1463.788059382684,
+    "arena_votes": 49824,
+    "arena_webdev_elo": 1606.5836157384558,
+    "arena_vision_elo": 1295.3113367361943,
+    "arena_factuality_elo": 1462.7943115670396,
     "arena_agent_score": -0.023939650496158076
-  },
-  {
-    "name": "Claude Sonnet 5.5 (xHigh)",
-    "arena_name": "Claude Sonnet 5.5 (xHigh)",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1472.8510730804223,
-    "arena_rank": 30,
-    "arena_votes": 10033,
-    "arena_webdev_elo": 1769.7283971913196,
-    "arena_vision_elo": 1287.21834956692,
-    "arena_factuality_elo": 1475.5673384524132
   },
   {
     "name": "Qwen3.5-Max-Preview",
@@ -70998,10 +70981,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1470.3945124962643,
-    "arena_rank": 32,
-    "arena_votes": 22582,
-    "arena_factuality_elo": 1474.5883851863553
+    "arena_elo": 1470.4273697474464,
+    "arena_rank": 31,
+    "arena_votes": 22554,
+    "arena_factuality_elo": 1474.6657466387137
   },
   {
     "name": "GLM-5.2 (Max)",
@@ -71013,12 +70996,29 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1469.6433726055043,
-    "arena_rank": 33,
-    "arena_votes": 53702,
-    "arena_webdev_elo": 1605.639209438289,
-    "arena_factuality_elo": 1462.5992663491702,
+    "arena_elo": 1469.3566556049852,
+    "arena_rank": 32,
+    "arena_votes": 55345,
+    "arena_webdev_elo": 1606.4075322198196,
+    "arena_factuality_elo": 1462.3951238713885,
     "arena_agent_score": 0.0063863950447943145
+  },
+  {
+    "name": "Claude Sonnet 5.5 (xHigh)",
+    "arena_name": "Claude Sonnet 5.5 (xHigh)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1469.159203498016,
+    "arena_rank": 34,
+    "arena_votes": 13410,
+    "arena_webdev_elo": 1772.023172939039,
+    "arena_vision_elo": 1282.5785383326975,
+    "arena_factuality_elo": 1472.7393102644478
   },
   {
     "name": "ERNIE 5.1",
@@ -71029,11 +71029,11 @@
       "arena_factuality_elo": "arena",
       "arena_search_elo": "arena"
     },
-    "arena_elo": 1467.76969220629,
+    "arena_elo": 1467.9302478018521,
     "arena_rank": 35,
-    "arena_votes": 39469,
-    "arena_factuality_elo": 1455.9871073733075,
-    "arena_search_elo": 1226.7150529766889
+    "arena_votes": 39416,
+    "arena_factuality_elo": 1456.2123087397845,
+    "arena_search_elo": 1227.0715457412462
   },
   {
     "name": "Gemini 3 Flash",
@@ -71047,32 +71047,15 @@
       "sb_score": "skillsbench",
       "ocr_omnidoc": "omnidocbench"
     },
-    "arena_elo": 1465.6660542386348,
+    "arena_elo": 1465.9056825709415,
     "arena_rank": 37,
-    "arena_votes": 31301,
-    "arena_webdev_elo": 1440.1243208284204,
-    "arena_vision_elo": 1284.9469808114234,
-    "arena_factuality_elo": 1467.4990310300334,
+    "arena_votes": 31283,
+    "arena_webdev_elo": 1439.8704743045216,
+    "arena_vision_elo": 1284.9120340467503,
+    "arena_factuality_elo": 1467.7803616936048,
     "sb_score": 54.6068,
     "sb_lift": 20.3884,
     "ocr_omnidoc": 92.62
-  },
-  {
-    "name": "DeepSeek-V4.1-Flash-20260910 (Max)",
-    "arena_name": "DeepSeek-V4.1-Flash-20260910 (Max)",
-    "arena_org": "deepseek",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1464.5070280902241,
-    "arena_rank": 38,
-    "arena_votes": 13657,
-    "arena_webdev_elo": 1619.1588129696818,
-    "arena_vision_elo": 1277.8593561291239,
-    "arena_factuality_elo": 1468.9852148895247
   },
   {
     "name": "MiMo-V2.5-Pro",
@@ -71084,12 +71067,29 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1464.2246168455958,
-    "arena_rank": 39,
-    "arena_votes": 77728,
-    "arena_webdev_elo": 1480.4355329379657,
-    "arena_factuality_elo": 1464.3256731385068,
+    "arena_elo": 1464.0044633651123,
+    "arena_rank": 38,
+    "arena_votes": 78014,
+    "arena_webdev_elo": 1480.0559430265998,
+    "arena_factuality_elo": 1464.1836261264793,
     "arena_agent_score": -0.09027032879654748
+  },
+  {
+    "name": "DeepSeek-V4.1-Flash-20260910 (Max)",
+    "arena_name": "DeepSeek-V4.1-Flash-20260910 (Max)",
+    "arena_org": "deepseek",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1463.48004276794,
+    "arena_rank": 39,
+    "arena_votes": 13976,
+    "arena_webdev_elo": 1619.1412205394952,
+    "arena_vision_elo": 1279.4940839153214,
+    "arena_factuality_elo": 1468.0756907058376
   },
   {
     "name": "Claude Opus 4.8 (High)",
@@ -71101,29 +71101,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1461.29505850546,
+    "arena_elo": 1461.362124586969,
     "arena_rank": 41,
-    "arena_votes": 63994,
-    "arena_webdev_elo": 1555.8263524171814,
-    "arena_vision_elo": 1294.491387370161,
-    "arena_factuality_elo": 1469.8134836095273
-  },
-  {
-    "name": "Gemini 2.5 Pro",
-    "arena_name": "Gemini 2.5 Pro",
-    "arena_org": "google",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1457.7010209624614,
-    "arena_rank": 43,
-    "arena_votes": 125307,
-    "arena_webdev_elo": 1226.0977652196555,
-    "arena_vision_elo": 1263.3321928931312,
-    "arena_factuality_elo": 1461.742743642856
+    "arena_votes": 64088,
+    "arena_webdev_elo": 1555.9108968886521,
+    "arena_vision_elo": 1295.0624757333928,
+    "arena_factuality_elo": 1469.8725076807605
   },
   {
     "name": "GPT-5.6 Sol (xHigh)",
@@ -71136,13 +71119,30 @@
       "arena_search_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1457.2397494853772,
-    "arena_rank": 44,
-    "arena_votes": 43796,
-    "arena_vision_elo": 1280.6177272297055,
-    "arena_factuality_elo": 1476.3986819228764,
-    "arena_search_elo": 1261.1307593350664,
+    "arena_elo": 1457.8797182051937,
+    "arena_rank": 42,
+    "arena_votes": 45082,
+    "arena_vision_elo": 1282.0365101154682,
+    "arena_factuality_elo": 1476.9355259044692,
+    "arena_search_elo": 1258.5049354119033,
     "arena_agent_score": 0.04572267729564615
+  },
+  {
+    "name": "Gemini 2.5 Pro",
+    "arena_name": "Gemini 2.5 Pro",
+    "arena_org": "google",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1457.7514406896112,
+    "arena_rank": 44,
+    "arena_votes": 125238,
+    "arena_webdev_elo": 1226.076292533807,
+    "arena_vision_elo": 1263.289573142847,
+    "arena_factuality_elo": 1461.811213596348
   },
   {
     "name": "Qwen3.7-Plus",
@@ -71154,11 +71154,11 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1454.5576780095698,
+    "arena_elo": 1454.4210037424507,
     "arena_rank": 46,
-    "arena_votes": 42011,
-    "arena_vision_elo": 1278.1470332728204,
-    "arena_factuality_elo": 1452.4071217241035,
+    "arena_votes": 41897,
+    "arena_vision_elo": 1276.6449369239513,
+    "arena_factuality_elo": 1452.385615184121,
     "arena_agent_score": -0.07459946086080223
   },
   {
@@ -71171,12 +71171,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1452.4698450756227,
+    "arena_elo": 1452.432628507656,
     "arena_rank": 48,
-    "arena_votes": 67856,
-    "arena_webdev_elo": 1401.0886143328514,
-    "arena_vision_elo": 1292.0285907748362,
-    "arena_factuality_elo": 1474.8511789658708
+    "arena_votes": 67735,
+    "arena_webdev_elo": 1400.1616039561823,
+    "arena_vision_elo": 1291.727577906236,
+    "arena_factuality_elo": 1474.7993791040858
   },
   {
     "name": "MiMo-V2.6-Flash",
@@ -71189,12 +71189,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1451.2183606158565,
+    "arena_elo": 1452.3474935103782,
     "arena_rank": 49,
-    "arena_votes": 15312,
-    "arena_webdev_elo": 1637.1737027632755,
-    "arena_vision_elo": 1255.7442227458723,
-    "arena_factuality_elo": 1450.728860132173,
+    "arena_votes": 21207,
+    "arena_webdev_elo": 1636.3290242109547,
+    "arena_vision_elo": 1259.984745349855,
+    "arena_factuality_elo": 1451.3502093411466,
     "arena_agent_score": 0.002000589395452135
   },
   {
@@ -71207,12 +71207,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1450.982542691227,
-    "arena_rank": 51,
-    "arena_votes": 66422,
-    "arena_webdev_elo": 1375.4624441703345,
-    "arena_vision_elo": 1262.440141354232,
-    "arena_factuality_elo": 1455.6550753503377
+    "arena_elo": 1450.9245438020862,
+    "arena_rank": 52,
+    "arena_votes": 66330,
+    "arena_webdev_elo": 1375.3362351571295,
+    "arena_vision_elo": 1262.3201513841184,
+    "arena_factuality_elo": 1455.7240495816363
   },
   {
     "name": "Grok 4.20 Multi-Agent Beta (0309)",
@@ -71224,12 +71224,12 @@
       "arena_factuality_elo": "arena",
       "arena_search_elo": "arena"
     },
-    "arena_elo": 1450.652032040815,
+    "arena_elo": 1450.7667287496633,
     "arena_rank": 53,
-    "arena_votes": 64917,
-    "arena_vision_elo": 1258.8301790843234,
-    "arena_factuality_elo": 1457.0108795862704,
-    "arena_search_elo": 1204.7998590393286
+    "arena_votes": 64839,
+    "arena_vision_elo": 1259.218473863353,
+    "arena_factuality_elo": 1457.2611301702036,
+    "arena_search_elo": 1204.4623390962993
   },
   {
     "name": "amazon-nova-experimental-chat (26-02-10)",
@@ -71239,10 +71239,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1448.7132173712316,
+    "arena_elo": 1448.775773052555,
     "arena_rank": 54,
-    "arena_votes": 3523,
-    "arena_factuality_elo": 1451.5990061704665
+    "arena_votes": 3524,
+    "arena_factuality_elo": 1451.7094723579353
   },
   {
     "name": "GPT-5.6 Terra (xHigh)",
@@ -71254,42 +71254,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1448.30429072605,
+    "arena_elo": 1448.762107456279,
     "arena_rank": 55,
-    "arena_votes": 48166,
-    "arena_vision_elo": 1270.9741940618744,
-    "arena_factuality_elo": 1468.6812021842547,
+    "arena_votes": 50150,
+    "arena_vision_elo": 1269.673239299548,
+    "arena_factuality_elo": 1469.3607432100857,
     "arena_agent_score": -0.01504690834577408
-  },
-  {
-    "name": "Claude Opus 4.5 (High, 32K, 20251101)",
-    "arena_name": "Claude Opus 4.5 (High, 32K, 20251101)",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1448.2089639356923,
-    "arena_rank": 56,
-    "arena_votes": 37484,
-    "arena_webdev_elo": 1493.6607664512705,
-    "arena_factuality_elo": 1458.9201223473071
-  },
-  {
-    "name": "Dola Seed 2.0 Pro",
-    "arena_name": "Dola Seed 2.0 Pro",
-    "arena_org": "bytedance",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1448.0303028975627,
-    "arena_rank": 57,
-    "arena_votes": 79094,
-    "arena_vision_elo": 1274.419449798857,
-    "arena_factuality_elo": 1419.8586595857073
   },
   {
     "name": "Grok 4.5",
@@ -71302,13 +71272,43 @@
       "arena_factuality_elo": "arena",
       "arena_search_elo": "arena"
     },
-    "arena_elo": 1447.6409447393899,
+    "arena_elo": 1448.424569081992,
+    "arena_rank": 56,
+    "arena_votes": 39903,
+    "arena_webdev_elo": 1552.557908378854,
+    "arena_vision_elo": 1288.1660637840869,
+    "arena_factuality_elo": 1465.609755953406,
+    "arena_search_elo": 1215.4999081911824
+  },
+  {
+    "name": "Claude Opus 4.5 (High, 32K, 20251101)",
+    "arena_name": "Claude Opus 4.5 (High, 32K, 20251101)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1448.309328149251,
+    "arena_rank": 57,
+    "arena_votes": 37460,
+    "arena_webdev_elo": 1493.7246273502353,
+    "arena_factuality_elo": 1459.0366328714395
+  },
+  {
+    "name": "Dola Seed 2.0 Pro",
+    "arena_name": "Dola Seed 2.0 Pro",
+    "arena_org": "bytedance",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1448.1075095680826,
     "arena_rank": 58,
-    "arena_votes": 39801,
-    "arena_webdev_elo": 1553.032541111338,
-    "arena_vision_elo": 1287.1225634879884,
-    "arena_factuality_elo": 1465.1934568686472,
-    "arena_search_elo": 1215.9370825422614
+    "arena_votes": 78971,
+    "arena_vision_elo": 1274.4128733670636,
+    "arena_factuality_elo": 1420.1072175625777
   },
   {
     "name": "Qwen3.6-Max-Preview",
@@ -71319,28 +71319,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1446.7444158066523,
+    "arena_elo": 1446.9678643672607,
     "arena_rank": 59,
-    "arena_votes": 5419,
-    "arena_webdev_elo": 1481.8179582284795,
-    "arena_factuality_elo": 1452.3540593625828
-  },
-  {
-    "name": "DeepSeek-V4-Pro (High, 20260813)",
-    "arena_name": "DeepSeek-V4-Pro (High, 20260813)",
-    "arena_org": "deepseek",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena",
-      "arena_agent_score": "arena"
-    },
-    "arena_elo": 1446.041560619321,
-    "arena_rank": 60,
-    "arena_votes": 9787,
-    "arena_webdev_elo": 1581.8580682830898,
-    "arena_factuality_elo": 1453.9861102584778,
-    "arena_agent_score": -0.0030041093087883296
+    "arena_votes": 5417,
+    "arena_webdev_elo": 1481.9051456384773,
+    "arena_factuality_elo": 1452.6341571137987
   },
   {
     "name": "GPT-6.1 Sol (Max)",
@@ -71354,27 +71337,31 @@
       "arena_search_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1445.554577268636,
-    "arena_rank": 62,
-    "arena_votes": 9367,
-    "arena_webdev_elo": 1750.568215754016,
-    "arena_vision_elo": 1287.7313467775475,
-    "arena_factuality_elo": 1465.556737221429,
-    "arena_search_elo": 1233.1023499390756,
+    "arena_elo": 1446.691081521115,
+    "arena_rank": 60,
+    "arena_votes": 12539,
+    "arena_webdev_elo": 1741.8099237477113,
+    "arena_vision_elo": 1286.2479166712626,
+    "arena_factuality_elo": 1467.3611284168428,
+    "arena_search_elo": 1229.2246854129198,
     "arena_agent_score": 0.12513945767905282
   },
   {
-    "name": "NVIDIA-Nemotron-3-Ultra-550B-A55B (NVFP4)",
-    "arena_name": "NVIDIA-Nemotron-3-Ultra-550B-A55B (NVFP4)",
-    "arena_org": "nvidia",
+    "name": "DeepSeek-V4-Pro (High, 20260813)",
+    "arena_name": "DeepSeek-V4-Pro (High, 20260813)",
+    "arena_org": "deepseek",
     "sources": {
       "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
+      "arena_webdev_elo": "arena",
+      "arena_factuality_elo": "arena",
+      "arena_agent_score": "arena"
     },
-    "arena_elo": 1445.1540479565415,
-    "arena_rank": 63,
-    "arena_votes": 11563,
-    "arena_factuality_elo": 1431.6040565784454
+    "arena_elo": 1445.2177763254376,
+    "arena_rank": 62,
+    "arena_votes": 9758,
+    "arena_webdev_elo": 1581.6078686175035,
+    "arena_factuality_elo": 1453.4221843088037,
+    "arena_agent_score": -0.0030041093087883296
   },
   {
     "name": "DeepSeek-V4-Pro Preview (High)",
@@ -71385,11 +71372,39 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1444.9090119997759,
-    "arena_rank": 64,
-    "arena_votes": 54870,
-    "arena_webdev_elo": 1464.190999873057,
-    "arena_factuality_elo": 1447.4218515820812
+    "arena_elo": 1445.1745814144206,
+    "arena_rank": 63,
+    "arena_votes": 54746,
+    "arena_webdev_elo": 1464.2986875187244,
+    "arena_factuality_elo": 1447.6475935776728
+  },
+  {
+    "name": "NVIDIA-Nemotron-3-Ultra-550B-A55B (NVFP4)",
+    "arena_name": "NVIDIA-Nemotron-3-Ultra-550B-A55B (NVFP4)",
+    "arena_org": "nvidia",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1444.810421248027,
+    "arena_rank": 65,
+    "arena_votes": 11534,
+    "arena_factuality_elo": 1431.7060060803512
+  },
+  {
+    "name": "Grok 4.20 Beta 1",
+    "arena_name": "Grok 4.20 Beta 1",
+    "arena_org": "xai",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena",
+      "arena_search_elo": "arena"
+    },
+    "arena_elo": 1444.5338416673821,
+    "arena_rank": 66,
+    "arena_votes": 27856,
+    "arena_factuality_elo": 1452.5650784354227,
+    "arena_search_elo": 1190.2797611418594
   },
   {
     "name": "ERNIE 5.0 (0110)",
@@ -71399,40 +71414,27 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1444.5209719210252,
-    "arena_rank": 66,
-    "arena_votes": 36475,
-    "arena_factuality_elo": 1445.2163560770446
-  },
-  {
-    "name": "Grok 4.20 Beta 1",
-    "arena_name": "Grok 4.20 Beta 1",
-    "arena_org": "xai",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1444.4799730315126,
+    "arena_elo": 1444.4824612508185,
     "arena_rank": 67,
-    "arena_votes": 27889,
-    "arena_factuality_elo": 1452.36998558823
+    "arena_votes": 36437,
+    "arena_factuality_elo": 1445.2271286183336
   },
   {
-    "name": "Gemma 4 31B",
-    "arena_name": "Gemma 4 31B",
-    "arena_org": "google",
+    "name": "Inkling",
+    "arena_name": "Inkling",
+    "arena_org": "thinky",
     "sources": {
       "arena_elo": "arena",
       "arena_webdev_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
+      "arena_factuality_elo": "arena",
+      "arena_agent_score": "arena"
     },
-    "arena_elo": 1442.9592444545483,
+    "arena_elo": 1443.2806986982475,
     "arena_rank": 68,
-    "arena_votes": 6138,
-    "arena_webdev_elo": 1368.6624108190852,
-    "arena_vision_elo": 1276.471135628896,
-    "arena_factuality_elo": 1449.3377203064383
+    "arena_votes": 50175,
+    "arena_webdev_elo": 1414.6051185006745,
+    "arena_factuality_elo": 1452.0600870384324,
+    "arena_agent_score": -0.16332138597542212
   },
   {
     "name": "Step 5 Preview",
@@ -71444,11 +71446,11 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1442.7188262673085,
+    "arena_elo": 1442.9131576671887,
     "arena_rank": 69,
-    "arena_votes": 11355,
-    "arena_vision_elo": 1264.584469224122,
-    "arena_factuality_elo": 1447.1624091214642,
+    "arena_votes": 12887,
+    "arena_vision_elo": 1264.407005709865,
+    "arena_factuality_elo": 1448.3096731126866,
     "arena_agent_score": -0.028761238788302872
   },
   {
@@ -71460,11 +71462,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1442.713427839923,
+    "arena_elo": 1442.823013599409,
     "arena_rank": 70,
-    "arena_votes": 41639,
-    "arena_vision_elo": 1249.5112060955219,
-    "arena_factuality_elo": 1458.1003423447453
+    "arena_votes": 41587,
+    "arena_vision_elo": 1249.4326675234606,
+    "arena_factuality_elo": 1458.2140809388625
   },
   {
     "name": "Claude Sonnet 5 (High)",
@@ -71477,30 +71479,26 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1442.689479868949,
+    "arena_elo": 1442.6473923306114,
     "arena_rank": 71,
-    "arena_votes": 52952,
-    "arena_webdev_elo": 1540.090043634944,
-    "arena_vision_elo": 1272.5476789147583,
-    "arena_factuality_elo": 1452.1672978024244,
+    "arena_votes": 54243,
+    "arena_webdev_elo": 1539.1400512313933,
+    "arena_vision_elo": 1271.7586204391876,
+    "arena_factuality_elo": 1451.9375698950075,
     "arena_agent_score": 0.024429680071076675
   },
   {
-    "name": "Inkling",
-    "arena_name": "Inkling",
-    "arena_org": "thinky",
+    "name": "ERNIE-5.0-Preview (1203)",
+    "arena_name": "ERNIE-5.0-Preview (1203)",
+    "arena_org": "baidu",
     "sources": {
       "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena",
-      "arena_agent_score": "arena"
+      "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1442.6633757297745,
+    "arena_elo": 1442.6382581183698,
     "arena_rank": 72,
-    "arena_votes": 45472,
-    "arena_webdev_elo": 1415.192007852744,
-    "arena_factuality_elo": 1451.716647233062,
-    "arena_agent_score": -0.16332138597542212
+    "arena_votes": 9792,
+    "arena_factuality_elo": 1442.2611970852151
   },
   {
     "name": "Gemini 3 Flash (Minimal)",
@@ -71512,25 +71510,29 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1442.4487041287512,
+    "arena_elo": 1442.570976272367,
     "arena_rank": 73,
-    "arena_votes": 90997,
-    "arena_webdev_elo": 1384.4938378264999,
-    "arena_vision_elo": 1265.707045846503,
-    "arena_factuality_elo": 1451.152582897075
+    "arena_votes": 90875,
+    "arena_webdev_elo": 1384.7772899671193,
+    "arena_vision_elo": 1265.255157745821,
+    "arena_factuality_elo": 1451.2404702248095
   },
   {
-    "name": "ERNIE-5.0-Preview (1203)",
-    "arena_name": "ERNIE-5.0-Preview (1203)",
-    "arena_org": "baidu",
+    "name": "Gemma 4 31B",
+    "arena_name": "Gemma 4 31B",
+    "arena_org": "google",
     "sources": {
       "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1442.2917751182795,
+    "arena_elo": 1442.5247220810459,
     "arena_rank": 74,
-    "arena_votes": 9802,
-    "arena_factuality_elo": 1441.9325175900392
+    "arena_votes": 6141,
+    "arena_webdev_elo": 1369.5196994049306,
+    "arena_vision_elo": 1279.1514592948467,
+    "arena_factuality_elo": 1449.0600325092787
   },
   {
     "name": "GPT-6 Astra (Max)",
@@ -71544,14 +71546,27 @@
       "arena_search_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1441.1545927299408,
+    "arena_elo": 1440.9374940126625,
     "arena_rank": 75,
-    "arena_votes": 15038,
-    "arena_webdev_elo": 1773.3545606290113,
-    "arena_vision_elo": 1279.8986527925117,
-    "arena_factuality_elo": 1466.5224195807928,
-    "arena_search_elo": 1233.6158108189236,
+    "arena_votes": 18076,
+    "arena_webdev_elo": 1769.8137359567181,
+    "arena_vision_elo": 1280.079839037148,
+    "arena_factuality_elo": 1466.3539709427291,
+    "arena_search_elo": 1232.281256955352,
     "arena_agent_score": 0.1469702596284481
+  },
+  {
+    "name": "Qwen3-Max-Preview",
+    "arena_name": "Qwen3-Max-Preview",
+    "arena_org": "alibaba",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1438.9544198087858,
+    "arena_rank": 77,
+    "arena_votes": 27366,
+    "arena_factuality_elo": 1441.4830485306725
   },
   {
     "name": "Hy3",
@@ -71563,25 +71578,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1439.0652001072267,
-    "arena_rank": 77,
-    "arena_votes": 13840,
-    "arena_webdev_elo": 1505.4337074624896,
-    "arena_factuality_elo": 1445.7379061850843,
-    "arena_agent_score": -0.0771969842666558
-  },
-  {
-    "name": "Qwen3-Max-Preview",
-    "arena_name": "Qwen3-Max-Preview",
-    "arena_org": "alibaba",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1438.894281356876,
+    "arena_elo": 1438.8335179320925,
     "arena_rank": 78,
-    "arena_votes": 27368,
-    "arena_factuality_elo": 1441.3719488589427
+    "arena_votes": 15173,
+    "arena_webdev_elo": 1505.1859916645344,
+    "arena_factuality_elo": 1446.1354266061844,
+    "arena_agent_score": -0.0771969842666558
   },
   {
     "name": "GPT-5.2 Chat (20260210)",
@@ -71592,11 +71594,28 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1438.4978566547375,
+    "arena_elo": 1438.4672762825137,
     "arena_rank": 80,
-    "arena_votes": 35974,
-    "arena_vision_elo": 1267.830437483969,
-    "arena_factuality_elo": 1450.4959509394846
+    "arena_votes": 35933,
+    "arena_vision_elo": 1267.7681769189328,
+    "arena_factuality_elo": 1450.5027401252755
+  },
+  {
+    "name": "Qwen3.5-397B-A17B",
+    "arena_name": "Qwen3.5-397B-A17B",
+    "arena_org": "alibaba",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1437.625096257042,
+    "arena_rank": 81,
+    "arena_votes": 99308,
+    "arena_webdev_elo": 1399.915860145044,
+    "arena_vision_elo": 1262.796389066296,
+    "arena_factuality_elo": 1444.2375362781934
   },
   {
     "name": "Qwen3.8-27B",
@@ -71609,30 +71628,13 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1438.4449528809614,
-    "arena_rank": 81,
-    "arena_votes": 27779,
-    "arena_webdev_elo": 1589.782268834193,
-    "arena_vision_elo": 1269.463029799551,
-    "arena_factuality_elo": 1436.1361626156697,
-    "arena_agent_score": -0.042751116969888335
-  },
-  {
-    "name": "Qwen3.5-397B-A17B",
-    "arena_name": "Qwen3.5-397B-A17B",
-    "arena_org": "alibaba",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1437.553381003047,
+    "arena_elo": 1437.2795453881158,
     "arena_rank": 83,
-    "arena_votes": 97675,
-    "arena_webdev_elo": 1400.2208309279806,
-    "arena_vision_elo": 1262.4660916015766,
-    "arena_factuality_elo": 1444.3871683506661
+    "arena_votes": 32347,
+    "arena_webdev_elo": 1590.46683166724,
+    "arena_vision_elo": 1267.279177997886,
+    "arena_factuality_elo": 1435.910020627265,
+    "arena_agent_score": -0.042751116969888335
   },
   {
     "name": "Grok 4.1 (Thinking)",
@@ -71643,11 +71645,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1436.4128814849696,
+    "arena_elo": 1436.538049583132,
     "arena_rank": 84,
-    "arena_votes": 66470,
-    "arena_webdev_elo": 1214.468784837361,
-    "arena_factuality_elo": 1434.0439842483283
+    "arena_votes": 66417,
+    "arena_webdev_elo": 1214.1931238935526,
+    "arena_factuality_elo": 1434.2927341775367
   },
   {
     "name": "Grok 4.1",
@@ -71657,10 +71659,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1435.956286667229,
+    "arena_elo": 1436.0286066245296,
     "arena_rank": 87,
-    "arena_votes": 68599,
-    "arena_factuality_elo": 1431.0004089613703
+    "arena_votes": 68547,
+    "arena_factuality_elo": 1431.1621633928112
   },
   {
     "name": "Gemini 3.5 Flash-Lite",
@@ -71672,12 +71674,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1435.476495870871,
-    "arena_rank": 88,
-    "arena_votes": 35740,
-    "arena_webdev_elo": 1434.0835335612885,
-    "arena_vision_elo": 1269.067499973593,
-    "arena_factuality_elo": 1447.580494786147
+    "arena_elo": 1434.8588819774384,
+    "arena_rank": 89,
+    "arena_votes": 35895,
+    "arena_webdev_elo": 1434.035144937326,
+    "arena_vision_elo": 1268.325318907201,
+    "arena_factuality_elo": 1447.0970018452913
   },
   {
     "name": "Claude Sonnet 4.5 (High, 32K, 20250929)",
@@ -71688,11 +71690,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1434.493998733889,
+    "arena_elo": 1434.5312911137876,
     "arena_rank": 90,
-    "arena_votes": 83892,
-    "arena_webdev_elo": 1393.5404164128754,
-    "arena_factuality_elo": 1446.2279636765907
+    "arena_votes": 83821,
+    "arena_webdev_elo": 1393.3170341072332,
+    "arena_factuality_elo": 1446.2855597285343
   },
   {
     "name": "Gemma 4 26B A4B",
@@ -71704,12 +71706,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1434.16609489024,
+    "arena_elo": 1434.0586125665736,
     "arena_rank": 91,
-    "arena_votes": 6090,
-    "arena_webdev_elo": 1358.776588697436,
-    "arena_vision_elo": 1259.550227985578,
-    "arena_factuality_elo": 1444.5426839031836
+    "arena_votes": 6091,
+    "arena_webdev_elo": 1358.8234043586613,
+    "arena_vision_elo": 1259.636427990518,
+    "arena_factuality_elo": 1444.3295829937683
   },
   {
     "name": "GPT-5.6 Luna (xHigh)",
@@ -71720,43 +71722,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1431.0486342627855,
-    "arena_rank": 94,
-    "arena_votes": 41317,
-    "arena_vision_elo": 1257.1473899499424,
-    "arena_factuality_elo": 1460.4696854974995
-  },
-  {
-    "name": "Mistral Large 4",
-    "arena_name": "Mistral Large 4",
-    "arena_org": "mistral",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_vision_elo": "arena",
-      "arena_factuality_elo": "arena",
-      "arena_agent_score": "arena"
-    },
-    "arena_elo": 1430.0660290522828,
-    "arena_rank": 95,
-    "arena_votes": 12066,
-    "arena_webdev_elo": 1544.3103315032786,
-    "arena_vision_elo": 1272.171620981572,
-    "arena_factuality_elo": 1433.305154293928,
-    "arena_agent_score": -0.05462655237209272
-  },
-  {
-    "name": "ERNIE-5.0-Preview (1022)",
-    "arena_name": "ERNIE-5.0-Preview (1022)",
-    "arena_org": "baidu",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1429.777830884852,
-    "arena_rank": 97,
-    "arena_votes": 4755,
-    "arena_factuality_elo": 1439.5408963236578
+    "arena_elo": 1430.8432295664775,
+    "arena_rank": 93,
+    "arena_votes": 41521,
+    "arena_vision_elo": 1256.8049692361617,
+    "arena_factuality_elo": 1460.3186492226364
   },
   {
     "name": "Grok 4.6 (High)",
@@ -71768,12 +71738,25 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1428.5262259678225,
-    "arena_rank": 98,
-    "arena_votes": 33824,
-    "arena_webdev_elo": 1616.3867226095672,
-    "arena_vision_elo": 1263.0068980770138,
-    "arena_factuality_elo": 1450.0862928445545
+    "arena_elo": 1430.391160135977,
+    "arena_rank": 94,
+    "arena_votes": 35697,
+    "arena_webdev_elo": 1617.4311191115153,
+    "arena_vision_elo": 1263.694542680491,
+    "arena_factuality_elo": 1451.5160926089202
+  },
+  {
+    "name": "ERNIE-5.0-Preview (1022)",
+    "arena_name": "ERNIE-5.0-Preview (1022)",
+    "arena_org": "baidu",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1430.1604497749315,
+    "arena_rank": 95,
+    "arena_votes": 4751,
+    "arena_factuality_elo": 1439.9601042452946
   },
   {
     "name": "ChatGPT-4o Latest (20250326)",
@@ -71784,11 +71767,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1428.4483172113378,
-    "arena_rank": 99,
-    "arena_votes": 81893,
-    "arena_vision_elo": 1243.2825718995111,
-    "arena_factuality_elo": 1443.7390566169809
+    "arena_elo": 1428.396124693916,
+    "arena_rank": 97,
+    "arena_votes": 81860,
+    "arena_vision_elo": 1243.3263353140433,
+    "arena_factuality_elo": 1443.7063529958502
   },
   {
     "name": "Mistral Large 3",
@@ -71800,12 +71783,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1428.2816908625032,
-    "arena_rank": 100,
-    "arena_votes": 88325,
-    "arena_webdev_elo": 1232.601739542315,
-    "arena_vision_elo": 1219.9399099367704,
-    "arena_factuality_elo": 1434.1365154669438
+    "arena_elo": 1428.2996356491176,
+    "arena_rank": 98,
+    "arena_votes": 89964,
+    "arena_webdev_elo": 1229.8897122082215,
+    "arena_vision_elo": 1220.7973108845108,
+    "arena_factuality_elo": 1434.0088628434683
   },
   {
     "name": "MiMo-V2.5",
@@ -71817,12 +71800,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1427.820130016546,
-    "arena_rank": 101,
-    "arena_votes": 47327,
-    "arena_webdev_elo": 1438.2678187561378,
-    "arena_vision_elo": 1247.0433261116336,
-    "arena_factuality_elo": 1438.813930244841
+    "arena_elo": 1427.7070219907846,
+    "arena_rank": 100,
+    "arena_votes": 47257,
+    "arena_webdev_elo": 1437.8666946319981,
+    "arena_vision_elo": 1247.8248271994921,
+    "arena_factuality_elo": 1438.7487343589942
   },
   {
     "name": "LongCat-Flash-Chat Exp (2602)",
@@ -71832,10 +71815,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1426.6917301645153,
-    "arena_rank": 103,
-    "arena_votes": 29244,
-    "arena_factuality_elo": 1428.6927515976618
+    "arena_elo": 1426.5697829363378,
+    "arena_rank": 102,
+    "arena_votes": 29221,
+    "arena_factuality_elo": 1428.6354280927699
   },
   {
     "name": "Grok 3 Preview (02-24)",
@@ -71844,9 +71827,22 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1425.4236595675652,
+    "arena_elo": 1425.4570864462264,
+    "arena_rank": 103,
+    "arena_votes": 32499
+  },
+  {
+    "name": "DeepSeek-V3.2-Exp (Thinking)",
+    "arena_name": "DeepSeek-V3.2-Exp (Thinking)",
+    "arena_org": "deepseek",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1424.9249437105575,
     "arena_rank": 104,
-    "arena_votes": 32496
+    "arena_votes": 8990,
+    "arena_factuality_elo": 1446.3044334321594
   },
   {
     "name": "Beam 1.0 501B A23B",
@@ -71858,25 +71854,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1425.369815377157,
+    "arena_elo": 1424.8884589264096,
     "arena_rank": 105,
-    "arena_votes": 4233,
-    "arena_webdev_elo": 1436.0479044399463,
-    "arena_factuality_elo": 1440.8509672227542,
+    "arena_votes": 4335,
+    "arena_webdev_elo": 1436.9459530004847,
+    "arena_factuality_elo": 1440.6764026790675,
     "arena_agent_score": -0.05380886946699661
-  },
-  {
-    "name": "DeepSeek-V3.2-Exp (Thinking)",
-    "arena_name": "DeepSeek-V3.2-Exp (Thinking)",
-    "arena_org": "deepseek",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1424.9838844116553,
-    "arena_rank": 106,
-    "arena_votes": 8991,
-    "arena_factuality_elo": 1446.4524690389417
   },
   {
     "name": "DeepSeek-V4-Flash Preview (High)",
@@ -71887,11 +71870,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1424.3093652123453,
-    "arena_rank": 108,
-    "arena_votes": 51763,
-    "arena_webdev_elo": 1430.4821164472921,
-    "arena_factuality_elo": 1433.5402351598668
+    "arena_elo": 1424.2518779480772,
+    "arena_rank": 107,
+    "arena_votes": 51692,
+    "arena_webdev_elo": 1430.44040182278,
+    "arena_factuality_elo": 1433.6804093264764
   },
   {
     "name": "Mistral Medium 3.1 (2508)",
@@ -71902,11 +71885,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1424.2158968944336,
-    "arena_rank": 109,
-    "arena_votes": 95269,
-    "arena_vision_elo": 1172.227170828708,
-    "arena_factuality_elo": 1428.6859796921824
+    "arena_elo": 1424.2160958885645,
+    "arena_rank": 108,
+    "arena_votes": 95209,
+    "arena_vision_elo": 1172.2963461804325,
+    "arena_factuality_elo": 1428.7860053025156
   },
   {
     "name": "MiMo-V2-Omni",
@@ -71917,11 +71900,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1423.1106485996916,
-    "arena_rank": 110,
-    "arena_votes": 20615,
-    "arena_vision_elo": 1227.6477705024006,
-    "arena_factuality_elo": 1435.287240312845
+    "arena_elo": 1422.8363306024276,
+    "arena_rank": 109,
+    "arena_votes": 20591,
+    "arena_vision_elo": 1227.9755221708826,
+    "arena_factuality_elo": 1435.1129480535246
   },
   {
     "name": "LongCat-Flash-Chat",
@@ -71930,9 +71913,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1422.718365918447,
-    "arena_rank": 111,
-    "arena_votes": 11167
+    "arena_elo": 1422.7306141871418,
+    "arena_rank": 110,
+    "arena_votes": 11161
   },
   {
     "name": "GPT-5.1",
@@ -71944,12 +71927,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1422.1785403185381,
-    "arena_rank": 112,
-    "arena_votes": 44413,
-    "arena_webdev_elo": 1341.3437443111054,
-    "arena_vision_elo": 1234.898372511408,
-    "arena_factuality_elo": 1443.928748414397
+    "arena_elo": 1422.3662485454424,
+    "arena_rank": 111,
+    "arena_votes": 44389,
+    "arena_webdev_elo": 1341.3113253731087,
+    "arena_vision_elo": 1234.9674732334097,
+    "arena_factuality_elo": 1444.0538766400527
   },
   {
     "name": "Mistral Medium 3.5",
@@ -71962,12 +71945,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1420.7694872452512,
-    "arena_rank": 114,
-    "arena_votes": 11791,
-    "arena_webdev_elo": 1264.0086408699274,
-    "arena_vision_elo": 1222.4523372948931,
-    "arena_factuality_elo": 1430.0000400205877,
+    "arena_elo": 1420.9744138171607,
+    "arena_rank": 113,
+    "arena_votes": 11771,
+    "arena_webdev_elo": 1264.085283630917,
+    "arena_vision_elo": 1222.2315035754164,
+    "arena_factuality_elo": 1430.1160958869395,
     "arena_agent_score": -0.1334397149879274
   },
   {
@@ -71980,12 +71963,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1420.1294039541685,
-    "arena_rank": 115,
-    "arena_votes": 8371,
-    "arena_webdev_elo": 1405.5661928557854,
-    "arena_vision_elo": 1253.737901865414,
-    "arena_factuality_elo": 1428.8204522408676
+    "arena_elo": 1420.2897821619629,
+    "arena_rank": 114,
+    "arena_votes": 8375,
+    "arena_webdev_elo": 1405.2979330952126,
+    "arena_vision_elo": 1253.6862990405866,
+    "arena_factuality_elo": 1428.9984532082283
   },
   {
     "name": "Qwen3-VL-235B-A22B-Instruct",
@@ -71996,11 +71979,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1420.0383462757768,
-    "arena_rank": 116,
-    "arena_votes": 11314,
-    "arena_vision_elo": 1246.9892089993264,
-    "arena_factuality_elo": 1414.3417353328887
+    "arena_elo": 1419.9171963641409,
+    "arena_rank": 115,
+    "arena_votes": 11310,
+    "arena_vision_elo": 1246.7072373759688,
+    "arena_factuality_elo": 1414.4553889740503
   },
   {
     "name": "DeepSeek-V3.2 (Thinking)",
@@ -72011,11 +71994,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1419.7849889662966,
-    "arena_rank": 117,
-    "arena_votes": 42033,
-    "arena_webdev_elo": 1362.5238258167278,
-    "arena_factuality_elo": 1432.1823402286104
+    "arena_elo": 1419.9100157717712,
+    "arena_rank": 116,
+    "arena_votes": 42016,
+    "arena_webdev_elo": 1362.0848499639005,
+    "arena_factuality_elo": 1432.3133473788748
   },
   {
     "name": "DeepSeek-V3.1",
@@ -72024,9 +72007,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1419.5132125302603,
-    "arena_rank": 118,
-    "arena_votes": 14606
+    "arena_elo": 1419.7300119300282,
+    "arena_rank": 117,
+    "arena_votes": 14603
   },
   {
     "name": "amazon-nova-experimental-chat (12-10)",
@@ -72036,23 +72019,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1419.5007918342944,
-    "arena_rank": 119,
-    "arena_votes": 3734,
-    "arena_factuality_elo": 1423.7567351011362
-  },
-  {
-    "name": "Claude Opus 4.1 (Thinking 16K, 20250805)",
-    "arena_name": "Claude Opus 4.1 (Thinking 16K, 20250805)",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1419.2143894284472,
-    "arena_rank": 120,
-    "arena_votes": 49535,
-    "arena_factuality_elo": 1433.1590553434705
+    "arena_elo": 1419.5860737297733,
+    "arena_rank": 118,
+    "arena_votes": 3732,
+    "arena_factuality_elo": 1423.8930122594647
   },
   {
     "name": "GPT-5.5 Instant",
@@ -72063,11 +72033,24 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1419.2072967348558,
-    "arena_rank": 121,
-    "arena_votes": 27128,
-    "arena_vision_elo": 1249.8051532565603,
-    "arena_factuality_elo": 1442.7613495603573
+    "arena_elo": 1419.49669869393,
+    "arena_rank": 119,
+    "arena_votes": 27084,
+    "arena_vision_elo": 1250.0894710839764,
+    "arena_factuality_elo": 1442.9589729329875
+  },
+  {
+    "name": "Claude Opus 4.1 (Thinking 16K, 20250805)",
+    "arena_name": "Claude Opus 4.1 (Thinking 16K, 20250805)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1419.3144486795707,
+    "arena_rank": 120,
+    "arena_votes": 49520,
+    "arena_factuality_elo": 1433.2987025418602
   },
   {
     "name": "DeepSeek-V3.1-Terminus (Thinking)",
@@ -72076,9 +72059,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1419.139832942219,
-    "arena_rank": 123,
-    "arena_votes": 3379
+    "arena_elo": 1418.9832902700875,
+    "arena_rank": 122,
+    "arena_votes": 3378
   },
   {
     "name": "Claude Opus 4.1 (20250805)",
@@ -72089,11 +72072,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1418.5621999574046,
-    "arena_rank": 124,
-    "arena_votes": 77213,
-    "arena_webdev_elo": 1390.1558311618264,
-    "arena_factuality_elo": 1434.9232910469534
+    "arena_elo": 1418.6644268793889,
+    "arena_rank": 123,
+    "arena_votes": 77172,
+    "arena_webdev_elo": 1389.71469169093,
+    "arena_factuality_elo": 1435.030943088479
   },
   {
     "name": "Qwen3.5-122B-A10B",
@@ -72105,12 +72088,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1417.5094212680342,
-    "arena_rank": 125,
-    "arena_votes": 29712,
-    "arena_webdev_elo": 1360.3815376302985,
-    "arena_vision_elo": 1244.4983243612196,
-    "arena_factuality_elo": 1427.6084999782863
+    "arena_elo": 1417.5312514551465,
+    "arena_rank": 124,
+    "arena_votes": 29687,
+    "arena_webdev_elo": 1360.1406242371422,
+    "arena_vision_elo": 1244.1974240032062,
+    "arena_factuality_elo": 1427.6410032095523
   },
   {
     "name": "Gemini 2.5 Flash",
@@ -72121,11 +72104,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1416.9101762693817,
-    "arena_rank": 129,
-    "arena_votes": 125457,
-    "arena_vision_elo": 1235.476708760441,
-    "arena_factuality_elo": 1436.0276868271442
+    "arena_elo": 1416.9846106747507,
+    "arena_rank": 128,
+    "arena_votes": 125381,
+    "arena_vision_elo": 1235.4126657300403,
+    "arena_factuality_elo": 1436.035946610032
   },
   {
     "name": "DeepSeek-V3.1 (Thinking)",
@@ -72134,9 +72117,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1416.597145595349,
-    "arena_rank": 130,
-    "arena_votes": 11458
+    "arena_elo": 1416.7183901583699,
+    "arena_rank": 129,
+    "arena_votes": 11451
   },
   {
     "name": "GPT-5.2 (High)",
@@ -72148,11 +72131,11 @@
       "arena_factuality_elo": "arena",
       "sb_score": "skillsbench"
     },
-    "arena_elo": 1416.2542606751936,
-    "arena_rank": 131,
-    "arena_votes": 49628,
-    "arena_vision_elo": 1245.7853715616577,
-    "arena_factuality_elo": 1440.9090735026814,
+    "arena_elo": 1416.4139530213079,
+    "arena_rank": 130,
+    "arena_votes": 49622,
+    "arena_vision_elo": 1245.4809111610546,
+    "arena_factuality_elo": 1440.954759650218,
     "sb_score": 51.7046,
     "sb_lift": 22.0068
   },
@@ -72166,12 +72149,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1415.7897618001666,
-    "arena_rank": 132,
-    "arena_votes": 64196,
-    "arena_webdev_elo": 1256.2629544827098,
-    "arena_vision_elo": 1240.1779210359143,
-    "arena_factuality_elo": 1432.8127588449756
+    "arena_elo": 1416.0954139239168,
+    "arena_rank": 131,
+    "arena_votes": 64116,
+    "arena_webdev_elo": 1256.1886922555873,
+    "arena_vision_elo": 1240.1232757409257,
+    "arena_factuality_elo": 1432.9868831889985
   },
   {
     "name": "amazon-nova-experimental-chat (11-10)",
@@ -72181,10 +72164,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1414.9769756873252,
-    "arena_rank": 134,
-    "arena_votes": 26026,
-    "arena_factuality_elo": 1414.8471905447936
+    "arena_elo": 1414.9950321348729,
+    "arena_rank": 133,
+    "arena_votes": 26009,
+    "arena_factuality_elo": 1414.8839666441158
   },
   {
     "name": "Kimi K2 Thinking Turbo",
@@ -72195,11 +72178,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1414.3595905612751,
-    "arena_rank": 135,
-    "arena_votes": 63310,
-    "arena_webdev_elo": 1321.9150315480917,
-    "arena_factuality_elo": 1422.917369176638
+    "arena_elo": 1414.353103757365,
+    "arena_rank": 134,
+    "arena_votes": 63279,
+    "arena_webdev_elo": 1321.5841755533872,
+    "arena_factuality_elo": 1422.931349661401
   },
   {
     "name": "Inkling-Small",
@@ -72212,12 +72195,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1414.3220659241279,
-    "arena_rank": 136,
-    "arena_votes": 36999,
-    "arena_webdev_elo": 1409.1376517895078,
-    "arena_vision_elo": 1236.796377631557,
-    "arena_factuality_elo": 1425.6452985365283,
+    "arena_elo": 1414.200451576083,
+    "arena_rank": 135,
+    "arena_votes": 38888,
+    "arena_webdev_elo": 1407.6433334545286,
+    "arena_vision_elo": 1235.9499123926116,
+    "arena_factuality_elo": 1426.0451284421868,
     "arena_agent_score": -0.1703963452049372
   },
   {
@@ -72231,12 +72214,12 @@
       "arena_factuality_elo": "arena",
       "ocr_omnidoc": "omnidocbench"
     },
-    "arena_elo": 1412.2817740990185,
-    "arena_rank": 138,
-    "arena_votes": 83793,
-    "arena_webdev_elo": 1416.424922259506,
-    "arena_vision_elo": 1228.610129112436,
-    "arena_factuality_elo": 1441.5668613661435,
+    "arena_elo": 1412.30281443871,
+    "arena_rank": 137,
+    "arena_votes": 83680,
+    "arena_webdev_elo": 1416.6608200601013,
+    "arena_vision_elo": 1228.6041243466823,
+    "arena_factuality_elo": 1441.5432022040218,
     "ocr_omnidoc": 86.59
   },
   {
@@ -72248,11 +72231,30 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1410.9332579412148,
+    "arena_elo": 1411.041821040475,
+    "arena_rank": 140,
+    "arena_votes": 48035,
+    "arena_webdev_elo": 1330.2832327922101,
+    "arena_factuality_elo": 1421.839352840644
+  },
+  {
+    "name": "Mistral Large 4",
+    "arena_name": "Mistral Large 4",
+    "arena_org": "mistral",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_vision_elo": "arena",
+      "arena_factuality_elo": "arena",
+      "arena_agent_score": "arena"
+    },
+    "arena_elo": 1410.7979962701063,
     "arena_rank": 141,
-    "arena_votes": 48060,
-    "arena_webdev_elo": 1330.6239040787611,
-    "arena_factuality_elo": 1421.7031540109342
+    "arena_votes": 4685,
+    "arena_webdev_elo": 1560.416518956095,
+    "arena_vision_elo": 1243.6930911514442,
+    "arena_factuality_elo": 1420.644795959233,
+    "arena_agent_score": -0.05462655237209272
   },
   {
     "name": "o3 (2025-04-16)",
@@ -72263,11 +72265,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1409.8418654743946,
+    "arena_elo": 1409.9182840172343,
     "arena_rank": 142,
-    "arena_votes": 58901,
-    "arena_vision_elo": 1214.3017183965094,
-    "arena_factuality_elo": 1404.1385115299727
+    "arena_votes": 58883,
+    "arena_vision_elo": 1214.113531437458,
+    "arena_factuality_elo": 1404.3107895857365
   },
   {
     "name": "Qwen3.5-27B",
@@ -72279,12 +72281,12 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1408.9868172331558,
+    "arena_elo": 1408.8218718954447,
     "arena_rank": 143,
-    "arena_votes": 28647,
-    "arena_webdev_elo": 1358.3092755979856,
-    "arena_vision_elo": 1241.0169654688623,
-    "arena_factuality_elo": 1419.3421261079632
+    "arena_votes": 28608,
+    "arena_webdev_elo": 1357.9182756551377,
+    "arena_vision_elo": 1240.0034384307526,
+    "arena_factuality_elo": 1419.2396239784916
   },
   {
     "name": "Grok 4 Fast (Non-Reasoning)",
@@ -72293,7 +72295,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1406.7643748375885,
+    "arena_elo": 1406.8271031376325,
     "arena_rank": 145,
     "arena_votes": 6336
   },
@@ -72305,10 +72307,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1405.7782199110707,
+    "arena_elo": 1405.823612403303,
     "arena_rank": 148,
-    "arena_votes": 2169,
-    "arena_vision_elo": 1179.701282807147
+    "arena_votes": 2166,
+    "arena_vision_elo": 1179.3032753329348
   },
   {
     "name": "NVIDIA-Nemotron-3.5-Super-VL-120B-A12B (NVFP4)",
@@ -72321,12 +72323,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1404.9717731309343,
-    "arena_rank": 149,
-    "arena_votes": 4178,
-    "arena_webdev_elo": 1399.1848270977043,
-    "arena_vision_elo": 1204.7470898444385,
-    "arena_factuality_elo": 1424.0222146715516,
+    "arena_elo": 1403.7996343941238,
+    "arena_rank": 150,
+    "arena_votes": 4298,
+    "arena_webdev_elo": 1399.155548211537,
+    "arena_vision_elo": 1213.9956988855033,
+    "arena_factuality_elo": 1423.6946675800523,
     "arena_agent_score": -0.1593210465176367
   },
   {
@@ -72337,10 +72339,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1402.7532546299685,
+    "arena_elo": 1402.744978925379,
     "arena_rank": 152,
-    "arena_votes": 60305,
-    "arena_factuality_elo": 1416.0650446233642
+    "arena_votes": 60264,
+    "arena_factuality_elo": 1416.0411233485042
   },
   {
     "name": "Hy3 preview",
@@ -72351,11 +72353,50 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1401.1747117853688,
+    "arena_elo": 1401.0541903090775,
     "arena_rank": 153,
-    "arena_votes": 6869,
-    "arena_webdev_elo": 1356.9153594827778,
-    "arena_factuality_elo": 1411.973898824742
+    "arena_votes": 6853,
+    "arena_webdev_elo": 1356.682034067681,
+    "arena_factuality_elo": 1411.931087889013
+  },
+  {
+    "name": "Hunyuan T1 (20250711)",
+    "arena_name": "Hunyuan T1 (20250711)",
+    "arena_org": "tencent",
+    "sources": {
+      "arena_elo": "arena"
+    },
+    "arena_elo": 1400.6239483848876,
+    "arena_rank": 154,
+    "arena_votes": 4593
+  },
+  {
+    "name": "Qwen3-VL-235B-A22B-Thinking",
+    "arena_name": "Qwen3-VL-235B-A22B-Thinking",
+    "arena_org": "alibaba",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_vision_elo": "arena"
+    },
+    "arena_elo": 1400.5002004507205,
+    "arena_rank": 155,
+    "arena_votes": 7860,
+    "arena_vision_elo": 1206.6092748596866
+  },
+  {
+    "name": "Grok 4 Fast (Reasoning)",
+    "arena_name": "Grok 4 Fast (Reasoning)",
+    "arena_org": "xai",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1399.6350245699855,
+    "arena_rank": 156,
+    "arena_votes": 18260,
+    "arena_webdev_elo": 1159.192714246632,
+    "arena_factuality_elo": 1417.0343090348708
   },
   {
     "name": "Claude Haiku 5.5 (High)",
@@ -72367,51 +72408,12 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1400.8832528627713,
-    "arena_rank": 154,
-    "arena_votes": 7890,
-    "arena_webdev_elo": 1588.8330617127986,
-    "arena_factuality_elo": 1419.0822601602135,
-    "arena_agent_score": 0.006244188898989065
-  },
-  {
-    "name": "Hunyuan T1 (20250711)",
-    "arena_name": "Hunyuan T1 (20250711)",
-    "arena_org": "tencent",
-    "sources": {
-      "arena_elo": "arena"
-    },
-    "arena_elo": 1400.6764118420924,
-    "arena_rank": 155,
-    "arena_votes": 4595
-  },
-  {
-    "name": "Qwen3-VL-235B-A22B-Thinking",
-    "arena_name": "Qwen3-VL-235B-A22B-Thinking",
-    "arena_org": "alibaba",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_vision_elo": "arena"
-    },
-    "arena_elo": 1400.4905345679535,
-    "arena_rank": 156,
-    "arena_votes": 7862,
-    "arena_vision_elo": 1206.9593711708753
-  },
-  {
-    "name": "Grok 4 Fast (Reasoning)",
-    "arena_name": "Grok 4 Fast (Reasoning)",
-    "arena_org": "xai",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1399.601261717694,
+    "arena_elo": 1399.564959227618,
     "arena_rank": 157,
-    "arena_votes": 18270,
-    "arena_webdev_elo": 1159.112594881782,
-    "arena_factuality_elo": 1417.0459989572087
+    "arena_votes": 12481,
+    "arena_webdev_elo": 1592.3596469964282,
+    "arena_factuality_elo": 1422.280912226674,
+    "arena_agent_score": 0.006244188898989065
   },
   {
     "name": "Grok 4.7 (xHigh)",
@@ -72424,13 +72426,28 @@
       "arena_factuality_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1398.1043581955046,
+    "arena_elo": 1398.4662098726578,
     "arena_rank": 158,
-    "arena_votes": 16442,
-    "arena_webdev_elo": 1637.4572057581888,
-    "arena_vision_elo": 1230.957267472956,
-    "arena_factuality_elo": 1434.4943353878352,
+    "arena_votes": 21201,
+    "arena_webdev_elo": 1638.2773480471428,
+    "arena_vision_elo": 1231.0477259250583,
+    "arena_factuality_elo": 1436.8338443512218,
     "arena_agent_score": 0.02680192300589593
+  },
+  {
+    "name": "Qwen3.5-Flash",
+    "arena_name": "Qwen3.5-Flash",
+    "arena_org": "alibaba",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1397.2229173740761,
+    "arena_rank": 159,
+    "arena_votes": 61691,
+    "arena_webdev_elo": 1243.3073151892772,
+    "arena_factuality_elo": 1413.6868201614366
   },
   {
     "name": "GPT-6 Sol (Max)",
@@ -72444,29 +72461,14 @@
       "arena_search_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1397.4041561850136,
-    "arena_rank": 159,
-    "arena_votes": 15807,
-    "arena_webdev_elo": 1678.189584003976,
-    "arena_vision_elo": 1239.9451140020133,
-    "arena_factuality_elo": 1439.7856719354993,
-    "arena_search_elo": 1174.911740373027,
+    "arena_elo": 1395.827931381274,
+    "arena_rank": 162,
+    "arena_votes": 19521,
+    "arena_webdev_elo": 1674.4041773696188,
+    "arena_vision_elo": 1235.176929637664,
+    "arena_factuality_elo": 1438.8420486338084,
+    "arena_search_elo": 1176.2260691931986,
     "arena_agent_score": 0.06778131892924635
-  },
-  {
-    "name": "Qwen3.5-Flash",
-    "arena_name": "Qwen3.5-Flash",
-    "arena_org": "alibaba",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1397.091869667012,
-    "arena_rank": 160,
-    "arena_votes": 61776,
-    "arena_webdev_elo": 1243.693201316261,
-    "arena_factuality_elo": 1413.6078920398788
   },
   {
     "name": "amazon-nova-experimental-chat (26-01-10)",
@@ -72476,10 +72478,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1395.757090715997,
+    "arena_elo": 1395.8062480693031,
     "arena_rank": 163,
-    "arena_votes": 3534,
-    "arena_factuality_elo": 1402.2596534025326
+    "arena_votes": 3537,
+    "arena_factuality_elo": 1402.3392913662499
   },
   {
     "name": "MiMo-V2-Flash (Thinking)",
@@ -72490,11 +72492,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1394.5572637121468,
+    "arena_elo": 1394.8354549686933,
     "arena_rank": 164,
-    "arena_votes": 11135,
-    "arena_webdev_elo": 1291.6958938048085,
-    "arena_factuality_elo": 1409.1767254241613
+    "arena_votes": 11131,
+    "arena_webdev_elo": 1291.5096600334552,
+    "arena_factuality_elo": 1409.4088477754653
   },
   {
     "name": "Qwen3.5-35B-A3B",
@@ -72505,11 +72507,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1394.5404038203628,
+    "arena_elo": 1394.6074470963315,
     "arena_rank": 165,
-    "arena_votes": 30427,
-    "arena_webdev_elo": 1254.1583882182388,
-    "arena_factuality_elo": 1407.0811380111736
+    "arena_votes": 30403,
+    "arena_webdev_elo": 1254.2518144671062,
+    "arena_factuality_elo": 1407.114951479829
   },
   {
     "name": "amazon-nova-experimental-chat (10-20)",
@@ -72519,10 +72521,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1393.9199902125788,
+    "arena_elo": 1393.9045335132312,
     "arena_rank": 166,
-    "arena_votes": 11625,
-    "arena_factuality_elo": 1399.2681496730625
+    "arena_votes": 11614,
+    "arena_factuality_elo": 1399.301055832082
   },
   {
     "name": "Qwen3-235B-A22B (Non-Thinking)",
@@ -72531,9 +72533,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1393.460237417646,
+    "arena_elo": 1393.4712219576645,
     "arena_rank": 167,
-    "arena_votes": 37472
+    "arena_votes": 37464
   },
   {
     "name": "MiniMax-M2.1 Preview",
@@ -72544,11 +72546,41 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1391.9939284256693,
+    "arena_elo": 1392.296900415045,
     "arena_rank": 168,
-    "arena_votes": 17222,
-    "arena_webdev_elo": 1383.9795871670053,
-    "arena_factuality_elo": 1410.534222022454
+    "arena_votes": 17224,
+    "arena_webdev_elo": 1383.8262518903557,
+    "arena_factuality_elo": 1410.7831087035324
+  },
+  {
+    "name": "GPT-5.3 Chat",
+    "arena_name": "GPT-5.3 Chat",
+    "arena_org": "openai",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1389.0198936264537,
+    "arena_rank": 169,
+    "arena_votes": 34275,
+    "arena_factuality_elo": 1417.3842709938137
+  },
+  {
+    "name": "Solar Pro 4",
+    "arena_name": "Solar Pro 4",
+    "arena_org": "upstage",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_webdev_elo": "arena",
+      "arena_factuality_elo": "arena",
+      "arena_agent_score": "arena"
+    },
+    "arena_elo": 1388.5595445148053,
+    "arena_rank": 170,
+    "arena_votes": 27990,
+    "arena_webdev_elo": 1370.8295650077973,
+    "arena_factuality_elo": 1414.8756184944373,
+    "arena_agent_score": -0.2180465973587057
   },
   {
     "name": "Muse Glimmer",
@@ -72559,11 +72591,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1389.3263841690068,
-    "arena_rank": 169,
-    "arena_votes": 3884,
-    "arena_webdev_elo": 1355.0649278889712,
-    "arena_factuality_elo": 1401.8418389201609
+    "arena_elo": 1388.2830018730574,
+    "arena_rank": 171,
+    "arena_votes": 3867,
+    "arena_webdev_elo": 1354.968744857236,
+    "arena_factuality_elo": 1401.0488407678404
   },
   {
     "name": "GPT-6 Luna (Max)",
@@ -72577,44 +72609,14 @@
       "arena_search_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_elo": 1389.1534001242462,
-    "arena_rank": 170,
-    "arena_votes": 86478,
-    "arena_webdev_elo": 1579.4041580064886,
-    "arena_vision_elo": 1216.103808862197,
-    "arena_factuality_elo": 1468.7054783447384,
-    "arena_search_elo": 1159.5568693390055,
-    "arena_agent_score": 0.018937239039092082
-  },
-  {
-    "name": "GPT-5.3 Chat",
-    "arena_name": "GPT-5.3 Chat",
-    "arena_org": "openai",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1388.9836396729706,
-    "arena_rank": 171,
-    "arena_votes": 34316,
-    "arena_factuality_elo": 1417.4487869263994
-  },
-  {
-    "name": "Solar Pro 4",
-    "arena_name": "Solar Pro 4",
-    "arena_org": "upstage",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_webdev_elo": "arena",
-      "arena_factuality_elo": "arena",
-      "arena_agent_score": "arena"
-    },
-    "arena_elo": 1388.5172371325775,
+    "arena_elo": 1387.719020910549,
     "arena_rank": 172,
-    "arena_votes": 26159,
-    "arena_webdev_elo": 1370.181401834313,
-    "arena_factuality_elo": 1414.3150535331652,
-    "arena_agent_score": -0.2180465973587057
+    "arena_votes": 108301,
+    "arena_webdev_elo": 1578.252819314701,
+    "arena_vision_elo": 1211.2006091715357,
+    "arena_factuality_elo": 1466.5693080795872,
+    "arena_search_elo": 1160.273127692838,
+    "arena_agent_score": 0.018937239039092082
   },
   {
     "name": "Qwen3-30B-A3B-Instruct (2507)",
@@ -72623,9 +72625,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1383.7771810537429,
+    "arena_elo": 1383.76989218858,
     "arena_rank": 173,
-    "arena_votes": 23312
+    "arena_votes": 23314
   },
   {
     "name": "Kimi K2 Preview (0905)",
@@ -72635,10 +72637,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1379.8822243591555,
+    "arena_elo": 1380.0830223651549,
     "arena_rank": 176,
-    "arena_votes": 11592,
-    "arena_factuality_elo": 1402.2956657461798
+    "arena_votes": 11589,
+    "arena_factuality_elo": 1402.4519458138707
   },
   {
     "name": "Gemini 2.5 Flash-Lite Preview (Non-Thinking, 09-2025)",
@@ -72649,11 +72651,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1379.2946582365073,
+    "arena_elo": 1379.352983110753,
     "arena_rank": 177,
-    "arena_votes": 47418,
-    "arena_vision_elo": 1198.286889618485,
-    "arena_factuality_elo": 1406.3972727599876
+    "arena_votes": 47390,
+    "arena_vision_elo": 1198.2391767931026,
+    "arena_factuality_elo": 1406.3363321973998
   },
   {
     "name": "NVIDIA-Nemotron-3-Super-120B-A12B",
@@ -72663,10 +72665,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1377.3797297303172,
+    "arena_elo": 1377.4087974173926,
     "arena_rank": 178,
-    "arena_votes": 7870,
-    "arena_factuality_elo": 1389.1843089826027
+    "arena_votes": 7872,
+    "arena_factuality_elo": 1389.3132282820375
   },
   {
     "name": "Hunyuan TurboS (20250416)",
@@ -72675,9 +72677,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1377.1609256168658,
+    "arena_elo": 1377.2055750306035,
     "arena_rank": 179,
-    "arena_votes": 10623
+    "arena_votes": 10621
   },
   {
     "name": "Claude Opus 4 (Thinking 16K, 20250514)",
@@ -72687,10 +72689,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1377.071504803101,
+    "arena_elo": 1377.0910891828883,
     "arena_rank": 180,
-    "arena_votes": 35904,
-    "arena_vision_elo": 1191.7586734875797
+    "arena_votes": 35900,
+    "arena_vision_elo": 1192.0518069566315
   },
   {
     "name": "Kimi K2 Preview (0711)",
@@ -72699,9 +72701,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1370.7389769238102,
+    "arena_elo": 1370.7400904204271,
     "arena_rank": 186,
-    "arena_votes": 27139
+    "arena_votes": 27126
   },
   {
     "name": "Mistral Medium 3 (2505)",
@@ -72711,10 +72713,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1370.1062473881843,
+    "arena_elo": 1370.15846243577,
     "arena_rank": 187,
-    "arena_votes": 32777,
-    "arena_vision_elo": 1157.0063068644836
+    "arena_votes": 32775,
+    "arena_vision_elo": 1156.7936158198772
   },
   {
     "name": "Grok 3 Mini (High)",
@@ -72723,9 +72725,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1369.499448037931,
+    "arena_elo": 1369.4655775326612,
     "arena_rank": 188,
-    "arena_votes": 15595
+    "arena_votes": 15587
   },
   {
     "name": "Gemini 2.5 Flash-Lite Preview (Thinking, 06-17)",
@@ -72735,10 +72737,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1369.2052475571177,
+    "arena_elo": 1369.303109088257,
     "arena_rank": 189,
-    "arena_votes": 32381,
-    "arena_vision_elo": 1187.466194155229
+    "arena_votes": 32377,
+    "arena_vision_elo": 1187.4061938818786
   },
   {
     "name": "Claude Opus 4 (20250514)",
@@ -72748,10 +72750,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1365.959143709601,
+    "arena_elo": 1365.9940997772198,
     "arena_rank": 193,
-    "arena_votes": 43037,
-    "arena_vision_elo": 1175.6244445579366
+    "arena_votes": 43023,
+    "arena_vision_elo": 1175.4377740152152
   },
   {
     "name": "Grok 3 Mini Beta",
@@ -72760,7 +72762,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1364.2410581280092,
+    "arena_elo": 1364.3416195450777,
     "arena_rank": 196,
     "arena_votes": 20930
   },
@@ -72771,9 +72773,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1363.9074013498648,
+    "arena_elo": 1363.7998331491833,
     "arena_rank": 197,
-    "arena_votes": 2781
+    "arena_votes": 2782
   },
   {
     "name": "Amazon Nova 2 Lite",
@@ -72783,10 +72785,21 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1361.9319238016983,
+    "arena_elo": 1361.7546319061423,
     "arena_rank": 198,
-    "arena_votes": 12415,
-    "arena_factuality_elo": 1379.313642862934
+    "arena_votes": 12398,
+    "arena_factuality_elo": 1379.202845880427
+  },
+  {
+    "name": "Ling-flash-2.0",
+    "arena_name": "Ling-flash-2.0",
+    "arena_org": "ant-group",
+    "sources": {
+      "arena_elo": "arena"
+    },
+    "arena_elo": 1361.2928849296975,
+    "arena_rank": 199,
+    "arena_votes": 6949
   },
   {
     "name": "Granite 4.2 30B",
@@ -72796,21 +72809,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1361.420113642912,
-    "arena_rank": 199,
-    "arena_votes": 3389,
-    "arena_factuality_elo": 1375.3993159516067
-  },
-  {
-    "name": "Ling-flash-2.0",
-    "arena_name": "Ling-flash-2.0",
-    "arena_org": "ant-group",
-    "sources": {
-      "arena_elo": "arena"
-    },
-    "arena_elo": 1361.1108320545595,
+    "arena_elo": 1360.6785561025015,
     "arena_rank": 200,
-    "arena_votes": 6952
+    "arena_votes": 3381,
+    "arena_factuality_elo": 1374.8882182435968
   },
   {
     "name": "INTELLECT-3",
@@ -72820,10 +72822,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1355.570371004831,
+    "arena_elo": 1355.7989428900053,
     "arena_rank": 204,
-    "arena_votes": 5435,
-    "arena_factuality_elo": 1372.6434324862914
+    "arena_votes": 5431,
+    "arena_factuality_elo": 1372.8477727807401
   },
   {
     "name": "Mercury 2",
@@ -72834,11 +72836,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1354.7905193037013,
+    "arena_elo": 1355.0334127202439,
     "arena_rank": 205,
-    "arena_votes": 3191,
-    "arena_webdev_elo": 1170.3786757696055,
-    "arena_factuality_elo": 1367.6981370252483
+    "arena_votes": 3185,
+    "arena_webdev_elo": 1170.2049794314423,
+    "arena_factuality_elo": 1367.8565265070188
   },
   {
     "name": "o4-mini (2025-04-16)",
@@ -72849,11 +72851,11 @@
       "arena_vision_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1353.2334554961587,
+    "arena_elo": 1353.267036018104,
     "arena_rank": 207,
-    "arena_votes": 44843,
-    "arena_vision_elo": 1194.0123876044438,
-    "arena_factuality_elo": 1367.4791923530222
+    "arena_votes": 44827,
+    "arena_vision_elo": 1194.0665345553257,
+    "arena_factuality_elo": 1367.382298263322
   },
   {
     "name": "Claude Sonnet 4 (Thinking 32K, 20250514)",
@@ -72863,10 +72865,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1350.9361813287792,
+    "arena_elo": 1350.9905323207229,
     "arena_rank": 209,
-    "arena_votes": 34128,
-    "arena_vision_elo": 1191.3968260103402
+    "arena_votes": 34120,
+    "arena_vision_elo": 1190.9938218907414
   },
   {
     "name": "GLM-4.7-Flash",
@@ -72876,10 +72878,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1350.7560835090976,
+    "arena_elo": 1350.5650321887183,
     "arena_rank": 210,
-    "arena_votes": 12008,
-    "arena_factuality_elo": 1369.3972122263758
+    "arena_votes": 12006,
+    "arena_factuality_elo": 1369.257078912177
   },
   {
     "name": "Step-3",
@@ -72889,10 +72891,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1350.3564015243014,
+    "arena_elo": 1350.2799896977515,
     "arena_rank": 211,
     "arena_votes": 6291,
-    "arena_vision_elo": 1176.4118323385267
+    "arena_vision_elo": 1176.0130704019996
   },
   {
     "name": "NVIDIA-Nemotron-3-Nano-30B-A3B (BF16)",
@@ -72902,10 +72904,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1347.8382003476836,
+    "arena_elo": 1348.1424643827002,
     "arena_rank": 212,
-    "arena_votes": 15761,
-    "arena_factuality_elo": 1362.1976397562719
+    "arena_votes": 15754,
+    "arena_factuality_elo": 1362.333938224193
   },
   {
     "name": "MiniMax-M1",
@@ -72915,10 +72917,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1342.625791518246,
+    "arena_elo": 1342.6969530840822,
     "arena_rank": 213,
-    "arena_votes": 34293,
-    "arena_factuality_elo": 1369.437959621792
+    "arena_votes": 34294,
+    "arena_factuality_elo": 1369.7490700773528
   },
   {
     "name": "Trinity Large Thinking",
@@ -72929,11 +72931,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1340.2823977332112,
+    "arena_elo": 1340.303650203855,
     "arena_rank": 215,
-    "arena_votes": 30290,
-    "arena_webdev_elo": 1238.030861835541,
-    "arena_factuality_elo": 1370.2482854529421
+    "arena_votes": 30259,
+    "arena_webdev_elo": 1237.1583071274445,
+    "arena_factuality_elo": 1370.3201810360347
   },
   {
     "name": "Claude Sonnet 4 (20250514)",
@@ -72943,10 +72945,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1339.3544928506944,
+    "arena_elo": 1339.377055285728,
     "arena_rank": 218,
-    "arena_votes": 39168,
-    "arena_vision_elo": 1175.4244769575075
+    "arena_votes": 39148,
+    "arena_vision_elo": 1175.3328351432074
   },
   {
     "name": "Trinity Large Preview",
@@ -72956,10 +72958,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1338.6091335448841,
+    "arena_elo": 1338.6064116025784,
     "arena_rank": 219,
-    "arena_votes": 31233,
-    "arena_factuality_elo": 1371.4660517476775
+    "arena_votes": 31224,
+    "arena_factuality_elo": 1371.4254116880509
   },
   {
     "name": "Llama 3.3 Nemotron Super 49B v1.5",
@@ -72968,7 +72970,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1338.1216533902075,
+    "arena_elo": 1338.1319418340809,
     "arena_rank": 220,
     "arena_votes": 3327
   },
@@ -72980,10 +72982,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1338.0473975859254,
+    "arena_elo": 1338.0609100504425,
     "arena_rank": 221,
-    "arena_votes": 17462,
-    "arena_vision_elo": 1141.7131480441674
+    "arena_votes": 17457,
+    "arena_vision_elo": 1141.8521324881704
   },
   {
     "name": "o3-mini (High)",
@@ -72992,7 +72994,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1336.554689486758,
+    "arena_elo": 1336.5552752984056,
     "arena_rank": 222,
     "arena_votes": 18589
   },
@@ -73004,10 +73006,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1335.622459471016,
+    "arena_elo": 1335.622484286968,
     "arena_rank": 223,
-    "arena_votes": 8906,
-    "arena_vision_elo": 1185.942897388118
+    "arena_votes": 8903,
+    "arena_vision_elo": 1185.7615873690063
   },
   {
     "name": "Ring-flash-2.0",
@@ -73016,7 +73018,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1333.6766257721542,
+    "arena_elo": 1333.7739355077415,
     "arena_rank": 225,
     "arena_votes": 6987
   },
@@ -73028,10 +73030,21 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1332.6347411211013,
+    "arena_elo": 1332.7559908793442,
     "arena_rank": 226,
-    "arena_votes": 4817,
-    "arena_vision_elo": 1154.4119985498196
+    "arena_votes": 4819,
+    "arena_vision_elo": 1154.2831167073
+  },
+  {
+    "name": "GLM-4-Plus (0111)",
+    "arena_name": "GLM-4-Plus (0111)",
+    "arena_org": "zai",
+    "sources": {
+      "arena_elo": "arena"
+    },
+    "arena_elo": 1330.793385322035,
+    "arena_rank": 229,
+    "arena_votes": 5760
   },
   {
     "name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B (NVFP4)",
@@ -73041,21 +73054,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1330.823850504572,
-    "arena_rank": 229,
-    "arena_votes": 24230,
-    "arena_factuality_elo": 1369.5327140668692
-  },
-  {
-    "name": "GLM-4-Plus (0111)",
-    "arena_name": "GLM-4-Plus (0111)",
-    "arena_org": "zai",
-    "sources": {
-      "arena_elo": "arena"
-    },
-    "arena_elo": 1330.8024558398436,
+    "arena_elo": 1330.5516027449266,
     "arena_rank": 230,
-    "arena_votes": 5760
+    "arena_votes": 26056,
+    "arena_factuality_elo": 1369.774915257994
   },
   {
     "name": "Qwen-Plus (0125)",
@@ -73064,7 +73066,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1326.384601167099,
+    "arena_elo": 1326.377045351619,
     "arena_rank": 233,
     "arena_votes": 5819
   },
@@ -73075,7 +73077,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1320.8797466907781,
+    "arena_elo": 1320.8646648416966,
     "arena_rank": 234,
     "arena_votes": 4833
   },
@@ -73086,7 +73088,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1319.7131391616017,
+    "arena_elo": 1319.7102383465506,
     "arena_rank": 236,
     "arena_votes": 2220
   },
@@ -73097,7 +73099,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1319.5157413686723,
+    "arena_elo": 1319.522602675968,
     "arena_rank": 237,
     "arena_votes": 2549
   },
@@ -73109,10 +73111,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1319.012606365005,
+    "arena_elo": 1319.0237043657821,
     "arena_rank": 240,
-    "arena_votes": 3251,
-    "arena_factuality_elo": 1342.0512793128005
+    "arena_votes": 3249,
+    "arena_factuality_elo": 1342.1484619948612
   },
   {
     "name": "Claude 3.7 Sonnet (Thinking 32K, 20250219)",
@@ -73122,21 +73124,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1314.26625242806,
+    "arena_elo": 1314.3357975415643,
     "arena_rank": 243,
-    "arena_votes": 38156,
-    "arena_vision_elo": 1168.8771786097373
-  },
-  {
-    "name": "Hunyuan Turbo (0110)",
-    "arena_name": "Hunyuan Turbo (0110)",
-    "arena_org": "tencent",
-    "sources": {
-      "arena_elo": "arena"
-    },
-    "arena_elo": 1311.4034475522076,
-    "arena_rank": 244,
-    "arena_votes": 2290
+    "arena_votes": 38154,
+    "arena_vision_elo": 1168.597833891088
   },
   {
     "name": "Olmo 3.1 32B Instruct",
@@ -73146,10 +73137,21 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1311.2397646608651,
+    "arena_elo": 1311.4842932248034,
+    "arena_rank": 244,
+    "arena_votes": 11804,
+    "arena_factuality_elo": 1341.6365729294257
+  },
+  {
+    "name": "Hunyuan Turbo (0110)",
+    "arena_name": "Hunyuan Turbo (0110)",
+    "arena_org": "tencent",
+    "sources": {
+      "arena_elo": "arena"
+    },
+    "arena_elo": 1311.4008410208517,
     "arena_rank": 245,
-    "arena_votes": 11805,
-    "arena_factuality_elo": 1341.441829092298
+    "arena_votes": 2290
   },
   {
     "name": "Llama 3.3 Nemotron Super 49B v1",
@@ -73158,7 +73160,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1308.3555186549204,
+    "arena_elo": 1308.3536378656986,
     "arena_rank": 246,
     "arena_votes": 2218
   },
@@ -73169,9 +73171,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1305.590995448198,
+    "arena_elo": 1305.6025597965743,
     "arena_rank": 247,
-    "arena_votes": 22136
+    "arena_votes": 22135
   },
   {
     "name": "Grok 2 (2024-08-13)",
@@ -73180,7 +73182,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1304.5520910580221,
+    "arena_elo": 1304.5367469507667,
     "arena_rank": 248,
     "arena_votes": 63498
   },
@@ -73192,10 +73194,21 @@
       "arena_elo": "arena",
       "aider_pass_rate": "aider"
     },
-    "arena_elo": 1301.5098436309313,
+    "arena_elo": 1301.4935264657595,
     "arena_rank": 249,
     "arena_votes": 27332,
     "aider_pass_rate": 0.496
+  },
+  {
+    "name": "Qwen2.5-Plus (1127)",
+    "arena_name": "Qwen2.5-Plus (1127)",
+    "arena_org": "alibaba",
+    "sources": {
+      "arena_elo": "arena"
+    },
+    "arena_elo": 1299.1112886089118,
+    "arena_rank": 252,
+    "arena_votes": 10187
   },
   {
     "name": "Olmo 3 32B Think",
@@ -73205,21 +73218,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1299.3356271987093,
-    "arena_rank": 252,
-    "arena_votes": 5827,
-    "arena_factuality_elo": 1318.6423557972273
-  },
-  {
-    "name": "Qwen2.5-Plus (1127)",
-    "arena_name": "Qwen2.5-Plus (1127)",
-    "arena_org": "alibaba",
-    "sources": {
-      "arena_elo": "arena"
-    },
-    "arena_elo": 1299.1239095132823,
+    "arena_elo": 1299.038319045532,
     "arena_rank": 253,
-    "arena_votes": 10187
+    "arena_votes": 5825,
+    "arena_factuality_elo": 1318.4107706724576
   },
   {
     "name": "DeepSeek-V2.5 (1210)",
@@ -73229,7 +73231,7 @@
       "arena_elo": "arena",
       "aider_pass_rate": "aider"
     },
-    "arena_elo": 1293.9024948254519,
+    "arena_elo": 1293.886576986301,
     "arena_rank": 255,
     "arena_votes": 6795,
     "aider_pass_rate": 0.586
@@ -73242,10 +73244,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1293.314650450622,
+    "arena_elo": 1292.7427833088302,
     "arena_rank": 256,
-    "arena_votes": 3249,
-    "arena_factuality_elo": 1323.8795112976848
+    "arena_votes": 3238,
+    "arena_factuality_elo": 1323.6309557634459
   },
   {
     "name": "Athene V2 Chat",
@@ -73254,7 +73256,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1291.436324482751,
+    "arena_elo": 1291.4229845068253,
     "arena_rank": 257,
     "arena_votes": 24739
   },
@@ -73267,11 +73269,11 @@
       "arena_webdev_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1290.5286748427177,
+    "arena_elo": 1290.2836839145218,
     "arena_rank": 259,
-    "arena_votes": 4177,
-    "arena_webdev_elo": 1192.480962451842,
-    "arena_factuality_elo": 1310.345352874374
+    "arena_votes": 4167,
+    "arena_webdev_elo": 1191.8863648738554,
+    "arena_factuality_elo": 1309.9297784384955
   },
   {
     "name": "GLM-4-Plus",
@@ -73280,7 +73282,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1289.631356106398,
+    "arena_elo": 1289.6151512316578,
     "arena_rank": 260,
     "arena_votes": 26126
   },
@@ -73291,7 +73293,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1287.929446838924,
+    "arena_elo": 1287.922803949521,
     "arena_rank": 261,
     "arena_votes": 3738
   },
@@ -73303,10 +73305,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1287.4326387629408,
+    "arena_elo": 1287.5601374967662,
     "arena_rank": 262,
     "arena_votes": 822,
-    "arena_vision_elo": 1080.9674730249826
+    "arena_vision_elo": 1080.9234803356387
   },
   {
     "name": "gpt-oss-20b",
@@ -73315,9 +73317,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1287.309511106205,
+    "arena_elo": 1287.452441029267,
     "arena_rank": 263,
-    "arena_votes": 10416
+    "arena_votes": 10417
   },
   {
     "name": "Llama 3.1 405B Instruct (BF16)",
@@ -73326,22 +73328,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1283.661187380033,
+    "arena_elo": 1283.6535594597826,
     "arena_rank": 268,
     "arena_votes": 41375
-  },
-  {
-    "name": "Mercury",
-    "arena_name": "Mercury",
-    "arena_org": "inception-ai",
-    "sources": {
-      "arena_elo": "arena",
-      "arena_factuality_elo": "arena"
-    },
-    "arena_elo": 1281.9929172909874,
-    "arena_rank": 271,
-    "arena_votes": 1966,
-    "arena_factuality_elo": 1304.2382522467697
   },
   {
     "name": "Qwen-Max (0919)",
@@ -73350,8 +73339,8 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1281.8588354119897,
-    "arena_rank": 272,
+    "arena_elo": 1281.8426804970577,
+    "arena_rank": 271,
     "arena_votes": 16478
   },
   {
@@ -73361,9 +73350,22 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1281.778841359962,
-    "arena_rank": 273,
+    "arena_elo": 1281.7629456816512,
+    "arena_rank": 272,
     "arena_votes": 59656
+  },
+  {
+    "name": "Mercury",
+    "arena_name": "Mercury",
+    "arena_org": "inception-ai",
+    "sources": {
+      "arena_elo": "arena",
+      "arena_factuality_elo": "arena"
+    },
+    "arena_elo": 1281.7298842191333,
+    "arena_rank": 273,
+    "arena_votes": 1965,
+    "arena_factuality_elo": 1303.9645459291842
   },
   {
     "name": "Grok 2 mini (2024-08-13)",
@@ -73372,7 +73374,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1280.6694943602158,
+    "arena_elo": 1280.6541032505825,
     "arena_rank": 275,
     "arena_votes": 52567
   },
@@ -73384,10 +73386,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1279.141560630459,
+    "arena_elo": 1279.1826836767357,
     "arena_rank": 276,
-    "arena_votes": 29823,
-    "arena_vision_elo": 1118.3570237168362
+    "arena_votes": 29818,
+    "arena_vision_elo": 1118.1709319795818
   },
   {
     "name": "Gemini Advanced (0514)",
@@ -73396,7 +73398,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1278.5343844256342,
+    "arena_elo": 1278.519588360286,
     "arena_rank": 277,
     "arena_votes": 50148
   },
@@ -73408,10 +73410,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1277.0176604033627,
+    "arena_elo": 1277.055194381985,
     "arena_rank": 278,
-    "arena_votes": 32722,
-    "arena_vision_elo": 1136.4712697816929
+    "arena_votes": 32710,
+    "arena_vision_elo": 1136.3827997653545
   },
   {
     "name": "Hunyuan Standard (2025-02-10)",
@@ -73420,7 +73422,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1273.9745985055042,
+    "arena_elo": 1273.9679003148244,
     "arena_rank": 280,
     "arena_votes": 3904
   },
@@ -73433,10 +73435,10 @@
       "arena_vision_elo": "arena",
       "aider_pass_rate": "aider"
     },
-    "arena_elo": 1273.470175960854,
+    "arena_elo": 1273.455440081212,
     "arena_rank": 281,
     "arena_votes": 79138,
-    "arena_vision_elo": 1088.3158922587286,
+    "arena_vision_elo": 1088.2992092646214,
     "aider_pass_rate": 0.45899999999999996
   },
   {
@@ -73447,10 +73449,10 @@
       "arena_elo": "arena",
       "arena_factuality_elo": "arena"
     },
-    "arena_elo": 1271.3834707853453,
+    "arena_elo": 1271.6450880550112,
     "arena_rank": 283,
-    "arena_votes": 8299,
-    "arena_factuality_elo": 1299.8997286752026
+    "arena_votes": 8281,
+    "arena_factuality_elo": 1300.0827707780245
   },
   {
     "name": "Athene 70B (0725)",
@@ -73459,7 +73461,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1265.116892163243,
+    "arena_elo": 1265.1021647808598,
     "arena_rank": 288,
     "arena_votes": 19621
   },
@@ -73470,7 +73472,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1263.4145976695206,
+    "arena_elo": 1263.3992526665565,
     "arena_rank": 289,
     "arena_votes": 100105
   },
@@ -73482,10 +73484,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1262.8503726336094,
+    "arena_elo": 1263.1320686136994,
     "arena_rank": 290,
-    "arena_votes": 5279,
-    "arena_vision_elo": 1179.8915221360255
+    "arena_votes": 5280,
+    "arena_vision_elo": 1179.867141394062
   },
   {
     "name": "GPT-4 Turbo Preview (0125)",
@@ -73494,7 +73496,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1262.1809240221728,
+    "arena_elo": 1262.165562046854,
     "arena_rank": 291,
     "arena_votes": 93439
   },
@@ -73506,10 +73508,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1258.6756295305622,
+    "arena_elo": 1258.6711954455163,
     "arena_rank": 294,
     "arena_votes": 24745,
-    "arena_vision_elo": 980.4564281493098
+    "arena_vision_elo": 980.439544074545
   },
   {
     "name": "Magistral Medium (2506)",
@@ -73518,9 +73520,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1254.829455326594,
+    "arena_elo": 1254.6864662057187,
     "arena_rank": 297,
-    "arena_votes": 11513
+    "arena_votes": 11507
   },
   {
     "name": "Reka Core (20240904)",
@@ -73529,7 +73531,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1248.3573231205955,
+    "arena_elo": 1248.3425998139185,
     "arena_rank": 298,
     "arena_votes": 7312
   },
@@ -73540,9 +73542,9 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1241.2876230336656,
+    "arena_elo": 1241.4793297761782,
     "arena_rank": 299,
-    "arena_votes": 5630
+    "arena_votes": 5629
   },
   {
     "name": "Gemini 1.5 Flash (001)",
@@ -73552,10 +73554,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1239.2775055408501,
+    "arena_elo": 1239.2627757398384,
     "arena_rank": 300,
     "arena_votes": 62833,
-    "arena_vision_elo": 1007.9707418410777
+    "arena_vision_elo": 1007.954649667072
   },
   {
     "name": "Mistral Small 24B Instruct (2501)",
@@ -73564,7 +73566,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1233.5352919386896,
+    "arena_elo": 1233.534419781374,
     "arena_rank": 302,
     "arena_votes": 14681
   },
@@ -73576,10 +73578,10 @@
       "arena_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_elo": 1228.4629562853452,
+    "arena_elo": 1228.4555785830057,
     "arena_rank": 306,
     "arena_votes": 19372,
-    "arena_vision_elo": 990.448672519729
+    "arena_vision_elo": 990.432247606849
   },
   {
     "name": "Llama 3.1 Nemotron 51B Instruct",
@@ -73588,7 +73590,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1227.9688370719455,
+    "arena_elo": 1227.9520369166971,
     "arena_rank": 307,
     "arena_votes": 3749
   },
@@ -73599,7 +73601,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1225.8852169866777,
+    "arena_elo": 1225.8704268623649,
     "arena_rank": 309,
     "arena_votes": 9788
   },
@@ -73610,7 +73612,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1224.7904502533856,
+    "arena_elo": 1224.775627427111,
     "arena_rank": 311,
     "arena_votes": 19659
   },
@@ -73621,7 +73623,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1220.772923356913,
+    "arena_elo": 1220.7580848117161,
     "arena_rank": 313,
     "arena_votes": 156876
   },
@@ -73632,7 +73634,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1217.912800838974,
+    "arena_elo": 1217.9144904103669,
     "arena_rank": 315,
     "arena_votes": 3334
   },
@@ -73643,7 +73645,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1217.8964957181256,
+    "arena_elo": 1217.8817690044011,
     "arena_rank": 316,
     "arena_votes": 7536
   },
@@ -73654,7 +73656,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1208.3989831359058,
+    "arena_elo": 1208.3915832315333,
     "arena_rank": 318,
     "arena_votes": 19364
   },
@@ -73666,7 +73668,7 @@
       "arena_elo": "arena",
       "aider_pass_rate": "aider"
     },
-    "arena_elo": 1205.9847162036697,
+    "arena_elo": 1205.9697967948978,
     "arena_rank": 320,
     "arena_votes": 54173,
     "aider_pass_rate": 0.504
@@ -73678,7 +73680,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1201.9054640507336,
+    "arena_elo": 1201.8884671213202,
     "arena_rank": 323,
     "arena_votes": 2728
   },
@@ -73689,7 +73691,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1190.8951956617093,
+    "arena_elo": 1190.8786292629131,
     "arena_rank": 327,
     "arena_votes": 4781
   },
@@ -73700,7 +73702,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1170.4085362524397,
+    "arena_elo": 1170.3935829213906,
     "arena_rank": 336,
     "arena_votes": 15450
   },
@@ -73711,7 +73713,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1165.114059116927,
+    "arena_elo": 1165.0990939755918,
     "arena_rank": 339,
     "arena_votes": 34550
   },
@@ -73722,7 +73724,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1164.9641214869762,
+    "arena_elo": 1164.9491958356193,
     "arena_rank": 340,
     "arena_votes": 24806
   },
@@ -73733,7 +73735,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1148.8238597029904,
+    "arena_elo": 1148.808871988564,
     "arena_rank": 347,
     "arena_votes": 18354
   },
@@ -73744,7 +73746,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1130.5137397400445,
+    "arena_elo": 1130.4987573654912,
     "arena_rank": 353,
     "arena_votes": 6390
   },
@@ -73755,7 +73757,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1121.0101253116945,
+    "arena_elo": 1120.9951583327545,
     "arena_rank": 358,
     "arena_votes": 6535
   },
@@ -73766,7 +73768,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1119.495762567351,
+    "arena_elo": 1119.4807955669971,
     "arena_rank": 359,
     "arena_votes": 8214
   },
@@ -73777,7 +73779,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1118.8438688892738,
+    "arena_elo": 1118.8289201776458,
     "arena_rank": 360,
     "arena_votes": 32191
   },
@@ -73788,7 +73790,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1115.2028706040264,
+    "arena_elo": 1115.1879080403583,
     "arena_rank": 361,
     "arena_votes": 38492
   },
@@ -73799,7 +73801,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1105.2348287261207,
+    "arena_elo": 1105.2198612598595,
     "arena_rank": 367,
     "arena_votes": 22479
   },
@@ -73810,7 +73812,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1100.9501299869512,
+    "arena_elo": 1100.935212742193,
     "arena_rank": 369,
     "arena_votes": 32832
   },
@@ -73821,7 +73823,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1098.0652327344915,
+    "arena_elo": 1098.0502658574685,
     "arena_rank": 370,
     "arena_votes": 3585
   },
@@ -73833,7 +73835,7 @@
       "arena_elo": "arena",
       "aider_pass_rate": "aider"
     },
-    "arena_elo": 1094.0956904951918,
+    "arena_elo": 1094.0807250348346,
     "arena_rank": 373,
     "arena_votes": 16619,
     "aider_pass_rate": 0.455
@@ -73845,7 +73847,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1084.431542017187,
+    "arena_elo": 1084.41658645325,
     "arena_rank": 377,
     "arena_votes": 19174
   },
@@ -73856,7 +73858,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1080.9473555531677,
+    "arena_elo": 1080.932399317644,
     "arena_rank": 380,
     "arena_votes": 1679
   },
@@ -73867,7 +73869,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1079.9296305246194,
+    "arena_elo": 1079.9148576355212,
     "arena_rank": 381,
     "arena_votes": 12297
   },
@@ -73878,7 +73880,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1076.511942269457,
+    "arena_elo": 1076.4969973979212,
     "arena_rank": 383,
     "arena_votes": 7044
   },
@@ -73889,7 +73891,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1068.5828486662194,
+    "arena_elo": 1068.5679099287252,
     "arena_rank": 386,
     "arena_votes": 2572
   },
@@ -73900,7 +73902,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1065.457674136584,
+    "arena_elo": 1065.4427067800286,
     "arena_rank": 387,
     "arena_votes": 7366
   },
@@ -73911,7 +73913,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1057.631597283334,
+    "arena_elo": 1057.6166329605132,
     "arena_rank": 389,
     "arena_votes": 19367
   },
@@ -73922,7 +73924,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1057.2158195307727,
+    "arena_elo": 1057.2007696324163,
     "arena_rank": 390,
     "arena_votes": 1143
   },
@@ -73933,7 +73935,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1054.3270986474058,
+    "arena_elo": 1054.3121322335794,
     "arena_rank": 393,
     "arena_votes": 1295
   },
@@ -73944,7 +73946,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1053.3721205234165,
+    "arena_elo": 1053.3571475972783,
     "arena_rank": 394,
     "arena_votes": 14148
   },
@@ -73955,7 +73957,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1053.3520700065703,
+    "arena_elo": 1053.337136442638,
     "arena_rank": 395,
     "arena_votes": 2921
   },
@@ -73966,7 +73968,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1051.0009025323902,
+    "arena_elo": 1050.9859331337277,
     "arena_rank": 396,
     "arena_votes": 4964
   },
@@ -73977,7 +73979,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1038.413174491502,
+    "arena_elo": 1038.3981982685134,
     "arena_rank": 399,
     "arena_votes": 5182
   },
@@ -73988,7 +73990,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1031.7843180046139,
+    "arena_elo": 1031.7693010581902,
     "arena_rank": 400,
     "arena_votes": 6328
   },
@@ -73999,7 +74001,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1030.9198771521587,
+    "arena_elo": 1030.9049073788335,
     "arena_rank": 401,
     "arena_votes": 6923
   },
@@ -74010,7 +74012,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1027.2108423118302,
+    "arena_elo": 1027.1958947911025,
     "arena_rank": 402,
     "arena_votes": 8554
   },
@@ -74021,7 +74023,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 1023.4808680169727,
+    "arena_elo": 1023.4659001182713,
     "arena_rank": 403,
     "arena_votes": 8977
   },
@@ -74032,7 +74034,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 989.5812996308367,
+    "arena_elo": 989.5663223055178,
     "arena_rank": 407,
     "arena_votes": 6965
   },
@@ -74043,7 +74045,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 972.0107019916431,
+    "arena_elo": 971.9958055936102,
     "arena_rank": 408,
     "arena_votes": 4658
   },
@@ -74054,7 +74056,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 956.1534517084946,
+    "arena_elo": 956.1384484778887,
     "arena_rank": 409,
     "arena_votes": 1743
   },
@@ -74065,7 +74067,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 955.1911047663635,
+    "arena_elo": 955.1761479475902,
     "arena_rank": 410,
     "arena_votes": 3924
   },
@@ -74076,7 +74078,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 948.3579739037658,
+    "arena_elo": 948.3430159438033,
     "arena_rank": 411,
     "arena_votes": 4845
   },
@@ -74087,7 +74089,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 938.5996162872381,
+    "arena_elo": 938.5846686487091,
     "arena_rank": 412,
     "arena_votes": 2658
   },
@@ -74098,7 +74100,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 932.7825782419133,
+    "arena_elo": 932.7676135399272,
     "arena_rank": 413,
     "arena_votes": 5745
   },
@@ -74109,7 +74111,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 918.4364209830604,
+    "arena_elo": 918.4214497695475,
     "arena_rank": 414,
     "arena_votes": 4914
   },
@@ -74120,7 +74122,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 916.0383456751496,
+    "arena_elo": 916.0233734084045,
     "arena_rank": 415,
     "arena_votes": 6310
   },
@@ -74131,7 +74133,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 894.3709108985189,
+    "arena_elo": 894.3559476682442,
     "arena_rank": 416,
     "arena_votes": 4203
   },
@@ -74142,7 +74144,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 866.5450988641396,
+    "arena_elo": 866.5302610515024,
     "arena_rank": 417,
     "arena_votes": 3287
   },
@@ -74153,7 +74155,7 @@
     "sources": {
       "arena_elo": "arena"
     },
-    "arena_elo": 851.0994822135206,
+    "arena_elo": 851.0844733187328,
     "arena_rank": 418,
     "arena_votes": 3412
   },
@@ -74165,7 +74167,7 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1809.8391605525123,
+    "arena_webdev_elo": 1814.3381392023157,
     "arena_agent_score": 0.20144840119751856
   },
   {
@@ -74176,7 +74178,7 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1725.3158378428036,
+    "arena_webdev_elo": 1725.9856847802869,
     "arena_agent_score": 0.09422636744409608
   },
   {
@@ -74186,7 +74188,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1710.5864353676154
+    "arena_webdev_elo": 1711.1712398911386
   },
   {
     "name": "Kimi K3.1 Pro (Max)",
@@ -74196,17 +74198,8 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1694.582449167362,
+    "arena_webdev_elo": 1683.935227449236,
     "arena_agent_score": 0.052922199913780096
-  },
-  {
-    "name": "Qwen3.8-Max (0902)",
-    "arena_name": "Qwen3.8-Max (0902)",
-    "arena_org": "alibaba",
-    "sources": {
-      "arena_webdev_elo": "arena"
-    },
-    "arena_webdev_elo": 1675.9355584770149
   },
   {
     "name": "GPT-6.1 Terra (Max)",
@@ -74216,8 +74209,17 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1672.6547058209349,
+    "arena_webdev_elo": 1679.751199354737,
     "arena_agent_score": 0.11396048113208619
+  },
+  {
+    "name": "Qwen3.8-Max (0902)",
+    "arena_name": "Qwen3.8-Max (0902)",
+    "arena_org": "alibaba",
+    "sources": {
+      "arena_webdev_elo": "arena"
+    },
+    "arena_webdev_elo": 1677.1137853070659
   },
   {
     "name": "DeepSeek-V4.1-Flash-20261017 (Max)",
@@ -74227,8 +74229,17 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1665.040445245608,
+    "arena_webdev_elo": 1665.1375988732734,
     "arena_agent_score": 0.023700399579817785
+  },
+  {
+    "name": "Inkling 2 Small",
+    "arena_name": "Inkling 2 Small",
+    "arena_org": "thinky",
+    "sources": {
+      "arena_webdev_elo": "arena"
+    },
+    "arena_webdev_elo": 1647.7718111578304
   },
   {
     "name": "Hy4 preview",
@@ -74238,7 +74249,7 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1631.1069363530096,
+    "arena_webdev_elo": 1631.2925358829693,
     "arena_agent_score": 0.007490202576772596
   },
   {
@@ -74249,7 +74260,7 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1628.3220907822047,
+    "arena_webdev_elo": 1625.1267134391355,
     "arena_agent_score": -0.044295053150866875
   },
   {
@@ -74260,8 +74271,8 @@
       "arena_webdev_elo": "arena",
       "arena_vision_elo": "arena"
     },
-    "arena_webdev_elo": 1620.064431270458,
-    "arena_vision_elo": 1301.8247778879463
+    "arena_webdev_elo": 1618.0487677955032,
+    "arena_vision_elo": 1302.556629277064
   },
   {
     "name": "GPT-5.6 Sol (xHigh, Codex Harness)",
@@ -74270,7 +74281,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1615.7849726003753
+    "arena_webdev_elo": 1614.9941924376774
   },
   {
     "name": "MiniMax-M3.1-Flash",
@@ -74280,7 +74291,7 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1582.4578204140666,
+    "arena_webdev_elo": 1582.013986096166,
     "arena_agent_score": -0.02843512991092605
   },
   {
@@ -74290,7 +74301,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1581.8380356617101
+    "arena_webdev_elo": 1581.7269819443668
   },
   {
     "name": "Step 5 Preview (High)",
@@ -74299,7 +74310,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1571.03868087871
+    "arena_webdev_elo": 1571.9927665717885
   },
   {
     "name": "Muse Spark Open (Max)",
@@ -74308,7 +74319,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1526.2373165722156
+    "arena_webdev_elo": 1526.0820150774528
   },
   {
     "name": "GPT-5.6 Terra (xHigh, Codex Harness)",
@@ -74317,7 +74328,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1520.1279670236868
+    "arena_webdev_elo": 1520.8949600666406
   },
   {
     "name": "Seed2.1 Pro Preview",
@@ -74326,7 +74337,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1519.1039947604677
+    "arena_webdev_elo": 1518.6813438271672
   },
   {
     "name": "GPT-5.6 Luna (xHigh, Codex Harness)",
@@ -74335,7 +74346,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1518.9116265563573
+    "arena_webdev_elo": 1518.6773745529886
   },
   {
     "name": "Qwen3.7-Max (20260517)",
@@ -74344,7 +74355,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1515.1361678106236
+    "arena_webdev_elo": 1515.5639024962004
   },
   {
     "name": "GPT-5.5 (xHigh, Codex Harness)",
@@ -74353,7 +74364,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1512.099404756151
+    "arena_webdev_elo": 1512.5575976873288
   },
   {
     "name": "GPT-5.5 (High, Codex Harness)",
@@ -74362,7 +74373,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1486.7293325820726
+    "arena_webdev_elo": 1487.0111625534973
   },
   {
     "name": "Spark-X2.6",
@@ -74372,7 +74383,7 @@
       "arena_webdev_elo": "arena",
       "arena_agent_score": "arena"
     },
-    "arena_webdev_elo": 1481.9961109790227,
+    "arena_webdev_elo": 1481.3622119393285,
     "arena_agent_score": -0.0990263629533583
   },
   {
@@ -74382,7 +74393,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1463.4770483714215
+    "arena_webdev_elo": 1463.0278606970894
   },
   {
     "name": "GPT-5.5 (Codex Harness)",
@@ -74391,7 +74402,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1456.0796664601917
+    "arena_webdev_elo": 1456.289880441006
   },
   {
     "name": "GPT-5.4 (Medium, Codex Harness)",
@@ -74400,7 +74411,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1443.6136223052815
+    "arena_webdev_elo": 1442.990934500264
   },
   {
     "name": "GPT-5 (Medium)",
@@ -74409,7 +74420,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1417.276921350425
+    "arena_webdev_elo": 1417.256816774719
   },
   {
     "name": "GPT-5.3-Codex (Codex Harness)",
@@ -74418,7 +74429,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1370.9372485054987
+    "arena_webdev_elo": 1371.3853058957548
   },
   {
     "name": "GPT-5.1 (Medium)",
@@ -74427,7 +74438,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1395.6212231615589
+    "arena_webdev_elo": 1395.7407792758786
   },
   {
     "name": "Laguna M.1",
@@ -74436,7 +74447,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1349.1775253684623
+    "arena_webdev_elo": 1348.8080787216256
   },
   {
     "name": "Laguna XS.2",
@@ -74445,7 +74456,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1302.434909213999
+    "arena_webdev_elo": 1303.0478895873655
   },
   {
     "name": "KAT-Coder-Pro V1",
@@ -74454,7 +74465,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1255.828952682332
+    "arena_webdev_elo": 1255.608549499998
   },
   {
     "name": "Devstral 2",
@@ -74463,7 +74474,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1197.1289143313095
+    "arena_webdev_elo": 1196.1320687895231
   },
   {
     "name": "Grok Code Fast 1",
@@ -74472,7 +74483,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1166.345338592527
+    "arena_webdev_elo": 1166.2412003836992
   },
   {
     "name": "Devstral Medium (2507)",
@@ -74481,7 +74492,7 @@
     "sources": {
       "arena_webdev_elo": "arena"
     },
-    "arena_webdev_elo": 1071.3821988348811
+    "arena_webdev_elo": 1073.2594900347583
   },
   {
     "name": "ERNIE-5.0-Preview (1220)",
@@ -74490,7 +74501,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1248.4510254707782
+    "arena_vision_elo": 1248.3578507872799
   },
   {
     "name": "Qwen-VL-Max (2025-08-13)",
@@ -74499,7 +74510,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1212.5672502479758
+    "arena_vision_elo": 1212.516041189622
   },
   {
     "name": "Qwen2.5-VL-32B-Instruct",
@@ -74508,7 +74519,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1152.162379014094
+    "arena_vision_elo": 1152.166081718488
   },
   {
     "name": "Step-1o Vision 32K (High Res)",
@@ -74517,7 +74528,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1121.8231838350196
+    "arena_vision_elo": 1121.80496708712
   },
   {
     "name": "Qwen2.5-VL-72B-Instruct",
@@ -74526,7 +74537,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1107.3900594968854
+    "arena_vision_elo": 1107.3839720861095
   },
   {
     "name": "Pixtral Large (2411)",
@@ -74535,7 +74546,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1089.401468668532
+    "arena_vision_elo": 1089.3912434867314
   },
   {
     "name": "Qwen-VL-Max (1119)",
@@ -74544,7 +74555,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1057.6009730671647
+    "arena_vision_elo": 1057.583722107508
   },
   {
     "name": "Step-1V 32K",
@@ -74553,7 +74564,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1045.9841994837204
+    "arena_vision_elo": 1045.9666693293516
   },
   {
     "name": "Molmo 72B (0924)",
@@ -74562,7 +74573,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1012.3170344601887
+    "arena_vision_elo": 1012.2995366807534
   },
   {
     "name": "InternVL2 26B",
@@ -74571,7 +74582,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 1004.5843874163678
+    "arena_vision_elo": 1004.568148671013
   },
   {
     "name": "Llama 3.2 90B Vision Instruct",
@@ -74580,7 +74591,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 999.6684359142814
+    "arena_vision_elo": 999.6509417866838
   },
   {
     "name": "Hunyuan Standard Vision (2024-12-31)",
@@ -74589,7 +74600,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 999.110995578003
+    "arena_vision_elo": 999.0929777273509
   },
   {
     "name": "Aya Vision 32B",
@@ -74598,7 +74609,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 995.6005584750659
+    "arena_vision_elo": 995.5858344006174
   },
   {
     "name": "Yi Vision",
@@ -74607,7 +74618,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 977.7485077615282
+    "arena_vision_elo": 977.7324732327469
   },
   {
     "name": "Llama 3.2 11B Vision Instruct",
@@ -74616,7 +74627,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 966.3977682142548
+    "arena_vision_elo": 966.3807831487736
   },
   {
     "name": "Molmo 7B-D (0924)",
@@ -74625,7 +74636,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 958.7198754660322
+    "arena_vision_elo": 958.7023578464309
   },
   {
     "name": "InternVL2 4B",
@@ -74634,7 +74645,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 941.3336252723876
+    "arena_vision_elo": 941.317083425533
   },
   {
     "name": "nvila-internal-15b-v1",
@@ -74643,7 +74654,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 940.1680579022888
+    "arena_vision_elo": 940.1513010278793
   },
   {
     "name": "LLaVA 1.6 34B",
@@ -74652,7 +74663,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 936.4650706341221
+    "arena_vision_elo": 936.4488156430675
   },
   {
     "name": "CogVLM2 Llama3 Chat 19B",
@@ -74661,7 +74672,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 927.5588003818513
+    "arena_vision_elo": 927.5425485559872
   },
   {
     "name": "LLaVA-OneVision Qwen2 72B OV",
@@ -74670,7 +74681,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 922.8418998244371
+    "arena_vision_elo": 922.8259357129273
   },
   {
     "name": "MiniCPM-V 2.6",
@@ -74679,7 +74690,7 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 911.6370615034156
+    "arena_vision_elo": 911.6211314879747
   },
   {
     "name": "Phi-3 Vision 128K Instruct",
@@ -74688,259 +74699,253 @@
     "sources": {
       "arena_vision_elo": "arena"
     },
-    "arena_vision_elo": 811.7372776204631
+    "arena_vision_elo": 811.7214018065489
   },
   {
-    "name": "claude-opus-4-6-search",
-    "arena_name": "claude-opus-4-6-search",
+    "name": "Claude Opus 4.6 (Search)",
+    "arena_name": "Claude Opus 4.6 (Search)",
     "arena_org": "anthropic",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1251.3682634708416
+    "arena_search_elo": 1251.8326586917497
   },
   {
-    "name": "gpt-5.5-search",
-    "arena_name": "gpt-5.5-search",
+    "name": "GPT-5.5 (Search)",
+    "arena_name": "GPT-5.5 (Search)",
     "arena_org": "openai",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1246.55450092229
+    "arena_search_elo": 1246.8592534853078
   },
   {
-    "name": "claude-fable-5.1-high",
-    "arena_name": "claude-fable-5.1-high",
+    "name": "Claude Fable 5.1 (High)",
+    "arena_name": "Claude Fable 5.1 (High)",
     "arena_org": "anthropic",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1245.8454338407687
+    "arena_search_elo": 1238.5751039119689
   },
   {
-    "name": "claude-sonnet-4-6-search",
-    "arena_name": "claude-sonnet-4-6-search",
+    "name": "Claude Sonnet 4.6 (Search)",
+    "arena_name": "Claude Sonnet 4.6 (Search)",
     "arena_org": "anthropic",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1220.5047840787206
+    "arena_search_elo": 1220.2256533598038
   },
   {
-    "name": "claude-opus-5.5-medium",
-    "arena_name": "claude-opus-5.5-medium",
+    "name": "Claude Opus 5.5 (Medium)",
+    "arena_name": "Claude Opus 5.5 (Medium)",
     "arena_org": "anthropic",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1212.752524435077
+    "arena_search_elo": 1214.4806161882814
   },
   {
-    "name": "gemini-3.1-pro-grounding",
-    "arena_name": "gemini-3.1-pro-grounding",
+    "name": "Gemini 3.1 Pro (Grounding)",
+    "arena_name": "Gemini 3.1 Pro (Grounding)",
+    "arena_org": "google",
+    "sources": {
+      "arena_search_elo": "arena",
+      "sb_score": "skillsbench"
+    },
+    "arena_search_elo": 1209.445413230732,
+    "sb_score": 60.8,
+    "sb_lift": 24.8
+  },
+  {
+    "name": "GPT-5.2 (Search)",
+    "arena_name": "GPT-5.2 (Search)",
+    "arena_org": "openai",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1207.5712338283581
+  },
+  {
+    "name": "Gemini 3 Pro (Grounding)",
+    "arena_name": "Gemini 3 Pro (Grounding)",
     "arena_org": "google",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1208.8056697991265
+    "arena_search_elo": 1206.2411264526877
   },
   {
-    "name": "gpt-5.2-search",
-    "arena_name": "gpt-5.2-search",
+    "name": "GPT-5.1 (Search)",
+    "arena_name": "GPT-5.1 (Search)",
     "arena_org": "openai",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1207.2395102994547
+    "arena_search_elo": 1199.4206357271803
   },
   {
-    "name": "gemini-3-pro-grounding",
-    "arena_name": "gemini-3-pro-grounding",
+    "name": "GPT-5.4 (Search)",
+    "arena_name": "GPT-5.4 (Search)",
+    "arena_org": "openai",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1198.8834624216252
+  },
+  {
+    "name": "Gemini 3 Flash (Grounding)",
+    "arena_name": "Gemini 3 Flash (Grounding)",
     "arena_org": "google",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1206.4687124995507
+    "arena_search_elo": 1194.9338584263458
   },
   {
-    "name": "gpt-5.1-search",
-    "arena_name": "gpt-5.1-search",
+    "name": "Claude Sonnet 5 (Search)",
+    "arena_name": "Claude Sonnet 5 (Search)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1188.0446274773149
+  },
+  {
+    "name": "Claude Opus 4.5 (Search)",
+    "arena_name": "Claude Opus 4.5 (Search)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1179.1043589188316
+  },
+  {
+    "name": "GPT-5.2 (Search, Non-Reasoning)",
+    "arena_name": "GPT-5.2 (Search, Non-Reasoning)",
     "arena_org": "openai",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1199.7017251677703
+    "arena_search_elo": 1171.395711916183
   },
   {
-    "name": "gpt-5.4-search",
-    "arena_name": "gpt-5.4-search",
+    "name": "Grok 4.1 Fast (Search)",
+    "arena_name": "Grok 4.1 Fast (Search)",
+    "arena_org": "xai",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1171.0545416297537
+  },
+  {
+    "name": "Grok 4 Fast (Search)",
+    "arena_name": "Grok 4 Fast (Search)",
+    "arena_org": "xai",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1169.9970791426485
+  },
+  {
+    "name": "Claude Sonnet 4.5 (Search)",
+    "arena_name": "Claude Sonnet 4.5 (Search)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1159.738370300643
+  },
+  {
+    "name": "Claude Opus 4.1 (Search)",
+    "arena_name": "Claude Opus 4.1 (Search)",
+    "arena_org": "anthropic",
+    "sources": {
+      "arena_search_elo": "arena"
+    },
+    "arena_search_elo": 1148.1843274099888
+  },
+  {
+    "name": "o3 (Search)",
+    "arena_name": "o3 (Search)",
     "arena_org": "openai",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1199.0836464168055
+    "arena_search_elo": 1144.5231839854375
   },
   {
-    "name": "gemini-3-flash-grounding",
-    "arena_name": "gemini-3-flash-grounding",
+    "name": "Gemini 2.5 Pro (Grounding)",
+    "arena_name": "Gemini 2.5 Pro (Grounding)",
     "arena_org": "google",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1195.6947712717279
+    "arena_search_elo": 1142.641722068165
   },
   {
-    "name": "claude-sonnet-5-search",
-    "arena_name": "claude-sonnet-5-search",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1190.9401050952251
-  },
-  {
-    "name": "grok-4.20-beta1",
-    "arena_name": "grok-4.20-beta1",
+    "name": "Grok 4 (Search)",
+    "arena_name": "Grok 4 (Search)",
     "arena_org": "xai",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1190.4760633911728
+    "arena_search_elo": 1141.637130993847
   },
   {
-    "name": "claude-opus-4-5-search",
-    "arena_name": "claude-opus-4-5-search",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1179.584189023045
-  },
-  {
-    "name": "gpt-5.2-search-non-reasoning",
-    "arena_name": "gpt-5.2-search-non-reasoning",
-    "arena_org": "openai",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1171.464772171008
-  },
-  {
-    "name": "grok-4-1-fast-search",
-    "arena_name": "grok-4-1-fast-search",
-    "arena_org": "xai",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1170.915123769151
-  },
-  {
-    "name": "grok-4-fast-search",
-    "arena_name": "grok-4-fast-search",
-    "arena_org": "xai",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1170.098408705558
-  },
-  {
-    "name": "claude-sonnet-4-5-search",
-    "arena_name": "claude-sonnet-4-5-search",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1160.2678871558953
-  },
-  {
-    "name": "claude-opus-4-1-search",
-    "arena_name": "claude-opus-4-1-search",
-    "arena_org": "anthropic",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1148.4457371908902
-  },
-  {
-    "name": "o3-search",
-    "arena_name": "o3-search",
-    "arena_org": "openai",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1144.847836063405
-  },
-  {
-    "name": "gemini-2.5-pro-grounding",
-    "arena_name": "gemini-2.5-pro-grounding",
-    "arena_org": "google",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1142.7962155131672
-  },
-  {
-    "name": "grok-4-search",
-    "arena_name": "grok-4-search",
-    "arena_org": "xai",
-    "sources": {
-      "arena_search_elo": "arena"
-    },
-    "arena_search_elo": 1141.857861246975
-  },
-  {
-    "name": "ppl-sonar-reasoning-pro-high",
-    "arena_name": "ppl-sonar-reasoning-pro-high",
+    "name": "Sonar Reasoning Pro (High)",
+    "arena_name": "Sonar Reasoning Pro (High)",
     "arena_org": "perplexity",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1139.0055993264116
+    "arena_search_elo": 1138.6137732290408
   },
   {
-    "name": "gpt-5-search",
-    "arena_name": "gpt-5-search",
+    "name": "GPT-5 (Search)",
+    "arena_name": "GPT-5 (Search)",
     "arena_org": "openai",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1133.4909027049498
+    "arena_search_elo": 1133.116233383724
   },
   {
-    "name": "ppl-sonar-pro-high",
-    "arena_name": "ppl-sonar-pro-high",
+    "name": "Sonar Pro (High)",
+    "arena_name": "Sonar Pro (High)",
     "arena_org": "perplexity",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1130.2762765499842
+    "arena_search_elo": 1129.901925160464
   },
   {
-    "name": "claude-opus-4-search",
-    "arena_name": "claude-opus-4-search",
+    "name": "Claude Opus 4 (Search)",
+    "arena_name": "Claude Opus 4 (Search)",
     "arena_org": "anthropic",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1127.4280258271351
+    "arena_search_elo": 1127.1191982740427
   },
   {
-    "name": "diffbot-small-xl",
-    "arena_name": "diffbot-small-xl",
+    "name": "Diffbot-Small-XL",
+    "arena_name": "Diffbot-Small-XL",
     "arena_org": "diffbot",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1022.6684934058726
+    "arena_search_elo": 1022.1926788422489
   },
   {
-    "name": "api-gpt-4o-search",
-    "arena_name": "api-gpt-4o-search",
+    "name": "GPT-4o (Search)",
+    "arena_name": "GPT-4o (Search)",
     "arena_org": "openai",
     "sources": {
       "arena_search_elo": "arena"
     },
-    "arena_search_elo": 1006.5803341542625
+    "arena_search_elo": 1006.2840634028661
   },
   {
     "name": "Claude Sonnet 5.5 (Max)",
@@ -75392,14 +75397,6 @@
     "name": "Opus 4.7",
     "sb_score": 61.2,
     "sb_lift": 18.2,
-    "sources": {
-      "sb_score": "skillsbench"
-    }
-  },
-  {
-    "name": "Gemini 3.1 Pro",
-    "sb_score": 60.8,
-    "sb_lift": 24.8,
     "sources": {
       "sb_score": "skillsbench"
     }
