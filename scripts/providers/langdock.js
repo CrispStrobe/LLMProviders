@@ -17,6 +17,12 @@
  *         p.text-size-small span:eq(1)     → price number
  *
  * Pricing is in EUR with a stated 10% Langdock surcharge on provider rates.
+ *
+ * Since 2026-11 the page is an Astro build: each model is a serialized island
+ * prop ({"slug":[0,"…"],"name":[0,"…"],"provider":[0,"…"],…,
+ * "inputPriceEur":[0,N],"outputPriceEur":[0,N],"details":[0,{"contextWindow":…}]})
+ * inside an HTML-escaped attribute. parseAstroModels() reads that; the Webflow
+ * card parser below remains as a fallback.
  */
 
 const cheerio = require('cheerio');
@@ -39,6 +45,41 @@ const getSizeB = (name) => {
   return m ? parseInt(m[1]) : undefined;
 };
 
+const decodeEntities = (text) =>
+  text
+    .replace(/&quot;/g, '"')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+
+const ASTRO_MODEL = /\{"slug":\[0,"([^"]+)"\],"name":\[0,"([^"]+)"\],"provider":\[0,"([^"]*)"\].*?"inputPriceEur":\[0,(null|[-\d.eE]+)\],"outputPriceEur":\[0,(null|[-\d.eE]+)\](?:,"details":\[0,\{"contextWindow":\[0,(\d+)\])?/g;
+
+function parseAstroModels(html) {
+  const text = decodeEntities(html);
+  const models = [];
+  const seen = new Set();
+  for (const m of text.matchAll(ASTRO_MODEL)) {
+    const [, slug, name, provider, input, output, context] = m;
+    if (input === 'null' || seen.has(slug)) continue;
+    seen.add(slug);
+    const model = {
+      name,
+      type: 'chat',
+      input_price_per_1m: parseFloat(input),
+      output_price_per_1m: output === 'null' ? 0 : parseFloat(output),
+      currency: 'EUR',
+    };
+    const size_b = getSizeB(name);
+    if (size_b) model.size_b = size_b;
+    if (context) model.context_window = parseInt(context, 10);
+    if (provider) model.provider_upstream = provider;
+    models.push(model);
+  }
+  return models;
+}
+
 async function fetchLangdock() {
   const html = await getText(MODELS_URL, {
     headers: {
@@ -47,6 +88,9 @@ async function fetchLangdock() {
       'Accept-Language': 'en-US,en;q=0.9',
     },
   });
+  const astro = parseAstroModels(html);
+  if (astro.length) return astro;
+
   const $ = cheerio.load(html);
 
   const models = [];
@@ -109,7 +153,7 @@ async function fetchLangdock() {
   return models;
 }
 
-module.exports = { fetchLangdock, providerName: 'Langdock' };
+module.exports = { fetchLangdock, parseAstroModels, providerName: 'Langdock' };
 
 if (require.main === module) {
   fetchLangdock()
