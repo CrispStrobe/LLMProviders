@@ -16,6 +16,11 @@
  * in the environment; otherwise they are reported as SKIP (neutral), so the
  * check still passes on forks / environments without secrets.
  *
+ * Providers marked `blocked` are still fetched, so a recovery shows up as PASS,
+ * but a failure is reported as SKIP with the reason (and a CI warning) instead
+ * of failing the run: the source refuses automated clients and nothing in this
+ * repo can fix that.
+ *
  * Usage: node scripts/healthcheck.js
  */
 
@@ -39,7 +44,9 @@ const CHECKS = [
   { key: 'infomaniak',        min: 6,   keyEnv: null },
   { key: 'ionos',             min: 5,   keyEnv: null },
   { key: 'black-forest-labs', min: 6,   keyEnv: null },
-  { key: 'nebius',            min: 10,  keyEnv: null },
+  // Since 2026-11 every request to tokenfactory.nebius.com (page and the
+  // anonymous models_info proxy) gets HTTP 403, from CI and from a desktop.
+  { key: 'nebius',            min: 10,  keyEnv: null, blocked: 'Token Factory answers HTTP 403 to all automated clients (since 2026-11)' },
   { key: 'nscale',            min: 5,   keyEnv: ['NSCALE_TOKEN', 'NSCALE_API_KEY'] },
   { key: 'eurouter',          min: 80,  keyEnv: null },
   { key: 'hostyourai',        min: 15,  keyEnv: null },
@@ -63,11 +70,19 @@ function withTimeout(promise, ms, label) {
   ]).catch((e) => { throw new Error(`${label}: ${e.message}`); });
 }
 
+// A known-blocked source turns a failure into a neutral SKIP that says why.
+function blockedOr(blocked, failure) {
+  if (!blocked) return failure;
+  const note = `blocked upstream: ${blocked} (${failure.note})`;
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=${failure.providerName} skipped::${note}`);
+  return { ...failure, status: 'SKIP', note };
+}
+
 async function main() {
   const results = [];
 
   for (const check of CHECKS) {
-    const { key, min, keyEnv } = check;
+    const { key, min, keyEnv, blocked } = check;
     let providerName = key;
 
     const keyEnvs = keyEnv == null ? [] : (Array.isArray(keyEnv) ? keyEnv : [keyEnv]);
@@ -84,10 +99,10 @@ async function main() {
       if (count >= min) {
         results.push({ key, providerName, status: 'PASS', count, note: `>= ${min}` });
       } else {
-        results.push({ key, providerName, status: 'FAIL', count, note: `expected >= ${min}` });
+        results.push(blockedOr(blocked, { key, providerName, status: 'FAIL', count, note: `expected >= ${min}` }));
       }
     } catch (err) {
-      results.push({ key, providerName, status: 'FAIL', count: null, note: err.message });
+      results.push(blockedOr(blocked, { key, providerName, status: 'FAIL', count: null, note: err.message }));
     }
   }
 
