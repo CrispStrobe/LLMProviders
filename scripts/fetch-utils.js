@@ -1,5 +1,39 @@
 'use strict';
 
+const MAX_REDIRECTS = 10;
+
+/**
+ * fetch() that follows redirects itself and carries cookies set along the way.
+ * Some CDNs (OVHcloud since 2026-11) answer the first request with a 307 to the
+ * same URL plus a session cookie; fetch() keeps no cookies, so it loops until
+ * the redirect limit. Callers that set `redirect` themselves get plain fetch().
+ */
+async function fetchWithCookies(url, options) {
+  if (options.redirect) return fetch(url, options);
+  const jar = new Map();
+  let current = url;
+  for (let hop = 0; ; hop++) {
+    const headers = new Headers(options.headers);
+    if (jar.size) {
+      const own = headers.get('Cookie');
+      const carried = [...jar].map(([k, v]) => `${k}=${v}`).join('; ');
+      headers.set('Cookie', own ? `${own}; ${carried}` : carried);
+    }
+    const res = await fetch(current, { ...options, headers, redirect: 'manual' });
+    const location = res.headers.get('location');
+    if (res.status < 300 || res.status >= 400 || !location) return res;
+    if (hop >= MAX_REDIRECTS) throw new Error(`more than ${MAX_REDIRECTS} redirects from ${url}`);
+    const setCookies = typeof res.headers.getSetCookie === 'function' ? res.headers.getSetCookie() : [];
+    for (const line of setCookies) {
+      const pair = line.split(';', 1)[0];
+      const eq = pair.indexOf('=');
+      if (eq > 0) jar.set(pair.slice(0, eq).trim(), pair.slice(eq + 1).trim());
+    }
+    await res.body?.cancel();
+    current = new URL(location, current).toString();
+  }
+}
+
 /**
  * Robust fetch helper with retries, exponential backoff, and timeout.
  */
@@ -11,7 +45,7 @@ async function fetchRobust(url, options = {}) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeout);
     try {
-      const res = await fetch(url, {
+      const res = await fetchWithCookies(url, {
         ...fetchOptions,
         signal: controller.signal,
         headers: {
