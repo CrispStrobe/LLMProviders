@@ -29,6 +29,7 @@ jobs:
         env:
           # Optional. Without it the Artificial Analysis source is skipped.
           ARTIFICIAL_ANALYSIS_API_KEY: ${{ secrets.ARTIFICIAL_ANALYSIS_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/fetch-benchmarks.js
 
       - name: Check coverage

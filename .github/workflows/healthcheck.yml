@@ -55,6 +55,7 @@ jobs:
       - name: Fetch benchmark sources
         env:
           ARTIFICIAL_ANALYSIS_API_KEY: ${{ secrets.ARTIFICIAL_ANALYSIS_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/fetch-benchmarks.js
       - name: Assert coverage
         run: |

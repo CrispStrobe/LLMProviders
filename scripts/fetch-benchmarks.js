@@ -37,6 +37,13 @@ const yaml = require('js-yaml');
 const { getJson, getText, fetchRobust } = require('./fetch-utils');
 const { loadEnv } = require('./load-env');
 
+// GitHub's API allows 60 anonymous requests an hour per IP, which shared CI
+// runners exhaust (LiveBench got 403 on 2026-11-28). Actions provides
+// GITHUB_TOKEN; with it the limit is per repository instead.
+const githubJson = (url) => getJson(url, process.env.GITHUB_TOKEN
+  ? { headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } }
+  : {});
+
 loadEnv();
 
 const OUT_FILE = path.join(__dirname, '..', 'data', 'benchmarks.json');
@@ -82,7 +89,7 @@ function extractLLMStatsMetrics(qualitative_metrics) {
 
 async function fetchLLMStats() {
   process.stdout.write('LLMStats: fetching file list... ');
-  const tree = await getJson(LLMSTATS_TREE);
+  const tree = await githubJson(LLMSTATS_TREE);
   const files = tree.tree.filter(
     (f) => f.type === 'blob' && f.path.startsWith('models/') && f.path.endsWith('/model.json')
   );
@@ -226,7 +233,7 @@ function parseLiveBenchCsv(csvText, taskToGroup) {
 
 async function fetchLiveBench() {
   process.stdout.write('LiveBench: finding all releases... ');
-  const tree = await getJson(LB_GITHUB_TREE);
+  const tree = await githubJson(LB_GITHUB_TREE);
   const dates = tree.tree
     .filter((f) => f.path.startsWith('public/table_') && f.path.endsWith('.csv'))
     .map((f) => f.path.replace('public/table_', '').replace('.csv', ''))
