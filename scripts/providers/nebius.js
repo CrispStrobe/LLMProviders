@@ -3,6 +3,17 @@
 /**
  * Nebius Token Factory (formerly Nebius AI Studio) pricing fetcher.
  *
+ * With NEBIUS_API_KEY set it reads the official API, which carries prices:
+ *
+ *   GET https://api.tokenfactory.nebius.com/v1/models?verbose=true
+ *   { data: [ { id, name, context_length, architecture: { modality },
+ *       pricing: { prompt, completion } (USD per token), supported_features } ] }
+ *
+ * Since 2026-11 Cloudflare answers 403 to every automated client on
+ * tokenfactory.nebius.com (only a real windowed browser on a residential
+ * address gets through), so the keyless path below is a fallback for local
+ * runs and in case the block is lifted.
+ *
  * The public "Model endpoints" page (tokenfactory.nebius.com/endpoints) lists
  * every shared model with pricing to anonymous users. It loads that data from
  * a CSRF-protected proxy endpoint — no API key required:
@@ -85,7 +96,53 @@ function buildEntry(model, flavor, labelSuffix) {
   return entry;
 }
 
+const API_URL = 'https://api.tokenfactory.nebius.com/v1/models?verbose=true';
+
+// USD per token -> USD per 1M tokens, without float noise (0.00000015 -> 0.15).
+const perMillion = (v) => {
+  const n = Number(v) * 1e6;
+  return isFinite(n) ? Number(n.toFixed(6)) : 0;
+};
+
+function apiEntry(m) {
+  const [inputs = '', outputs = ''] = (m.architecture?.modality || '').split('->');
+  const type = outputs.includes('embedding') ? 'embedding'
+    : outputs.includes('image') ? 'image'
+    : inputs.includes('image') ? 'vision'
+    : 'chat';
+  const features = m.supported_features || [];
+  const caps = [];
+  if (type === 'vision') caps.push('vision');
+  if (features.includes('tools')) caps.push('tools');
+  if (features.includes('reasoning')) caps.push('reasoning');
+
+  const entry = {
+    name: m.name || m.id.split('/').pop(),
+    type,
+    input_price_per_1m: perMillion(m.pricing?.prompt),
+    output_price_per_1m: perMillion(m.pricing?.completion),
+    currency: 'USD',
+  };
+  if (caps.length) entry.capabilities = caps;
+  if (/^[^/\s]+\/[^/\s]+$/.test(m.id || '')) entry.hf_id = m.id;
+  if (m.context_length) entry.context_window = m.context_length;
+  return entry;
+}
+
+async function fetchViaApi(apiKey) {
+  const res = await fetchRobust(API_URL, {
+    headers: { Authorization: `Bearer ${apiKey}`, Accept: 'application/json' },
+  });
+  const data = await res.json();
+  return (data.data || [])
+    .map(apiEntry)
+    .filter((e) => e.input_price_per_1m > 0 || e.output_price_per_1m > 0)
+    .sort((a, b) => a.input_price_per_1m - b.input_price_per_1m);
+}
+
 async function fetchNebius() {
+  if (process.env.NEBIUS_API_KEY) return fetchViaApi(process.env.NEBIUS_API_KEY);
+
   const { cookieVal, headerVal } = await getCsrf();
 
   const res = await fetchRobust(MODELS_URL, {
@@ -121,7 +178,7 @@ module.exports = { fetchNebius, providerName: 'Nebius' };
 if (require.main === module) {
   fetchNebius()
     .then((models) => {
-      console.log(`Fetched ${models.length} models from Nebius (public models_info):\n`);
+      console.log(`Fetched ${models.length} models from Nebius (${process.env.NEBIUS_API_KEY ? 'API' : 'public models_info'}):\n`);
       const byType = {};
       models.forEach((m) => { (byType[m.type] = byType[m.type] || []).push(m); });
       for (const [type, ms] of Object.entries(byType)) {

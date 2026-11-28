@@ -44,9 +44,8 @@ const CHECKS = [
   { key: 'infomaniak',        min: 6,   keyEnv: null },
   { key: 'ionos',             min: 5,   keyEnv: null },
   { key: 'black-forest-labs', min: 6,   keyEnv: null },
-  // Since 2026-11 every request to tokenfactory.nebius.com (page and the
-  // anonymous models_info proxy) gets HTTP 403, from CI and from a desktop.
-  { key: 'nebius',            min: 10,  keyEnv: null, blocked: 'Token Factory answers HTTP 403 to all automated clients (since 2026-11)' },
+  // The public page answers 403 to automated clients since 2026-11; the API needs a key.
+  { key: 'nebius',            min: 10,  keyEnv: 'NEBIUS_API_KEY' },
   { key: 'nscale',            min: 5,   keyEnv: ['NSCALE_TOKEN', 'NSCALE_API_KEY'] },
   { key: 'eurouter',          min: 80,  keyEnv: null },
   { key: 'hostyourai',        min: 15,  keyEnv: null },
