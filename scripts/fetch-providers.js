@@ -430,6 +430,9 @@ async function main() {
       if (!Array.isArray(models) || models.length === 0) {
         console.log('– skipped (0 models, keeping existing)');
       } else if (updateProviderModels(data.providers, f.providerName, models)) {
+        // Only a successful fetch moves the date, so a broken or skipped
+        // fetcher shows its data aging in the management panel.
+        data.providers.find((p) => p.name === f.providerName).lastUpdated = new Date().toISOString();
         console.log(`✓ ${models.length} models`);
       }
     } catch (err) { console.log(`✗ ${err.message}`); }

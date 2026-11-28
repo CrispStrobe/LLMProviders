@@ -135,15 +135,7 @@ function runFetcher(providerName, scriptKey) {
       (err, stdout, stderr) => {
         refreshing.delete(providerName);
 
-        // Stamp lastUpdated on the provider entry in providers.json
-        try {
-          const d = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-          const prov = d.providers.find((p) => p.name === providerName);
-          if (prov) {
-            prov.lastUpdated = new Date().toISOString();
-            fs.writeFileSync(DATA_FILE, JSON.stringify(d, null, 2));
-          }
-        } catch { /* best effort */ }
+        // fetch-providers.js stamps lastUpdated itself, and only on success.
 
         if (err) {
           resolve({ provider: providerName, success: false, error: err.message, stderr });
