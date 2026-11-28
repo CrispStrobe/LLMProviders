@@ -92,7 +92,7 @@
           "hf_private": false
         }
       ],
-      "lastUpdated": "2026-03-02T04:54:46.028Z"
+      "lastUpdated": "2026-11-28T04:04:48.496Z"
     },
     {
       "name": "Infomaniak",
@@ -310,7 +310,7 @@
           "canonical_id": "photomaker"
         }
       ],
-      "lastUpdated": "2026-03-02T04:54:47.632Z"
+      "lastUpdated": "2026-11-28T04:04:47.855Z"
     },
     {
       "name": "Langdock",
@@ -971,7 +971,8 @@
           "canonical_id": "sonnet-5-5",
           "hf_private": true
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:46.087Z"
     },
     {
       "name": "Requesty",
@@ -7261,7 +7262,7 @@
           "canonical_id": "gpt-5-4-pro"
         }
       ],
-      "lastUpdated": "2026-07-03T07:57:30.523Z"
+      "lastUpdated": "2026-11-28T04:04:45.393Z"
     },
     {
       "name": "Nebius",
@@ -7671,7 +7672,7 @@
           "hf_private": false
         }
       ],
-      "lastUpdated": "2026-07-03T07:57:09.452Z"
+      "lastUpdated": "2026-11-28T04:04:45.899Z"
     },
     {
       "name": "Scaleway",
@@ -7927,7 +7928,8 @@
           ],
           "hf_private": false
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:38.762Z"
     },
     {
       "name": "OVHcloud",
@@ -8332,7 +8334,7 @@
           "hf_private": false
         }
       ],
-      "lastUpdated": "2026-07-03T03:05:07.295Z"
+      "lastUpdated": "2026-11-28T04:04:39.266Z"
     },
     {
       "name": "STACKIT",
@@ -8478,7 +8480,7 @@
           "hf_private": false
         }
       ],
-      "lastUpdated": "2026-07-03T04:02:08.833Z"
+      "lastUpdated": "2026-11-28T04:04:40.319Z"
     },
     {
       "name": "Nscale",
@@ -8560,7 +8562,8 @@
             "reasoning"
           ]
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:40.918Z"
     },
     {
       "name": "EUrouter",
@@ -11602,7 +11605,8 @@
           "provider_upstream": "Microsoft Foundry",
           "canonical_id": "gpt-6-astra"
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:42.274Z"
     },
     {
       "name": "HostYourAI",
@@ -12439,7 +12443,8 @@
           ],
           "hf_private": false
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:43.254Z"
     },
     {
       "name": "Mistral AI",
@@ -12684,7 +12689,7 @@
           ]
         }
       ],
-      "lastUpdated": "2026-07-03T07:16:45.395Z"
+      "lastUpdated": "2026-11-28T04:04:45.972Z"
     },
     {
       "name": "OpenRouter",
@@ -15923,6 +15928,22 @@
           "hf_private": true
         },
         {
+          "name": "deepseek/deepseek-v4-pro",
+          "type": "chat",
+          "input_price_per_1m": 0.3818,
+          "output_price_per_1m": 1.5791,
+          "currency": "USD",
+          "hf_id": "deepseek-ai/DeepSeek-V4-Pro",
+          "capabilities": [
+            "tools",
+            "reasoning"
+          ],
+          "canonical_id": "deepseek-pro",
+          "size_b": 861.6,
+          "size_source": "hf-total",
+          "hf_private": false
+        },
+        {
           "name": "xiaomi/mimo-v2.6-pro",
           "type": "vision",
           "input_price_per_1m": 0.387,
@@ -15977,22 +15998,6 @@
           "hf_validated_at": "2026-03-22T19:23:09.981Z",
           "hf_status": 200,
           "canonical_id": "qwen3-5-397b-a17b"
-        },
-        {
-          "name": "deepseek/deepseek-v4-pro",
-          "type": "chat",
-          "input_price_per_1m": 0.3905,
-          "output_price_per_1m": 1.5791,
-          "currency": "USD",
-          "hf_id": "deepseek-ai/DeepSeek-V4-Pro",
-          "capabilities": [
-            "tools",
-            "reasoning"
-          ],
-          "canonical_id": "deepseek-pro",
-          "size_b": 861.6,
-          "size_source": "hf-total",
-          "hf_private": false
         },
         {
           "name": "z-ai/glm-4.7",
@@ -19300,7 +19305,8 @@
           "canonical_id": "gemma-4-31b",
           "hf_private": false
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:44.623Z"
     },
     {
       "name": "Groq",
@@ -19426,7 +19432,8 @@
           "canonical_id": "orpheus-arabic-saudi",
           "context_window": 4000
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:46.259Z"
     },
     {
       "name": "Black Forest Labs",
@@ -19670,7 +19677,8 @@
           "category": "FLUX Image Tools",
           "canonical_id": "outpainting"
         }
-      ]
+      ],
+      "lastUpdated": "2026-11-28T04:04:48.562Z"
     }
   ]
 }
